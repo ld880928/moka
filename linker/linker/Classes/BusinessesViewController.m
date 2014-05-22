@@ -7,6 +7,7 @@
 //
 
 #import "BusinessesViewController.h"
+#import "BusinessDetailViewController.h"
 
 #define DISTANCE_BOTTOM 64.0f
 #define DISTANCE_TOP 0
@@ -66,14 +67,18 @@
     }
     
     self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 3, self.businessesScrollView.bounds.size.height);
-    
-
-    
 }
 
 - (void)gotoDetail
 {
     [self performSegueWithIdentifier:@"BusinessDetail" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    BusinessDetailViewController *destinationViewController = segue.destinationViewController;
+    [destinationViewController setBackgroundImage:[UIImage imageNamed:@"background_home"]];
+
 }
 
 - (void)handleSwipe:(UISwipeGestureRecognizer *)ges_

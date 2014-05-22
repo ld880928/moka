@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B149C55192E2EB600271741 /* BusinessDetailViewController.m */; };
 		3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EB143192250A1008E4048 /* HomeViewController.m */; };
 		3B2EB20019225AD3008E4048 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2EB1FC19225AD3008E4048 /* libbaidumapapi.a */; };
 		3B2EB20119225AD3008E4048 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EB1FD19225AD3008E4048 /* mapapi.bundle */; };
@@ -45,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B149C54192E2EB600271741 /* BusinessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewController.h; sourceTree = "<group>"; };
+		3B149C55192E2EB600271741 /* BusinessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewController.m; sourceTree = "<group>"; };
 		3B2EB142192250A1008E4048 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		3B2EB143192250A1008E4048 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		3B2EB17B19225AD2008E4048 /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
@@ -199,6 +202,8 @@
 				3B2EB143192250A1008E4048 /* HomeViewController.m */,
 				3BDC51EC1927895700AC355F /* BusinessesViewController.h */,
 				3BDC51ED1927895700AC355F /* BusinessesViewController.m */,
+				3B149C54192E2EB600271741 /* BusinessDetailViewController.h */,
+				3B149C55192E2EB600271741 /* BusinessDetailViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -533,6 +538,7 @@
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
 				3B452B391920FA63008729A9 /* main.m in Sources */,
 				3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */,
+				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +674,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
+				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -686,7 +692,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
+				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
