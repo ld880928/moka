@@ -1,25 +1,28 @@
 //
-//  ViewController.m
+//  ChooseCityViewController.m
 //  linker
 //
-//  Created by 李迪 on 14-5-12.
+//  Created by 李迪 on 14-5-25.
 //  Copyright (c) 2014年 colin. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ChooseCityViewController.h"
 #import "BMapKit.h"
 
-@interface ViewController ()<BMKMapViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ChooseCityViewController ()<BMKMapViewDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
 @property(nonatomic,strong)BMKMapView *mapView;
+@property(nonatomic,strong)NSString *currentCity;
+@property(nonatomic,strong)NSArray *hotCityArray;
 @end
 
-@implementation ViewController
+@implementation ChooseCityViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.hotCityArray = @[@"上海",@"武汉",@"广州",@"深圳",@"成都",@"重庆",@"天津",@"杭州"];
     
     self.mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
     //self.view = self.mapView;
@@ -48,26 +51,57 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 26;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    NSInteger count = 0;
+    switch (section) {
+        case 0:
+            count = 1;
+            break;
+        case 1:
+            count = self.hotCityArray.count;
+            break;
+        default:
+            break;
+    }
+    
+    return count;
 }
-
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CELL_ID = @"";
+    static NSString *CELL_ID = @"ChooseCityViewController_cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CELL_ID];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_ID];
     }
-    cell.textLabel.text = @"111";
+    if (indexPath.section == 0) {
+        if (!self.currentCity || self.currentCity.length == 0) {
+            cell.textLabel.text = @"定位中...";
+        }
+        else
+        cell.textLabel.text = self.currentCity;
+    }
+    
+    if (indexPath.section == 1) {
+        cell.textLabel.text = [self.hotCityArray objectAtIndex:indexPath.row];
+    }
+    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *cityName = [self.locationsTableView cellForRowAtIndexPath:indexPath].textLabel.text;
+    [self dismissViewControllerAnimated:YES completion:^{
+        if ([cityName isEqualToString:@"定位中..."]) {
+            self.chooseCityConmpleteBlock(@"");
+        }
+        else self.chooseCityConmpleteBlock(cityName);
+    }];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -77,7 +111,16 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"] objectAtIndex:section];
+    if (section == 0) {
+        return @"GPS定位城市";
+    }
+    else if (section == 1) {
+        return @"热门城市";
+    }
+    else
+        return nil;
+    
+    //return [@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"] objectAtIndex:section];
 }
 
 #pragma mark BMKMapViewDelegate
@@ -100,7 +143,8 @@
             
             NSString *cityName = placemark.locality;
             
-            NSLog(@"cityName %@",cityName);//获取城市名
+            self.currentCity = cityName;
+            [self.locationsTableView reloadData];
             
             break;
             
@@ -124,11 +168,5 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

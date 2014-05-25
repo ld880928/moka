@@ -12,6 +12,9 @@
 		3B2EB20019225AD3008E4048 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2EB1FC19225AD3008E4048 /* libbaidumapapi.a */; };
 		3B2EB20119225AD3008E4048 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EB1FD19225AD3008E4048 /* mapapi.bundle */; };
 		3B2EB20219225AD3008E4048 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EB1FE19225AD3008E4048 /* readme.txt */; };
+		3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399DFC192FADE100A96C18 /* BusinessDetailView.m */; };
+		3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */; };
+		3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399E01192FAE3800A96C18 /* BusinessWindow.m */; };
 		3B452B2D1920FA63008729A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B2C1920FA63008729A9 /* Foundation.framework */; };
 		3B452B2F1920FA63008729A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B2E1920FA63008729A9 /* CoreGraphics.framework */; };
 		3B452B311920FA63008729A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B301920FA63008729A9 /* UIKit.framework */; };
@@ -19,7 +22,6 @@
 		3B452B391920FA63008729A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B452B381920FA63008729A9 /* main.m */; };
 		3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B452B3C1920FA63008729A9 /* AppDelegate.m */; };
 		3B452B401920FA63008729A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B452B3E1920FA63008729A9 /* Main.storyboard */; };
-		3B452B431920FA63008729A9 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B452B421920FA63008729A9 /* ViewController.mm */; };
 		3B452B451920FA63008729A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B452B441920FA63008729A9 /* Images.xcassets */; };
 		3B452B4C1920FA63008729A9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B4B1920FA63008729A9 /* XCTest.framework */; };
 		3B452B4D1920FA63008729A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B2C1920FA63008729A9 /* Foundation.framework */; };
@@ -31,8 +33,14 @@
 		3B452BF11920FE56008729A9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF01920FE56008729A9 /* OpenGLES.framework */; };
 		3B452BF31920FE64008729A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF21920FE64008729A9 /* SystemConfiguration.framework */; };
 		3B452BF51920FE76008729A9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF41920FE76008729A9 /* Security.framework */; };
+		3BC7D84F1931DA6700AD5FB6 /* home_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BC7D84E1931DA6700AD5FB6 /* home_data.plist */; };
+		3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */; };
+		3BC7D85419322B3900AD5FB6 /* business_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BC7D85319322B3900AD5FB6 /* business_data.plist */; };
+		3BC7D856193230F500AD5FB6 /* BusinessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC7D855193230F500AD5FB6 /* BusinessView.xib */; };
+		3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7D8581932310500AD5FB6 /* BusinessView.m */; };
 		3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51ED1927895700AC355F /* BusinessesViewController.m */; };
 		3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51F11927A19A00AC355F /* UIView+Origami.m */; };
+		3BE0F6C51930ADB400A498BA /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE0F6C41930ADB400A498BA /* EmptySegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +143,11 @@
 		3B2EB1FC19225AD3008E4048 /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		3B2EB1FD19225AD3008E4048 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		3B2EB1FE19225AD3008E4048 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		3B399DFB192FADE100A96C18 /* BusinessDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailView.h; sourceTree = "<group>"; };
+		3B399DFC192FADE100A96C18 /* BusinessDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailView.m; sourceTree = "<group>"; };
+		3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessDetailView.xib; sourceTree = "<group>"; };
+		3B399E00192FAE3800A96C18 /* BusinessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessWindow.h; sourceTree = "<group>"; };
+		3B399E01192FAE3800A96C18 /* BusinessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessWindow.m; sourceTree = "<group>"; };
 		3B452B291920FA63008729A9 /* linker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B452B2C1920FA63008729A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B452B2E1920FA63008729A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,8 +159,6 @@
 		3B452B3B1920FA63008729A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B452B3C1920FA63008729A9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3B452B3F1920FA63008729A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3B452B411920FA63008729A9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3B452B421920FA63008729A9 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		3B452B441920FA63008729A9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3B452B4A1920FA63008729A9 /* linkerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = linkerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B452B4B1920FA63008729A9 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -159,10 +170,19 @@
 		3B452BF01920FE56008729A9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3B452BF21920FE64008729A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3B452BF41920FE76008729A9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3BC7D84E1931DA6700AD5FB6 /* home_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = home_data.plist; sourceTree = "<group>"; };
+		3BC7D85019321A0800AD5FB6 /* ChooseCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCityViewController.h; sourceTree = "<group>"; };
+		3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChooseCityViewController.mm; sourceTree = "<group>"; };
+		3BC7D85319322B3900AD5FB6 /* business_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = business_data.plist; sourceTree = "<group>"; };
+		3BC7D855193230F500AD5FB6 /* BusinessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessView.xib; sourceTree = "<group>"; };
+		3BC7D8571932310500AD5FB6 /* BusinessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessView.h; sourceTree = "<group>"; };
+		3BC7D8581932310500AD5FB6 /* BusinessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessView.m; sourceTree = "<group>"; };
 		3BDC51EC1927895700AC355F /* BusinessesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessesViewController.h; sourceTree = "<group>"; };
 		3BDC51ED1927895700AC355F /* BusinessesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessesViewController.m; sourceTree = "<group>"; };
 		3BDC51F01927A19A00AC355F /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		3BDC51F11927A19A00AC355F /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
+		3BE0F6C31930ADB400A498BA /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
+		3BE0F6C41930ADB400A498BA /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +224,8 @@
 				3BDC51ED1927895700AC355F /* BusinessesViewController.m */,
 				3B149C54192E2EB600271741 /* BusinessDetailViewController.h */,
 				3B149C55192E2EB600271741 /* BusinessDetailViewController.m */,
+				3BC7D85019321A0800AD5FB6 /* ChooseCityViewController.h */,
+				3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -332,6 +354,23 @@
 			path = inc;
 			sourceTree = "<group>";
 		};
+		3B399DFA192FADE100A96C18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B399E00192FAE3800A96C18 /* BusinessWindow.h */,
+				3B399E01192FAE3800A96C18 /* BusinessWindow.m */,
+				3B399DFB192FADE100A96C18 /* BusinessDetailView.h */,
+				3B399DFC192FADE100A96C18 /* BusinessDetailView.m */,
+				3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */,
+				3BE0F6C31930ADB400A498BA /* EmptySegue.h */,
+				3BE0F6C41930ADB400A498BA /* EmptySegue.m */,
+				3BC7D8571932310500AD5FB6 /* BusinessView.h */,
+				3BC7D8581932310500AD5FB6 /* BusinessView.m */,
+				3BC7D855193230F500AD5FB6 /* BusinessView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3B452B201920FA63008729A9 = {
 			isa = PBXGroup;
 			children = (
@@ -370,13 +409,14 @@
 		3B452B321920FA63008729A9 /* linker */ = {
 			isa = PBXGroup;
 			children = (
+				3BC7D84E1931DA6700AD5FB6 /* home_data.plist */,
+				3BC7D85319322B3900AD5FB6 /* business_data.plist */,
+				3B399DFA192FADE100A96C18 /* Views */,
 				3B2EB14119225089008E4048 /* Classes */,
 				3B452B611920FB2F008729A9 /* Libs */,
 				3B452B3B1920FA63008729A9 /* AppDelegate.h */,
 				3B452B3C1920FA63008729A9 /* AppDelegate.m */,
 				3B452B3E1920FA63008729A9 /* Main.storyboard */,
-				3B452B411920FA63008729A9 /* ViewController.h */,
-				3B452B421920FA63008729A9 /* ViewController.mm */,
 				3B452B441920FA63008729A9 /* Images.xcassets */,
 				3B452B331920FA63008729A9 /* Supporting Files */,
 			);
@@ -511,9 +551,13 @@
 			files = (
 				3B2EB20219225AD3008E4048 /* readme.txt in Resources */,
 				3B452B451920FA63008729A9 /* Images.xcassets in Resources */,
+				3BC7D85419322B3900AD5FB6 /* business_data.plist in Resources */,
 				3B2EB20119225AD3008E4048 /* mapapi.bundle in Resources */,
+				3BC7D84F1931DA6700AD5FB6 /* home_data.plist in Resources */,
+				3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */,
 				3B452B371920FA63008729A9 /* InfoPlist.strings in Resources */,
 				3B452B401920FA63008729A9 /* Main.storyboard in Resources */,
+				3BC7D856193230F500AD5FB6 /* BusinessView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,13 +576,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B452B431920FA63008729A9 /* ViewController.mm in Sources */,
+				3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */,
+				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
 				3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */,
+				3BE0F6C51930ADB400A498BA /* EmptySegue.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
+				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
 				3B452B391920FA63008729A9 /* main.m in Sources */,
 				3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
+				3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

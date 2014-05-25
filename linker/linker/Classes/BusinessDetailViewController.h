@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BusinessDetailViewController : UIViewController
-@property(nonatomic,strong)UIImage *backgroundImage;
+@property(nonatomic,strong)UIColor *backgroundImage;
 @end

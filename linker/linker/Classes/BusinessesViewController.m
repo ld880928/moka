@@ -7,15 +7,13 @@
 //
 
 #import "BusinessesViewController.h"
+#import "BusinessWindow.h"
+#import "BusinessView.h"
 #import "BusinessDetailViewController.h"
 
-#define DISTANCE_BOTTOM 64.0f
-#define DISTANCE_TOP 0
-#define SPEED 200.0f
-
-@interface BusinessesViewController ()
+@interface BusinessesViewController ()<UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *businessesScrollView;
-
+@property (nonatomic,strong)NSArray *businessArray;
 @end
 
 @implementation BusinessesViewController
@@ -24,72 +22,113 @@
 {
     [super viewDidLoad];
     
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    
-    
     [self.businessesScrollView setCanCancelContentTouches:YES];
-
-	// Do any additional setup after loading the view.
     
-    for (int i=0; i<3; i++) {
-        UIView *view_ = [[UIView alloc] initWithFrame:self.view.bounds];
+    BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
+    businessWindow.gotoTopFinishedCallBackBlock = ^(BOOL finished){
+        self.businessesScrollView.scrollEnabled = YES;
+    };
+    businessWindow.gotoBottomFinishedCallBackBlock = ^(BOOL finished){
+        self.businessesScrollView.scrollEnabled = NO;
+    };
+    
+    self.businessArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"business_data" ofType:@"plist"]];
+    
+    for (int i=0; i<self.businessArray.count; i++) {
+        
+        NSDictionary *businessItem = [self.businessArray objectAtIndex:i];
+        
+        BusinessView *view_ = [BusinessView businessViewWithDatas:businessItem];
+        
         view_.frame = CGRectMake(self.view.bounds.size.width * i, 0, self.businessesScrollView.bounds.size.width, self.businessesScrollView.bounds.size.height);
         view_.userInteractionEnabled = YES;
-        switch (i) {
-            case 0:
-                view_.backgroundColor = [UIColor redColor];
-                break;
-            case 1:
-                view_.backgroundColor = [UIColor blueColor];
-                break;
-            case 2:
-                view_.backgroundColor = [UIColor grayColor];
-                break;
-            default:
-                break;
-        }
-        
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        button.frame = CGRectMake(100, 100, 50, 50);
-        [button setTitle:@"给爷一个惊喜" forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(gotoDetail) forControlEvents:UIControlEventTouchUpInside];
-        [view_ addSubview:button];
-        
-        UISwipeGestureRecognizer *ges = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-        ges.direction = UISwipeGestureRecognizerDirectionDown;
-        [view_ addGestureRecognizer:ges];
-        
-        UISwipeGestureRecognizer *ges1 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
-        ges1.direction = UISwipeGestureRecognizerDirectionUp;
-        [view_ addGestureRecognizer:ges1];
+
+        view_.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[businessItem objectForKey:@"background"]]];
         
         [self.businessesScrollView addSubview:view_];
+        
+        UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        panGes.delegate = self;
+        [view_ addGestureRecognizer:panGes];
+        
+        UIColor *backgroundColor = view_.backgroundColor;
+        [view_ setGotoDetailBlock:^{
+            [self performSegueWithIdentifier:@"BusinessDetail" sender:backgroundColor];
+        }];
+        
     }
     
-    self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * 3, self.businessesScrollView.bounds.size.height);
+    self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.businessArray.count, self.businessesScrollView.bounds.size.height);
 }
 
-- (void)gotoDetail
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    [self performSegueWithIdentifier:@"BusinessDetail" sender:self];
+    return YES;
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)ges_
+{
+    BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
+    
+    CGFloat distance_y = [ges_ translationInView:self.view].y;
+    
+    distance_y = businessWindow.frame.origin.y + distance_y;
+    
+    switch (ges_.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            break;
+        }
+        case UIGestureRecognizerStateChanged:
+        {
+            if (self.businessesScrollView.isDragging) {
+                return;
+            }
+            if (businessWindow.frame.origin.y > 0) {
+                self.businessesScrollView.scrollEnabled = NO;
+            }
+            
+            distance_y = distance_y < 0 ? 0 : distance_y;
+            distance_y = distance_y > self.view.frame.size.height ? self.view.frame.size.height : distance_y;
+            [businessWindow resetPositionY:distance_y];
+            
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        {
+            CGFloat speed_y = [ges_ velocityInView:self.view].y;
+
+            if (speed_y > SPEED) {
+                [businessWindow moveToBottom];
+            }
+            else if(speed_y < -1 * SPEED)
+            {
+                [businessWindow moveToTop];
+            }
+            else
+            {
+                if (distance_y < self.view.frame.size.height / 2) {
+                    [businessWindow moveToTop];
+                }
+                else
+                {
+                    [businessWindow moveToBottom];
+                }
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    
+    [ges_ setTranslation:CGPointZero inView:self.view];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     BusinessDetailViewController *destinationViewController = segue.destinationViewController;
-    [destinationViewController setBackgroundImage:[UIImage imageNamed:@"background_home"]];
+    [destinationViewController setBackgroundImage:sender];
 
-}
-
-- (void)handleSwipe:(UISwipeGestureRecognizer *)ges_
-{
-    NSLog(@"%@",ges_.view);
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

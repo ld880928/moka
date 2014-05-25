@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>豪客来</string>
+		<key>title</key>
+		<string>只把最新鲜的留给最值得珍爱的你</string>
+		<key>background</key>
+		<string>Image_1</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>豪客来</string>
+		<key>title</key>
+		<string>只把最新鲜的留给最值得珍爱的你</string>
+		<key>background</key>
+		<string>Image_2</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>豪客来</string>
+		<key>title</key>
+		<string>只把最新鲜的留给最值得珍爱的你</string>
+		<key>background</key>
+		<string>Image_3</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>豪客来</string>
+		<key>title</key>
+		<string>只把最新鲜的留给最值得珍爱的你</string>
+		<key>background</key>
+		<string>Image_4</string>
+	</dict>
+</array>
+</plist>
