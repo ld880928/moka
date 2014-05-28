@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B149C55192E2EB600271741 /* BusinessDetailViewController.m */; };
+		3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B41935B43000F88024 /* UIButton+Block.m */; };
+		3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B61935B43000F88024 /* UIView+TopRadius.m */; };
 		3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EB143192250A1008E4048 /* HomeViewController.m */; };
 		3B2EB20019225AD3008E4048 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2EB1FC19225AD3008E4048 /* libbaidumapapi.a */; };
 		3B2EB20119225AD3008E4048 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3B2EB1FD19225AD3008E4048 /* mapapi.bundle */; };
@@ -56,6 +58,11 @@
 /* Begin PBXFileReference section */
 		3B149C54192E2EB600271741 /* BusinessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewController.h; sourceTree = "<group>"; };
 		3B149C55192E2EB600271741 /* BusinessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewController.m; sourceTree = "<group>"; };
+		3B2640B31935B43000F88024 /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
+		3B2640B41935B43000F88024 /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
+		3B2640B51935B43000F88024 /* UIView+TopRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TopRadius.h"; sourceTree = "<group>"; };
+		3B2640B61935B43000F88024 /* UIView+TopRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TopRadius.m"; sourceTree = "<group>"; };
+		3B2640B91935B44A00F88024 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		3B2EB142192250A1008E4048 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		3B2EB143192250A1008E4048 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		3B2EB17B19225AD2008E4048 /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
@@ -215,6 +222,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B2640B21935B43000F88024 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				3B2640B31935B43000F88024 /* UIButton+Block.h */,
+				3B2640B41935B43000F88024 /* UIButton+Block.m */,
+				3B2640B51935B43000F88024 /* UIView+TopRadius.h */,
+				3B2640B61935B43000F88024 /* UIView+TopRadius.m */,
+				3B2640B91935B44A00F88024 /* Utils.h */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
 		3B2EB14119225089008E4048 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +428,7 @@
 		3B452B321920FA63008729A9 /* linker */ = {
 			isa = PBXGroup;
 			children = (
+				3B2640B21935B43000F88024 /* Additions */,
 				3BC7D84E1931DA6700AD5FB6 /* home_data.plist */,
 				3BC7D85319322B3900AD5FB6 /* business_data.plist */,
 				3B399DFA192FADE100A96C18 /* Views */,
@@ -579,6 +599,7 @@
 				3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */,
 				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
 				3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */,
+				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
 				3BE0F6C51930ADB400A498BA /* EmptySegue.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
@@ -586,6 +607,7 @@
 				3B452B391920FA63008729A9 /* main.m in Sources */,
 				3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
+				3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */,
 				3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

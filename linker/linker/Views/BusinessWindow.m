@@ -20,7 +20,6 @@
         self.backgroundColor = [UIColor whiteColor];
         self.windowLevel = UIWindowLevelStatusBar + 1;
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
-
     }
     return self;
 }
@@ -80,6 +79,7 @@
     [UIView animateWithDuration:.5f animations:^{
         [self resetPositionY:0.0f];
     } completion:^(BOOL finished) {
+        self.businessWindowState = BusinessWindowState_Show;
         if (self.gotoTopFinishedCallBackBlock) {
             self.gotoTopFinishedCallBackBlock(finished);
         }
@@ -89,10 +89,9 @@
 - (void)moveToBottom
 {
     [UIView animateWithDuration:.5f animations:^{
-        
         [self resetPositionY:[UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM];
-        
     } completion:^(BOOL finished) {
+        self.businessWindowState = BusinessWindowState_Hide;
         if (self.gotoBottomFinishedCallBackBlock) {
             self.gotoBottomFinishedCallBackBlock(finished);
         }

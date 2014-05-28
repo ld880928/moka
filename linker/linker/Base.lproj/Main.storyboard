@@ -24,8 +24,8 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="x6u-ni-JXo" customClass="HomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OQc-yI-bQ6"/>
-                        <viewControllerLayoutGuide type="bottom" id="P4N-HZ-AKb"/>
+                        <viewControllerLayoutGuide type="top" id="H10-AS-0ag"/>
+                        <viewControllerLayoutGuide type="bottom" id="sQ4-gf-DNZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ptz-JV-Qpw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -64,8 +64,8 @@
             <objects>
                 <viewController id="Qhf-gx-aUS" customClass="TestViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gGl-Yb-Qog"/>
-                        <viewControllerLayoutGuide type="bottom" id="93a-LJ-fH5"/>
+                        <viewControllerLayoutGuide type="top" id="2el-IK-rKM"/>
+                        <viewControllerLayoutGuide type="bottom" id="kt3-ht-naO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lch-pD-OsC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -112,8 +112,8 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ChooseCityViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ckh-XB-0gd"/>
-                        <viewControllerLayoutGuide type="bottom" id="Rvt-l6-Ai7"/>
+                        <viewControllerLayoutGuide type="top" id="dAP-Lk-YsN"/>
+                        <viewControllerLayoutGuide type="bottom" id="xBt-q3-lvG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -149,8 +149,8 @@
             <objects>
                 <viewController storyboardIdentifier="BusinessesViewController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ksc-nw-SEK" customClass="BusinessesViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="sgL-Q4-ivy"/>
-                        <viewControllerLayoutGuide type="bottom" id="EuF-x8-ZT6"/>
+                        <viewControllerLayoutGuide type="top" id="Ylf-18-PDL"/>
+                        <viewControllerLayoutGuide type="bottom" id="zTq-4H-jJe"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="KIS-6N-Nx1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -163,13 +163,6 @@
                                     <outlet property="delegate" destination="ksc-nw-SEK" id="HXv-g4-fxp"/>
                                 </connections>
                             </scrollView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="美食" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeV-uw-6Ea">
-                                <rect key="frame" x="15" y="15" width="60" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                     </view>
                     <toolbarItems/>
@@ -187,8 +180,8 @@
             <objects>
                 <viewController id="m9f-Mp-dr9" customClass="BusinessDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="V4B-06-C3H"/>
-                        <viewControllerLayoutGuide type="bottom" id="ivt-a6-sJk"/>
+                        <viewControllerLayoutGuide type="top" id="5vC-Wq-AdN"/>
+                        <viewControllerLayoutGuide type="bottom" id="8NF-WY-Q0C"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="RJt-sU-Hf5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>

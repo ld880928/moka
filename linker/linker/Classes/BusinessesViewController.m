@@ -11,9 +11,10 @@
 #import "BusinessView.h"
 #import "BusinessDetailViewController.h"
 
-@interface BusinessesViewController ()<UIGestureRecognizerDelegate>
+@interface BusinessesViewController ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *businessesScrollView;
 @property (nonatomic,strong)NSArray *businessArray;
+@property (strong, nonatomic)UILabel *navigationLabel;
 @end
 
 @implementation BusinessesViewController
@@ -26,9 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self setNeedsStatusBarAppearanceUpdate];
-
     
     [self.businessesScrollView setCanCancelContentTouches:YES];
     
@@ -64,9 +63,30 @@
             [self performSegueWithIdentifier:@"BusinessDetail" sender:backgroundColor];
         }];
         
+        [view_ setGotoTopFinishedCallBackBlock:^(BOOL finished) {
+            self.businessesScrollView.scrollEnabled = NO;
+        }];
+        
+        [view_ setGotoBottomFinishedCallBackBlock:^(BOOL finished) {
+            self.businessesScrollView.scrollEnabled = YES;
+        }];
+        
+        [view_ setPositionYChangedCallBackBlock:^(CGFloat percent) {
+            CGFloat distance = 55.0f;
+            CGFloat navigationY = 15.0f - (1.0f - percent) * distance;
+            CGRect frame = self.navigationLabel.frame;
+            frame.origin.y = navigationY;
+            self.navigationLabel.frame = frame;
+        }];
     }
     
     self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.businessArray.count, self.businessesScrollView.bounds.size.height);
+    self.navigationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 60, 40)];
+    self.navigationLabel.text = @"美食";
+    self.navigationLabel.font = [UIFont boldSystemFontOfSize:30.0f];
+    self.navigationLabel.textColor = [UIColor whiteColor];
+    [self.view addSubview:self.navigationLabel];
+    
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -76,60 +96,155 @@
 
 - (void)handlePan:(UIPanGestureRecognizer *)ges_
 {
-    BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
-    
-    CGFloat distance_y = [ges_ translationInView:self.view].y;
-    
-    distance_y = businessWindow.frame.origin.y + distance_y;
-    
-    switch (ges_.state) {
-        case UIGestureRecognizerStateBegan:
-        {
-            break;
-        }
-        case UIGestureRecognizerStateChanged:
-        {
-            if (self.businessesScrollView.isDragging) {
-                return;
-            }
-            if (businessWindow.frame.origin.y > 0) {
-                self.businessesScrollView.scrollEnabled = NO;
-            }
-            
-            distance_y = distance_y < 0 ? 0 : distance_y;
-            distance_y = distance_y > self.view.frame.size.height ? self.view.frame.size.height : distance_y;
-            [businessWindow resetPositionY:distance_y];
-            
-            break;
-        }
-        case UIGestureRecognizerStateEnded:
-        {
-            CGFloat speed_y = [ges_ velocityInView:self.view].y;
-
-            if (speed_y > SPEED) {
-                [businessWindow moveToBottom];
-            }
-            else if(speed_y < -1 * SPEED)
+    if ([ges_.view isKindOfClass:[BusinessView class]]) {
+        
+        BusinessView *businessView = (BusinessView *)ges_.view;
+        BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
+        
+        int page = self.businessesScrollView.contentOffset.x / self.businessesScrollView.bounds.size.width;
+        CGFloat distance = self.businessesScrollView.contentOffset.x -  self.businessesScrollView.bounds.size.width * page;
+        
+        CGFloat distance_y = [ges_ translationInView:self.view].y;
+        
+        CGFloat businessWindow_y = businessWindow.frame.origin.y;
+        CGFloat businessView_y = businessView.bottomContainerView.frame.origin.y;
+        
+        switch (ges_.state) {
+            case UIGestureRecognizerStateBegan:
             {
-                [businessWindow moveToTop];
+                break;
             }
-            else
+            case UIGestureRecognizerStateChanged:
             {
-                if (distance_y < self.view.frame.size.height / 2) {
-                    [businessWindow moveToTop];
+                if (self.businessesScrollView.isDragging || distance != 0) {
+                    return;
+                }
+                if (businessView.businessViewState == BusinessViewState_DetailMoving || businessWindow.businessWindowState == BusinessWindowState_Moving) {
+                    self.businessesScrollView.scrollEnabled = NO;
+                }
+                
+                if (distance_y > 0) {
+                    //向下拖动
+                    if (businessView.businessViewState == BusinessViewState_DetailHide) {
+                        //直接向下拖动window
+                        businessWindow_y = businessWindow_y + distance_y;
+                        businessWindow_y = businessWindow_y < 0 ? 0 : businessWindow_y;
+                        businessWindow_y = businessWindow_y > businessWindow.bounds.size.height ? businessWindow.bounds.size.height : businessWindow_y;
+                        [businessWindow resetPositionY:businessWindow_y];
+                        businessWindow.businessWindowState = BusinessWindowState_Moving;
+                    }
+                    else
+                    {
+                       //向下拖动详细view
+                        businessView_y = businessView_y + distance_y;
+                        businessView_y = businessView_y < 0 ? 0 : businessView_y;
+                        businessView_y = businessWindow_y > [businessView getBottom_y] ? [businessView getBottom_y] : businessView_y;
+                        [businessView resetPositionY:businessView_y];
+                        businessView.businessViewState = BusinessViewState_DetailMoving;
+                        
+                    }
                 }
                 else
                 {
-                    [businessWindow moveToBottom];
+                    //向上拖动
+                    if (businessWindow.businessWindowState == BusinessWindowState_Moving || businessWindow.businessWindowState == BusinessWindowState_Hide) {
+                        //向上拖动window
+                        businessWindow_y = businessWindow_y + distance_y;
+                        businessWindow_y = businessWindow_y < 0 ? 0 : businessWindow_y;
+                        businessWindow_y = businessWindow_y > businessWindow.bounds.size.height ? businessWindow.bounds.size.height : businessWindow_y;
+                        [businessWindow resetPositionY:businessWindow_y];
+                        businessWindow.businessWindowState = BusinessWindowState_Moving;
+                        
+                    }
+                    else
+                    {
+                        //向上拖动详细view
+                        businessView_y = businessView_y + distance_y;
+                        businessView_y = businessView_y < 0 ? 0 : businessView_y;
+                        businessView_y = businessWindow_y > [businessView getBottom_y] ? [businessView getBottom_y] : businessView_y;
+                        [businessView resetPositionY:businessView_y];
+                        businessView.businessViewState = BusinessViewState_DetailMoving;
+                        
+                    }
+                    
                 }
+                
+                break;
             }
-            break;
+            case UIGestureRecognizerStateEnded:
+            {
+                
+                if (distance != 0) {
+                    return;
+                }
+                
+                CGFloat speed_y = [ges_ velocityInView:self.view].y;
+                
+                if (speed_y > SPEED) {
+                    if (businessWindow.businessWindowState == BusinessWindowState_Moving) {
+                        [businessWindow moveToBottom];
+                    }
+                    else
+                    {
+                        //详细信息拖动到最下面去
+                        [businessView moveToBottom];
+                    }
+                }
+                else if(speed_y < -1 * SPEED)
+                {
+                    if (businessWindow.businessWindowState == BusinessWindowState_Moving) {
+                        [businessWindow moveToTop];
+                    }
+                    else
+                    {
+                        //详细信息显示到上面
+                        [businessView moveToTop];
+                    }
+
+                }
+                else
+                {
+                    businessWindow_y = businessWindow_y + distance_y;
+                    businessWindow_y = businessWindow_y < 0 ? 0 : businessWindow_y;
+                    businessWindow_y = businessWindow_y > businessWindow.bounds.size.height ? businessWindow.bounds.size.height : businessWindow_y;
+                    if (businessWindow_y < self.view.frame.size.height / 2) {
+                        if (businessWindow.businessWindowState == BusinessWindowState_Moving) {
+                            [businessWindow moveToTop];
+                        }
+                    }
+                    else
+                    {
+                        if (businessWindow.businessWindowState == BusinessWindowState_Moving) {
+                            [businessWindow moveToBottom];
+                        }
+                    }
+                    
+                    businessView_y = businessView_y + distance_y;
+                    businessView_y = businessView_y < 0 ? 0 : businessView_y;
+                    businessView_y = businessView_y > [businessView getBottom_y]? [businessView getBottom_y] : businessView_y;
+                    if (businessView_y < self.view.frame.size.height / 2) {
+                        if (businessView.businessViewState == BusinessViewState_DetailMoving) {
+                            [businessView moveToTop];
+                        }
+                    }
+                    else
+                    {
+                        if (businessView.businessViewState == BusinessViewState_DetailMoving) {
+                            [businessView moveToBottom];
+                        }
+                    }
+                    
+                }
+                break;
+            }
+            default:
+                break;
         }
-        default:
-            break;
+        
+        [ges_ setTranslation:CGPointZero inView:self.view];
+        
     }
     
-    [ges_ setTranslation:CGPointZero inView:self.view];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

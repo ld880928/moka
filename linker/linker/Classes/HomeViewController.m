@@ -27,13 +27,6 @@
     NSLog(@"%@",sender);
 }
 
-- (void)chooseCity
-{
-    [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
-         [self performSegueWithIdentifier:@"ChooseCityViewController" sender:self];
-    }];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -68,7 +61,13 @@
     [self.locationBtn setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     [self.locationBtn setTitle:@" 北京" forState:UIControlStateNormal];
     self.locationBtn.frame = CGRectMake(0, 0, 60, 44);
-    [self.locationBtn addTarget:self action:@selector(chooseCity) forControlEvents:UIControlEventTouchUpInside];
+    
+    __unsafe_unretained HomeViewController *safe_self = self;
+    [self.locationBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
+            [safe_self performSegueWithIdentifier:@"ChooseCityViewController" sender:self];
+        }];
+    }];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.locationBtn];
 }
