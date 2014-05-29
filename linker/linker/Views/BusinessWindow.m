@@ -7,6 +7,7 @@
 //
 
 #import "BusinessWindow.h"
+#import "POP/POP.h"
 
 #define DISTANCE_BOTTOM 64.0f
 
@@ -76,26 +77,41 @@
 
 - (void)moveToTop
 {
-    [UIView animateWithDuration:.5f animations:^{
-        [self resetPositionY:0.0f];
-    } completion:^(BOOL finished) {
+    POPSpringAnimation *animationToTop = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    animationToTop.toValue = [NSValue valueWithCGRect:CGRectMake(self.frame.origin.x,
+                                                                 0,
+                                                                 self.bounds.size.width,
+                                                                 self.bounds.size.height)];
+    
+    [animationToTop setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
         self.businessWindowState = BusinessWindowState_Show;
         if (self.gotoTopFinishedCallBackBlock) {
             self.gotoTopFinishedCallBackBlock(finished);
         }
+
     }];
+    animationToTop.springBounciness = 9.0f;
+    animationToTop.springSpeed = 6.0f;
+    [self pop_addAnimation:animationToTop forKey:@"animation_top"];
 }
 
 - (void)moveToBottom
 {
-    [UIView animateWithDuration:.5f animations:^{
-        [self resetPositionY:[UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM];
-    } completion:^(BOOL finished) {
+    POPSpringAnimation *animationToBottom = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
+    animationToBottom.toValue = [NSValue valueWithCGRect:CGRectMake(self.frame.origin.x,
+                                                                    [UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM,
+                                                                    self.bounds.size.width,
+                                                                    self.bounds.size.height)];
+    
+    [animationToBottom setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
         self.businessWindowState = BusinessWindowState_Hide;
         if (self.gotoBottomFinishedCallBackBlock) {
             self.gotoBottomFinishedCallBackBlock(finished);
         }
     }];
+    animationToBottom.springBounciness = 9.0f;
+    animationToBottom.springSpeed = 6.0f;
+    [self pop_addAnimation:animationToBottom forKey:@"animation_bottom"];
 }
 
 @end

@@ -7,8 +7,11 @@
 //
 
 #import "BusinessView.h"
+#import "BusinessViewDetailView.h"
+
 @interface BusinessView()
 @property(nonatomic,assign)CGFloat bottom_y;
+@property(nonatomic,strong)BusinessViewDetailView *detailView;
 @end
 
 @implementation BusinessView
@@ -28,6 +31,8 @@
     view_.buttonDetail.layer.borderWidth = 1.0f;
     view_.buttonDetail.layer.cornerRadius = 5.0f;
     view_.bottom_y = view_.bottomContainerView.frame.origin.y;
+    view_.detailView = [BusinessViewDetailView businessViewDetailView];
+    [view_ addSubview:view_.detailView];
     
     [view_.bottomContainerView addObserver:view_ forKeyPath:@"frame" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
 
@@ -47,6 +52,15 @@
         CGFloat percent = self.bottomContainerView.frame.origin.y / distance;
         percent = percent > 1 ? 1.0f : percent;
         self.positionYChangedCallBackBlock(percent);
+        
+        
+        CGFloat top = 568.0f - self.detailView.bounds.size.height;
+        
+        self.detailView.frame = CGRectMake(self.detailView.frame.origin.x,
+                                           top + self.detailView.bounds.size.height * percent,
+                                           self.detailView.bounds.size.width,
+                                           self.detailView.bounds.size.height);
+        
     }
 }
 

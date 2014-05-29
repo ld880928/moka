@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
 		3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B149C55192E2EB600271741 /* BusinessDetailViewController.m */; };
 		3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B41935B43000F88024 /* UIButton+Block.m */; };
 		3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B61935B43000F88024 /* UIView+TopRadius.m */; };
@@ -35,6 +36,9 @@
 		3B452BF11920FE56008729A9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF01920FE56008729A9 /* OpenGLES.framework */; };
 		3B452BF31920FE64008729A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF21920FE64008729A9 /* SystemConfiguration.framework */; };
 		3B452BF51920FE76008729A9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF41920FE76008729A9 /* Security.framework */; };
+		3BB6637C19376E050093C33F /* BusinessViewDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BB6637B19376E050093C33F /* BusinessViewDetailView.xib */; };
+		3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB6637E19376E3B0093C33F /* EmptySegue.m */; };
+		3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB6638119376E4F0093C33F /* BusinessViewDetailView.m */; };
 		3BC7D84F1931DA6700AD5FB6 /* home_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BC7D84E1931DA6700AD5FB6 /* home_data.plist */; };
 		3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */; };
 		3BC7D85419322B3900AD5FB6 /* business_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3BC7D85319322B3900AD5FB6 /* business_data.plist */; };
@@ -42,7 +46,6 @@
 		3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7D8581932310500AD5FB6 /* BusinessView.m */; };
 		3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51ED1927895700AC355F /* BusinessesViewController.m */; };
 		3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51F11927A19A00AC355F /* UIView+Origami.m */; };
-		3BE0F6C51930ADB400A498BA /* EmptySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BE0F6C41930ADB400A498BA /* EmptySegue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +180,11 @@
 		3B452BF01920FE56008729A9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3B452BF21920FE64008729A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3B452BF41920FE76008729A9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3BB6637B19376E050093C33F /* BusinessViewDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessViewDetailView.xib; sourceTree = "<group>"; };
+		3BB6637D19376E3B0093C33F /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
+		3BB6637E19376E3B0093C33F /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
+		3BB6638019376E4F0093C33F /* BusinessViewDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessViewDetailView.h; sourceTree = "<group>"; };
+		3BB6638119376E4F0093C33F /* BusinessViewDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessViewDetailView.m; sourceTree = "<group>"; };
 		3BC7D84E1931DA6700AD5FB6 /* home_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = home_data.plist; sourceTree = "<group>"; };
 		3BC7D85019321A0800AD5FB6 /* ChooseCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCityViewController.h; sourceTree = "<group>"; };
 		3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ChooseCityViewController.mm; sourceTree = "<group>"; };
@@ -188,8 +196,8 @@
 		3BDC51ED1927895700AC355F /* BusinessesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessesViewController.m; sourceTree = "<group>"; };
 		3BDC51F01927A19A00AC355F /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		3BDC51F11927A19A00AC355F /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
-		3BE0F6C31930ADB400A498BA /* EmptySegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptySegue.h; sourceTree = "<group>"; };
-		3BE0F6C41930ADB400A498BA /* EmptySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptySegue.m; sourceTree = "<group>"; };
+		8330954EF015441DA5DB3E8F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A495DDE42D2A496594EAFFED /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,6 +214,7 @@
 				3B2EB20019225AD3008E4048 /* libbaidumapapi.a in Frameworks */,
 				3B452B311920FA63008729A9 /* UIKit.framework in Frameworks */,
 				3B452B2D1920FA63008729A9 /* Foundation.framework in Frameworks */,
+				039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +234,8 @@
 		3B2640B21935B43000F88024 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				3BB6637D19376E3B0093C33F /* EmptySegue.h */,
+				3BB6637E19376E3B0093C33F /* EmptySegue.m */,
 				3B2640B31935B43000F88024 /* UIButton+Block.h */,
 				3B2640B41935B43000F88024 /* UIButton+Block.m */,
 				3B2640B51935B43000F88024 /* UIView+TopRadius.h */,
@@ -381,11 +392,12 @@
 				3B399DFB192FADE100A96C18 /* BusinessDetailView.h */,
 				3B399DFC192FADE100A96C18 /* BusinessDetailView.m */,
 				3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */,
-				3BE0F6C31930ADB400A498BA /* EmptySegue.h */,
-				3BE0F6C41930ADB400A498BA /* EmptySegue.m */,
 				3BC7D8571932310500AD5FB6 /* BusinessView.h */,
 				3BC7D8581932310500AD5FB6 /* BusinessView.m */,
 				3BC7D855193230F500AD5FB6 /* BusinessView.xib */,
+				3BB6638019376E4F0093C33F /* BusinessViewDetailView.h */,
+				3BB6638119376E4F0093C33F /* BusinessViewDetailView.m */,
+				3BB6637B19376E050093C33F /* BusinessViewDetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -397,6 +409,7 @@
 				3B452B511920FA63008729A9 /* linkerTests */,
 				3B452B2B1920FA63008729A9 /* Frameworks */,
 				3B452B2A1920FA63008729A9 /* Products */,
+				A495DDE42D2A496594EAFFED /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -421,6 +434,7 @@
 				3B452B2E1920FA63008729A9 /* CoreGraphics.framework */,
 				3B452B301920FA63008729A9 /* UIKit.framework */,
 				3B452B4B1920FA63008729A9 /* XCTest.framework */,
+				8330954EF015441DA5DB3E8F /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -497,9 +511,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B452B5B1920FA63008729A9 /* Build configuration list for PBXNativeTarget "linker" */;
 			buildPhases = (
+				88F8F704E2944E4D89BF6387 /* Check Pods Manifest.lock */,
 				3B452B251920FA63008729A9 /* Sources */,
 				3B452B261920FA63008729A9 /* Frameworks */,
 				3B452B271920FA63008729A9 /* Resources */,
+				B68EA7CE4C664ADCA2A46F14 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -569,6 +585,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BB6637C19376E050093C33F /* BusinessViewDetailView.xib in Resources */,
 				3B2EB20219225AD3008E4048 /* readme.txt in Resources */,
 				3B452B451920FA63008729A9 /* Images.xcassets in Resources */,
 				3BC7D85419322B3900AD5FB6 /* business_data.plist in Resources */,
@@ -591,6 +608,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		88F8F704E2944E4D89BF6387 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B68EA7CE4C664ADCA2A46F14 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3B452B251920FA63008729A9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -600,8 +650,9 @@
 				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
 				3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */,
 				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
-				3BE0F6C51930ADB400A498BA /* EmptySegue.m in Sources */,
+				3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
+				3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
 				3B452B391920FA63008729A9 /* main.m in Sources */,
@@ -736,6 +787,7 @@
 		};
 		3B452B5C1920FA63008729A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A495DDE42D2A496594EAFFED /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -756,6 +808,7 @@
 		};
 		3B452B5D1920FA63008729A9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A495DDE42D2A496594EAFFED /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
