@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusinessDetailViewTopContainer.h"
 
 @interface BusinessDetailView : UIView
 
+
 @property (weak, nonatomic) IBOutlet UIView *bottomContainerView;
-@property (weak, nonatomic) IBOutlet UIView *topContainerView;
+@property (weak, nonatomic) BusinessDetailViewTopContainer *topContainerView;
 
 + (BusinessDetailView *)businessDetailViewWithDatas:(id)datas_;
 

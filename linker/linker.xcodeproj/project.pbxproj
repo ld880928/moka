@@ -46,6 +46,8 @@
 		3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7D8581932310500AD5FB6 /* BusinessView.m */; };
 		3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51ED1927895700AC355F /* BusinessesViewController.m */; };
 		3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51F11927A19A00AC355F /* UIView+Origami.m */; };
+		6E05481719382AEC002F021D /* BusinessDetailViewTopContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */; };
+		6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +198,9 @@
 		3BDC51ED1927895700AC355F /* BusinessesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessesViewController.m; sourceTree = "<group>"; };
 		3BDC51F01927A19A00AC355F /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		3BDC51F11927A19A00AC355F /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
+		6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessDetailViewTopContainer.xib; sourceTree = "<group>"; };
+		6E05481819382B04002F021D /* BusinessDetailViewTopContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewTopContainer.h; sourceTree = "<group>"; };
+		6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewTopContainer.m; sourceTree = "<group>"; };
 		8330954EF015441DA5DB3E8F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A495DDE42D2A496594EAFFED /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -398,6 +403,9 @@
 				3BB6638019376E4F0093C33F /* BusinessViewDetailView.h */,
 				3BB6638119376E4F0093C33F /* BusinessViewDetailView.m */,
 				3BB6637B19376E050093C33F /* BusinessViewDetailView.xib */,
+				6E05481819382B04002F021D /* BusinessDetailViewTopContainer.h */,
+				6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */,
+				6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -586,6 +594,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BB6637C19376E050093C33F /* BusinessViewDetailView.xib in Resources */,
+				6E05481719382AEC002F021D /* BusinessDetailViewTopContainer.xib in Resources */,
 				3B2EB20219225AD3008E4048 /* readme.txt in Resources */,
 				3B452B451920FA63008729A9 /* Images.xcassets in Resources */,
 				3BC7D85419322B3900AD5FB6 /* business_data.plist in Resources */,
@@ -652,6 +661,7 @@
 				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
 				3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
+				6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */,
 				3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
@@ -797,10 +807,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
+				LIBRARY_SEARCH_PATHS = "/Users/jijeMac/Desktop/ld/moka/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B9D1DDAC-60FC-41BB-BD58-691E9AB1E597";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -818,10 +828,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
+				LIBRARY_SEARCH_PATHS = "/Users/jijeMac/Desktop/ld/moka/linker/linker/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphonesimulator";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "B9D1DDAC-60FC-41BB-BD58-691E9AB1E597";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

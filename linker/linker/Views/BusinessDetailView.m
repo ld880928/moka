@@ -20,6 +20,10 @@
     BusinessDetailView *view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessDetailView" owner:self options:nil] lastObject];
     view_.textViewMessage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     view_.textViewMessage.layer.borderWidth = 1.0f;
+    
+    view_.topContainerView = [BusinessDetailViewTopContainer businessDetailViewTopContainer];
+    [view_ addSubview:view_.topContainerView];
+    
     return view_;
 }
 

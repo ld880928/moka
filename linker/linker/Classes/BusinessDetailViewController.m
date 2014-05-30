@@ -90,28 +90,4 @@
     self.containerScorllView.contentSize = self.businessDetailView.bounds.size;
 }
 
-- (IBAction)showMapView:(id)sender
-{
-    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    firstView.backgroundColor = [UIColor redColor];
-    [self.businessDetailView.topContainerView addSubview:firstView];
-    
-    UIView *twoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    twoView.backgroundColor = [UIColor greenColor];
-    [self.businessDetailView.topContainerView insertSubview:twoView belowSubview:firstView];
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:context];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:1.0f];
-    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.businessDetailView.topContainerView cache:YES];
-    
-    [self.businessDetailView.topContainerView exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
-    
-    [UIView setAnimationDelegate:self];
-    // 动画完毕后调用某个方法
-    //[UIView setAnimationDidStopSelector:@selector(animationFinished:)];
-    [UIView commitAnimations];
-}
-
 @end
