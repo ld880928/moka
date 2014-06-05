@@ -11,5 +11,6 @@
 
 #import "UIButton+Block.h"
 #import "UIView+TopRadius.h"
+#import "UIImage+UIColor.h"
 
 #endif

@@ -50,7 +50,7 @@
         view_.frame = CGRectMake(self.view.bounds.size.width * i, 0, self.businessesScrollView.bounds.size.width, self.businessesScrollView.bounds.size.height);
         view_.userInteractionEnabled = YES;
 
-        view_.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:[businessItem objectForKey:@"background"]]];
+        view_.backgroundImageView.image = [UIImage imageNamed:[businessItem objectForKey:@"background"]];
         
         [self.businessesScrollView addSubview:view_];
         
@@ -58,17 +58,22 @@
         panGes.delegate = self;
         [view_ addGestureRecognizer:panGes];
         
-        UIColor *backgroundColor = view_.backgroundColor;
+        UIColor *backgroundColor = [UIColor colorWithPatternImage:view_.backgroundImageView.image];
         [view_ setGotoDetailBlock:^{
             [self performSegueWithIdentifier:@"BusinessDetail" sender:backgroundColor];
         }];
         
+        __unsafe_unretained BusinessView *safeView_ = view_;
+        
         [view_ setGotoTopFinishedCallBackBlock:^(BOOL finished) {
             self.businessesScrollView.scrollEnabled = NO;
+            safeView_.detailView.detailScrollView.scrollEnabled = YES;
+
         }];
         
         [view_ setGotoBottomFinishedCallBackBlock:^(BOOL finished) {
             self.businessesScrollView.scrollEnabled = YES;
+            safeView_.detailView.detailScrollView.scrollEnabled = YES;
         }];
         
         [view_ setPositionYChangedCallBackBlock:^(CGFloat percent) {
@@ -104,6 +109,9 @@
         int page = self.businessesScrollView.contentOffset.x / self.businessesScrollView.bounds.size.width;
         CGFloat distance = self.businessesScrollView.contentOffset.x -  self.businessesScrollView.bounds.size.width * page;
         
+        int page_detailViewContainerScrollView = businessView.detailView.detailScrollView.contentOffset.x / businessView.detailView.detailScrollView.bounds.size.width;
+        CGFloat  distance_detailViewContainerScrollView = businessView.detailView.detailScrollView.contentOffset.x - businessView.detailView.detailScrollView.bounds.size.width *page_detailViewContainerScrollView;
+        
         CGFloat distance_y = [ges_ translationInView:self.view].y;
         
         CGFloat businessWindow_y = businessWindow.frame.origin.y;
@@ -116,10 +124,12 @@
             }
             case UIGestureRecognizerStateChanged:
             {
-                if (self.businessesScrollView.isDragging || distance != 0) {
+                if (self.businessesScrollView.isDragging || distance != 0 || distance_detailViewContainerScrollView != 0) {
                     return;
                 }
-                if (businessView.businessViewState == BusinessViewState_DetailMoving || businessWindow.businessWindowState == BusinessWindowState_Moving) {
+                
+                if (businessWindow.businessWindowState == BusinessWindowState_Moving || businessView.businessViewState == BusinessViewState_DetailMoving) {
+                    businessView.detailView.detailScrollView.scrollEnabled = NO;
                     self.businessesScrollView.scrollEnabled = NO;
                 }
                 
@@ -174,7 +184,7 @@
             case UIGestureRecognizerStateEnded:
             {
                 
-                if (distance != 0) {
+                if (distance != 0 || distance_detailViewContainerScrollView != 0) {
                     return;
                 }
                 
@@ -252,6 +262,17 @@
     BusinessDetailViewController *destinationViewController = segue.destinationViewController;
     [destinationViewController setBackgroundImage:sender];
 
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if (scrollView == self.businessesScrollView) {
+        //解决一个拖动的冲突
+        BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
+        if (businessWindow.frame.origin.y > 0) {
+            [businessWindow resetPositionY:0];
+        }
+    }
 }
 
 @end

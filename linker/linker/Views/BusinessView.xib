@@ -10,6 +10,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Hda-S0-h8y">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
                 <view contentMode="scaleToFill" id="axC-hx-K2q">
                     <rect key="frame" x="0.0" y="360" width="320" height="208"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,6 +57,7 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
+                <outlet property="backgroundImageView" destination="Hda-S0-h8y" id="gbo-v8-reC"/>
                 <outlet property="bottomContainerView" destination="axC-hx-K2q" id="9ap-SM-BI8"/>
                 <outlet property="buttonDetail" destination="7Di-de-9UU" id="faq-TK-yRF"/>
                 <outlet property="labelName" destination="52D-ol-NoH" id="sXz-Tl-rQN"/>

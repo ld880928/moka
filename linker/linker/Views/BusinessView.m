@@ -7,11 +7,9 @@
 //
 
 #import "BusinessView.h"
-#import "BusinessViewDetailView.h"
 
 @interface BusinessView()
 @property(nonatomic,assign)CGFloat bottom_y;
-@property(nonatomic,strong)BusinessViewDetailView *detailView;
 @end
 
 @implementation BusinessView
@@ -61,6 +59,12 @@
                                            self.detailView.bounds.size.width,
                                            self.detailView.bounds.size.height);
         
+        distance = self.bottom_y / 2;
+        CGFloat backgroundY = distance * (percent - 1);
+        self.backgroundImageView.frame = CGRectMake(self.backgroundImageView.frame.origin.x,
+                                                    backgroundY,
+                                                    self.backgroundImageView.bounds.size.width,
+                                                    self.backgroundImageView.bounds.size.height);
     }
 }
 

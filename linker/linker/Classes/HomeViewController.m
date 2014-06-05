@@ -33,8 +33,8 @@
     
     keyWindowTransform = [[[UIApplication sharedApplication] delegate] window].transform;
 	// Do any additional setup after loading the view.
-    [self.navigationController.navigationBar setBackgroundImage:[self createImageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [self createImageWithColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage createImageWithColor:[UIColor clearColor]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
     
     BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
@@ -132,19 +132,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[BusinessWindow sharedBusinessWindow] moveToTop];
-}
-
-- (UIImage *)createImageWithColor:(UIColor *)color
-{
-    CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextSetFillColorWithColor(context, [color CGColor]);
-    CGContextFillRect(context, rect);
-    
-    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return theImage;
 }
 
 @end

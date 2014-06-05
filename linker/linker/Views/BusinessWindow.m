@@ -18,9 +18,9 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor whiteColor];
         self.windowLevel = UIWindowLevelStatusBar + 1;
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
+        [self addObserver:self forKeyPath:@"businessWindowState" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
     return self;
 }
@@ -28,6 +28,7 @@
 - (void)dealloc
 {
     [self removeObserver:self forKeyPath:@"frame"];
+    [self removeObserver:self forKeyPath:@"businessWindowState"];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
@@ -37,6 +38,24 @@
         CGFloat percent = .9f + 0.1 * self.frame.origin.y / ([UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM);
         percent = self.frame.origin.y > self.frame.size.height - DISTANCE_BOTTOM ? 1.0f : percent;
         self.positionYChangedCallBackBlock(percent);
+    }
+    if ([keyPath isEqualToString:@"businessWindowState"]) {
+        BusinessWindowState newState = [[change objectForKey:NSKeyValueChangeNewKey] intValue];
+        BusinessWindowState oldState = [[change objectForKey:NSKeyValueChangeOldKey] intValue];
+        if (newState != oldState) {
+            switch (newState) {
+                case BusinessWindowState_Hide:
+                case BusinessWindowState_Moving:
+                    self.backgroundColor = [UIColor clearColor];
+                    break;
+                case BusinessWindowState_Show:
+                    self.backgroundColor = [UIColor whiteColor];
+                    break;
+                default:
+                    break;
+            }
+        }
+        
     }
 }
 
@@ -90,7 +109,7 @@
         }
 
     }];
-    animationToTop.springBounciness = 9.0f;
+    animationToTop.springBounciness = 1.0f;
     animationToTop.springSpeed = 6.0f;
     [self pop_addAnimation:animationToTop forKey:@"animation_top"];
 }

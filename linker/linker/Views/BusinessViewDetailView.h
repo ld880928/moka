@@ -10,6 +10,8 @@
 
 @interface BusinessViewDetailView : UIView
 
+@property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
+
 + (BusinessViewDetailView *)businessViewDetailView;
 
 - (CGFloat)getBottom_y;

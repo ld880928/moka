@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BusinessViewDetailView.h"
 
 typedef enum {
     BusinessViewState_DetailShow = 0,
@@ -18,6 +19,8 @@ typedef enum {
 + (BusinessView *)businessViewWithDatas:(id)datas_;
 
 @property (assign,nonatomic)BusinessViewState businessViewState;
+@property(nonatomic,strong)BusinessViewDetailView *detailView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIView *bottomContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;
