@@ -37,19 +37,6 @@
     self.navigationController.navigationBar.shadowImage = [UIImage createImageWithColor:[UIColor clearColor]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
     
-    BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    businessWindow.rootViewController = [storyBoard instantiateViewControllerWithIdentifier:@"BusinessesViewController"];
-    businessWindow.hidden = NO;
-    [businessWindow makeKeyAndVisible];
-    
-    [businessWindow setPositionYChangedCallBackBlock:^(CGFloat percent) {
-        CGAffineTransform transform = CGAffineTransformScale(keyWindowTransform, percent, percent);
-        [[[UIApplication sharedApplication] delegate] window].transform = transform;
-    }];
-    
-    [businessWindow performSelector:@selector(moveToBottom) withObject:nil afterDelay:3.0f];
-    
     self.navigationTableView.contentInset = UIEdgeInsetsMake(0, 0, 64, 0);
     self.navigationTableView.backgroundColor = [UIColor clearColor];
     self.navigationTableView.backgroundView = nil;
@@ -70,6 +57,34 @@
     }];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.locationBtn];
+    
+    [self performSelector:@selector(viewHasLoaded) withObject:self afterDelay:.1f];
+}
+
+- (void)viewHasLoaded
+{
+    BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    businessWindow.rootViewController = [storyBoard instantiateViewControllerWithIdentifier:@"BusinessesViewController"];
+    businessWindow.hidden = NO;
+    [businessWindow makeKeyAndVisible];
+    
+    [businessWindow setPositionYChangedCallBackBlock:^(CGFloat percent) {
+        CGAffineTransform transform = CGAffineTransformScale(keyWindowTransform, percent, percent);
+        [[[UIApplication sharedApplication] delegate] window].transform = transform;
+    }];
+    
+    //检查是否有选中的城市
+    NSString *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
+    if (!currentSelectedCity || !currentSelectedCity.length) {
+        //没有选中城市，第一次安装程序.  弹出选择城市的界面
+        [self performSegueWithIdentifier:@"ChooseCityViewController" sender:self];
+    }
+    else
+    {
+        //直接刷新列表信息
+        [self refreshDataWithCityName:currentSelectedCity];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -84,11 +99,24 @@
         [controller setChooseCityConmpleteBlock:^(NSString *cityName) {
             if (![cityName isEqualToString:@""]) {
                 [self.locationBtn setTitle:cityName forState:UIControlStateNormal];
+                if (![cityName isEqualToString:[[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity]]) {
+                    [self refreshDataWithCityName:cityName];
+                }
+                [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:cityName];
             }
-            [[BusinessWindow sharedBusinessWindow] moveToBottom];
         }];
     }
     
+}
+
+- (void)refreshDataWithCityName:(NSString *)cityName
+{
+    //先刷新列表的数据
+    
+    
+    //列表的数据刷新完成以后，选中推荐，window滑上去，刷新推荐商家列表
+    [[BusinessWindow sharedBusinessWindow] resetPositionY:0];
+    [[BusinessWindow sharedBusinessWindow] performSelector:@selector(moveToBottom) withObject:self afterDelay:3.0f];
 }
 
 #pragma mark tableview delegate  datasource

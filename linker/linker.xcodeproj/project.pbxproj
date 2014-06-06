@@ -11,6 +11,7 @@
 		3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B149C55192E2EB600271741 /* BusinessDetailViewController.m */; };
 		3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B41935B43000F88024 /* UIButton+Block.m */; };
 		3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B61935B43000F88024 /* UIView+TopRadius.m */; };
+		3B29EC0019420B97006054A1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EBFF19420B97006054A1 /* Reachability.m */; };
 		3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EB143192250A1008E4048 /* HomeViewController.m */; };
 		3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399DFC192FADE100A96C18 /* BusinessDetailView.m */; };
 		3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */; };
@@ -52,6 +53,7 @@
 		3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC7D8581932310500AD5FB6 /* BusinessView.m */; };
 		3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51ED1927895700AC355F /* BusinessesViewController.m */; };
 		3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDC51F11927A19A00AC355F /* UIView+Origami.m */; };
+		3BFB63AC1941F52A0087AC36 /* AccountAndLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFB63AB1941F52A0087AC36 /* AccountAndLocationManager.m */; };
 		6E05481719382AEC002F021D /* BusinessDetailViewTopContainer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */; };
 		6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		3B2640B51935B43000F88024 /* UIView+TopRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TopRadius.h"; sourceTree = "<group>"; };
 		3B2640B61935B43000F88024 /* UIView+TopRadius.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TopRadius.m"; sourceTree = "<group>"; };
 		3B2640B91935B44A00F88024 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		3B29EBFE19420B97006054A1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		3B29EBFF19420B97006054A1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		3B2EB142192250A1008E4048 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		3B2EB143192250A1008E4048 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		3B399DFB192FADE100A96C18 /* BusinessDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailView.h; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 		3BDC51ED1927895700AC355F /* BusinessesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessesViewController.m; sourceTree = "<group>"; };
 		3BDC51F01927A19A00AC355F /* UIView+Origami.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Origami.h"; sourceTree = "<group>"; };
 		3BDC51F11927A19A00AC355F /* UIView+Origami.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Origami.m"; sourceTree = "<group>"; };
+		3BFB63AA1941F52A0087AC36 /* AccountAndLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountAndLocationManager.h; sourceTree = "<group>"; };
+		3BFB63AB1941F52A0087AC36 /* AccountAndLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountAndLocationManager.m; sourceTree = "<group>"; };
 		6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessDetailViewTopContainer.xib; sourceTree = "<group>"; };
 		6E05481819382B04002F021D /* BusinessDetailViewTopContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewTopContainer.h; sourceTree = "<group>"; };
 		6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewTopContainer.m; sourceTree = "<group>"; };
@@ -333,6 +339,7 @@
 		3B452B321920FA63008729A9 /* linker */ = {
 			isa = PBXGroup;
 			children = (
+				3BFB63A91941F4A00087AC36 /* Manager */,
 				3B2640B21935B43000F88024 /* Additions */,
 				3BC7D84E1931DA6700AD5FB6 /* home_data.plist */,
 				3BC7D85319322B3900AD5FB6 /* business_data.plist */,
@@ -470,6 +477,17 @@
 				3BDC51F11927A19A00AC355F /* UIView+Origami.m */,
 			);
 			path = "折叠";
+			sourceTree = "<group>";
+		};
+		3BFB63A91941F4A00087AC36 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3B29EBFE19420B97006054A1 /* Reachability.h */,
+				3B29EBFF19420B97006054A1 /* Reachability.m */,
+				3BFB63AA1941F52A0087AC36 /* AccountAndLocationManager.h */,
+				3BFB63AB1941F52A0087AC36 /* AccountAndLocationManager.m */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +637,7 @@
 				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
 				3BB4865A1940AFBA00D3054F /* PersonalCenterTableViewController.m in Sources */,
 				3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */,
+				3BFB63AC1941F52A0087AC36 /* AccountAndLocationManager.m in Sources */,
 				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
 				3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
@@ -631,6 +650,7 @@
 				3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
+				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
 				3BB4865D1940B80200D3054F /* LoginViewController.m in Sources */,
 				3BB486541940A73F00D3054F /* PersonalCenterViewController.m in Sources */,
 				3BB486631940BBB500D3054F /* ForgotPasswordViewController.m in Sources */,

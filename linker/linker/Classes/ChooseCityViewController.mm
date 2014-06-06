@@ -9,9 +9,9 @@
 #import "ChooseCityViewController.h"
 #import "BMapKit.h"
 
-@interface ChooseCityViewController ()<BMKMapViewDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ChooseCityViewController ()<BMKLocationServiceDelegate,UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
-@property(nonatomic,strong)BMKMapView *mapView;
+@property(nonatomic,strong)BMKLocationService *locationService;
 @property(nonatomic,strong)NSString *currentCity;
 @property(nonatomic,strong)NSArray *hotCityArray;
 @end
@@ -22,29 +22,31 @@
 {
     [super viewDidLoad];
     
+    self.locationService = [[BMKLocationService alloc] init];
+    self.locationService.delegate = self;
+    
     self.hotCityArray = @[@"上海",@"武汉",@"广州",@"深圳",@"成都",@"重庆",@"天津",@"杭州"];
     
-    self.mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 0, 320, 480)];
-    //self.view = self.mapView;
-    
     //开启定位功能
-    [_mapView setShowsUserLocation:YES];
     
     NSLog(@"进入普通定位态");
-    _mapView.showsUserLocation = NO;//先关闭显示的定位图层
-    _mapView.userTrackingMode = BMKUserTrackingModeFollow;//设置定位的状态
-    _mapView.showsUserLocation = YES;//显示定位图层
+}
+
+- (void)dealloc
+{
+    self.locationService = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    [self.locationService startUserLocationService];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [_mapView viewWillDisappear];
-    _mapView.delegate = nil; // 不用时，置nil
+    [self.locationService stopUserLocationService];
+    self.locationService = nil;
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark tableview Datasource
@@ -123,13 +125,11 @@
     //return [@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"] objectAtIndex:section];
 }
 
-#pragma mark BMKMapViewDelegate
 /**
  *用户位置更新后，会调用此函数
- *@param mapView 地图View
  *@param userLocation 新的用户位置
  */
-- (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation
+- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
     if (userLocation != nil) {
 		NSLog(@"%f %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
@@ -160,12 +160,11 @@
 
 /**
  *定位失败后，会调用此函数
- *@param mapView 地图View
- *@param error 错误号，参考CLError.h中定义的错误号
+ *@param error 错误号
  */
-- (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+- (void)didFailToLocateUserWithError:(NSError *)error
 {
-    
+    NSLog(@"%@",error);
 }
 
 

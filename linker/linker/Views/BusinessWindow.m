@@ -37,7 +37,9 @@
     {
         CGFloat percent = .9f + 0.1 * self.frame.origin.y / ([UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM);
         percent = self.frame.origin.y > self.frame.size.height - DISTANCE_BOTTOM ? 1.0f : percent;
-        self.positionYChangedCallBackBlock(percent);
+        if (self.positionYChangedCallBackBlock) {
+            self.positionYChangedCallBackBlock(percent);
+        }
     }
     if ([keyPath isEqualToString:@"businessWindowState"]) {
         BusinessWindowState newState = [[change objectForKey:NSKeyValueChangeNewKey] intValue];
@@ -65,6 +67,7 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         sharedBusinessWindowInstance = [[self alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        sharedBusinessWindowInstance.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height ,sharedBusinessWindowInstance.bounds.size.width, sharedBusinessWindowInstance.bounds.size.height);
     });
     return sharedBusinessWindowInstance;
 }
