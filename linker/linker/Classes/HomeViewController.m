@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "BusinessWindow.h"
 #import "ChooseCityViewController.h"
+#import "LoginViewController.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *navigationTableView;
@@ -24,7 +25,17 @@
 
 - (IBAction)gotoMyCenter:(id)sender
 {
-    NSLog(@"%@",sender);
+    //判断是否登录
+    if ([[AccountAndLocationManager sharedAccountAndLocationManager] loginSuccess])
+    {
+        [self performSegueWithIdentifier:@"PersonalCenterViewController" sender:self];
+    }
+    else
+    {
+        [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
+            [self performSegueWithIdentifier:@"LoginViewController" sender:self];
+        }];
+    }
 }
 
 - (void)viewDidLoad
@@ -46,7 +57,8 @@
     self.locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
     [self.locationBtn setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
-    [self.locationBtn setTitle:@" 北京" forState:UIControlStateNormal];
+    NSString *currentCityName = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
+    [self.locationBtn setTitle:currentCityName forState:UIControlStateNormal];
     self.locationBtn.frame = CGRectMake(0, 0, 60, 44);
     
     __unsafe_unretained HomeViewController *safe_self = self;
@@ -91,7 +103,15 @@
 {
     UIViewController *destinationViewController = segue.destinationViewController;
     
-    if ([@"businessesSegue" isEqualToString:segue.identifier]) {
+    if ([@"LoginViewController" isEqualToString:segue.identifier]) {
+        
+        UIViewController *topViewController = [(UINavigationController *)destinationViewController topViewController];
+        if ([topViewController isKindOfClass:[LoginViewController class]]) {
+            LoginViewController *controller = (LoginViewController *)topViewController;
+            controller.loginSuccessBlock = ^{
+                [[BusinessWindow sharedBusinessWindow] moveToBottom];
+            };
+        }
 
     }
     if ([@"ChooseCityViewController" isEqualToString:segue.identifier]) {
@@ -101,6 +121,10 @@
                 [self.locationBtn setTitle:cityName forState:UIControlStateNormal];
                 if (![cityName isEqualToString:[[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity]]) {
                     [self refreshDataWithCityName:cityName];
+                }
+                else
+                {
+                    [[BusinessWindow sharedBusinessWindow] moveToBottom];
                 }
                 [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:cityName];
             }

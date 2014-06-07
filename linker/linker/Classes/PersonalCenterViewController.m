@@ -54,7 +54,8 @@
                     break;
                 case PersonalCenterType_Logout:             //退出
                 {
-                    
+                    [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = NO;
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
                     break;
                 default:

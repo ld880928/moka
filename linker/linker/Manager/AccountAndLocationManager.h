@@ -18,4 +18,9 @@
 
 - (NSString *)currentSelectedCity;
 - (void)saveCurrentSelectedCity:(NSString *)currentSelectedCity;
+
+- (NSString *)userName;
+- (NSString *)password;
+- (void)saveUserName:(NSString *)userName_;
+- (void)savePassword:(NSString *)password_;
 @end
