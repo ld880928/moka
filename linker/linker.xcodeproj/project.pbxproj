@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
+		3B119C8819570A4A00077226 /* MOKADetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B119C8719570A4A00077226 /* MOKADetailView.xib */; };
+		3B119C8B19570A6300077226 /* MOKADetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B119C8A19570A6300077226 /* MOKADetailView.m */; };
+		3B119C8E1957256C00077226 /* MOKADetailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */; };
 		3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B149C55192E2EB600271741 /* BusinessDetailViewController.m */; };
 		3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B41935B43000F88024 /* UIButton+Block.m */; };
 		3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B61935B43000F88024 /* UIView+TopRadius.m */; };
@@ -34,6 +37,10 @@
 		3B452BF11920FE56008729A9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF01920FE56008729A9 /* OpenGLES.framework */; };
 		3B452BF31920FE64008729A9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF21920FE64008729A9 /* SystemConfiguration.framework */; };
 		3B452BF51920FE76008729A9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452BF41920FE76008729A9 /* Security.framework */; };
+		3B5C15F819550EC300F91646 /* RecivedMOKAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C15F719550EC300F91646 /* RecivedMOKAViewController.m */; };
+		3B5C15FB19550EE400F91646 /* SendedMOKAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */; };
+		3B5C15FE19550F0F00F91646 /* RefundProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */; };
+		3B5C160119550F2C00F91646 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */; };
 		3BB4864F19409CC400D3054F /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB4864C19409CC400D3054F /* libbaidumapapi.a */; };
 		3BB4865019409CC400D3054F /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864D19409CC400D3054F /* mapapi.bundle */; };
 		3BB4865119409CC400D3054F /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864E19409CC400D3054F /* readme.txt */; };
@@ -69,6 +76,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B119C8719570A4A00077226 /* MOKADetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MOKADetailView.xib; sourceTree = "<group>"; };
+		3B119C8919570A6300077226 /* MOKADetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKADetailView.h; sourceTree = "<group>"; };
+		3B119C8A19570A6300077226 /* MOKADetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailView.m; sourceTree = "<group>"; };
+		3B119C8C1957256C00077226 /* MOKADetailMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKADetailMessageViewController.h; sourceTree = "<group>"; };
+		3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailMessageViewController.m; sourceTree = "<group>"; };
 		3B149C54192E2EB600271741 /* BusinessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewController.h; sourceTree = "<group>"; };
 		3B149C55192E2EB600271741 /* BusinessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewController.m; sourceTree = "<group>"; };
 		3B2640B31935B43000F88024 /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
@@ -107,6 +119,14 @@
 		3B452BF01920FE56008729A9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		3B452BF21920FE64008729A9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		3B452BF41920FE76008729A9 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3B5C15F619550EC300F91646 /* RecivedMOKAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecivedMOKAViewController.h; sourceTree = "<group>"; };
+		3B5C15F719550EC300F91646 /* RecivedMOKAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecivedMOKAViewController.m; sourceTree = "<group>"; };
+		3B5C15F919550EE400F91646 /* SendedMOKAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SendedMOKAViewController.h; sourceTree = "<group>"; };
+		3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SendedMOKAViewController.m; sourceTree = "<group>"; };
+		3B5C15FC19550F0F00F91646 /* RefundProcessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundProcessViewController.h; sourceTree = "<group>"; };
+		3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundProcessViewController.m; sourceTree = "<group>"; };
+		3B5C15FF19550F2C00F91646 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		3BB4861119409CC400D3054F /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		3BB4861219409CC400D3054F /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		3BB4861319409CC400D3054F /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -256,6 +276,7 @@
 		3B2EB14119225089008E4048 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3B5C15F519550E7C00F91646 /* 个人中心 */,
 				3B2EB142192250A1008E4048 /* HomeViewController.h */,
 				3B2EB143192250A1008E4048 /* HomeViewController.m */,
 				3BDC51EC1927895700AC355F /* BusinessesViewController.h */,
@@ -264,10 +285,6 @@
 				3B149C55192E2EB600271741 /* BusinessDetailViewController.m */,
 				3BC7D85019321A0800AD5FB6 /* ChooseCityViewController.h */,
 				3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */,
-				3BB486521940A73F00D3054F /* PersonalCenterViewController.h */,
-				3BB486531940A73F00D3054F /* PersonalCenterViewController.m */,
-				3BB486581940AFBA00D3054F /* PersonalCenterTableViewController.h */,
-				3BB486591940AFBA00D3054F /* PersonalCenterTableViewController.m */,
 				3BB4865B1940B80200D3054F /* LoginViewController.h */,
 				3BB4865C1940B80200D3054F /* LoginViewController.m */,
 				3BB4865E1940B9A000D3054F /* RegisterViewController.h */,
@@ -295,6 +312,9 @@
 				6E05481819382B04002F021D /* BusinessDetailViewTopContainer.h */,
 				6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */,
 				6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */,
+				3B119C8919570A6300077226 /* MOKADetailView.h */,
+				3B119C8A19570A6300077226 /* MOKADetailView.m */,
+				3B119C8719570A4A00077226 /* MOKADetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,6 +411,27 @@
 				3BDC51EF1927A19A00AC355F /* 折叠 */,
 			);
 			path = Libs;
+			sourceTree = "<group>";
+		};
+		3B5C15F519550E7C00F91646 /* 个人中心 */ = {
+			isa = PBXGroup;
+			children = (
+				3BB486521940A73F00D3054F /* PersonalCenterViewController.h */,
+				3BB486531940A73F00D3054F /* PersonalCenterViewController.m */,
+				3BB486581940AFBA00D3054F /* PersonalCenterTableViewController.h */,
+				3BB486591940AFBA00D3054F /* PersonalCenterTableViewController.m */,
+				3B5C15F619550EC300F91646 /* RecivedMOKAViewController.h */,
+				3B5C15F719550EC300F91646 /* RecivedMOKAViewController.m */,
+				3B5C15F919550EE400F91646 /* SendedMOKAViewController.h */,
+				3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */,
+				3B119C8C1957256C00077226 /* MOKADetailMessageViewController.h */,
+				3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */,
+				3B5C15FC19550F0F00F91646 /* RefundProcessViewController.h */,
+				3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */,
+				3B5C15FF19550F2C00F91646 /* ChangePasswordViewController.h */,
+				3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */,
+			);
+			name = "个人中心";
 			sourceTree = "<group>";
 		};
 		3BB4860F19409CC400D3054F /* BaiduMap_IOSSDK_v2.3.0_Lib */ = {
@@ -536,7 +577,7 @@
 		3B452B211920FA63008729A9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = colin;
 				TargetAttributes = {
 					3B452B281920FA63008729A9 = {
@@ -576,6 +617,7 @@
 				6E05481719382AEC002F021D /* BusinessDetailViewTopContainer.xib in Resources */,
 				3B452B451920FA63008729A9 /* Images.xcassets in Resources */,
 				3BB4865119409CC400D3054F /* readme.txt in Resources */,
+				3B119C8819570A4A00077226 /* MOKADetailView.xib in Resources */,
 				3BC7D85419322B3900AD5FB6 /* business_data.plist in Resources */,
 				3BC7D84F1931DA6700AD5FB6 /* home_data.plist in Resources */,
 				3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */,
@@ -633,19 +675,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B119C8E1957256C00077226 /* MOKADetailMessageViewController.m in Sources */,
 				3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */,
 				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
 				3BB4865A1940AFBA00D3054F /* PersonalCenterTableViewController.m in Sources */,
 				3BDC51F21927A19A00AC355F /* UIView+Origami.m in Sources */,
 				3BFB63AC1941F52A0087AC36 /* AccountAndLocationManager.m in Sources */,
+				3B119C8B19570A6300077226 /* MOKADetailView.m in Sources */,
 				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
 				3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */,
+				3B5C160119550F2C00F91646 /* ChangePasswordViewController.m in Sources */,
+				3B5C15F819550EC300F91646 /* RecivedMOKAViewController.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
 				3BB486571940A79300D3054F /* UIImage+UIColor.m in Sources */,
 				6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */,
 				3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
+				3B5C15FE19550F0F00F91646 /* RefundProcessViewController.m in Sources */,
 				3B452B391920FA63008729A9 /* main.m in Sources */,
 				3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
@@ -656,6 +703,7 @@
 				3BB486631940BBB500D3054F /* ForgotPasswordViewController.m in Sources */,
 				3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */,
 				3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */,
+				3B5C15FB19550EE400F91646 /* SendedMOKAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,7 +757,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -722,7 +769,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jim Min (76NDZXKT6H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jim Min (76NDZXKT6H)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -740,8 +788,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "616292A1-5E9A-4A44-A981-F238FCEB5EAC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -750,7 +799,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -763,7 +811,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHENG NAN (222UUNEN4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHENG NAN (222UUNEN4P)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -775,7 +824,9 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
+				PROVISIONING_PROFILE = "616292A1-5E9A-4A44-A981-F238FCEB5EAC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -785,7 +836,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A495DDE42D2A496594EAFFED /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Riyan Abraham (TXAUV6W85D)";
@@ -796,7 +846,7 @@
 				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DC020548-269D-494C-AFED-7B7F75AF0FF7";
+				PROVISIONING_PROFILE = "B9D1DDAC-60FC-41BB-BD58-691E9AB1E597";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -806,7 +856,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A495DDE42D2A496594EAFFED /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CHENG NAN (222UUNEN4P)";
@@ -817,7 +866,7 @@
 				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib";
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "DC020548-269D-494C-AFED-7B7F75AF0FF7";
+				PROVISIONING_PROFILE = "B9D1DDAC-60FC-41BB-BD58-691E9AB1E597";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -826,7 +875,6 @@
 		3B452B5F1920FA63008729A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/linker.app/linker";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -849,7 +897,6 @@
 		3B452B601920FA63008729A9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/linker.app/linker";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
