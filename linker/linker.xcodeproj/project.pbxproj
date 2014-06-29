@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */; };
+		021DB88819604A5C0061D297 /* CallWindowBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88719604A5C0061D297 /* CallWindowBackViewController.m */; };
+		021DB88B196058730061D297 /* LightStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88A196058730061D297 /* LightStateBarNavigationController.m */; };
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
 		3B119C8819570A4A00077226 /* MOKADetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B119C8719570A4A00077226 /* MOKADetailView.xib */; };
 		3B119C8B19570A6300077226 /* MOKADetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B119C8A19570A6300077226 /* MOKADetailView.m */; };
@@ -76,6 +79,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		021DB883196041CA0061D297 /* PersonalCenterContainerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCenterContainerWindow.h; sourceTree = "<group>"; };
+		021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterContainerWindow.m; sourceTree = "<group>"; };
+		021DB88619604A5C0061D297 /* CallWindowBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallWindowBackViewController.h; sourceTree = "<group>"; };
+		021DB88719604A5C0061D297 /* CallWindowBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallWindowBackViewController.m; sourceTree = "<group>"; };
+		021DB889196058730061D297 /* LightStateBarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightStateBarNavigationController.h; sourceTree = "<group>"; };
+		021DB88A196058730061D297 /* LightStateBarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightStateBarNavigationController.m; sourceTree = "<group>"; };
 		3B119C8719570A4A00077226 /* MOKADetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MOKADetailView.xib; sourceTree = "<group>"; };
 		3B119C8919570A6300077226 /* MOKADetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKADetailView.h; sourceTree = "<group>"; };
 		3B119C8A19570A6300077226 /* MOKADetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailView.m; sourceTree = "<group>"; };
@@ -269,6 +278,10 @@
 				3BB486551940A79300D3054F /* UIImage+UIColor.h */,
 				3BB486561940A79300D3054F /* UIImage+UIColor.m */,
 				3B2640B91935B44A00F88024 /* Utils.h */,
+				021DB88619604A5C0061D297 /* CallWindowBackViewController.h */,
+				021DB88719604A5C0061D297 /* CallWindowBackViewController.m */,
+				021DB889196058730061D297 /* LightStateBarNavigationController.h */,
+				021DB88A196058730061D297 /* LightStateBarNavigationController.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -416,6 +429,8 @@
 		3B5C15F519550E7C00F91646 /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				021DB883196041CA0061D297 /* PersonalCenterContainerWindow.h */,
+				021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */,
 				3BB486521940A73F00D3054F /* PersonalCenterViewController.h */,
 				3BB486531940A73F00D3054F /* PersonalCenterViewController.m */,
 				3BB486581940AFBA00D3054F /* PersonalCenterTableViewController.h */,
@@ -675,6 +690,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				021DB88B196058730061D297 /* LightStateBarNavigationController.m in Sources */,
+				021DB88819604A5C0061D297 /* CallWindowBackViewController.m in Sources */,
 				3B119C8E1957256C00077226 /* MOKADetailMessageViewController.m in Sources */,
 				3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */,
 				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
@@ -703,6 +720,7 @@
 				3BB486631940BBB500D3054F /* ForgotPasswordViewController.m in Sources */,
 				3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */,
 				3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */,
+				021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */,
 				3B5C15FB19550EE400F91646 /* SendedMOKAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,10 +861,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib";
+				LIBRARY_SEARCH_PATHS = /Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B9D1DDAC-60FC-41BB-BD58-691E9AB1E597";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -863,10 +881,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = "/Users/colin/Desktop/摩卡/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib";
+				LIBRARY_SEARCH_PATHS = /Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B9D1DDAC-60FC-41BB-BD58-691E9AB1E597";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

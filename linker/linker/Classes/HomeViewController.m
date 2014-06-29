@@ -10,6 +10,8 @@
 #import "BusinessWindow.h"
 #import "ChooseCityViewController.h"
 #import "LoginViewController.h"
+#import "PersonalCenterContainerWindow.h"
+#import "LightStateBarNavigationController.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *navigationTableView;
@@ -32,9 +34,15 @@
     }
     else
     {
-        [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
-            [self performSegueWithIdentifier:@"LoginViewController" sender:self];
-        }];
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        LoginViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        LightStateBarNavigationController *navController = [[LightStateBarNavigationController alloc] initWithRootViewController:viewController];
+        PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:navController];
+        viewController.loginSuccessBlock = ^{
+            [containerWindow disAppear];
+        };
+        [containerWindow show];
+        
     }
 }
 
@@ -103,17 +111,6 @@
 {
     UIViewController *destinationViewController = segue.destinationViewController;
     
-    if ([@"LoginViewController" isEqualToString:segue.identifier]) {
-        
-        UIViewController *topViewController = [(UINavigationController *)destinationViewController topViewController];
-        if ([topViewController isKindOfClass:[LoginViewController class]]) {
-            LoginViewController *controller = (LoginViewController *)topViewController;
-            controller.loginSuccessBlock = ^{
-                [[BusinessWindow sharedBusinessWindow] moveToBottom];
-            };
-        }
-
-    }
     if ([@"ChooseCityViewController" isEqualToString:segue.identifier]) {
         ChooseCityViewController *controller = (ChooseCityViewController *)destinationViewController;
         [controller setChooseCityConmpleteBlock:^(NSString *cityName) {

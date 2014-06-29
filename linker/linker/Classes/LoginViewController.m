@@ -28,15 +28,12 @@
 - (IBAction)login:(id)sender {
     //验证用户名密码，成功后退出登录界面
     
-    
     [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:self.textFieldUserName.text];
     [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:self.textFieldPassword.text];
     [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        if (self.loginSuccessBlock) {
-            self.loginSuccessBlock();
-        }
-    }];
+    if (self.loginSuccessBlock) {
+        self.loginSuccessBlock();
+    }
 }
 @end

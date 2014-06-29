@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CallWindowBackViewController.h"
 
-@interface RecivedMOKAViewController : UIViewController
+@interface RecivedMOKAViewController : CallWindowBackViewController
 
 @end

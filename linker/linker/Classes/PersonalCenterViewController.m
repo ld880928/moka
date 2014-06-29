@@ -14,9 +14,9 @@
 #import "RecivedMOKAViewController.h"
 #import "RefundProcessViewController.h"
 #import "ChangePasswordViewController.h"
+#import "PersonalCenterContainerWindow.h"
 
 @interface PersonalCenterViewController ()
-@property(nonatomic,copy)void (^gotoDetailCallBlock)();
 @end
 
 @implementation PersonalCenterViewController
@@ -33,13 +33,6 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage createImageWithColor:[UIColor clearColor]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
-    self.gotoDetailCallBlock = ^{
-        BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
-        [businessWindow hide:YES completion:^(BOOL finished) {
-            
-        }];
-    };
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,31 +54,50 @@
             switch (personalCenterType) {
                 case PersonalCenterType_Recived_MOKA:       //我收到的摩卡
                 {
-                    self.gotoDetailCallBlock();
-                    
-                    [self performSegueWithIdentifier:@"RecivedMOKAViewController" sender:self];
+                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    RecivedMOKAViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"RecivedMOKAViewController"];
+                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
+                    viewController.callWindowBackBlock = ^{
+                        [containerWindow disAppear];
+                    };
+                    [containerWindow show];
                     
                 }
                     break;
                 case PersonalCenterType_Sended_MOKA:        //我送出的摩卡
                 {
-                    self.gotoDetailCallBlock();
-                    [self performSegueWithIdentifier:@"SendedMOKAViewController" sender:self];
+                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    SendedMOKAViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"SendedMOKAViewController"];
+                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
+                    viewController.callWindowBackBlock = ^{
+                        [containerWindow disAppear];
+                    };
+                    [containerWindow show];
 
                 }
                     break;
                 case PersonalCenterType_Refund_Process:     //退款处理
                 {
-                    self.gotoDetailCallBlock();
-                    [self performSegueWithIdentifier:@"RefundProcessViewController" sender:self];
+                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    RefundProcessViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"RefundProcessViewController"];
+                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
+                    viewController.callWindowBackBlock = ^{
+                        [containerWindow disAppear];
+                    };
+                    [containerWindow show];
 
                 }
                     break;
                 case PersonalCenterType_Change_Password:    //修改密码
                 {
-                    self.gotoDetailCallBlock();
-                    [self performSegueWithIdentifier:@"ChangePasswordViewController" sender:self];
-
+                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    ChangePasswordViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
+                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
+                    viewController.callWindowBackBlock = ^{
+                        [containerWindow disAppear];
+                    };
+                    [containerWindow show];
+                    
                 }
                     break;
                 case PersonalCenterType_Logout:             //退出

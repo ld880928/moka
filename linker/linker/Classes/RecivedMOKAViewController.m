@@ -21,7 +21,9 @@
 
 - (IBAction)backToMyCenter:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.callWindowBackBlock) {
+        self.callWindowBackBlock();
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -32,9 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"moka_detail_bg"]];
     
     self.tempArray = [NSMutableArray array];
     

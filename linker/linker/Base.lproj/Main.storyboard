@@ -53,32 +53,16 @@
                         <outlet property="navigationTableView" destination="RL7-44-qaX" id="VEf-o3-uBI"/>
                         <segue destination="vXZ-lx-hvc" kind="modal" identifier="ChooseCityViewController" id="3Oe-bR-W0B"/>
                         <segue destination="xzc-7l-dOS" kind="push" identifier="PersonalCenterViewController" id="52F-vx-4sg"/>
-                        <segue destination="BMl-an-jGp" kind="modal" identifier="LoginViewController" id="bIm-HM-7X5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w8r-Ge-wEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1347" y="414"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="vwv-nJ-BuR">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="BMl-an-jGp" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gwT-GM-7Wz">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="TLH-7r-ufA" kind="relationship" relationship="rootViewController" id="JJ6-tL-KtT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P7C-II-z2u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-548" y="2845"/>
-        </scene>
         <!--Login View Controller - 会员登陆-->
         <scene sceneID="bnj-ba-jPc">
             <objects>
-                <viewController id="TLH-7r-ufA" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TLH-7r-ufA" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f37-LB-Xze"/>
                         <viewControllerLayoutGuide type="bottom" id="S75-qL-R2A"/>
@@ -209,12 +193,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="BcY-6a-0Bk" kind="push" identifier="SendedMOKAViewController" id="XH5-pj-yaV"/>
-                        <segue destination="z7h-Sc-tKK" kind="push" identifier="RecivedMOKAViewController" id="jbc-2d-QKa"/>
-                        <segue destination="xbO-wS-RlJ" kind="push" identifier="RefundProcessViewController" id="SC1-nQ-vco"/>
-                        <segue destination="zLj-Nd-0i7" kind="push" identifier="ChangePasswordViewController" id="0Rf-xH-2LY"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSe-n8-EGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,7 +201,7 @@
         <!--RecivedMOKA View Controller - 我收到的摩卡-->
         <scene sceneID="tVV-EI-grF">
             <objects>
-                <viewController id="z7h-Sc-tKK" customClass="RecivedMOKAViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecivedMOKAViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z7h-Sc-tKK" customClass="RecivedMOKAViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dFJ-Ez-McX"/>
                         <viewControllerLayoutGuide type="bottom" id="RVA-4n-Td5"/>
@@ -262,7 +240,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="我收到的摩卡" id="SLk-J7-C6H"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -391,10 +369,10 @@
             </objects>
             <point key="canvasLocation" x="97" y="446"/>
         </scene>
-        <!--View Controller - 退款处理-->
+        <!--Refund Process View Controller - 退款处理-->
         <scene sceneID="K5C-cU-bIU">
             <objects>
-                <viewController id="xbO-wS-RlJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RefundProcessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xbO-wS-RlJ" customClass="RefundProcessViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ooM-CK-gQa"/>
                         <viewControllerLayoutGuide type="bottom" id="JlO-rQ-AXY"/>
@@ -432,7 +410,7 @@
         <!--SendedMOKA View Controller - 我送出的摩卡-->
         <scene sceneID="d5s-xd-Srw">
             <objects>
-                <viewController id="BcY-6a-0Bk" customClass="SendedMOKAViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SendedMOKAViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BcY-6a-0Bk" customClass="SendedMOKAViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eyT-Y9-1i8"/>
                         <viewControllerLayoutGuide type="bottom" id="lOU-6v-Qes"/>
@@ -471,7 +449,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="我送出的摩卡" id="TI4-T7-iod"/>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -722,7 +700,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="EYA-Uz-MzZ"/>
         <segue reference="ITs-K5-K3J"/>
-        <segue reference="t4W-40-3Yq"/>
     </inferredMetricsTieBreakers>
 </document>
