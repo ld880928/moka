@@ -51,7 +51,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="navigationTableView" destination="RL7-44-qaX" id="VEf-o3-uBI"/>
-                        <segue destination="vXZ-lx-hvc" kind="modal" identifier="ChooseCityViewController" id="3Oe-bR-W0B"/>
                         <segue destination="xzc-7l-dOS" kind="push" identifier="PersonalCenterViewController" id="52F-vx-4sg"/>
                     </connections>
                 </viewController>
@@ -117,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXu-Nw-2fP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="2845"/>
+            <point key="canvasLocation" x="-2052" y="1173"/>
         </scene>
         <!--Forgot Password View Controller - 找回密码-->
         <scene sceneID="sny-BP-Egr">
@@ -142,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOz-vU-1tA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="3185"/>
+            <point key="canvasLocation" x="-1706" y="1909"/>
         </scene>
         <!--View Controller - 注册新用户-->
         <scene sceneID="I6b-kY-4Yt">
@@ -161,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijb-rd-szg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1204" y="2845"/>
+            <point key="canvasLocation" x="-1347" y="1173"/>
         </scene>
         <!--Personal Center View Controller-->
         <scene sceneID="1Pz-A6-e8E">
@@ -185,14 +184,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Rth-im-NQT">
-                        <barButtonItem key="leftBarButtonItem" image="mycenter" id="vcN-57-Rrq">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="backToHome:" destination="xzc-7l-dOS" id="qbr-Pc-dEz"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Rth-im-NQT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSe-n8-EGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -309,7 +301,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="退款处理" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6F-8k-JCe">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="修改手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6F-8k-JCe">
                                                     <rect key="frame" x="60" y="12" width="97" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -531,6 +523,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="detailMessageView" destination="Ob0-TT-LDi" id="DfY-fq-Bgq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmt-2C-83l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -584,7 +579,7 @@
         <!--Choose City View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ChooseCityViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChooseCityViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="ChooseCityViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dAP-Lk-YsN"/>
                         <viewControllerLayoutGuide type="bottom" id="xBt-q3-lvG"/>
@@ -594,7 +589,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ecj-h0-6lx">
-                                <rect key="frame" x="0.0" y="64" width="320" height="506"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="526"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="D8G-EK-f85"/>
@@ -602,7 +597,7 @@
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ir-Ca-gb3">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -614,7 +609,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-548" y="-994"/>
+            <point key="canvasLocation" x="-1347" y="-242"/>
         </scene>
         <!--Businesses View Controller-->
         <scene sceneID="d0T-Dg-Ubw">
@@ -700,7 +695,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="EYA-Uz-MzZ"/>
+        <segue reference="t4W-40-3Yq"/>
         <segue reference="JMj-Ft-std"/>
     </inferredMetricsTieBreakers>
 </document>

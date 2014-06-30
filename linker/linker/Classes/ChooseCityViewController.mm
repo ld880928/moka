@@ -98,12 +98,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *cityName = [self.locationsTableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    [self dismissViewControllerAnimated:YES completion:^{
-        if ([cityName isEqualToString:@"定位中..."]) {
-            self.chooseCityConmpleteBlock(@"");
-        }
-        else self.chooseCityConmpleteBlock(cityName);
-    }];
+    if ([cityName isEqualToString:@"定位中..."]) {
+        self.chooseCityConmpleteBlock(@"");
+    }
+    else self.chooseCityConmpleteBlock(cityName);
+    
+    if (self.callWindowBackBlock) {
+        self.callWindowBackBlock();
+    }
+    
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView

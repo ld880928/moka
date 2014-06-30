@@ -78,6 +78,7 @@
                     break;
                 case PersonalCenterType_Refund_Process:     //退款处理
                 {
+                    /*
                     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     RefundProcessViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"RefundProcessViewController"];
                     PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
@@ -85,11 +86,13 @@
                         [containerWindow disAppear];
                     };
                     [containerWindow show];
+                     */
 
                 }
                     break;
                 case PersonalCenterType_Change_Password:    //修改密码
                 {
+                    /*
                     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     ChangePasswordViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
                     PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
@@ -97,6 +100,7 @@
                         [containerWindow disAppear];
                     };
                     [containerWindow show];
+                     */
                     
                 }
                     break;

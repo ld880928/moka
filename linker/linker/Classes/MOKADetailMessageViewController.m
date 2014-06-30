@@ -7,8 +7,10 @@
 //
 
 #import "MOKADetailMessageViewController.h"
+#import "UIView+TopRadius.h"
 
 @interface MOKADetailMessageViewController ()
+@property (weak, nonatomic) IBOutlet UIView *detailMessageView;
 
 @end
 
@@ -25,6 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self.detailMessageView dwMakeTopRoundCornerWithRadius:10.0f];
 }
 
 

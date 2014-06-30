@@ -8,6 +8,7 @@
 
 #import "BusinessDetailViewController.h"
 #import "BusinessDetailView.h"
+#import "UIView+Topradius.h"
 
 @interface BusinessDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIScrollView *containerScorllView;
@@ -19,6 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.containerScorllView dwMakeTopRoundCornerWithRadius:10.0f];
+    
     self.view.backgroundColor = self.backgroundImage;
     self.businessDetailView = [BusinessDetailView businessDetailViewWithDatas:nil];
 

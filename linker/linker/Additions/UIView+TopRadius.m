@@ -20,7 +20,7 @@
     CGPathMoveToPoint(path, NULL, size.width - radius, 0);
     CGPathAddArc(path, NULL, size.width-radius, radius, radius,M_PI_2 ,0, NO);
     CGPathAddLineToPoint(path, NULL, size.width, size.height);
-    CGPathAddLineToPoint(path, NULL, 0.0, size.width);
+    CGPathAddLineToPoint(path, NULL, 0.0, size.height);
     CGPathAddLineToPoint(path, NULL, 0.0, radius);
     CGPathAddArc(path, NULL, radius,radius, radius, 0, -1 * M_PI_2 , NO);
     CGPathCloseSubpath(path);

@@ -69,11 +69,32 @@
     [self.locationBtn setTitle:currentCityName forState:UIControlStateNormal];
     self.locationBtn.frame = CGRectMake(0, 0, 60, 44);
     
-    __unsafe_unretained HomeViewController *safe_self = self;
     [self.locationBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
-        [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
-            [safe_self performSegueWithIdentifier:@"ChooseCityViewController" sender:self];
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ChooseCityViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChooseCityViewController"];
+        PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
+        
+        [viewController setChooseCityConmpleteBlock:^(NSString *cityName) {
+            if (![cityName isEqualToString:@""]) {
+                [self.locationBtn setTitle:cityName forState:UIControlStateNormal];
+                if (![cityName isEqualToString:[[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity]]) {
+                    [self refreshDataWithCityName:cityName];
+                }
+                else
+                {
+                    [[BusinessWindow sharedBusinessWindow] moveToBottom];
+                }
+                [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:cityName];
+            }
         }];
+
+        viewController.callWindowBackBlock = ^{
+            [containerWindow disAppear];
+        };
+        
+        [containerWindow show];
+        
     }];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.locationBtn];
@@ -98,22 +119,11 @@
     NSString *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
     if (!currentSelectedCity || !currentSelectedCity.length) {
         //没有选中城市，第一次安装程序.  弹出选择城市的界面
-        [self performSegueWithIdentifier:@"ChooseCityViewController" sender:self];
-    }
-    else
-    {
-        //直接刷新列表信息
-        [self refreshDataWithCityName:currentSelectedCity];
-    }
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    UIViewController *destinationViewController = segue.destinationViewController;
-    
-    if ([@"ChooseCityViewController" isEqualToString:segue.identifier]) {
-        ChooseCityViewController *controller = (ChooseCityViewController *)destinationViewController;
-        [controller setChooseCityConmpleteBlock:^(NSString *cityName) {
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ChooseCityViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChooseCityViewController"];
+        PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
+        
+        [viewController setChooseCityConmpleteBlock:^(NSString *cityName) {
             if (![cityName isEqualToString:@""]) {
                 [self.locationBtn setTitle:cityName forState:UIControlStateNormal];
                 if (![cityName isEqualToString:[[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity]]) {
@@ -126,8 +136,19 @@
                 [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:cityName];
             }
         }];
+        
+        viewController.callWindowBackBlock = ^{
+            [containerWindow disAppear];
+        };
+        
+        [containerWindow show];
+        
     }
-    
+    else
+    {
+        //直接刷新列表信息
+        [self refreshDataWithCityName:currentSelectedCity];
+    }
 }
 
 - (void)refreshDataWithCityName:(NSString *)cityName
