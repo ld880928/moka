@@ -90,8 +90,8 @@
     [businessWindow makeKeyAndVisible];
     
     [businessWindow setPositionYChangedCallBackBlock:^(CGFloat percent) {
-        CGAffineTransform transform = CGAffineTransformScale(keyWindowTransform, percent, percent);
-        [[[UIApplication sharedApplication] delegate] window].transform = transform;
+        //CGAffineTransform transform = CGAffineTransformScale(keyWindowTransform, percent, percent);
+        //[[[UIApplication sharedApplication] delegate] window].transform = transform;
     }];
     
     //检查是否有选中的城市
