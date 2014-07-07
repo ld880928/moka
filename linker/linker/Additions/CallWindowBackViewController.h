@@ -10,4 +10,5 @@
 
 @interface CallWindowBackViewController : UIViewController
 @property(nonatomic,copy)void (^callWindowBackBlock)();
+@property(nonatomic,unsafe_unretained)UIWindow *containerWindow;
 @end

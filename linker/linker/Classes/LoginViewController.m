@@ -21,6 +21,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
     self.textFieldUserName.text = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
     self.textFieldPassword.text = [[AccountAndLocationManager sharedAccountAndLocationManager] password];
 }
@@ -36,4 +37,5 @@
         self.loginSuccessBlock();
     }
 }
+
 @end

@@ -33,6 +33,16 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage createImageWithColor:[UIColor clearColor]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 23.0f, 40.0f);
+    [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -78,29 +88,31 @@
                     break;
                 case PersonalCenterType_Refund_Process:     //退款处理
                 {
-                    /*
+                    
                     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     RefundProcessViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"RefundProcessViewController"];
                     PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
                     viewController.callWindowBackBlock = ^{
                         [containerWindow disAppear];
                     };
+                    viewController.containerWindow = containerWindow;
                     [containerWindow show];
-                     */
+                    
 
                 }
                     break;
                 case PersonalCenterType_Change_Password:    //修改密码
                 {
-                    /*
+                    
                     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                     ChangePasswordViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
                     PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
                     viewController.callWindowBackBlock = ^{
                         [containerWindow disAppear];
                     };
+                    viewController.containerWindow = containerWindow;
                     [containerWindow show];
-                     */
+                    
                     
                 }
                     break;

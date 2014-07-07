@@ -372,7 +372,18 @@
                     <view key="view" contentMode="scaleToFill" id="ptc-jH-4Jx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRQ-0R-hZF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem width="96" style="plain" systemItem="fixedSpace" id="sAh-uI-lCE"/>
+                                    <barButtonItem title="修改手机号" id="l0a-gF-WcR"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="退款处理" id="rQb-Al-KZw"/>
                 </viewController>
@@ -380,10 +391,10 @@
             </objects>
             <point key="canvasLocation" x="97" y="1173"/>
         </scene>
-        <!--View Controller - 修改密码-->
+        <!--Change Password View Controller - 修改密码-->
         <scene sceneID="Csz-nb-kmr">
             <objects>
-                <viewController id="zLj-Nd-0i7" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePasswordViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zLj-Nd-0i7" customClass="ChangePasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wiz-LQ-ZRE"/>
                         <viewControllerLayoutGuide type="bottom" id="IY6-Ce-z4z"/>
@@ -391,6 +402,18 @@
                     <view key="view" contentMode="scaleToFill" id="0VI-Nu-ELe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LmW-Ae-vV6">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem width="103" style="plain" systemItem="fixedSpace" id="V16-yC-9cb"/>
+                                    <barButtonItem title="修改密码" id="17J-kv-ZW7">
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="修改密码" id="ya9-aE-AKe"/>
