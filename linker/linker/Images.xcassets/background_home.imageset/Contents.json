@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "iphone",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "background_home.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "App(首页)-1.png"
+      "filename" : "background_home-1.png"
     },
     {
       "idiom" : "iphone",
-      "filename" : "App(首页).png",
+      "filename" : "background_home-1-1.png",
       "subtype" : "retina4",
       "scale" : "2x"
     }

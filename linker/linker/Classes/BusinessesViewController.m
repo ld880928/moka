@@ -86,9 +86,9 @@
     }
     
     self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.businessArray.count, self.businessesScrollView.bounds.size.height);
-    self.navigationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, 60, 40)];
+    self.navigationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 70.0f, 40.0f)];
     self.navigationLabel.text = @"美食";
-    self.navigationLabel.font = [UIFont boldSystemFontOfSize:30.0f];
+    self.navigationLabel.font = [UIFont systemFontOfSize:32.0f];
     self.navigationLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:self.navigationLabel];
     

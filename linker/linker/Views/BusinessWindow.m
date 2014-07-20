@@ -9,7 +9,7 @@
 #import "BusinessWindow.h"
 #import "POP/POP.h"
 
-#define DISTANCE_BOTTOM 64.0f
+#define DISTANCE_BOTTOM 70.0f
 
 @implementation BusinessWindow
 
@@ -48,10 +48,10 @@
             switch (newState) {
                 case BusinessWindowState_Hide:
                 case BusinessWindowState_Moving:
-                    self.backgroundColor = [UIColor clearColor];
+                    //self.backgroundColor = [UIColor clearColor];
                     break;
                 case BusinessWindowState_Show:
-                    self.backgroundColor = [UIColor whiteColor];
+                    //self.backgroundColor = [UIColor whiteColor];
                     break;
                 default:
                     break;
@@ -68,6 +68,10 @@
     dispatch_once(&predicate, ^{
         sharedBusinessWindowInstance = [[self alloc] initWithFrame:[UIScreen mainScreen].bounds];
         sharedBusinessWindowInstance.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height ,sharedBusinessWindowInstance.bounds.size.width, sharedBusinessWindowInstance.bounds.size.height);
+        sharedBusinessWindowInstance.layer.shadowOffset = CGSizeMake(10.0f, 10.0f);
+        sharedBusinessWindowInstance.layer.shadowRadius = 10.0f;
+        sharedBusinessWindowInstance.layer.shadowOpacity = 1.0f;
+        sharedBusinessWindowInstance.layer.shadowColor = [UIColor blackColor].CGColor;
     });
     return sharedBusinessWindowInstance;
 }

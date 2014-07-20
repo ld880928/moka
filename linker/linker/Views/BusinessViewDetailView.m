@@ -35,7 +35,7 @@
         
         UILabel *titlelabel = [[UILabel alloc] initWithFrame:CGRectMake(20.0f, 25.0f, 280.0f, 30.0f)];
         titlelabel.text = @"味觉空间的情调家";
-        titlelabel.font = [UIFont boldSystemFontOfSize:20.0f];
+        titlelabel.font = [UIFont systemFontOfSize:18.0f];
         titlelabel.textColor = [UIColor blackColor];
         [detailContainer addSubview:titlelabel];
         

@@ -64,7 +64,7 @@
     self.navigationData = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"home_data" ofType:@"plist"]];
     
     self.locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:12.0f];
+    self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:11.0f];
     [self.locationBtn setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     NSString *currentCityName = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
     [self.locationBtn setTitle:currentCityName forState:UIControlStateNormal];
@@ -179,16 +179,21 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+        
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 45.0f, 290.0f, 1)];
+        lineView.backgroundColor = [UIColor whiteColor];
+        lineView.alpha = .2f;
+        [cell.contentView addSubview:lineView];
     }
     
     NSDictionary *dataItem = [self.navigationData objectAtIndex:indexPath.row];
     
     UIImage *itemImage = [UIImage imageNamed:[dataItem objectForKey:@"iconName"]];
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, itemImage.size.width, itemImage.size.height)];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 10.0f, itemImage.size.width, itemImage.size.height)];
     iconImageView.image = itemImage;
     [cell.contentView addSubview:iconImageView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 10, 50, 29)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 10.0f, 50.0f, 29.0f)];
     titleLabel.text = [dataItem objectForKey:@"textName"];
     titleLabel.textColor = [UIColor whiteColor];
     
