@@ -9,22 +9,17 @@
 #import "SendedMOKAViewController.h"
 #import "MOKADetailView.h"
 #import "POP/POP.h"
+#import "RecivedMOKACell.h"
+#import "CustomLayout.h"
 
-@interface SendedMOKAViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *recivedMOKATableView;
+@interface SendedMOKAViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *recivedMOKACollectionView;
+@property (weak, nonatomic) IBOutlet UIScrollView *iconsScrollView;
+
 @property (strong,nonatomic)NSMutableArray *mokaDatasArray;
-
-@property(strong,nonatomic)NSMutableArray *tempArray;
 @end
 
 @implementation SendedMOKAViewController
-
-- (IBAction)backToMyCenter:(id)sender
-{
-    if (self.callWindowBackBlock) {
-        self.callWindowBackBlock();
-    }
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -34,173 +29,82 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(15.0f, 15.0f, 23.0f, 40.0f);
+    [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        if (self.callWindowBackBlock) {
+            self.callWindowBackBlock();
+        }
+    }];
+    
+    [self.view addSubview:backBtn];
+    
     // Do any additional setup after loading the view.
+    self.mokaDatasArray = [NSMutableArray arrayWithArray:@[@"Image_1",@"Image_2",@"Image_3",@"Image_4"]];
     
-    self.tempArray = [NSMutableArray array];
+    [self.recivedMOKACollectionView registerNib:[UINib nibWithNibName:@"RecivedMOKACell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"RecivedMOKACell"];
+    CustomLayout *customLayout = [[CustomLayout alloc] init];
+    customLayout.mokaDatasArray = self.mokaDatasArray;
+    self.recivedMOKACollectionView.collectionViewLayout = customLayout;
     
-    self.mokaDatasArray = [NSMutableArray arrayWithArray:@[@"Image_4",@"Image_2",@"Image_1",@"Image_3"]];
-    [self.recivedMOKATableView reloadData];
+    [self.recivedMOKACollectionView reloadData];
+    
+    [self.recivedMOKACollectionView performBatchUpdates:^{
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    self.iconsScrollView.delegate = self;
+    for (int i=0; i < self.mokaDatasArray.count; i++) {
+        
+        UIImage *image = [UIImage imageNamed:@"shop_icon_1"];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
+        imageView.image = image;
+        
+        imageView.center = CGPointMake(320.0f * i + 320.0f / 2, 45.0f / 2 + 20);
+        
+        [self.iconsScrollView addSubview:imageView];
+    }
+    
+    self.iconsScrollView.contentSize = CGSizeMake(320.0f * self.mokaDatasArray.count, 128.0f);
+    
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat a = (190.0f + 10.0f) / 320.0f;
+    if (scrollView == self.iconsScrollView) {
+        self.recivedMOKACollectionView.contentOffset = CGPointMake(scrollView.contentOffset.x * a, self.recivedMOKACollectionView.contentOffset.y);
+    }
+    else
+    {
+        self.iconsScrollView.contentOffset = CGPointMake(scrollView.contentOffset.x / a, self.iconsScrollView.contentOffset.y);
+        
+    }
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.mokaDatasArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == self.mokaDatasArray.count - 1) {
-        return self.view.bounds.size.height - 73.0f;
-    }
-    else return 73.0f;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *identifier = @"RecivedMOKACell";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    static NSString *cell_id = @"RecivedMOKACell";
     
-    for (UIView *v in [cell.contentView subviews]) {
-        [v removeFromSuperview];
-    }
+    RecivedMOKACell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cell_id forIndexPath:indexPath];
     
-    
-    MOKADetailView *mokaDetailView = [MOKADetailView MOKADetailViewWithData:[self.mokaDatasArray objectAtIndex:indexPath.row]];
-    mokaDetailView.frame = CGRectMake(0, 0, mokaDetailView.bounds.size.width, [self tableView:tableView heightForRowAtIndexPath:indexPath]);
-    
-    UIGraphicsBeginImageContext(mokaDetailView.frame.size);
-    [mokaDetailView.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:viewSnapShot];
-    imageView.frame = mokaDetailView.frame;
-    
-    [cell.contentView addSubview:imageView];
+    cell.backgroundImageView.image = [UIImage imageNamed:[self.mokaDatasArray objectAtIndex:indexPath.item]];
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSArray *visibleCells = [tableView visibleCells];
-    for (int i=0; i<[visibleCells count]; i++) {
-        UITableViewCell *cell = [visibleCells objectAtIndex:i];
-        CGRect frame = [tableView convertRect:cell.frame toView:self.view];
-        
-        int row = [[tableView indexPathForCell:cell] row];
-        
-        if (row < indexPath.row) {
-            UIView *v = [[UIView alloc] initWithFrame:frame];
-            
-            UIGraphicsBeginImageContext(cell.frame.size);
-            [cell.layer renderInContext:UIGraphicsGetCurrentContext()];
-            UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            v.layer.contents = (__bridge id)viewSnapShot.CGImage;
-            
-            [self.view addSubview:v];
-            [self.tempArray addObject:@{@"view": v,@"frame":[NSValue valueWithCGRect:frame]}];
-            
-            POPBasicAnimation *animationToBottom = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
-            animationToBottom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-            animationToBottom.duration = .5f;
-            
-            animationToBottom.toValue = [NSValue valueWithCGRect:CGRectMake(0,
-                                                                            -frame.size.height,
-                                                                            frame.size.width,
-                                                                            frame.size.height)];
-            
-            [animationToBottom setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
-                
-            }];
-            
-            [v pop_addAnimation:animationToBottom forKey:@"animation_zoom_cell"];
-        }
-        else if(row == indexPath.row)
-        {
-            MOKADetailView *mokaDetailView = [MOKADetailView MOKADetailViewWithData:[self.mokaDatasArray objectAtIndex:indexPath.row]];
-            mokaDetailView.frame = frame;
-            
-            __unsafe_unretained SendedMOKAViewController *safe_self = self;
-            
-            [mokaDetailView setGotoDetailBlock:^{
-                [safe_self performSegueWithIdentifier:@"MOKADetailMessageViewController" sender:self];
-            }];
-            
-            [mokaDetailView setBackBlock:^{
-                
-                for (NSDictionary *dic in self.tempArray) {
-                    UIView *v = [dic objectForKey:@"view"];
-                    
-                    POPBasicAnimation *animationToBottom = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
-                    animationToBottom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-                    animationToBottom.duration = .5f;
-                    
-                    animationToBottom.toValue = [dic objectForKey:@"frame"];
-                    
-                    [animationToBottom setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
-                        [v removeFromSuperview];
-                        [self.tempArray removeObject:dic];
-                    }];
-                    
-                    [v pop_addAnimation:animationToBottom forKey:@"animation_back_cell"];
-                }
-                
-            }];
-            [self.view addSubview:mokaDetailView];
-            [self.tempArray addObject:@{@"view": mokaDetailView,@"frame":[NSValue valueWithCGRect:frame]}];
-            
-            
-            POPBasicAnimation *animationToBottom = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
-            animationToBottom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-            animationToBottom.duration = .5f;
-            
-            animationToBottom.toValue = [NSValue valueWithCGRect:CGRectMake(0,
-                                                                            0,
-                                                                            self.view.bounds.size.width,
-                                                                            self.view.bounds.size.height)];
-            
-            [animationToBottom setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
-                
-            }];
-            
-            [mokaDetailView pop_addAnimation:animationToBottom forKey:@"animation_zoom_cell"];
-        }
-        else
-        {
-            UIView *v = [[UIView alloc] initWithFrame:frame];
-            
-            UIGraphicsBeginImageContext(cell.frame.size);
-            [cell.layer renderInContext:UIGraphicsGetCurrentContext()];
-            UIImage *viewSnapShot = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            v.layer.contents = (__bridge id)viewSnapShot.CGImage;
-            
-            [self.view addSubview:v];
-            [self.tempArray addObject:@{@"view": v,@"frame":[NSValue valueWithCGRect:frame]}];
-            
-            POPBasicAnimation *animationToBottom = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
-            animationToBottom.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-            animationToBottom.duration = .5f;
-            
-            animationToBottom.toValue = [NSValue valueWithCGRect:CGRectMake(0,
-                                                                            self.view.bounds.size.height,
-                                                                            frame.size.width,
-                                                                            frame.size.height)];
-            
-            [animationToBottom setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
-                
-            }];
-            
-            [v pop_addAnimation:animationToBottom forKey:@"animation_zoom_cell"];
-        }
-        
-    }
     
 }
 

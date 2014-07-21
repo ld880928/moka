@@ -10,6 +10,9 @@
 		021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */; };
 		021DB88819604A5C0061D297 /* CallWindowBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88719604A5C0061D297 /* CallWindowBackViewController.m */; };
 		021DB88B196058730061D297 /* LightStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88A196058730061D297 /* LightStateBarNavigationController.m */; };
+		02793BA3197D6D0200B2AC39 /* RecivedMOKACell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */; };
+		02793BA5197D6D1C00B2AC39 /* RecivedMOKACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */; };
+		02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA7197D6E9000B2AC39 /* CustomLayout.m */; };
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
 		3B085772197CE36E000AAEE8 /* BlackStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */; };
 		3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085774197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m */; };
@@ -88,6 +91,11 @@
 		021DB88719604A5C0061D297 /* CallWindowBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallWindowBackViewController.m; sourceTree = "<group>"; };
 		021DB889196058730061D297 /* LightStateBarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightStateBarNavigationController.h; sourceTree = "<group>"; };
 		021DB88A196058730061D297 /* LightStateBarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightStateBarNavigationController.m; sourceTree = "<group>"; };
+		02793BA1197D6D0200B2AC39 /* RecivedMOKACell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecivedMOKACell.h; sourceTree = "<group>"; };
+		02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecivedMOKACell.m; sourceTree = "<group>"; };
+		02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecivedMOKACell.xib; sourceTree = "<group>"; };
+		02793BA6197D6E9000B2AC39 /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
+		02793BA7197D6E9000B2AC39 /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
 		3B085770197CE36E000AAEE8 /* BlackStateBarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackStateBarNavigationController.h; sourceTree = "<group>"; };
 		3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackStateBarNavigationController.m; sourceTree = "<group>"; };
 		3B085773197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewTopContainerCell.h; sourceTree = "<group>"; };
@@ -450,6 +458,11 @@
 				3BB486591940AFBA00D3054F /* PersonalCenterTableViewController.m */,
 				3B5C15F619550EC300F91646 /* RecivedMOKAViewController.h */,
 				3B5C15F719550EC300F91646 /* RecivedMOKAViewController.m */,
+				02793BA6197D6E9000B2AC39 /* CustomLayout.h */,
+				02793BA7197D6E9000B2AC39 /* CustomLayout.m */,
+				02793BA1197D6D0200B2AC39 /* RecivedMOKACell.h */,
+				02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */,
+				02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */,
 				3B5C15F919550EE400F91646 /* SendedMOKAViewController.h */,
 				3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */,
 				3B119C8C1957256C00077226 /* MOKADetailMessageViewController.h */,
@@ -644,6 +657,7 @@
 				3BB4865019409CC400D3054F /* mapapi.bundle in Resources */,
 				6E05481719382AEC002F021D /* BusinessDetailViewTopContainer.xib in Resources */,
 				3B452B451920FA63008729A9 /* Images.xcassets in Resources */,
+				02793BA5197D6D1C00B2AC39 /* RecivedMOKACell.xib in Resources */,
 				3BB4865119409CC400D3054F /* readme.txt in Resources */,
 				3B119C8819570A4A00077226 /* MOKADetailView.xib in Resources */,
 				3B085777197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.xib in Resources */,
@@ -722,10 +736,12 @@
 				6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */,
 				3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
+				02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
 				3B5C15FE19550F0F00F91646 /* RefundProcessViewController.m in Sources */,
 				3B452B391920FA63008729A9 /* main.m in Sources */,
 				3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */,
+				02793BA3197D6D0200B2AC39 /* RecivedMOKACell.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
