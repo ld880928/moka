@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface BusinessDetailViewTopContainerCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *labelTitle;
+@property (weak, nonatomic) IBOutlet UILabel *labelContent;
 
 @end

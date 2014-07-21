@@ -7,6 +7,7 @@
 //
 
 #import "BusinessDetailViewTopContainer.h"
+#import "BusinessDetailViewTopContainerCell.h"
 
 @interface BusinessDetailViewTopContainer()<UITableViewDataSource,UITableViewDelegate,BMKMapViewDelegate>
 
@@ -42,12 +43,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cell_id = @"BusinessDetailViewTopContainer_location_cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+    static NSString *cell_id = @"BusinessDetailViewTopContainerCell";
+    BusinessDetailViewTopContainerCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"BusinessDetailViewTopContainerCell" owner:self options:nil] lastObject];
     }
-    cell.textLabel.text = @"豪客来广埠屯。。。";
+    
+    cell.labelTitle.text = @"仟吉西饼(站前街餐厅)";
+    
+    cell.labelContent.text = @"地址:北京市东城区北京站出站口西侧";
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

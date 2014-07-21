@@ -9,6 +9,7 @@
 #import "RegisterViewController.h"
 
 @interface RegisterViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
 
 @end
 
@@ -27,6 +28,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.buttonRegister setBorderWithColor:[UIColor colorWithRed:67.0f / 255.0f green:140.0f / 255.0f blue:220.0f / 255.0f alpha:1.0f]
+                             borderWidth:1.0f
+                            cornerRadius:5.0f];
+    
+    [self.buttonRegister handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 26.0f, 42.0f);
+    backBtn.tintColor = [UIColor redColor];
+    [backBtn setImage:[UIImage imageNamed:@"blueback"] forState:UIControlStateNormal];
+    [backBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    
 }
 
 - (void)didReceiveMemoryWarning
