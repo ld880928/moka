@@ -17,12 +17,12 @@
 + (BusinessDetailViewTopContainer *)businessDetailViewTopContainer
 {
     BusinessDetailViewTopContainer *view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessDetailViewTopContainer" owner:self options:nil] lastObject];
-    view_.frame = CGRectMake(0, 160.0f, view_.bounds.size.width, 0);
-    
+
     //tableview
-    view_.locationTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 200) style:UITableViewStylePlain];
+    view_.locationTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 220.0f) style:UITableViewStylePlain];
     view_.locationTableView.delegate = view_;
     view_.locationTableView.dataSource = view_;
+    view_.locationTableView.separatorInset = UIEdgeInsetsZero;
     
     [view_ addSubview:view_.locationTableView];
     
@@ -30,6 +30,11 @@
 }
 
 #pragma mark TableView DataSource And Delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 55.0f;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 4;
@@ -46,6 +51,8 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 
@@ -54,7 +61,7 @@
     
     //mapview
     if (!self.locationMapView) {
-        self.locationMapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+        self.locationMapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0, 0, 320, 220.0f)];
         [self insertSubview:self.locationMapView belowSubview:self.locationTableView];
         self.locationMapView.delegate = self;
         self.locationMapView.showsUserLocation = YES;

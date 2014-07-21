@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CallWindowBackViewController.h"
 
-@interface LoginViewController : CallWindowBackViewController
+@interface LoginViewController : UIViewController
 @property(nonatomic,copy)void(^loginSuccessBlock)();
 @end

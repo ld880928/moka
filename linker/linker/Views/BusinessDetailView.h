@@ -13,12 +13,10 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *bottomContainerView;
-@property (weak, nonatomic) BusinessDetailViewTopContainer *topContainerView;
+@property (weak, nonatomic) IBOutlet UIView *topContainerView;
 
 + (BusinessDetailView *)businessDetailViewWithDatas:(id)datas_;
 
-@property(nonatomic,copy)void(^confirmPaymentBlock)();
-@property(nonatomic,copy)void(^cancleBlock)();
 @property(nonatomic,copy)void(^showShopTableViewBlock)();
 @property(nonatomic,copy)void(^hideShopTableViewBlock)();
 @property(nonatomic,copy)void(^addContactBlock)();

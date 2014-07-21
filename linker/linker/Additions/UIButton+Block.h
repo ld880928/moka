@@ -14,4 +14,7 @@ typedef void (^ActionBlock)();
 @property (readonly) NSMutableDictionary *event;
 
 - (void)handleControlEvent:(UIControlEvents)controlEvent withBlock:(ActionBlock)action;
+
+- (void)setBorderWithColor:(UIColor *)color_ borderWidth:(CGFloat)width_ cornerRadius:(CGFloat)cornerRadius_;
+
 @end

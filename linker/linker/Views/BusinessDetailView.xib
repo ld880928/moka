@@ -21,44 +21,40 @@
                     <rect key="frame" x="10" y="43" width="300" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
-                        <segment title="19.05"/>
-                        <segment title="29.0"/>
-                        <segment title="34.5"/>
+                        <segment title="¥19.05"/>
+                        <segment title="¥29.0"/>
+                        <segment title="¥34.5"/>
+                        <segment title="其他"/>
                     </segments>
                 </segmentedControl>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="提拉米苏+芝士蛋挞+原味红豆奶茶（小）" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qjC-3L-tV5">
-                    <rect key="frame" x="10" y="95" width="201" height="14"/>
+                    <rect key="frame" x="10" y="80" width="300" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yed-uR-JzD">
+                <view clipsSubviews="YES" contentMode="scaleToFill" id="MDA-fx-cWJ">
                     <rect key="frame" x="0.0" y="127" width="320" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="北京有4家店可消费">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="showOrHideShopTableView:" destination="1" eventType="touchUpInside" id="tBd-Rk-3m4"/>
-                    </connections>
-                </button>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yed-uR-JzD">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="     北京有4家店可消费">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="showOrHideShopTableView:" destination="1" eventType="touchUpInside" id="tBd-Rk-3m4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" id="e48-IW-QDc">
                     <rect key="frame" x="0.0" y="163" width="320" height="338"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fBs-8f-48P">
-                            <rect key="frame" x="239" y="288" width="55" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="取消">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="cancle:" destination="1" eventType="touchUpInside" id="ahN-fy-rlF"/>
-                            </connections>
-                        </button>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="祝你生日快乐！" id="tRn-1O-xmY">
                             <rect key="frame" x="67" y="74" width="240" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -98,17 +94,6 @@
                                 <action selector="addContact:" destination="1" eventType="touchUpInside" id="W7I-Fi-hGr"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ufw-Li-HWM">
-                            <rect key="frame" x="61" y="288" width="69" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="确认支付">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="confirm:" destination="1" eventType="touchUpInside" id="FQx-ZQ-d4f"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" id="OJS-9d-ct0">
                             <rect key="frame" x="9" y="48" width="303" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -123,7 +108,10 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomContainerView" destination="e48-IW-QDc" id="d0H-70-vcM"/>
+                <outlet property="chooseMoneySegmentControl" destination="UWH-P5-WZf" id="DBd-g2-Q8f"/>
+                <outlet property="handleView" destination="qjC-3L-tV5" id="giq-9t-BwX"/>
                 <outlet property="textViewMessage" destination="tRn-1O-xmY" id="FcA-UM-PjC"/>
+                <outlet property="topContainerView" destination="MDA-fx-cWJ" id="4zK-5B-QBX"/>
             </connections>
         </view>
     </objects>

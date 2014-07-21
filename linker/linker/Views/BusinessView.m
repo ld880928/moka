@@ -25,9 +25,9 @@
     view_.businessViewState = BusinessViewState_DetailHide;
     view_.labelName.text = [datas_ objectForKey:@"name"];
     view_.labelTitle.text = [datas_ objectForKey:@"title"];
-    view_.buttonDetail.layer.borderColor = [UIColor whiteColor].CGColor;
-    view_.buttonDetail.layer.borderWidth = 1.0f;
-    view_.buttonDetail.layer.cornerRadius = 5.0f;
+    [view_.buttonDetail setBorderWithColor:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:.3f]
+                               borderWidth:1.0f
+                              cornerRadius:5.0f];
     view_.bottom_y = view_.bottomContainerView.frame.origin.y;
     view_.detailView = [BusinessViewDetailView businessViewDetailView];
     [view_ addSubview:view_.detailView];

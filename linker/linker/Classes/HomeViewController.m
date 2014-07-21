@@ -41,7 +41,6 @@
         viewController.loginSuccessBlock = ^{
             [containerWindow disAppear];
         };
-        viewController.containerWindow = containerWindow;
         [containerWindow show];
         
     }

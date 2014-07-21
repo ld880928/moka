@@ -26,4 +26,11 @@ static char overviewKey;
         block();
     }
 }
+
+- (void)setBorderWithColor:(UIColor *)color_ borderWidth:(CGFloat)width_ cornerRadius:(CGFloat)cornerRadius_
+{
+    self.layer.borderColor = color_.CGColor;
+    self.layer.borderWidth = width_;
+    self.layer.cornerRadius = cornerRadius_;
+}
 @end
