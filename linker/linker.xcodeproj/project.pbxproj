@@ -905,11 +905,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-				);
-				ONLY_ACTIVE_ARCH = YES;
+				LIBRARY_SEARCH_PATHS = /Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7A1D673F-1CC3-42A4-9A57-FEAA68338033";
@@ -929,11 +926,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-				);
-				ONLY_ACTIVE_ARCH = YES;
+				LIBRARY_SEARCH_PATHS = /Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7A1D673F-1CC3-42A4-9A57-FEAA68338033";

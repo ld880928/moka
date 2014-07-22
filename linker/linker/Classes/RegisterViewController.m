@@ -36,16 +36,9 @@
         [self.navigationController popViewControllerAnimated:YES];
     }];
     
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(0, 0, 26.0f, 42.0f);
-    backBtn.tintColor = [UIColor redColor];
-    [backBtn setImage:[UIImage imageNamed:@"blueback"] forState:UIControlStateNormal];
-    [backBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
-        [self.navigationController popViewControllerAnimated:YES];
-    }];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    
+}
+- (IBAction)back:(id)sender {
+            [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

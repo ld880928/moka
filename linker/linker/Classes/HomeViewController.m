@@ -41,7 +41,7 @@
         viewController.loginSuccessBlock = ^{
             [containerWindow disAppear];
         };
-        [containerWindow show];
+        [containerWindow showWithStautsBar:YES];
         
     }
 }
@@ -93,7 +93,7 @@
             [containerWindow disAppear];
         };
         
-        [containerWindow show];
+        [containerWindow showWithStautsBar:NO];
         
     }];
     
@@ -141,7 +141,7 @@
             [containerWindow disAppear];
         };
         
-        [containerWindow show];
+        [containerWindow showWithStautsBar:NO];
         
     }
     else

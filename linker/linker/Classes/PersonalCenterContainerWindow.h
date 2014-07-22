@@ -12,7 +12,7 @@
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController_;
 
-- (void)show;
+- (void)showWithStautsBar:(BOOL)showStautsBar;
 - (void)disAppear;
 
 @end

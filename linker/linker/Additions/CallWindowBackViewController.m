@@ -63,7 +63,7 @@
             }
             else if(speed_y < -1 * 200)
             {
-                [(PersonalCenterContainerWindow *)self.containerWindow show];
+                [(PersonalCenterContainerWindow *)self.containerWindow showWithStautsBar:NO];
             }
             else
             {
@@ -72,7 +72,7 @@
                 businessWindow_y = businessWindow_y > self.containerWindow.bounds.size.height ? self.containerWindow.bounds.size.height : businessWindow_y;
                 if (businessWindow_y < self.view.frame.size.height / 2) {
                     
-                    [(PersonalCenterContainerWindow *)self.containerWindow show];
+                    [(PersonalCenterContainerWindow *)self.containerWindow showWithStautsBar:NO];
                 }
                 else
                 {

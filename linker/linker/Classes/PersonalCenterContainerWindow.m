@@ -35,7 +35,7 @@
     return self;
 }
 
-- (void)show
+- (void)showWithStautsBar:(BOOL)showStautsBar
 {
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setHandle:self];
     
@@ -45,10 +45,19 @@
     [self makeKeyAndVisible];
     
     POPBasicAnimation *animationToTop = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
-    animationToTop.toValue = [NSValue valueWithCGRect:CGRectMake(0,
-                                                                 0,
-                                                                 bounds.size.width,
-                                                                 bounds.size.height)];
+    if (showStautsBar) {
+        animationToTop.toValue = [NSValue valueWithCGRect:CGRectMake(0,
+                                                                     20,
+                                                                     bounds.size.width,
+                                                                     bounds.size.height - 20)];
+    }
+    else
+    {
+        animationToTop.toValue = [NSValue valueWithCGRect:CGRectMake(0,
+                                                                     0,
+                                                                     bounds.size.width,
+                                                                     bounds.size.height)];
+    }
     
     [animationToTop setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
 

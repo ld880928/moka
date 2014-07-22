@@ -70,7 +70,7 @@
                     viewController.callWindowBackBlock = ^{
                         [containerWindow disAppear];
                     };
-                    [containerWindow show];
+                    [containerWindow showWithStautsBar:NO];
                     
                 }
                     break;
@@ -82,7 +82,7 @@
                     viewController.callWindowBackBlock = ^{
                         [containerWindow disAppear];
                     };
-                    [containerWindow show];
+                    [containerWindow showWithStautsBar:NO];
 
                 }
                     break;
@@ -96,7 +96,7 @@
                         [containerWindow disAppear];
                     };
                     viewController.containerWindow = containerWindow;
-                    [containerWindow show];
+                    [containerWindow showWithStautsBar:NO];
                     
 
                 }
@@ -111,7 +111,7 @@
                         [containerWindow disAppear];
                     };
                     viewController.containerWindow = containerWindow;
-                    [containerWindow show];
+                    [containerWindow showWithStautsBar:NO];
                     
                     
                 }

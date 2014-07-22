@@ -18,9 +18,18 @@
 
 @implementation LoginViewController
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.navigationController.navigationBarHidden = YES;
+    
 	// Do any additional setup after loading the view.
     [self.buttonLogin setBorderWithColor:[UIColor colorWithRed:67.0f / 255.0f green:140.0f / 255.0f blue:220.0f / 255.0f alpha:1.0f]
                                borderWidth:1.0f
