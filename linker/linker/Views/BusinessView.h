@@ -21,6 +21,7 @@ typedef enum {
 @property (assign,nonatomic)BusinessViewState businessViewState;
 @property(nonatomic,strong)BusinessViewDetailView *detailView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundMaskImageView;
 @property (weak, nonatomic) IBOutlet UIView *bottomContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *labelName;
 @property (weak, nonatomic) IBOutlet UILabel *labelTitle;

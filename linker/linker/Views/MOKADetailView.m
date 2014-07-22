@@ -10,6 +10,7 @@
 
 @interface MOKADetailView ()
 
+@property (weak, nonatomic) IBOutlet UIButton *qrCodeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @end
 
@@ -20,12 +21,7 @@
     MOKADetailView *view = [[[NSBundle mainBundle] loadNibNamed:@"MOKADetailView" owner:self options:nil] lastObject];
     
     view.backgroundImageView.image = [UIImage imageNamed:data_];
-    
-    UISwipeGestureRecognizer *swipeGes = [[UISwipeGestureRecognizer alloc] initWithTarget:view
-                                                                                   action:@selector(back:)];
-    swipeGes.direction = UISwipeGestureRecognizerDirectionDown;
-    [view addGestureRecognizer:swipeGes];
-    
+    view.qrCodeButton.layer.cornerRadius = 5.0f;
     return view;
 }
 
@@ -36,7 +32,7 @@
     }
 }
 
-- (void)back:(UISwipeGestureRecognizer *)ges
+- (IBAction)back:(id)sender
 {
     if (self.backBlock) {
         self.backBlock();

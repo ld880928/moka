@@ -11,6 +11,8 @@
 #import "POP/POP.h"
 #import "RecivedMOKACell.h"
 #import "CustomLayout.h"
+#import "MOKADetailView.h"
+#import "MOKADetailViewController.h"
 
 @interface RecivedMOKAViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *recivedMOKACollectionView;
@@ -60,13 +62,18 @@
     for (int i=0; i < self.mokaDatasArray.count; i++) {
         
         UIImage *image = [UIImage imageNamed:@"shop_icon_1"];
-        
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
         imageView.image = image;
-        
         imageView.center = CGPointMake(320.0f * i + 320.0f / 2, 45.0f / 2 + 20);
-        
         [self.iconsScrollView addSubview:imageView];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 21.0f)];
+        label.text = @"仟吉西饼";
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:14.0f];
+        label.center = CGPointMake(320.0f * i + 320.0f / 2, (45.0f + 30.0f) + 21.0f / 2);
+        [self.iconsScrollView addSubview:label];
     }
     
     self.iconsScrollView.contentSize = CGSizeMake(320.0f * self.mokaDatasArray.count, 128.0f);
@@ -98,26 +105,33 @@
     
     RecivedMOKACell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cell_id forIndexPath:indexPath];
     
-    cell.backgroundImageView.image = [UIImage imageNamed:[self.mokaDatasArray objectAtIndex:indexPath.item]];
+    MOKADetailView *detailView = [MOKADetailView MOKADetailViewWithData:[self.mokaDatasArray objectAtIndex:indexPath.item]];
+    detailView.transform = CGAffineTransformMakeScale(190.0f / 320.0f, 340.0f / 568.0f);
+    detailView.center = CGPointMake(cell.contentView.bounds.size.width / 2, cell.contentView.bounds.size.height / 2);
+    cell.viewContent = detailView;
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
+{    
+    [self performSegueWithIdentifier:@"MOKADetailViewControllerSegue" sender:[self.mokaDatasArray objectAtIndex:indexPath.item]];
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    if ([segue.identifier isEqualToString:@"MOKADetailViewControllerSegue"]) {
+        MOKADetailViewController *controller = segue.destinationViewController;
+        controller.data = sender;
+    }
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
 
 @end

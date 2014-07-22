@@ -373,12 +373,33 @@
                     <connections>
                         <outlet property="iconsScrollView" destination="bbU-AN-lad" id="RRR-TP-2F9"/>
                         <outlet property="recivedMOKACollectionView" destination="4aI-la-V8P" id="g6G-e9-b5G"/>
-                        <segue destination="C1J-Ys-b7J" kind="modal" identifier="MOKADetailMessageViewController" modalTransitionStyle="flipHorizontal" id="JMj-Ft-std"/>
+                        <segue destination="IxY-tg-7hK" kind="modal" identifier="MOKADetailViewControllerSegue" customClass="EmptySegue" modalTransitionStyle="crossDissolve" id="Pfe-5a-c4Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10j-HP-14z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="97" y="-951"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="1fS-7S-f4l">
+            <objects>
+                <viewController id="IxY-tg-7hK" customClass="MOKADetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y4R-EF-q4Q"/>
+                        <viewControllerLayoutGuide type="bottom" id="jLZ-yh-TlN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kYT-8t-sLr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="C1J-Ys-b7J" kind="modal" identifier="MOKADetailMessageViewControllerSegue" modalTransitionStyle="flipHorizontal" id="eKe-xr-54O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HXG-c4-8Hv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="-570"/>
         </scene>
         <!--Personal Center Table View Controller-->
         <scene sceneID="57U-V7-IpB">
@@ -430,7 +451,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我送出的摩卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O77-tP-gTf">
-                                                    <rect key="frame" x="53" y="12" width="123" height="21"/>
+                                                    <rect key="frame" x="60" y="12" width="123" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -653,7 +674,7 @@
                     <connections>
                         <outlet property="iconsScrollView" destination="6S5-bf-N98" id="Ddv-Ko-Dmo"/>
                         <outlet property="recivedMOKACollectionView" destination="s9n-aJ-EIC" id="cA7-tr-FZW"/>
-                        <segue destination="C1J-Ys-b7J" kind="modal" identifier="MOKADetailMessageViewController" modalTransitionStyle="flipHorizontal" id="ITs-K5-K3J"/>
+                        <segue destination="IxY-tg-7hK" kind="modal" identifier="MOKADetailViewControllerSegue" modalTransitionStyle="crossDissolve" id="wwt-lV-h6V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcC-dN-npH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -733,7 +754,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qmt-2C-83l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="-559"/>
+            <point key="canvasLocation" x="1314" y="-570"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="4r7-hA-xe5">
@@ -933,7 +954,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ITs-K5-K3J"/>
+        <segue reference="wwt-lV-h6V"/>
         <segue reference="t4W-40-3Yq"/>
     </inferredMetricsTieBreakers>
 </document>

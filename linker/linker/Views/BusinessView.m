@@ -65,6 +65,12 @@
                                                     backgroundY,
                                                     self.backgroundImageView.bounds.size.width,
                                                     self.backgroundImageView.bounds.size.height);
+        
+        self.backgroundMaskImageView.frame = CGRectMake(self.backgroundMaskImageView.frame.origin.x,
+                                                    backgroundY,
+                                                    self.backgroundMaskImageView.bounds.size.width,
+                                                    self.backgroundMaskImageView.bounds.size.height);
+        self.backgroundMaskImageView.alpha = 1 - percent;
     }
 }
 

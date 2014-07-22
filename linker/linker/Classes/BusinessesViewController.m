@@ -10,6 +10,7 @@
 #import "BusinessWindow.h"
 #import "BusinessView.h"
 #import "BusinessDetailViewController.h"
+#import "UIImage+ImageEffects.h"
 
 @interface BusinessesViewController ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *businessesScrollView;
@@ -51,6 +52,7 @@
         view_.userInteractionEnabled = YES;
 
         view_.backgroundImageView.image = [UIImage imageNamed:[businessItem objectForKey:@"background"]];
+        view_.backgroundMaskImageView.image = [view_.backgroundImageView.image applyBlurWithRadius:20.0f tintColor:[UIColor clearColor] saturationDeltaFactor:.5f maskImage:nil];
         
         [self.businessesScrollView addSubview:view_];
         

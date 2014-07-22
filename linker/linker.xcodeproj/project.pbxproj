@@ -50,6 +50,8 @@
 		3B5C15FB19550EE400F91646 /* SendedMOKAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */; };
 		3B5C15FE19550F0F00F91646 /* RefundProcessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */; };
 		3B5C160119550F2C00F91646 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */; };
+		3B5C9DF7197E034B0018F194 /* MOKADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DF6197E034B0018F194 /* MOKADetailViewController.m */; };
+		3B5C9DFD197E2AD20018F194 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */; };
 		3BB4864F19409CC400D3054F /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB4864C19409CC400D3054F /* libbaidumapapi.a */; };
 		3BB4865019409CC400D3054F /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864D19409CC400D3054F /* mapapi.bundle */; };
 		3BB4865119409CC400D3054F /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864E19409CC400D3054F /* readme.txt */; };
@@ -152,6 +154,10 @@
 		3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundProcessViewController.m; sourceTree = "<group>"; };
 		3B5C15FF19550F2C00F91646 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
 		3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		3B5C9DF5197E034B0018F194 /* MOKADetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKADetailViewController.h; sourceTree = "<group>"; };
+		3B5C9DF6197E034B0018F194 /* MOKADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailViewController.m; sourceTree = "<group>"; };
+		3B5C9DFB197E2AD20018F194 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		3BB4861119409CC400D3054F /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		3BB4861219409CC400D3054F /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		3BB4861319409CC400D3054F /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -285,6 +291,8 @@
 		3B2640B21935B43000F88024 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				3B5C9DFB197E2AD20018F194 /* UIImage+ImageEffects.h */,
+				3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */,
 				3BB6637D19376E3B0093C33F /* EmptySegue.h */,
 				3BB6637E19376E3B0093C33F /* EmptySegue.m */,
 				3B2640B31935B43000F88024 /* UIButton+Block.h */,
@@ -463,6 +471,8 @@
 				02793BA1197D6D0200B2AC39 /* RecivedMOKACell.h */,
 				02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */,
 				02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */,
+				3B5C9DF5197E034B0018F194 /* MOKADetailViewController.h */,
+				3B5C9DF6197E034B0018F194 /* MOKADetailViewController.m */,
 				3B5C15F919550EE400F91646 /* SendedMOKAViewController.h */,
 				3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */,
 				3B119C8C1957256C00077226 /* MOKADetailMessageViewController.h */,
@@ -720,6 +730,7 @@
 			files = (
 				021DB88B196058730061D297 /* LightStateBarNavigationController.m in Sources */,
 				021DB88819604A5C0061D297 /* CallWindowBackViewController.m in Sources */,
+				3B5C9DFD197E2AD20018F194 /* UIImage+ImageEffects.m in Sources */,
 				3B119C8E1957256C00077226 /* MOKADetailMessageViewController.m in Sources */,
 				3BC7D8591932310500AD5FB6 /* BusinessView.m in Sources */,
 				3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */,
@@ -737,6 +748,7 @@
 				3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */,
+				3B5C9DF7197E034B0018F194 /* MOKADetailViewController.m in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
 				3B5C15FE19550F0F00F91646 /* RefundProcessViewController.m in Sources */,
 				3B452B391920FA63008729A9 /* main.m in Sources */,
@@ -888,8 +900,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Riyan Abraham (TXAUV6W85D)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Riyan Abraham (TXAUV6W85D)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jim Min (76NDZXKT6H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jim Min (76NDZXKT6H)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
@@ -897,6 +909,7 @@
 					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7A1D673F-1CC3-42A4-9A57-FEAA68338033";
@@ -920,6 +933,7 @@
 					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7A1D673F-1CC3-42A4-9A57-FEAA68338033";
