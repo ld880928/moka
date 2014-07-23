@@ -29,6 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     MOKADetailView *detailView = [MOKADetailView MOKADetailViewWithData:self.data];
+    
+    if (self.isMime) {
+        detailView.buttonRefuseProcess.hidden = NO;
+    }
+    
+    if (self.status) {
+        detailView.imageViewStatus.hidden = NO;
+        detailView.imageViewStatus.image = [UIImage imageNamed:self.status];
+    }
+    
     [detailView setBackBlock:^{
         [self dismissViewControllerAnimated:YES completion:^{
             

@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *qrCodeButton;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 @end
 
 @implementation MOKADetailView
@@ -22,6 +23,13 @@
     
     view.backgroundImageView.image = [UIImage imageNamed:data_];
     view.qrCodeButton.layer.cornerRadius = 5.0f;
+    view.buttonRefuseProcess.layer.cornerRadius = 2.0f;
+    [view.buttonRefuseProcess handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"申请退款" message:@"您是否真的要将此张摩卡作退款处理？一旦确定，你的朋友将无法收到他。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+        [alertView show];
+        
+    }];
     return view;
 }
 

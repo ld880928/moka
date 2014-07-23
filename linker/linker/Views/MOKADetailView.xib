@@ -134,12 +134,28 @@
                         <action selector="back:" destination="iN0-l3-epB" eventType="touchUpInside" id="qjI-iZ-iWz"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UB6-77-nhH">
+                    <rect key="frame" x="128" y="525" width="65" height="25"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="申请退款">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zyV-if-Exi">
+                    <rect key="frame" x="210" y="0.0" width="110" height="110"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
                 <outlet property="backgroundImageView" destination="Mq0-2U-me4" id="NOq-rM-lTe"/>
+                <outlet property="buttonRefuseProcess" destination="UB6-77-nhH" id="7fp-Kp-9yu"/>
+                <outlet property="imageViewStatus" destination="zyV-if-Exi" id="qm2-SL-2HS"/>
                 <outlet property="qrCodeButton" destination="3ke-Kk-Fbe" id="4qK-yf-AhG"/>
             </connections>
         </view>

@@ -106,6 +106,12 @@
     RecivedMOKACell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cell_id forIndexPath:indexPath];
     
     MOKADetailView *detailView = [MOKADetailView MOKADetailViewWithData:[self.mokaDatasArray objectAtIndex:indexPath.item]];
+    
+    if (indexPath.item == 1) {
+        detailView.imageViewStatus.hidden = NO;
+        detailView.imageViewStatus.image = [UIImage imageNamed:@"mokastatus_3"];
+    }
+    
     detailView.transform = CGAffineTransformMakeScale(190.0f / 320.0f, 340.0f / 568.0f);
     detailView.center = CGPointMake(cell.contentView.bounds.size.width / 2, cell.contentView.bounds.size.height / 2);
     cell.viewContent = detailView;
@@ -115,7 +121,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {    
-    [self performSegueWithIdentifier:@"MOKADetailViewControllerSegue" sender:[self.mokaDatasArray objectAtIndex:indexPath.item]];
+    [self performSegueWithIdentifier:@"MOKADetailViewControllerSegue" sender:indexPath];
 }
 
 
@@ -127,7 +133,12 @@
 {
     if ([segue.identifier isEqualToString:@"MOKADetailViewControllerSegue"]) {
         MOKADetailViewController *controller = segue.destinationViewController;
-        controller.data = sender;
+        
+        NSIndexPath *indexPath = sender;
+        if (indexPath.item == 1) {
+            controller.status = @"mokastatus_3";
+        }
+        controller.data = [self.mokaDatasArray objectAtIndex:indexPath.item];
     }
     
     // Get the new view controller using [segue destinationViewController].

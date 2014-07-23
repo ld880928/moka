@@ -9,10 +9,23 @@
 #import "ChangePasswordViewController.h"
 
 @interface ChangePasswordViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *buttonConfirm;
 
 @end
 
 @implementation ChangePasswordViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (IBAction)back:(id)sender
+{
+    if (self.callWindowBackBlock) {
+        self.callWindowBackBlock();
+    }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.
+    [self.buttonConfirm setBorderWithColor:[UIColor colorWithRed:67.0f / 255.0f green:140.0f / 255.0f blue:220.0f / 255.0f alpha:1.0f]
+                             borderWidth:1.0f
+                            cornerRadius:5.0f];
 }
 
 - (void)didReceiveMemoryWarning

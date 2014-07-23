@@ -12,7 +12,8 @@
 
 @property(nonatomic,copy)void(^gotoDetailBlock)();
 @property(nonatomic,copy)void(^backBlock)();
-
+@property (weak, nonatomic) IBOutlet UIButton *buttonRefuseProcess;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewStatus;
 + (instancetype)MOKADetailViewWithData:(id)data_;
 
 @end

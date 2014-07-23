@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CallWindowBackViewController.h"
 
-@interface ChangePasswordViewController : CallWindowBackViewController
-
+@interface ChangePasswordViewController : UIViewController
+@property(nonatomic,copy)void (^callWindowBackBlock)();
 @end

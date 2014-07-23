@@ -24,6 +24,7 @@
 		3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B41935B43000F88024 /* UIButton+Block.m */; };
 		3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B61935B43000F88024 /* UIView+TopRadius.m */; };
 		3B29EC0019420B97006054A1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EBFF19420B97006054A1 /* Reachability.m */; };
+		3B2B4531197F7DB100E13D6B /* RefundProcessCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2B4530197F7DB100E13D6B /* RefundProcessCell.m */; };
 		3B2EB144192250A1008E4048 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EB143192250A1008E4048 /* HomeViewController.m */; };
 		3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399DFC192FADE100A96C18 /* BusinessDetailView.m */; };
 		3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */; };
@@ -117,6 +118,8 @@
 		3B2640B91935B44A00F88024 /* Utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		3B29EBFE19420B97006054A1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		3B29EBFF19420B97006054A1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		3B2B452F197F7DB100E13D6B /* RefundProcessCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefundProcessCell.h; sourceTree = "<group>"; };
+		3B2B4530197F7DB100E13D6B /* RefundProcessCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefundProcessCell.m; sourceTree = "<group>"; };
 		3B2EB142192250A1008E4048 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		3B2EB143192250A1008E4048 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		3B399DFB192FADE100A96C18 /* BusinessDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailView.h; sourceTree = "<group>"; };
@@ -479,6 +482,8 @@
 				3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */,
 				3B5C15FC19550F0F00F91646 /* RefundProcessViewController.h */,
 				3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */,
+				3B2B452F197F7DB100E13D6B /* RefundProcessCell.h */,
+				3B2B4530197F7DB100E13D6B /* RefundProcessCell.m */,
 				3B5C15FF19550F2C00F91646 /* ChangePasswordViewController.h */,
 				3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */,
 			);
@@ -757,6 +762,7 @@
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
+				3B2B4531197F7DB100E13D6B /* RefundProcessCell.m in Sources */,
 				3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */,
 				3BB4865D1940B80200D3054F /* LoginViewController.m in Sources */,
 				3BB486541940A73F00D3054F /* PersonalCenterViewController.m in Sources */,

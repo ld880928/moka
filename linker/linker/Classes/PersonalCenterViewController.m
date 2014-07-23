@@ -95,8 +95,7 @@
                     viewController.callWindowBackBlock = ^{
                         [containerWindow disAppear];
                     };
-                    viewController.containerWindow = containerWindow;
-                    [containerWindow showWithStautsBar:NO];
+                    [containerWindow showWithStautsBar:YES];
                     
 
                 }
@@ -110,8 +109,7 @@
                     viewController.callWindowBackBlock = ^{
                         [containerWindow disAppear];
                     };
-                    viewController.containerWindow = containerWindow;
-                    [containerWindow showWithStautsBar:NO];
+                    [containerWindow showWithStautsBar:YES];
                     
                     
                 }

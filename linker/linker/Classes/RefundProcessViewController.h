@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CallWindowBackViewController.h"
 
-@interface RefundProcessViewController : CallWindowBackViewController
-
+@interface RefundProcessViewController : UIViewController
+@property(nonatomic,copy)void (^callWindowBackBlock)();
 @end
