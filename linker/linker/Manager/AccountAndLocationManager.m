@@ -24,6 +24,14 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         sharedAccountAndLocationManager = [[self alloc] init];
+        
+        //初始设置北京为默认选中的城市
+        if (![sharedAccountAndLocationManager currentSelectedCity]) {
+            ZCity *zCity = [[ZCity alloc] init];
+            zCity.cityID = @"5";
+            zCity.cityName = @"北京";
+            [sharedAccountAndLocationManager saveCurrentSelectedCity:zCity];
+        }
     });
     
     return sharedAccountAndLocationManager;
@@ -40,14 +48,18 @@
     return reachability.currentReachabilityStatus;
 }
 
-- (NSString *)currentSelectedCity
+- (ZCity *)currentSelectedCity
 {
-    return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_CITY_CURRENT_SELECTED];
+    
+    NSData *cityData = [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_CITY_CURRENT_SELECTED];
+    ZCity *city = [NSKeyedUnarchiver unarchiveObjectWithData:cityData];
+    return city;
 }
 
-- (void)saveCurrentSelectedCity:(NSString *)currentSelectedCity
+- (void)saveCurrentSelectedCity:(ZCity *)currentSelectedCity
 {
-    [MOKA_USERDEFAULTS setObject:currentSelectedCity forKey:MOKA_KEY_CITY_CURRENT_SELECTED];
+    NSData *cityData = [NSKeyedArchiver archivedDataWithRootObject:currentSelectedCity];
+    [MOKA_USERDEFAULTS setObject:cityData forKey:MOKA_KEY_CITY_CURRENT_SELECTED];
 }
 
 - (NSString *)password

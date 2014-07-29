@@ -7,70 +7,67 @@
 //
 
 #import "ChooseCityViewController.h"
-#import "BMapKit.h"
 
-@interface ChooseCityViewController ()<BMKLocationServiceDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ChooseCityViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
-@property(nonatomic,strong)BMKLocationService *locationService;
 @property(nonatomic,strong)NSString *currentCity;
-@property(nonatomic,strong)NSArray *hotCityArray;
+@property(nonatomic,strong)NSMutableArray *hotCityArray;
 @end
 
 @implementation ChooseCityViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.locationService = [[BMKLocationService alloc] init];
-    self.locationService.delegate = self;
+    [self setNeedsStatusBarAppearanceUpdate];
+
+    self.hotCityArray = [[[CommonDataManager alloc] init] selectAllCitys];
     
-    self.hotCityArray = @[@"上海",@"武汉",@"广州",@"深圳",@"成都",@"重庆",@"天津",@"杭州"];
+    [self.locationsTableView reloadData];
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    [manager POST:URL_SUB_GETCITY parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSMutableArray *citys = [NSMutableArray array];
+        for (int i=0; i<[responseObject count]; i++) {
+            ZCity *zCity = [[ZCity alloc] initWithDictionary:[responseObject objectAtIndex:i]];
+            [citys addObject:zCity];
+        }
+        
+        [[[CommonDataManager alloc] init] insertCitys:citys];
+        
+        self.hotCityArray = citys;
+        
+        [self.locationsTableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
     
-    //开启定位功能
-    
-    NSLog(@"进入普通定位态");
 }
 
 - (void)dealloc
 {
-    self.locationService = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.locationService startUserLocationService];
-}
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [self.locationService stopUserLocationService];
-    self.locationService = nil;
-    [super viewWillDisappear:animated];
+    
 }
 
 #pragma mark tableview Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger count = 0;
-    switch (section) {
-        case 0:
-            count = 1;
-            break;
-        case 1:
-            count = self.hotCityArray.count;
-            break;
-        default:
-            break;
-    }
-    
-    return count;
+    return self.hotCityArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,29 +77,21 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_ID];
     }
-    if (indexPath.section == 0) {
-        if (!self.currentCity || self.currentCity.length == 0) {
-            cell.textLabel.text = @"定位中...";
-        }
-        else
-        cell.textLabel.text = self.currentCity;
-    }
-    
-    if (indexPath.section == 1) {
-        cell.textLabel.text = [self.hotCityArray objectAtIndex:indexPath.row];
-    }
+
+    ZCity *zCity = [self.hotCityArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = zCity.cityName;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *cityName = [self.locationsTableView cellForRowAtIndexPath:indexPath].textLabel.text;
-    if ([cityName isEqualToString:@"定位中..."]) {
-        self.chooseCityConmpleteBlock(@"");
-    }
-    else self.chooseCityConmpleteBlock(cityName);
+    ZCity *zCity = [self.hotCityArray objectAtIndex:indexPath.row];
+
+    self.chooseCityConmpleteBlock(zCity);
     
+    [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:zCity];
+
     if (self.callWindowBackBlock) {
         self.callWindowBackBlock();
     }
@@ -116,59 +105,10 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 0) {
-        return @"GPS定位城市";
-    }
-    else if (section == 1) {
-        return @"热门城市";
-    }
-    else
-        return nil;
-    
+
+    return @"热门城市";
+
     //return [@[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z"] objectAtIndex:section];
 }
-
-/**
- *用户位置更新后，会调用此函数
- *@param userLocation 新的用户位置
- */
-- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
-{
-    if (userLocation != nil) {
-		NSLog(@"%f %f", userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude);
-	}
-    
-    CLGeocoder *Geocoder=[[CLGeocoder alloc]init];
-    
-    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
-        
-        for (CLPlacemark *placemark in place) {
-            
-            NSString *cityName = placemark.locality;
-            
-            self.currentCity = cityName;
-            [self.locationsTableView reloadData];
-            
-            break;
-            
-        }
-        
-    };
-    
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
-    
-    [Geocoder reverseGeocodeLocation:loc completionHandler:handler];
-    
-}
-
-/**
- *定位失败后，会调用此函数
- *@param error 错误号
- */
-- (void)didFailToLocateUserWithError:(NSError *)error
-{
-    NSLog(@"%@",error);
-}
-
 
 @end

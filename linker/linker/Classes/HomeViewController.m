@@ -15,9 +15,11 @@
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *navigationTableView;
-@property (nonatomic,strong) NSArray *navigationData;
+@property (nonatomic,strong) NSMutableArray *navigationData;
 
 @property (nonatomic,strong)UIButton *locationBtn;
+@property (nonatomic,strong)ZCity *currentCity;
+
 @end
 
 @implementation HomeViewController
@@ -50,6 +52,10 @@
 {
     [super viewDidLoad];
     
+    self.currentCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
+    self.navigationData = [[[CommonDataManager alloc] init] selectCategoryByCity:self.currentCity];
+    [self.navigationTableView reloadData];
+    
     keyWindowTransform = [[[UIApplication sharedApplication] delegate] window].transform;
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
@@ -60,13 +66,12 @@
     self.navigationTableView.backgroundColor = [UIColor clearColor];
     self.navigationTableView.backgroundView = nil;
     
-    self.navigationData = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"home_data" ofType:@"plist"]];
     
     self.locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:11.0f];
     [self.locationBtn setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
-    NSString *currentCityName = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
-    [self.locationBtn setTitle:currentCityName forState:UIControlStateNormal];
+    
+    [self.locationBtn setTitle:self.currentCity.cityName forState:UIControlStateNormal];
     self.locationBtn.frame = CGRectMake(0, 0, 60, 44);
     
     [self.locationBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
@@ -75,25 +80,27 @@
         ChooseCityViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChooseCityViewController"];
         PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
         
-        [viewController setChooseCityConmpleteBlock:^(NSString *cityName) {
-            if (![cityName isEqualToString:@""]) {
-                [self.locationBtn setTitle:cityName forState:UIControlStateNormal];
-                if (![cityName isEqualToString:[[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity]]) {
-                    [self refreshDataWithCityName:cityName];
-                }
-                else
-                {
-                    [[BusinessWindow sharedBusinessWindow] moveToBottom];
-                }
-                [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:cityName];
+        [viewController setChooseCityConmpleteBlock:^(ZCity *city) {
+            
+            if (![city.cityID isEqualToString:self.currentCity.cityID]) {
+                
+                self.currentCity = city;
+                [self.locationBtn setTitle:self.currentCity.cityName forState:UIControlStateNormal];
+                [self refreshDataWithCity:city];
+                
             }
+            else
+            {
+                [[BusinessWindow sharedBusinessWindow] moveToBottom];
+            }
+            
         }];
 
         viewController.callWindowBackBlock = ^{
             [containerWindow disAppear];
         };
         
-        [containerWindow showWithStautsBar:NO];
+        [containerWindow showWithStautsBar:YES];
         
     }];
     
@@ -115,46 +122,38 @@
         //[[[UIApplication sharedApplication] delegate] window].transform = transform;
     }];
     
-    //检查是否有选中的城市
-    NSString *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
-    if (!currentSelectedCity || !currentSelectedCity.length) {
-        //没有选中城市，第一次安装程序.  弹出选择城市的界面
-        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        ChooseCityViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChooseCityViewController"];
-        PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
-        
-        [viewController setChooseCityConmpleteBlock:^(NSString *cityName) {
-            if (![cityName isEqualToString:@""]) {
-                [self.locationBtn setTitle:cityName forState:UIControlStateNormal];
-                if (![cityName isEqualToString:[[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity]]) {
-                    [self refreshDataWithCityName:cityName];
-                }
-                else
-                {
-                    [[BusinessWindow sharedBusinessWindow] moveToBottom];
-                }
-                [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:cityName];
-            }
-        }];
-        
-        viewController.callWindowBackBlock = ^{
-            [containerWindow disAppear];
-        };
-        
-        [containerWindow showWithStautsBar:NO];
-        
-    }
-    else
-    {
-        //直接刷新列表信息
-        [self refreshDataWithCityName:currentSelectedCity];
-    }
+    //刷新数据
+    ZCity *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
+
+    [self refreshDataWithCity:currentSelectedCity];
+    
 }
 
-- (void)refreshDataWithCityName:(NSString *)cityName
+- (void)refreshDataWithCity:(ZCity *)city_
 {
     //先刷新列表的数据
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
+    [manager POST:URL_SUB_GETCATEGORY parameters:city_.cityID success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSMutableArray *categorys = [NSMutableArray array];
+        for (int i=0; i<[responseObject count]; i++) {
+            ZCategory *zCategory = [[ZCategory alloc] initWithDictionary:[responseObject objectAtIndex:i] city:city_];
+            [categorys addObject:zCategory];
+        }
+        
+        [[[CommonDataManager alloc] init] insertCategorys:categorys];
+        
+        self.navigationData = categorys;
+        
+        [self.navigationTableView reloadData];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
     
     //列表的数据刷新完成以后，选中推荐，window滑上去，刷新推荐商家列表
     [[BusinessWindow sharedBusinessWindow] resetPositionY:0];
@@ -185,15 +184,15 @@
         [cell.contentView addSubview:lineView];
     }
     
-    NSDictionary *dataItem = [self.navigationData objectAtIndex:indexPath.row];
+    ZCategory *category = [self.navigationData objectAtIndex:indexPath.row];
     
-    UIImage *itemImage = [UIImage imageNamed:[dataItem objectForKey:@"iconName"]];
-    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 10.0f, itemImage.size.width, itemImage.size.height)];
+    UIImage *itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.categoryIcon]]];
+    UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 30.0f, 30.0f)];
     iconImageView.image = itemImage;
     [cell.contentView addSubview:iconImageView];
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 10.0f, 50.0f, 29.0f)];
-    titleLabel.text = [dataItem objectForKey:@"textName"];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 10.0f, 200.0f, 29.0f)];
+    titleLabel.text = category.categoryName;
     titleLabel.textColor = [UIColor whiteColor];
     
     [cell.contentView addSubview:titleLabel];

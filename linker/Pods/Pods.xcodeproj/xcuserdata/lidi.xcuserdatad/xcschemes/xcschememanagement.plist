@@ -6,33 +6,43 @@
 	<dict>
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-pop.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>62AB5C95A0F94816A91B6554</key>
+		<key>61EAC1AEA5BF4C61B366D259</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>DC07A7BB703C4137A8AD0BA9</key>
+		<key>B6E75C12F98149D38DD2C061</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E4A55957418B411E92E43365</key>
+		<key>BF9F60864C0E4034B4B43704</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C9DBE985857C479AA2999994</key>
 		<dict>
 			<key>primary</key>
 			<true/>

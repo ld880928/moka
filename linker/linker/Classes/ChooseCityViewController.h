@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CallWindowBackViewController.h"
 
-@interface ChooseCityViewController : CallWindowBackViewController
-@property(nonatomic,copy)void(^chooseCityConmpleteBlock)(NSString *cityName);
+@interface ChooseCityViewController : UIViewController
+@property(nonatomic,copy)void(^callWindowBackBlock)();
+
+@property(nonatomic,copy)void(^chooseCityConmpleteBlock)(ZCity *city);
 @end
