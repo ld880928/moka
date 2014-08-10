@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface ChangePasswordViewController : UIViewController
-@property(nonatomic,copy)void (^callWindowBackBlock)();
 @end

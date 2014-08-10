@@ -7,6 +7,7 @@
 //
 
 #import "ChangePasswordViewController.h"
+#import "BusinessWindow.h"
 
 @interface ChangePasswordViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonConfirm;
@@ -18,20 +19,18 @@
 
 @implementation ChangePasswordViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
-
 - (IBAction)back:(id)sender
 {
     [self.textFiledOldPassword resignFirstResponder];
     [self.textFiledNewPassword resignFirstResponder];
     [self.textFiledNewPasswordConfirm resignFirstResponder];
+    [self.navigationController popViewControllerAnimated:YES];
+    [[BusinessWindow sharedBusinessWindow] hideToShow];
+}
 
-    if (self.callWindowBackBlock) {
-        self.callWindowBackBlock();
-    }
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,6 +46,9 @@
 {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
+    self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
+    
     // Do any additional setup after loading the view.
     [self.buttonConfirm setBorderWithColor:[UIColor colorWithRed:67.0f / 255.0f green:140.0f / 255.0f blue:220.0f / 255.0f alpha:1.0f]
                              borderWidth:1.0f

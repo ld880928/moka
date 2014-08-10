@@ -24,9 +24,15 @@
     return self;
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
     // Do any additional setup after loading the view.
     MOKADetailView *detailView = [MOKADetailView MOKADetailViewWithData:self.data];
     

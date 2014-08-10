@@ -114,8 +114,7 @@
     BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     businessWindow.rootViewController = [storyBoard instantiateViewControllerWithIdentifier:@"BusinessesViewController"];
-    businessWindow.hidden = NO;
-    [businessWindow makeKeyAndVisible];
+    [businessWindow show];
     
     [businessWindow setPositionYChangedCallBackBlock:^(CGFloat percent) {
         //CGAffineTransform transform = CGAffineTransformScale(keyWindowTransform, percent, percent);

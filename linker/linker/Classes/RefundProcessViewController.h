@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface RefundProcessViewController : UIViewController
-@property(nonatomic,copy)void (^callWindowBackBlock)();
 @end

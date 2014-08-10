@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "CallWindowBackViewController.h"
 
-@interface SendedMOKAViewController : CallWindowBackViewController
+@interface SendedMOKAViewController : UIViewController
 
 @end

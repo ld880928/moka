@@ -34,7 +34,6 @@
 {
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     attributes.frame = CGRectMake(BORDER_DISTANCE + 190.0f * indexPath.item + DISTANCE * indexPath.item,0,190.0f , 340.0f);
-    attributes.zIndex = indexPath.item;
     return attributes;
     
 }

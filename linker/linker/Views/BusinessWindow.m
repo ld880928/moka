@@ -11,6 +11,10 @@
 
 #define DISTANCE_BOTTOM 70.0f
 
+@interface BusinessWindow()
+@property(nonatomic,strong)UIWindow *maskWindow;
+@end
+
 @implementation BusinessWindow
 
 - (id)initWithFrame:(CGRect)frame
@@ -18,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.windowLevel = UIWindowLevelStatusBar + 1;
+        self.windowLevel = UIWindowLevelStatusBar + 2;
         [self addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
         [self addObserver:self forKeyPath:@"businessWindowState" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
     }
@@ -40,6 +44,10 @@
         if (self.positionYChangedCallBackBlock) {
             self.positionYChangedCallBackBlock(percent);
         }
+        
+        CGFloat alpha = self.frame.origin.y / ([UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM);
+        self.maskWindow.alpha = (1 - alpha) / 2;
+        
     }
     if ([keyPath isEqualToString:@"businessWindowState"]) {
         BusinessWindowState newState = [[change objectForKey:NSKeyValueChangeNewKey] intValue];
@@ -89,6 +97,10 @@
         } completion:^(BOOL finished) {
             if (completion) {
                 completion(finished);
+                
+                [[[[UIApplication sharedApplication] delegate] window] makeKeyWindow];
+                self.hidden = YES;
+                self.maskWindow.hidden = YES;
             }
         }];
     }
@@ -97,6 +109,9 @@
         [self resetPositionY:self.bounds.size.height];
         if (completion) {
             completion(YES);
+            [[[[UIApplication sharedApplication] delegate] window] makeKeyWindow];
+            self.hidden = YES;
+            self.maskWindow.hidden = YES;
         }
     }
 }
@@ -114,7 +129,7 @@
         if (self.gotoTopFinishedCallBackBlock) {
             self.gotoTopFinishedCallBackBlock(finished);
         }
-
+        [self makeKeyWindow];
     }];
     animationToTop.springBounciness = 1.0f;
     animationToTop.springSpeed = 6.0f;
@@ -134,10 +149,38 @@
         if (self.gotoBottomFinishedCallBackBlock) {
             self.gotoBottomFinishedCallBackBlock(finished);
         }
+        
+        [[[[UIApplication sharedApplication] delegate] window] makeKeyWindow];
+
     }];
     animationToBottom.springBounciness = 9.0f;
     animationToBottom.springSpeed = 6.0f;
     [self pop_addAnimation:animationToBottom forKey:@"animation_bottom"];
+}
+
+- (void)hideToShow
+{
+    self.frame = CGRectMake(0, 568.0f, self.maskWindow.bounds.size.width, self.maskWindow.bounds.size.height);
+    self.maskWindow.frame = CGRectMake(0, 568.0f, self.maskWindow.bounds.size.width, self.maskWindow.bounds.size.height);
+    self.maskWindow.hidden = NO;
+    [self.maskWindow makeKeyAndVisible];
+    self.hidden = NO;
+    
+    [self makeKeyAndVisible];
+    
+}
+
+- (void)show
+{
+    self.maskWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.maskWindow.windowLevel = UIWindowLevelStatusBar + 1;
+    self.maskWindow.backgroundColor = [UIColor blackColor];
+    self.maskWindow.alpha = 0;
+    self.maskWindow.hidden = NO;
+    [self.maskWindow makeKeyAndVisible];
+    
+    self.hidden = NO;
+    [self makeKeyAndVisible];
 }
 
 @end

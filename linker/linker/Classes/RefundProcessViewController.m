@@ -7,6 +7,7 @@
 //
 
 #import "RefundProcessViewController.h"
+#import "BusinessWindow.h"
 
 @interface RefundProcessViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *infoTableView;
@@ -15,16 +16,16 @@
 
 @implementation RefundProcessViewController
 
+- (IBAction)back:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [[BusinessWindow sharedBusinessWindow] hideToShow];
+
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
-}
-
-- (IBAction)back:(id)sender
-{
-    if (self.callWindowBackBlock) {
-        self.callWindowBackBlock();
-    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,6 +41,9 @@
 {
     [super viewDidLoad];
     [self setNeedsStatusBarAppearanceUpdate];
+    self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
+    
     // Do any additional setup after loading the view.
 }
 

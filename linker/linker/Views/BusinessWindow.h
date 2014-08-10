@@ -32,5 +32,7 @@ typedef enum {
 - (void)moveToBottom;
 
 - (void)hide:(BOOL)animated completion:(void (^)(BOOL finished))completion;
+- (void)hideToShow;
 
+- (void)show;
 @end

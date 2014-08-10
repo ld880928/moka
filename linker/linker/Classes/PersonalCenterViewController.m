@@ -10,12 +10,6 @@
 #import "PersonalCenterTableViewController.h"
 #import "BusinessWindow.h"
 
-#import "SendedMOKAViewController.h"
-#import "RecivedMOKAViewController.h"
-#import "RefundProcessViewController.h"
-#import "ChangePasswordViewController.h"
-#import "PersonalCenterContainerWindow.h"
-
 @interface PersonalCenterViewController ()
 @end
 
@@ -64,54 +58,34 @@
             switch (personalCenterType) {
                 case PersonalCenterType_Recived_MOKA:       //我收到的摩卡
                 {
-                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    RecivedMOKAViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"RecivedMOKAViewController"];
-                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
-                    viewController.callWindowBackBlock = ^{
-                        [containerWindow disAppear];
-                    };
-                    [containerWindow showWithStautsBar:NO];
-                    
+                    [self performSegueWithIdentifier:@"RecivedMOKAViewControllerSegue" sender:self];
+                    [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
+                        
+                    }];
                 }
                     break;
                 case PersonalCenterType_Sended_MOKA:        //我送出的摩卡
                 {
-                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    SendedMOKAViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"SendedMOKAViewController"];
-                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
-                    viewController.callWindowBackBlock = ^{
-                        [containerWindow disAppear];
-                    };
-                    [containerWindow showWithStautsBar:NO];
-
+                    [self performSegueWithIdentifier:@"SendedMOKAViewControllerSegue" sender:self];
+                    [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
+                        
+                    }];
                 }
                     break;
                 case PersonalCenterType_Refund_Process:     //退款处理
                 {
-                    
-                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    RefundProcessViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"RefundProcessViewController"];
-                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
-                    viewController.callWindowBackBlock = ^{
-                        [containerWindow disAppear];
-                    };
-                    [containerWindow showWithStautsBar:YES];
-                    
-
+                    [self performSegueWithIdentifier:@"RefundProcessViewControllerSegue" sender:self];
+                    [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
+                        
+                    }];
                 }
                     break;
                 case PersonalCenterType_Change_Password:    //修改密码
                 {
-                    
-                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    ChangePasswordViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
-                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
-                    viewController.callWindowBackBlock = ^{
-                        [containerWindow disAppear];
-                    };
-                    [containerWindow showWithStautsBar:YES];
-                    
-                    
+                    [self performSegueWithIdentifier:@"ChangePasswordViewControllerSegue" sender:self];
+                    [[BusinessWindow sharedBusinessWindow] hide:YES completion:^(BOOL finished) {
+                        
+                    }];
                 }
                     break;
                 case PersonalCenterType_Logout:             //退出

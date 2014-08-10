@@ -28,7 +28,7 @@
     if (self=[super initWithFrame:bounds]) {
         self.frame = CGRectMake(0, bounds.size.height, bounds.size.width, bounds.size.height);
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
-        self.windowLevel = UIWindowLevelStatusBar + 2;
+        self.windowLevel = UIWindowLevelStatusBar + 3;
         self.rootViewController = rootViewController_;
     }
     

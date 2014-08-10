@@ -13,6 +13,7 @@
 #import "CustomLayout.h"
 #import "MOKADetailView.h"
 #import "MOKADetailViewController.h"
+#import "BusinessWindow.h"
 
 @interface SendedMOKAViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *recivedMOKACollectionView;
@@ -28,16 +29,28 @@
     [super viewWillAppear:animated];
 }
 
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
+    
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(15.0f, 15.0f, 23.0f, 40.0f);
+    backBtn.frame = CGRectMake(0, 20.0f, 50.0f, 44.0f);
     [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     [backBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
-        if (self.callWindowBackBlock) {
-            self.callWindowBackBlock();
-        }
+        self.recivedMOKACollectionView.layer.masksToBounds = YES;
+
+        [self.navigationController popViewControllerAnimated:YES];
+        [[BusinessWindow sharedBusinessWindow] hideToShow];
+
     }];
     
     [self.view addSubview:backBtn];
@@ -49,6 +62,7 @@
     CustomLayout *customLayout = [[CustomLayout alloc] init];
     customLayout.mokaDatasArray = self.mokaDatasArray;
     self.recivedMOKACollectionView.collectionViewLayout = customLayout;
+    self.recivedMOKACollectionView.layer.masksToBounds = NO;
     
     [self.recivedMOKACollectionView reloadData];
     
@@ -65,10 +79,28 @@
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
         imageView.image = image;
-        
         imageView.center = CGPointMake(320.0f * i + 320.0f / 2, 45.0f / 2 + 20);
         
+        imageView.layer.shadowOffset = CGSizeMake(5.0, 5.0);
+        imageView.layer.shadowRadius = 5.0;
+        imageView.layer.shadowOpacity = 1.0f;
+        imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+        
         [self.iconsScrollView addSubview:imageView];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 21.0f)];
+        label.text = @"仟吉西饼";
+        label.textColor = [UIColor whiteColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:14.0f];
+        label.center = CGPointMake(320.0f * i + 320.0f / 2, (45.0f + 30.0f) + 21.0f / 2);
+        
+        label.layer.shadowOffset = CGSizeMake(5.0, 5.0);
+        label.layer.shadowRadius = 5.0;
+        label.layer.shadowOpacity = 1.0f;
+        label.layer.shadowColor = [UIColor blackColor].CGColor;
+        
+        [self.iconsScrollView addSubview:label];
     }
     
     self.iconsScrollView.contentSize = CGSizeMake(320.0f * self.mokaDatasArray.count, 128.0f);
@@ -111,6 +143,12 @@
     detailView.transform = CGAffineTransformMakeScale(190.0f / 320.0f, 340.0f / 568.0f);
     detailView.center = CGPointMake(cell.contentView.bounds.size.width / 2, cell.contentView.bounds.size.height / 2);
     cell.viewContent = detailView;
+    
+    cell.layer.masksToBounds = NO;
+    cell.layer.shadowOffset = CGSizeMake(5.0, 5.0);
+    cell.layer.shadowRadius = 5.0;
+    cell.layer.shadowOpacity = 1.0f;
+    cell.layer.shadowColor = [UIColor blackColor].CGColor;
     
     return cell;
 }
