@@ -58,6 +58,13 @@
     
 }
 
+- (IBAction)cancle:(id)sender
+{
+    if (self.callWindowBackBlock) {
+        self.callWindowBackBlock();
+    }
+}
+
 #pragma mark tableview Datasource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

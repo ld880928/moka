@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mWH-Hy-mVo">
-                                <rect key="frame" x="162" y="173" width="70" height="30"/>
+                                <rect key="frame" x="10" y="175" width="70" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="忘记密码?">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -119,7 +119,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="0.5" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o90-J4-fjL">
-                                <rect key="frame" x="240" y="173" width="70" height="30"/>
+                                <rect key="frame" x="240" y="175" width="70" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="注册新用户">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -836,6 +836,9 @@
                     <navigationItem key="navigationItem" title="修改密码" id="ya9-aE-AKe"/>
                     <connections>
                         <outlet property="buttonConfirm" destination="1aV-cf-8lF" id="0TD-gq-Smy"/>
+                        <outlet property="textFiledNewPassword" destination="ttn-w6-ymI" id="c8c-ub-BZa"/>
+                        <outlet property="textFiledNewPasswordConfirm" destination="uKS-FD-ETk" id="BXT-9z-aO1"/>
+                        <outlet property="textFiledOldPassword" destination="LJs-16-RHG" id="8xE-v1-2nL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5zH-SN-J6B" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1035,16 +1038,27 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ecj-h0-6lx">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="570"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="D8G-EK-f85"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="lhO-P1-MP8"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTJ-9b-Tkp">
+                                <rect key="frame" x="250" y="0.0" width="70" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="取消">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancle:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="v2S-ao-hm9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="locationsTableView" destination="ecj-h0-6lx" id="JJ1-rE-UTF"/>
                     </connections>
@@ -1174,7 +1188,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="OES-HW-GKR"/>
         <segue reference="wwt-lV-h6V"/>
-        <segue reference="NXo-VZ-7yB"/>
     </inferredMetricsTieBreakers>
 </document>

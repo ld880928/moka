@@ -10,6 +10,9 @@
 
 @interface ChangePasswordViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonConfirm;
+@property (weak, nonatomic) IBOutlet UITextField *textFiledOldPassword;
+@property (weak, nonatomic) IBOutlet UITextField *textFiledNewPassword;
+@property (weak, nonatomic) IBOutlet UITextField *textFiledNewPasswordConfirm;
 
 @end
 
@@ -22,6 +25,10 @@
 
 - (IBAction)back:(id)sender
 {
+    [self.textFiledOldPassword resignFirstResponder];
+    [self.textFiledNewPassword resignFirstResponder];
+    [self.textFiledNewPasswordConfirm resignFirstResponder];
+
     if (self.callWindowBackBlock) {
         self.callWindowBackBlock();
     }
