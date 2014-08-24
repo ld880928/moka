@@ -10,6 +10,10 @@
 #import "AppDelegate.h"
 #import "POP/POP.h"
 
+@interface PersonalCenterContainerWindow()
+@property(nonatomic,strong)UIWindow *maskWindow;
+@end
+
 @implementation PersonalCenterContainerWindow
 
 - (id)initWithFrame:(CGRect)frame
@@ -28,7 +32,7 @@
     if (self=[super initWithFrame:bounds]) {
         self.frame = CGRectMake(0, bounds.size.height, bounds.size.width, bounds.size.height);
         self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
-        self.windowLevel = UIWindowLevelStatusBar + 3;
+        self.windowLevel = UIWindowLevelStatusBar + 5;
         self.rootViewController = rootViewController_;
     }
     
@@ -37,6 +41,13 @@
 
 - (void)showWithStautsBar:(BOOL)showStautsBar
 {
+    self.maskWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.maskWindow.windowLevel = self.windowLevel - 1;
+    self.maskWindow.backgroundColor = [UIColor clearColor];
+    self.maskWindow.userInteractionEnabled = YES;
+    self.maskWindow.hidden = NO;
+    [self.maskWindow makeKeyAndVisible];
+    
     [(AppDelegate *) [[UIApplication sharedApplication] delegate] setHandle:self];
     
     CGRect bounds = [[UIScreen mainScreen] bounds];
@@ -60,7 +71,9 @@
     }
     
     [animationToTop setCompletionBlock:^(POPAnimation *popAnimation, BOOL finished) {
-
+        self.maskWindow.hidden = YES;
+        [self.maskWindow removeFromSuperview];
+        self.maskWindow = nil;
     }];
     animationToTop.duration = .5f;
     animationToTop.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];

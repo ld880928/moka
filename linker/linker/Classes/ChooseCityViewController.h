@@ -12,5 +12,5 @@
 @interface ChooseCityViewController : UIViewController
 @property(nonatomic,copy)void(^callWindowBackBlock)();
 
-@property(nonatomic,copy)void(^chooseCityConmpleteBlock)(ZCity *city);
+@property(nonatomic,copy)void(^chooseCityConmpleteBlock)(MCity *city);
 @end

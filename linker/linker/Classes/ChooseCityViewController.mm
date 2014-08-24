@@ -27,7 +27,7 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
 
-    self.hotCityArray = [[[CommonDataManager alloc] init] selectAllCitys];
+    self.hotCityArray = [[DataBaseManager sharedManager] getAllCity];
     
     [self.locationsTableView reloadData];
 
@@ -37,11 +37,11 @@
         
         NSMutableArray *citys = [NSMutableArray array];
         for (int i=0; i<[responseObject count]; i++) {
-            ZCity *zCity = [[ZCity alloc] initWithDictionary:[responseObject objectAtIndex:i]];
-            [citys addObject:zCity];
+            MCity *mCity = [[MCity alloc] initWithDictionary:[responseObject objectAtIndex:i]];
+            [citys addObject:mCity];
         }
         
-        [[[CommonDataManager alloc] init] insertCitys:citys];
+        [[DataBaseManager sharedManager] insertCitys:citys];
         
         self.hotCityArray = citys;
         
@@ -85,19 +85,19 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CELL_ID];
     }
 
-    ZCity *zCity = [self.hotCityArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = zCity.cityName;
+    MCity *mCity = [self.hotCityArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = mCity.f_city_name;
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ZCity *zCity = [self.hotCityArray objectAtIndex:indexPath.row];
+    MCity *mCity = [self.hotCityArray objectAtIndex:indexPath.row];
 
-    self.chooseCityConmpleteBlock(zCity);
+    self.chooseCityConmpleteBlock(mCity);
     
-    [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:zCity];
+    [[AccountAndLocationManager sharedAccountAndLocationManager] saveCurrentSelectedCity:mCity];
 
     if (self.callWindowBackBlock) {
         self.callWindowBackBlock();

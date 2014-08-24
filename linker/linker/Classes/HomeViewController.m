@@ -18,7 +18,7 @@
 @property (nonatomic,strong) NSMutableArray *navigationData;
 
 @property (nonatomic,strong)UIButton *locationBtn;
-@property (nonatomic,strong)ZCity *currentCity;
+@property (nonatomic,strong)MCity *currentCity;
 
 @end
 
@@ -53,7 +53,7 @@
     [super viewDidLoad];
     
     self.currentCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
-    self.navigationData = [[[CommonDataManager alloc] init] selectCategoryByCity:self.currentCity];
+    self.navigationData = [[DataBaseManager sharedManager] getCategorysByCity:self.currentCity];
     [self.navigationTableView reloadData];
     
     keyWindowTransform = [[[UIApplication sharedApplication] delegate] window].transform;
@@ -68,10 +68,10 @@
     
     
     self.locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:11.0f];
+    self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
     [self.locationBtn setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     
-    [self.locationBtn setTitle:self.currentCity.cityName forState:UIControlStateNormal];
+    [self.locationBtn setTitle:self.currentCity.f_city_name forState:UIControlStateNormal];
     self.locationBtn.frame = CGRectMake(0, 0, 60, 44);
     
     [self.locationBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
@@ -80,12 +80,12 @@
         ChooseCityViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"ChooseCityViewController"];
         PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:viewController];
         
-        [viewController setChooseCityConmpleteBlock:^(ZCity *city) {
+        [viewController setChooseCityConmpleteBlock:^(MCity *city) {
             
-            if (![city.cityID isEqualToString:self.currentCity.cityID]) {
+            if (![city.f_city_id isEqualToString:self.currentCity.f_city_id]) {
                 
                 self.currentCity = city;
-                [self.locationBtn setTitle:self.currentCity.cityName forState:UIControlStateNormal];
+                [self.locationBtn setTitle:self.currentCity.f_city_name forState:UIControlStateNormal];
                 [self refreshDataWithCity:city];
                 
             }
@@ -122,29 +122,32 @@
     }];
     
     //刷新数据
-    ZCity *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
+    MCity *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
 
     [self refreshDataWithCity:currentSelectedCity];
     
+    //列表的数据刷新完成以后，选中推荐，window滑上去，刷新推荐商家列表
+    [[BusinessWindow sharedBusinessWindow] resetPositionY:0];
+    [[BusinessWindow sharedBusinessWindow] performSelector:@selector(moveToBottom) withObject:self afterDelay:3.0f];
 }
 
-- (void)refreshDataWithCity:(ZCity *)city_
+- (void)refreshDataWithCity:(MCity *)city_
 {
     //先刷新列表的数据
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
-    [manager POST:URL_SUB_GETCATEGORY parameters:city_.cityID success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:URL_SUB_GETCATEGORY parameters:city_.f_city_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSMutableArray *categorys = [NSMutableArray array];
         for (int i=0; i<[responseObject count]; i++) {
-            ZCategory *zCategory = [[ZCategory alloc] initWithDictionary:[responseObject objectAtIndex:i] city:city_];
-            [categorys addObject:zCategory];
+            MCategory *mCategory = [[MCategory alloc] initWithDictionary:[responseObject objectAtIndex:i]];
+            [categorys addObject:mCategory];
         }
         
-        [[[CommonDataManager alloc] init] insertCategorys:categorys];
+        [[DataBaseManager sharedManager] insertCategorys:categorys city:city_];
         
-        self.navigationData = categorys;
+        self.navigationData = [[DataBaseManager sharedManager] getCategorysByCity:self.currentCity];
         
         [self.navigationTableView reloadData];
         
@@ -153,10 +156,7 @@
         NSLog(@"%@",error);
         
     }];
-    
-    //列表的数据刷新完成以后，选中推荐，window滑上去，刷新推荐商家列表
-    [[BusinessWindow sharedBusinessWindow] resetPositionY:0];
-    [[BusinessWindow sharedBusinessWindow] performSelector:@selector(moveToBottom) withObject:self afterDelay:3.0f];
+
 }
 
 #pragma mark tableview delegate  datasource
@@ -183,15 +183,15 @@
         [cell.contentView addSubview:lineView];
     }
     
-    ZCategory *category = [self.navigationData objectAtIndex:indexPath.row];
+    MCategory *category = [self.navigationData objectAtIndex:indexPath.row];
     
-    UIImage *itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.categoryIcon]]];
+    UIImage *itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.f_category_icon]]];
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 30.0f, 30.0f)];
     iconImageView.image = itemImage;
     [cell.contentView addSubview:iconImageView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 10.0f, 200.0f, 29.0f)];
-    titleLabel.text = category.categoryName;
+    titleLabel.text = category.f_category_name;
     titleLabel.textColor = [UIColor whiteColor];
     
     [cell.contentView addSubview:titleLabel];

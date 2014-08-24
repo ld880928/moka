@@ -10,6 +10,9 @@
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldUsername;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
+@property (weak, nonatomic) IBOutlet UITextField *textFieldPasswordConfirm;
 
 @end
 
@@ -39,12 +42,33 @@
                             cornerRadius:5.0f];
     
     [self.buttonRegister handleControlEvent:UIControlEventTouchUpInside withBlock:^{
-        [self.navigationController popViewControllerAnimated:YES];
+        
+        //验证值的有效性
+        
+        NSString *userName = self.textFieldUsername.text;
+        NSString *password = self.textFieldPassword.text;
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+        
+        [manager POST:URL_SUB_REGISTER parameters:@{@"username": userName,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"%@",responseObject);
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
+        
     }];
     
 }
+
 - (IBAction)back:(id)sender {
-            [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

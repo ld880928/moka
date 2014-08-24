@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-@class ZCity;
+@class MCity;
 
 @interface AccountAndLocationManager : NSObject
 
@@ -17,8 +17,8 @@
 - (BOOL)checkGPSAvailable;
 - (BOOL)checkNetworkAvailable;
 
-- (ZCity *)currentSelectedCity;
-- (void)saveCurrentSelectedCity:(ZCity *)currentSelectedCity;
+- (MCity *)currentSelectedCity;
+- (void)saveCurrentSelectedCity:(MCity *)currentSelectedCity;
 
 - (NSString *)userName;
 - (NSString *)password;

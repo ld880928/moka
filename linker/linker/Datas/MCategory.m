@@ -7,13 +7,30 @@
 //
 
 #import "MCategory.h"
-
+#import "FMResultSet.h"
 
 @implementation MCategory
 
-@dynamic categoryID;
-@dynamic categoryIcon;
-@dynamic categoryName;
-@dynamic cityID;
+- (instancetype)initWithFMResultSet:(FMResultSet *)rs_
+{
+    if (self = [super init]) {
+        self.f_category_id        = [rs_ objectForColumnName:@"f_category_id"];
+        self.f_category_icon      = [rs_ objectForColumnName:@"f_category_icon"];
+        self.f_category_name      = [rs_ objectForColumnName:@"f_category_name"];
+        self.f_city_id            = [rs_ objectForColumnName:@"f_city_id"];
+    }
+    return self;
+}
 
+- (instancetype)initWithDictionary:(NSDictionary *)dic_
+{
+    if (self=[super init]) {
+        self.f_category_id   = [dic_ objectForKey:@"id"];
+        self.f_category_icon = [dic_ objectForKey:@"icon"];
+        self.f_category_name = [dic_ objectForKey:@"name"];
+        self.f_city_id       = @"";
+    }
+    
+    return self;
+}
 @end

@@ -46,7 +46,7 @@
         }
         
         CGFloat alpha = self.frame.origin.y / ([UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM);
-        self.maskWindow.alpha = (1 - alpha) / 2;
+        self.maskWindow.alpha = (1 - alpha)/ 1.1;
         
     }
     if ([keyPath isEqualToString:@"businessWindowState"]) {

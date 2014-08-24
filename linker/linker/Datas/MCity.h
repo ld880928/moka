@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
+@class FMResultSet;
 
-@interface MCity : NSManagedObject
+@interface MCity : NSObject <NSCoding>
 
-@property (nonatomic, retain) NSString * cityID;
-@property (nonatomic, retain) NSString * cityName;
+@property (nonatomic, strong) NSString * f_city_id;
+@property (nonatomic, strong) NSString * f_city_name;
+
+- (instancetype)initWithFMResultSet:(FMResultSet *)rs_;
+- (instancetype)initWithDictionary:(NSDictionary *)dic_;
 
 @end

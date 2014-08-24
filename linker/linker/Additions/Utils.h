@@ -14,9 +14,12 @@
 #import "UIImage+UIColor.h"
 
 #import "AccountAndLocationManager.h"
-#import "CommonDataManager.h"
+#import "DataBaseManager.h"
 #import "AFNetworking.h"
 
 #import "MOKAURLs.h"
 #import "Models.h"
+
+#import "SVProgressHUD.h"
+
 #endif

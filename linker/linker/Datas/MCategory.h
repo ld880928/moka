@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+@class FMResultSet;
 
+@interface MCategory : NSObject
 
-@interface MCategory : NSManagedObject
+@property (nonatomic, strong) NSString * f_category_id;
+@property (nonatomic, strong) NSString * f_category_icon;
+@property (nonatomic, strong) NSString * f_category_name;
+@property (nonatomic, strong) NSString * f_city_id;
 
-@property (nonatomic, retain) NSString * categoryID;
-@property (nonatomic, retain) NSString * categoryIcon;
-@property (nonatomic, retain) NSString * categoryName;
-@property (nonatomic, retain) NSString * cityID;
+- (instancetype)initWithFMResultSet:(FMResultSet *)rs_;
+- (instancetype)initWithDictionary:(NSDictionary *)dic_;
 
 @end

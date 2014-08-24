@@ -27,10 +27,10 @@
         
         //初始设置北京为默认选中的城市
         if (![sharedAccountAndLocationManager currentSelectedCity]) {
-            ZCity *zCity = [[ZCity alloc] init];
-            zCity.cityID = @"5";
-            zCity.cityName = @"北京";
-            [sharedAccountAndLocationManager saveCurrentSelectedCity:zCity];
+            MCity *mCity = [[MCity alloc] init];
+            mCity.f_city_id = @"5";
+            mCity.f_city_name = @"北京";
+            [sharedAccountAndLocationManager saveCurrentSelectedCity:mCity];
         }
     });
     
@@ -48,15 +48,15 @@
     return reachability.currentReachabilityStatus;
 }
 
-- (ZCity *)currentSelectedCity
+- (MCity *)currentSelectedCity
 {
     
     NSData *cityData = [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_CITY_CURRENT_SELECTED];
-    ZCity *city = [NSKeyedUnarchiver unarchiveObjectWithData:cityData];
+    MCity *city = [NSKeyedUnarchiver unarchiveObjectWithData:cityData];
     return city;
 }
 
-- (void)saveCurrentSelectedCity:(ZCity *)currentSelectedCity
+- (void)saveCurrentSelectedCity:(MCity *)currentSelectedCity
 {
     NSData *cityData = [NSKeyedArchiver archivedDataWithRootObject:currentSelectedCity];
     [MOKA_USERDEFAULTS setObject:cityData forKey:MOKA_KEY_CITY_CURRENT_SELECTED];

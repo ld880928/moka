@@ -7,18 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0217D9B819A1F45D004ECC77 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0217D9B719A1F45D004ECC77 /* libsqlite3.0.dylib */; };
 		021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */; };
 		021DB88819604A5C0061D297 /* CallWindowBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88719604A5C0061D297 /* CallWindowBackViewController.m */; };
 		021DB88B196058730061D297 /* LightStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88A196058730061D297 /* LightStateBarNavigationController.m */; };
 		02793BA3197D6D0200B2AC39 /* RecivedMOKACell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */; };
 		02793BA5197D6D1C00B2AC39 /* RecivedMOKACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */; };
 		02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA7197D6E9000B2AC39 /* CustomLayout.m */; };
-		02AFB97E198780B3005BB260 /* Common.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB97C198780B3005BB260 /* Common.xcdatamodeld */; };
-		02AFB987198781A6005BB260 /* CommonDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB986198781A6005BB260 /* CommonDataManager.m */; };
-		02AFB98B19878AE5005BB260 /* ZCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB98A19878AE5005BB260 /* ZCity.m */; };
-		02AFB98E19878AFE005BB260 /* ZCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB98D19878AFE005BB260 /* ZCategory.m */; };
 		02AFB9A71987DA07005BB260 /* MCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9A61987DA07005BB260 /* MCategory.m */; };
 		02AFB9AA1987DA08005BB260 /* MCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9A91987DA08005BB260 /* MCity.m */; };
+		02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F62A67199F88B7006FD8A9 /* DataBaseManager.m */; };
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
 		3B085772197CE36E000AAEE8 /* BlackStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */; };
 		3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085774197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m */; };
@@ -94,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0217D9B719A1F45D004ECC77 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		021DB883196041CA0061D297 /* PersonalCenterContainerWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCenterContainerWindow.h; sourceTree = "<group>"; };
 		021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterContainerWindow.m; sourceTree = "<group>"; };
 		021DB88619604A5C0061D297 /* CallWindowBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallWindowBackViewController.h; sourceTree = "<group>"; };
@@ -105,19 +104,15 @@
 		02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecivedMOKACell.xib; sourceTree = "<group>"; };
 		02793BA6197D6E9000B2AC39 /* CustomLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLayout.h; sourceTree = "<group>"; };
 		02793BA7197D6E9000B2AC39 /* CustomLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLayout.m; sourceTree = "<group>"; };
-		02AFB97D198780B3005BB260 /* Common.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Common.xcdatamodel; sourceTree = "<group>"; };
-		02AFB985198781A6005BB260 /* CommonDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDataManager.h; sourceTree = "<group>"; };
-		02AFB986198781A6005BB260 /* CommonDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonDataManager.m; sourceTree = "<group>"; };
-		02AFB98919878AE5005BB260 /* ZCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCity.h; sourceTree = "<group>"; };
-		02AFB98A19878AE5005BB260 /* ZCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCity.m; sourceTree = "<group>"; };
-		02AFB98C19878AFE005BB260 /* ZCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCategory.h; sourceTree = "<group>"; };
-		02AFB98D19878AFE005BB260 /* ZCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCategory.m; sourceTree = "<group>"; };
-		02AFB98F19878B16005BB260 /* Models.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		02AFB9A51987DA07005BB260 /* MCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCategory.h; sourceTree = "<group>"; };
 		02AFB9A61987DA07005BB260 /* MCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCategory.m; sourceTree = "<group>"; };
 		02AFB9A81987DA08005BB260 /* MCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCity.h; sourceTree = "<group>"; };
 		02AFB9A91987DA08005BB260 /* MCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCity.m; sourceTree = "<group>"; };
 		02B98FB9198640480034722A /* MOKAURLs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOKAURLs.h; sourceTree = "<group>"; };
+		02F62A66199F88B7006FD8A9 /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		02F62A67199F88B7006FD8A9 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
+		02F62A6A199F8A29006FD8A9 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
+		02F62A6B199F8A4B006FD8A9 /* MOKASQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKASQL.h; sourceTree = "<group>"; };
 		3B085770197CE36E000AAEE8 /* BlackStateBarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackStateBarNavigationController.h; sourceTree = "<group>"; };
 		3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackStateBarNavigationController.m; sourceTree = "<group>"; };
 		3B085773197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewTopContainerCell.h; sourceTree = "<group>"; };
@@ -284,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0217D9B819A1F45D004ECC77 /* libsqlite3.0.dylib in Frameworks */,
 				3B452BF51920FE76008729A9 /* Security.framework in Frameworks */,
 				3B452BF31920FE64008729A9 /* SystemConfiguration.framework in Frameworks */,
 				3B452BF11920FE56008729A9 /* OpenGLES.framework in Frameworks */,
@@ -313,27 +309,14 @@
 		02AFB97B19878074005BB260 /* Datas */ = {
 			isa = PBXGroup;
 			children = (
-				02AFB985198781A6005BB260 /* CommonDataManager.h */,
-				02AFB986198781A6005BB260 /* CommonDataManager.m */,
-				02AFB97C198780B3005BB260 /* Common.xcdatamodeld */,
 				02AFB9A51987DA07005BB260 /* MCategory.h */,
 				02AFB9A61987DA07005BB260 /* MCategory.m */,
 				02AFB9A81987DA08005BB260 /* MCity.h */,
 				02AFB9A91987DA08005BB260 /* MCity.m */,
+				02F62A6A199F8A29006FD8A9 /* Models.h */,
+				02F62A6B199F8A4B006FD8A9 /* MOKASQL.h */,
 			);
 			path = Datas;
-			sourceTree = "<group>";
-		};
-		02AFB98819878AB6005BB260 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				02AFB98F19878B16005BB260 /* Models.h */,
-				02AFB98919878AE5005BB260 /* ZCity.h */,
-				02AFB98A19878AE5005BB260 /* ZCity.m */,
-				02AFB98C19878AFE005BB260 /* ZCategory.h */,
-				02AFB98D19878AFE005BB260 /* ZCategory.m */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		3B2640B21935B43000F88024 /* Additions */ = {
@@ -433,6 +416,7 @@
 		3B452B2B1920FA63008729A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0217D9B719A1F45D004ECC77 /* libsqlite3.0.dylib */,
 				3B452BF41920FE76008729A9 /* Security.framework */,
 				3B452BF21920FE64008729A9 /* SystemConfiguration.framework */,
 				3B452BF01920FE56008729A9 /* OpenGLES.framework */,
@@ -450,7 +434,6 @@
 		3B452B321920FA63008729A9 /* linker */ = {
 			isa = PBXGroup;
 			children = (
-				02AFB98819878AB6005BB260 /* Models */,
 				02AFB97B19878074005BB260 /* Datas */,
 				3BFB63A91941F4A00087AC36 /* Manager */,
 				3B2640B21935B43000F88024 /* Additions */,
@@ -627,6 +610,8 @@
 		3BFB63A91941F4A00087AC36 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				02F62A66199F88B7006FD8A9 /* DataBaseManager.h */,
+				02F62A67199F88B7006FD8A9 /* DataBaseManager.m */,
 				3B29EBFE19420B97006054A1 /* Reachability.h */,
 				3B29EBFF19420B97006054A1 /* Reachability.m */,
 				3BFB63AA1941F52A0087AC36 /* AccountAndLocationManager.h */,
@@ -795,13 +780,11 @@
 				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
 				3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */,
 				3B5C160119550F2C00F91646 /* ChangePasswordViewController.m in Sources */,
-				02AFB98B19878AE5005BB260 /* ZCity.m in Sources */,
 				3B5C15F819550EC300F91646 /* RecivedMOKAViewController.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
 				3BB486571940A79300D3054F /* UIImage+UIColor.m in Sources */,
 				6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */,
 				3BB6638219376E4F0093C33F /* BusinessViewDetailView.m in Sources */,
-				02AFB987198781A6005BB260 /* CommonDataManager.m in Sources */,
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */,
 				02AFB9A71987DA07005BB260 /* MCategory.m in Sources */,
@@ -813,11 +796,10 @@
 				02793BA3197D6D0200B2AC39 /* RecivedMOKACell.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
-				02AFB97E198780B3005BB260 /* Common.xcdatamodeld in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
 				3B2B4531197F7DB100E13D6B /* RefundProcessCell.m in Sources */,
+				02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */,
 				3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */,
-				02AFB98E19878AFE005BB260 /* ZCategory.m in Sources */,
 				3BB4865D1940B80200D3054F /* LoginViewController.m in Sources */,
 				3BB486541940A73F00D3054F /* PersonalCenterViewController.m in Sources */,
 				3BB486631940BBB500D3054F /* ForgotPasswordViewController.m in Sources */,
@@ -958,6 +940,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A495DDE42D2A496594EAFFED /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jim Min (76NDZXKT6H)";
@@ -965,10 +948,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-				);
+				LIBRARY_SEARCH_PATHS = /Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -982,6 +962,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A495DDE42D2A496594EAFFED /* Pods.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CHENG NAN (222UUNEN4P)";
@@ -989,10 +970,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
-				);
+				LIBRARY_SEARCH_PATHS = /Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1073,19 +1051,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		02AFB97C198780B3005BB260 /* Common.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				02AFB97D198780B3005BB260 /* Common.xcdatamodel */,
-			);
-			currentVersion = 02AFB97D198780B3005BB260 /* Common.xcdatamodel */;
-			path = Common.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 3B452B211920FA63008729A9 /* Project object */;
 }

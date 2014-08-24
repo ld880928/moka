@@ -23,4 +23,15 @@
  */
 #define URL_SUB_GETCATEGORY [URL_BASE stringByAppendingString:@"getcategory"]
 
+/*!
+ *  注册
+ */
+#define URL_SUB_REGISTER [URL_BASE stringByAppendingString:@"apiregister"]
+
+/*!
+ *  登录
+ */
+#define URL_SUB_LOGIN [URL_BASE stringByAppendingString:@"apilogin"]
+
+
 #endif

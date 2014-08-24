@@ -51,18 +51,44 @@
 }
 
 - (IBAction)login:(id)sender {
-    //验证用户名密码，成功后退出登录界面
-    
-    [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:self.textFieldUserName.text];
-    [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:self.textFieldPassword.text];
-    [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
     
     [self.textFieldUserName resignFirstResponder];
     [self.textFieldPassword resignFirstResponder];
     
-    if (self.loginSuccessBlock) {
-        self.loginSuccessBlock();
-    }
+    //验证用户名密码，成功后退出登录界面
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    NSString *userName = self.textFieldUserName.text;
+    NSString *password = self.textFieldPassword.text;
+
+    [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeBlack];
+    
+    [manager POST:URL_SUB_LOGIN parameters:@{@"username": userName,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
+        [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
+        [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
+        
+        [self.textFieldUserName resignFirstResponder];
+        [self.textFieldPassword resignFirstResponder];
+        
+        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+        
+        if (self.loginSuccessBlock) {
+            self.loginSuccessBlock();
+        }
+        
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"登录失败"];
+        
+        NSLog(@"%@",error);
+        
+    }];
+
 }
 
 @end
