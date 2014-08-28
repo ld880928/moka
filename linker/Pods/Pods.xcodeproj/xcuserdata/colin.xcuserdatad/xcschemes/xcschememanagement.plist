@@ -8,21 +8,67 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Pods-FMDB.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Pods-SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0449D1530F854BAC8B878594</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>36D8829730AA434588CB8A21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>453BB2653B7A451F8B88C3DE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>62AB5C95A0F94816A91B6554</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87BCC6AF9AE94EEA9F56B7FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A5CBCE7464354703B36781BD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -33,6 +79,11 @@
 			<true/>
 		</dict>
 		<key>E4A55957418B411E92E43365</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB3BDAAED7C945C3B6DC1536</key>
 		<dict>
 			<key>primary</key>
 			<true/>

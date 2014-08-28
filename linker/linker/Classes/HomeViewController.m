@@ -205,6 +205,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [[BusinessWindow sharedBusinessWindow] moveToTop];
+    
+    NSString *cityID = self.currentCity.f_city_id;
+    NSString *categoryID = [[self.navigationData objectAtIndex:indexPath.row] f_category_id];
+    
+    //请求商家
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": cityID,@"category_id":@"8"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        id a = responseObject;
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
 }
 
 @end

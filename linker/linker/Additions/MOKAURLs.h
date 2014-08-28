@@ -33,5 +33,9 @@
  */
 #define URL_SUB_LOGIN [URL_BASE stringByAppendingString:@"apilogin"]
 
+/*!
+ *  获取商家列表
+ */
+#define URL_SUB_GETMERCHANT [URL_BASE stringByAppendingString:@"getmerchant"]
 
 #endif

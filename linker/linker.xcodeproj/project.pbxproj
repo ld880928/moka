@@ -25,6 +25,8 @@
 		3B119C8B19570A6300077226 /* MOKADetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B119C8A19570A6300077226 /* MOKADetailView.m */; };
 		3B119C8E1957256C00077226 /* MOKADetailMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */; };
 		3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B149C55192E2EB600271741 /* BusinessDetailViewController.m */; };
+		3B22AA4419ADB22200C13A32 /* MMerchant.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B22AA4319ADB22200C13A32 /* MMerchant.m */; };
+		3B22AA4719ADD7F200C13A32 /* MMerchantDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B22AA4619ADD7F200C13A32 /* MMerchantDetail.m */; };
 		3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B41935B43000F88024 /* UIButton+Block.m */; };
 		3B2640B81935B43000F88024 /* UIView+TopRadius.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2640B61935B43000F88024 /* UIView+TopRadius.m */; };
 		3B29EC0019420B97006054A1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B29EBFF19420B97006054A1 /* Reachability.m */; };
@@ -125,6 +127,10 @@
 		3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailMessageViewController.m; sourceTree = "<group>"; };
 		3B149C54192E2EB600271741 /* BusinessDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewController.h; sourceTree = "<group>"; };
 		3B149C55192E2EB600271741 /* BusinessDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailViewController.m; sourceTree = "<group>"; };
+		3B22AA4219ADB22200C13A32 /* MMerchant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMerchant.h; sourceTree = "<group>"; };
+		3B22AA4319ADB22200C13A32 /* MMerchant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMerchant.m; sourceTree = "<group>"; };
+		3B22AA4519ADD7F200C13A32 /* MMerchantDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMerchantDetail.h; sourceTree = "<group>"; };
+		3B22AA4619ADD7F200C13A32 /* MMerchantDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMerchantDetail.m; sourceTree = "<group>"; };
 		3B2640B31935B43000F88024 /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
 		3B2640B41935B43000F88024 /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
 		3B2640B51935B43000F88024 /* UIView+TopRadius.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TopRadius.h"; sourceTree = "<group>"; };
@@ -315,6 +321,10 @@
 				02AFB9A91987DA08005BB260 /* MCity.m */,
 				02F62A6A199F8A29006FD8A9 /* Models.h */,
 				02F62A6B199F8A4B006FD8A9 /* MOKASQL.h */,
+				3B22AA4219ADB22200C13A32 /* MMerchant.h */,
+				3B22AA4319ADB22200C13A32 /* MMerchant.m */,
+				3B22AA4519ADD7F200C13A32 /* MMerchantDetail.h */,
+				3B22AA4619ADD7F200C13A32 /* MMerchantDetail.m */,
 			);
 			path = Datas;
 			sourceTree = "<group>";
@@ -778,6 +788,7 @@
 				3BFB63AC1941F52A0087AC36 /* AccountAndLocationManager.m in Sources */,
 				3B119C8B19570A6300077226 /* MOKADetailView.m in Sources */,
 				3B2640B71935B43000F88024 /* UIButton+Block.m in Sources */,
+				3B22AA4419ADB22200C13A32 /* MMerchant.m in Sources */,
 				3BB6637F19376E3B0093C33F /* EmptySegue.m in Sources */,
 				3B5C160119550F2C00F91646 /* ChangePasswordViewController.m in Sources */,
 				3B5C15F819550EC300F91646 /* RecivedMOKAViewController.m in Sources */,
@@ -807,6 +818,7 @@
 				3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */,
 				3B085772197CE36E000AAEE8 /* BlackStateBarNavigationController.m in Sources */,
 				021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */,
+				3B22AA4719ADD7F200C13A32 /* MMerchantDetail.m in Sources */,
 				3B5C15FB19550EE400F91646 /* SendedMOKAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -948,7 +960,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = /Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
+					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -970,7 +985,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
-				LIBRARY_SEARCH_PATHS = /Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib;
+				LIBRARY_SEARCH_PATHS = (
+					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
+					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
