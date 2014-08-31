@@ -444,6 +444,10 @@ CGFloat SVProgressHUDRingThickness = 6;
 
 - (void)showProgress:(float)progress status:(NSString*)string maskType:(SVProgressHUDMaskType)hudMaskType {
     
+    //@colin modify
+    ////////////////////////////////////////////////////
+    UIWindow *tempWindow = [[UIApplication sharedApplication] keyWindow];
+    
     if(!self.overlayView.superview){
         NSEnumerator *frontToBackWindows = [[[UIApplication sharedApplication]windows]reverseObjectEnumerator];
         
@@ -455,13 +459,15 @@ CGFloat SVProgressHUDRingThickness = 6;
             }
              */
             
-            //@colin modify
-            if (window.windowLevel == [[UIApplication sharedApplication] keyWindow].windowLevel) {
-                [window addSubview:self.overlayView];
-                break;
+            if (window.windowLevel > tempWindow.windowLevel && window.hidden == NO) {
+                tempWindow = window;
             }
-        
     }
+    
+    [tempWindow addSubview:self.overlayView];
+    //////////////////////////////////////////////////////
+    
+    
     
     if(!self.superview)
         [self.overlayView addSubview:self];

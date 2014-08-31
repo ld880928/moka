@@ -12,6 +12,7 @@
 #import "LoginViewController.h"
 #import "PersonalCenterContainerWindow.h"
 #import "LightStateBarNavigationController.h"
+#import "BusinessesViewController.h"
 
 @interface HomeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *navigationTableView;
@@ -55,7 +56,7 @@
     self.currentCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
     self.navigationData = [[DataBaseManager sharedManager] getCategorysByCity:self.currentCity];
     [self.navigationTableView reloadData];
-    
+
     keyWindowTransform = [[[UIApplication sharedApplication] delegate] window].transform;
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setBackgroundImage:[UIImage createImageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
@@ -113,13 +114,25 @@
 {
     BusinessWindow *businessWindow = [BusinessWindow sharedBusinessWindow];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    businessWindow.rootViewController = [storyBoard instantiateViewControllerWithIdentifier:@"BusinessesViewController"];
+    BusinessesViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"BusinessesViewController"];
+    
+    businessWindow.refreshMerchant = ^(NSString *cityID_ , MCategory *category_){
+        
+        [viewController refreshDataWithCityID:cityID_ category:category_];
+        
+    };
+    
+    businessWindow.rootViewController = viewController;
     [businessWindow show];
     
     [businessWindow setPositionYChangedCallBackBlock:^(CGFloat percent) {
         //CGAffineTransform transform = CGAffineTransformScale(keyWindowTransform, percent, percent);
         //[[[UIApplication sharedApplication] delegate] window].transform = transform;
     }];
+    
+    if (self.navigationData && self.navigationData.count) {
+        [self tableView:self.navigationTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    }
     
     //刷新数据
     MCity *currentSelectedCity = [[AccountAndLocationManager sharedAccountAndLocationManager] currentSelectedCity];
@@ -185,9 +198,8 @@
     
     MCategory *category = [self.navigationData objectAtIndex:indexPath.row];
     
-    UIImage *itemImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:category.f_category_icon]]];
     UIImageView *iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 10.0f, 30.0f, 30.0f)];
-    iconImageView.image = itemImage;
+    [iconImageView setImageWithURL:category.f_category_icon];
     [cell.contentView addSubview:iconImageView];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60.0f, 10.0f, 200.0f, 29.0f)];
@@ -207,22 +219,11 @@
     [[BusinessWindow sharedBusinessWindow] moveToTop];
     
     NSString *cityID = self.currentCity.f_city_id;
-    NSString *categoryID = [[self.navigationData objectAtIndex:indexPath.row] f_category_id];
+    NSString *category = [self.navigationData objectAtIndex:indexPath.row];
     
-    //请求商家
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
-    
-    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": cityID,@"category_id":@"8"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        id a = responseObject;
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"%@",error);
-        
-    }];
+    if ([[BusinessWindow sharedBusinessWindow] refreshMerchant]) {
+        [BusinessWindow sharedBusinessWindow].refreshMerchant(cityID,category);
+    }
 }
 
 @end

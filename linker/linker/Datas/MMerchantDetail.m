@@ -20,6 +20,9 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dic_
 {
     if (self=[super init]) {
+        self.f_merchant_detail_name = [dic_ objectForKey:@"title"];
+        self.f_merchant_detail_description = [dic_ objectForKey:@"merchant_detail"];
+        self.f_merchant_detail_image = [dic_ objectForKey:@"imageurl"];
     }
     
     return self;

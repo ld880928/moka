@@ -38,4 +38,9 @@
  */
 #define URL_SUB_GETMERCHANT [URL_BASE stringByAppendingString:@"getmerchant"]
 
+
+#define URL_SUB_GETSUPRISE [URL_BASE stringByAppendingString:@"getsurprise"]
+
+#define URL_SUB_SENDEDMOKA [URL_BASE stringByAppendingString:@"apisendcardlist"]
+
 #endif

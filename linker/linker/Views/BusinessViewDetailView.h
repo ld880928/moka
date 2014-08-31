@@ -12,7 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIScrollView *detailScrollView;
 
-+ (BusinessViewDetailView *)businessViewDetailView;
++ (BusinessViewDetailView *)businessViewDetailViewWithData:(id)data_;
 
 - (CGFloat)getBottom_y;
 @end

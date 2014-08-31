@@ -14,6 +14,7 @@
 #import "MOKADetailView.h"
 #import "MOKADetailViewController.h"
 #import "BusinessWindow.h"
+#import "Models.h"
 
 @interface SendedMOKAViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *recivedMOKACollectionView;
@@ -54,9 +55,31 @@
     }];
     
     [self.view addSubview:backBtn];
+    self.mokaDatasArray = [NSMutableArray array];
+
     
-    // Do any additional setup after loading the view.
-    self.mokaDatasArray = [NSMutableArray arrayWithArray:@[@"Image_1",@"Image_2",@"Image_3",@"Image_4"]];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    [manager POST:URL_SUB_SENDEDMOKA parameters:@{@"username": @"13197040979",@"user_id":@"5"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        for (int i=0; i<[responseObject count]; i++) {
+            MMoka *mMoka = [[MMoka alloc] initWithDictionary:[responseObject objectAtIndex:i]];
+            mMoka.f_moka_type = @"send";
+            [self.mokaDatasArray addObject:mMoka];
+        }
+        
+        [self performSelector:@selector(refreshData)];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+    
+}
+
+- (void)refreshData
+{
     
     [self.recivedMOKACollectionView registerNib:[UINib nibWithNibName:@"RecivedMOKACell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"RecivedMOKACell"];
     CustomLayout *customLayout = [[CustomLayout alloc] init];

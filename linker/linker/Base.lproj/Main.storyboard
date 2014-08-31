@@ -1191,6 +1191,9 @@
                         <outlet property="buttonCancle" destination="1Dd-jH-cGG" id="GxG-tx-4pk"/>
                         <outlet property="buttonConfirmPay" destination="PJx-om-4ru" id="a9t-f3-8tT"/>
                         <outlet property="containerScorllView" destination="7sK-IP-JVP" id="mDm-GE-s1m"/>
+                        <outlet property="iconImageView" destination="RFg-C2-Rot" id="iwS-FR-FjW"/>
+                        <outlet property="merchantName" destination="F0Z-pZ-2Ff" id="IVQ-Uf-Q0x"/>
+                        <outlet property="priceLabel" destination="fmW-cb-uxj" id="cNr-C1-YSM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIq-cy-Khk" userLabel="First Responder" sceneMemberID="firstResponder"/>

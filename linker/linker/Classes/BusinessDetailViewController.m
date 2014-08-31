@@ -18,6 +18,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonConfirmPay;
 @property (weak, nonatomic) IBOutlet UIButton *buttonCancle;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UILabel *merchantName;
+@property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+
 @end
 
 @implementation BusinessDetailViewController
@@ -25,10 +30,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.containerScorllView.layer.cornerRadius = 10.0f;
     
-    self.view.backgroundColor = self.backgroundImage;
-    self.businessDetailView = [BusinessDetailView businessDetailViewWithDatas:nil];
+    self.businessDetailView = [BusinessDetailView businessDetailView];
 
     __unsafe_unretained BusinessDetailViewController *safe_self = self;
     
@@ -112,6 +117,30 @@
     
     [self.containerScorllView addSubview:self.businessDetailView];
     self.containerScorllView.contentSize = self.businessDetailView.bounds.size;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    [SVProgressHUD showWithStatus:@"加载数据中" maskType:SVProgressHUDMaskTypeGradient];
+    
+    [manager POST:URL_SUB_GETSUPRISE parameters:@{@"merchant_id": self.mMerchant.f_merchant_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+        
+        [self.iconImageView setImageWithURL:self.mMerchant.f_merchant_logo_image];
+        self.merchantName.text = self.mMerchant.f_merchant_logo_name;
+        
+        self.businessDetailView.data = responseObject;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+        
+        NSLog(@"%@",error);
+        
+    }];
+
+    
 }
 
 @end

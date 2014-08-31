@@ -39,6 +39,7 @@
     self.textFieldUserName.text = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
     self.textFieldPassword.text = [[AccountAndLocationManager sharedAccountAndLocationManager] password];
 }
+
 - (IBAction)cancle:(id)sender {
     
     [self.textFieldUserName resignFirstResponder];
@@ -66,20 +67,24 @@
     
     [manager POST:URL_SUB_LOGIN parameters:@{@"username": userName,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
-        [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
-        [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
+        int code = [[responseObject objectForKey:@"status"] intValue];
         
-        [self.textFieldUserName resignFirstResponder];
-        [self.textFieldPassword resignFirstResponder];
-        
-        [SVProgressHUD showSuccessWithStatus:@"登录成功"];
-        
-        if (self.loginSuccessBlock) {
-            self.loginSuccessBlock();
+        if (code == 0) { //登录成功
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
+            [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
+            
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+            
+            if (self.loginSuccessBlock) {
+                self.loginSuccessBlock();
+            }
+            
         }
-        
-        [self.navigationController popViewControllerAnimated:YES];
+        else
+        {
+            [SVProgressHUD showErrorWithStatus:[responseObject objectForKey:@"error"]];
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         

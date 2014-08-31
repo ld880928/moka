@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MMerchant;
 
 @interface BusinessDetailViewController : UIViewController
-@property(nonatomic,strong)UIColor *backgroundImage;
+@property(nonatomic,strong)MMerchant *mMerchant;
 @end

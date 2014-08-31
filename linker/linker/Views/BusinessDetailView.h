@@ -14,8 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UIView *bottomContainerView;
 @property (weak, nonatomic) IBOutlet UIView *topContainerView;
+@property (nonatomic,strong)NSDictionary *data;
 
-+ (BusinessDetailView *)businessDetailViewWithDatas:(id)datas_;
++ (BusinessDetailView *)businessDetailView;
 
 @property(nonatomic,copy)void(^showShopTableViewBlock)();
 @property(nonatomic,copy)void(^hideShopTableViewBlock)();

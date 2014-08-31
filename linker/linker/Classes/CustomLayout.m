@@ -28,7 +28,8 @@
         [theLayoutAttributes addObject:theAttributes];
     }
     
-    return [theLayoutAttributes copy];}
+    return [theLayoutAttributes copy];
+}
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {

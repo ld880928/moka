@@ -16,6 +16,7 @@
 		02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA7197D6E9000B2AC39 /* CustomLayout.m */; };
 		02AFB9A71987DA07005BB260 /* MCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9A61987DA07005BB260 /* MCategory.m */; };
 		02AFB9AA1987DA08005BB260 /* MCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9A91987DA08005BB260 /* MCity.m */; };
+		02B5DBEF19B2EA3400E79109 /* MMoka.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B5DBEE19B2EA3400E79109 /* MMoka.m */; };
 		02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F62A67199F88B7006FD8A9 /* DataBaseManager.m */; };
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
 		3B085772197CE36E000AAEE8 /* BlackStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */; };
@@ -110,6 +111,8 @@
 		02AFB9A61987DA07005BB260 /* MCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCategory.m; sourceTree = "<group>"; };
 		02AFB9A81987DA08005BB260 /* MCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCity.h; sourceTree = "<group>"; };
 		02AFB9A91987DA08005BB260 /* MCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCity.m; sourceTree = "<group>"; };
+		02B5DBED19B2EA3400E79109 /* MMoka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMoka.h; sourceTree = "<group>"; };
+		02B5DBEE19B2EA3400E79109 /* MMoka.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMoka.m; sourceTree = "<group>"; };
 		02B98FB9198640480034722A /* MOKAURLs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOKAURLs.h; sourceTree = "<group>"; };
 		02F62A66199F88B7006FD8A9 /* DataBaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
 		02F62A67199F88B7006FD8A9 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
@@ -325,6 +328,8 @@
 				3B22AA4319ADB22200C13A32 /* MMerchant.m */,
 				3B22AA4519ADD7F200C13A32 /* MMerchantDetail.h */,
 				3B22AA4619ADD7F200C13A32 /* MMerchantDetail.m */,
+				02B5DBED19B2EA3400E79109 /* MMoka.h */,
+				02B5DBEE19B2EA3400E79109 /* MMoka.m */,
 			);
 			path = Datas;
 			sourceTree = "<group>";
@@ -818,6 +823,7 @@
 				3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */,
 				3B085772197CE36E000AAEE8 /* BlackStateBarNavigationController.m in Sources */,
 				021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */,
+				02B5DBEF19B2EA3400E79109 /* MMoka.m in Sources */,
 				3B22AA4719ADD7F200C13A32 /* MMerchantDetail.m in Sources */,
 				3B5C15FB19550EE400F91646 /* SendedMOKAViewController.m in Sources */,
 			);

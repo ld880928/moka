@@ -10,4 +10,6 @@
 
 @interface BusinessesViewController : UIViewController
 
+- (void)refreshDataWithCityID:(NSString *)cityID_ category:(MCategory *)category_;
+
 @end

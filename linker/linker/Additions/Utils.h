@@ -12,6 +12,7 @@
 #import "UIButton+Block.h"
 #import "UIView+TopRadius.h"
 #import "UIImage+UIColor.h"
+#import "UIImageView+WebCache.h"
 
 #import "AccountAndLocationManager.h"
 #import "DataBaseManager.h"

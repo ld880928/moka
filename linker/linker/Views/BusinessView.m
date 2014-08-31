@@ -7,6 +7,8 @@
 //
 
 #import "BusinessView.h"
+#import "Models.h"
+#import "UIImage+ImageEffects.h"
 
 @interface BusinessView()
 @property(nonatomic,assign)CGFloat bottom_y;
@@ -21,15 +23,23 @@
 
 + (BusinessView *)businessViewWithDatas:(id)datas_
 {
+    MMerchant *mMerchant = datas_;
+    
     BusinessView *view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessView" owner:self options:nil] lastObject];
     view_.businessViewState = BusinessViewState_DetailHide;
-    view_.labelName.text = [datas_ objectForKey:@"name"];
-    view_.labelTitle.text = [datas_ objectForKey:@"title"];
+    view_.labelName.text = mMerchant.f_merchant_name;
+    view_.labelTitle.text = mMerchant.f_merchant_description;
+    
+    [view_.backgroundImageView setImageWithURL:mMerchant.f_merchant_background_image
+                                     completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+                                         view_.backgroundMaskImageView.image = [view_.backgroundImageView.image applyBlurWithRadius:20.0f tintColor:[UIColor clearColor] saturationDeltaFactor:.5f maskImage:nil];
+                                     } ];
+    
     [view_.buttonDetail setBorderWithColor:[UIColor colorWithRed:1.0f green:1.0f blue:1.0f alpha:.3f]
                                borderWidth:1.0f
                               cornerRadius:5.0f];
     view_.bottom_y = view_.bottomContainerView.frame.origin.y;
-    view_.detailView = [BusinessViewDetailView businessViewDetailView];
+    view_.detailView = [BusinessViewDetailView businessViewDetailViewWithData:mMerchant.details];
     [view_ addSubview:view_.detailView];
     
     [view_.bottomContainerView addObserver:view_ forKeyPath:@"frame" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:NULL];
@@ -39,7 +49,7 @@
 
 - (void)dealloc
 {
-    [self removeObserver:self forKeyPath:@"frame"];
+    [self.bottomContainerView removeObserver:self forKeyPath:@"frame"];
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context

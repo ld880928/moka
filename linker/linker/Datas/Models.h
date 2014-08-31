@@ -11,5 +11,8 @@
 
 #import "MCategory.h"
 #import "MCity.h"
+#import "MMerchant.h"
+#import "MMerchantDetail.h"
+#import "MMoka.h"
 
 #endif

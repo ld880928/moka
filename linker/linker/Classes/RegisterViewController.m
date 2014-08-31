@@ -43,22 +43,47 @@
     
     [self.buttonRegister handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         
+        [self.textFieldUsername resignFirstResponder];
+        [self.textFieldPassword resignFirstResponder];
+        [self.textFieldPasswordConfirm resignFirstResponder];
+
         //验证值的有效性
+        
+        if (![self.textFieldPassword.text isEqualToString:self.textFieldPasswordConfirm.text]) {
+            [SVProgressHUD showErrorWithStatus:@"2次输入的密码不相同无法注册"];
+            return;
+        }
         
         NSString *userName = self.textFieldUsername.text;
         NSString *password = self.textFieldPassword.text;
+        
+        [SVProgressHUD showWithStatus:@"正在注册" maskType:SVProgressHUDMaskTypeGradient];
+
         
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
         
         [manager POST:URL_SUB_REGISTER parameters:@{@"username": userName,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            NSLog(@"%@",responseObject);
+            int code = [[responseObject objectForKey:@"status"] intValue];
             
-            [self.navigationController popViewControllerAnimated:YES];
+            if (code == 0) { //登录成功
+                [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
+                [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
+                
+                [SVProgressHUD showSuccessWithStatus:@"注册成功"];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:[responseObject objectForKey:@"error"]];
+            }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
+            [SVProgressHUD showErrorWithStatus:@"网络连接失败"];
+
             NSLog(@"%@",error);
             
         }];

@@ -10,11 +10,11 @@
 #import "BusinessWindow.h"
 #import "BusinessView.h"
 #import "BusinessDetailViewController.h"
-#import "UIImage+ImageEffects.h"
+#import "Models.h"
 
 @interface BusinessesViewController ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *businessesScrollView;
-@property (nonatomic,strong)NSArray *businessArray;
+@property (nonatomic,strong)NSMutableArray *businessArray;
 @property (strong, nonatomic)UILabel *navigationLabel;
 @end
 
@@ -23,6 +23,110 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)refreshDataWithCityID:(NSString *)cityID_ category:(MCategory *)category_
+{
+    
+    self.navigationLabel.text = category_.f_category_name;
+    
+    [SVProgressHUD showWithStatus:@"正在加载商家信息..." maskType:SVProgressHUDMaskTypeGradient];
+    
+    //请求商家
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": cityID_,@"category_id":category_.f_category_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+ 
+        for (UIView *v in [self.businessesScrollView subviews]) {
+            [v removeFromSuperview];
+        }
+        
+        self.businessArray = [NSMutableArray array];
+        
+        for (int i=0; i<4; i++) {
+            
+            NSDictionary *data = @{@"merchant_id": @3,
+                                   @"brand_name": @"肯德基",
+                                   @"brand_log": @"http://linker.demo.evebit.com/media/tastefood.jpg",
+                                   @"merchant_name": @"百胜武汉分公司",
+                                   @"merchant_intro": @"(肯德基) 百胜武汉分公司test",
+                                   @"merchant_backgroundimage": @"http://linker.demo.evebit.com/media/merchant/Koala_1.jpg",
+                                   @"consume_num":@6};
+            
+            MMerchant *mMerchant = [[MMerchant alloc] initWithDictionary:data];
+            
+            NSMutableArray *details = [NSMutableArray array];
+            for (int j=0; j<4; j++) {
+                
+                NSDictionary *dataDtail = @{@"title": @"(肯德基) 百胜武汉分公司",
+                                            @"merchant_detail": @"(肯德基) 百胜武汉分公司(肯德基) 百胜武汉分公司(肯德基) 百胜武汉分公司",
+                                            @"imageurl": @"http://linker.demo.evebit.com/media/merchant/Penguins_1.jpg"};
+                
+                MMerchantDetail *mMerchantDetail = [[MMerchantDetail alloc] initWithDictionary:dataDtail];
+                [details addObject:mMerchantDetail];
+            }
+            
+            mMerchant.details = details;
+            
+            [self.businessArray addObject:mMerchant];
+        }
+        
+        for (int i=0; i<self.businessArray.count; i++) {
+            
+            MMerchant *mMerchant = [self.businessArray objectAtIndex:i];
+            
+            BusinessView *view_ = [BusinessView businessViewWithDatas:mMerchant];
+            
+            view_.frame = CGRectMake(self.view.bounds.size.width * i, 0, self.businessesScrollView.bounds.size.width, self.businessesScrollView.bounds.size.height);
+            view_.userInteractionEnabled = YES;
+            
+            [self.businessesScrollView addSubview:view_];
+            
+            UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+            panGes.delegate = self;
+            [view_ addGestureRecognizer:panGes];
+            
+            [view_ setGotoDetailBlock:^{
+                [self performSegueWithIdentifier:@"BusinessDetail" sender:mMerchant];
+            }];
+            
+            __unsafe_unretained BusinessView *safeView_ = view_;
+            
+            [view_ setGotoTopFinishedCallBackBlock:^(BOOL finished) {
+                self.businessesScrollView.scrollEnabled = NO;
+                safeView_.detailView.detailScrollView.scrollEnabled = YES;
+                
+            }];
+            
+            [view_ setGotoBottomFinishedCallBackBlock:^(BOOL finished) {
+                self.businessesScrollView.scrollEnabled = YES;
+                safeView_.detailView.detailScrollView.scrollEnabled = YES;
+            }];
+            
+            [view_ setPositionYChangedCallBackBlock:^(CGFloat percent) {
+                CGFloat distance = 55.0f;
+                CGFloat navigationY = 15.0f - (1.0f - percent) * distance;
+                CGRect frame = self.navigationLabel.frame;
+                frame.origin.y = navigationY;
+                self.navigationLabel.frame = frame;
+            }];
+        }
+        
+        self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.businessArray.count, self.businessesScrollView.bounds.size.height);
+        
+        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+        
+        id a = responseObject;
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"网络异常"];
+
+        NSLog(@"%@",error);
+        
+    }];
 }
 
 - (void)viewDidLoad
@@ -40,56 +144,7 @@
         self.businessesScrollView.scrollEnabled = NO;
     };
     
-    self.businessArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"business_data" ofType:@"plist"]];
-    
-    for (int i=0; i<self.businessArray.count; i++) {
-        
-        NSDictionary *businessItem = [self.businessArray objectAtIndex:i];
-        
-        BusinessView *view_ = [BusinessView businessViewWithDatas:businessItem];
-        
-        view_.frame = CGRectMake(self.view.bounds.size.width * i, 0, self.businessesScrollView.bounds.size.width, self.businessesScrollView.bounds.size.height);
-        view_.userInteractionEnabled = YES;
-
-        view_.backgroundImageView.image = [UIImage imageNamed:[businessItem objectForKey:@"background"]];
-        view_.backgroundMaskImageView.image = [view_.backgroundImageView.image applyBlurWithRadius:20.0f tintColor:[UIColor clearColor] saturationDeltaFactor:.5f maskImage:nil];
-        
-        [self.businessesScrollView addSubview:view_];
-        
-        UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-        panGes.delegate = self;
-        [view_ addGestureRecognizer:panGes];
-        
-        UIColor *backgroundColor = [UIColor colorWithPatternImage:view_.backgroundImageView.image];
-        [view_ setGotoDetailBlock:^{
-            [self performSegueWithIdentifier:@"BusinessDetail" sender:backgroundColor];
-        }];
-        
-        __unsafe_unretained BusinessView *safeView_ = view_;
-        
-        [view_ setGotoTopFinishedCallBackBlock:^(BOOL finished) {
-            self.businessesScrollView.scrollEnabled = NO;
-            safeView_.detailView.detailScrollView.scrollEnabled = YES;
-
-        }];
-        
-        [view_ setGotoBottomFinishedCallBackBlock:^(BOOL finished) {
-            self.businessesScrollView.scrollEnabled = YES;
-            safeView_.detailView.detailScrollView.scrollEnabled = YES;
-        }];
-        
-        [view_ setPositionYChangedCallBackBlock:^(CGFloat percent) {
-            CGFloat distance = 55.0f;
-            CGFloat navigationY = 15.0f - (1.0f - percent) * distance;
-            CGRect frame = self.navigationLabel.frame;
-            frame.origin.y = navigationY;
-            self.navigationLabel.frame = frame;
-        }];
-    }
-    
-    self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.businessArray.count, self.businessesScrollView.bounds.size.height);
-    self.navigationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 70.0f, 40.0f)];
-    self.navigationLabel.text = @"美食";
+    self.navigationLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.0f, 15.0f, 200.0f, 40.0f)];
     self.navigationLabel.font = [UIFont systemFontOfSize:32.0f];
     self.navigationLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:self.navigationLabel];
@@ -262,7 +317,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     BusinessDetailViewController *destinationViewController = segue.destinationViewController;
-    [destinationViewController setBackgroundImage:sender];
+    destinationViewController.mMerchant = sender;
 
 }
 

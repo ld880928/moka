@@ -22,6 +22,7 @@ typedef enum {
 @property(nonatomic,copy)void(^positionYChangedCallBackBlock)(CGFloat percent);
 @property(nonatomic,copy)void(^gotoTopFinishedCallBackBlock)(BOOL finished);
 @property(nonatomic,copy)void(^gotoBottomFinishedCallBackBlock)(BOOL finished);
+@property(nonatomic,copy)void(^refreshMerchant)(NSString * cityID_, MCategory *category_);
 
 + (BusinessWindow *)sharedBusinessWindow;
 

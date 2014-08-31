@@ -12,12 +12,11 @@
 @property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *chooseMoneySegmentControl;
 @property (weak, nonatomic) IBOutlet UIView *handleView;
-
 @end
 
 @implementation BusinessDetailView
 
-+ (BusinessDetailView *)businessDetailViewWithDatas:(id)datas_
++ (BusinessDetailView *)businessDetailView
 {
     BusinessDetailView *view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessDetailView" owner:self options:nil] lastObject];
     view_.textViewMessage.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -33,6 +32,27 @@
 - (void)awakeFromNib
 {
     [self.chooseMoneySegmentControl addTarget:self action:@selector(chooseMoney:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)setData:(NSDictionary *)data
+{
+    _data = data;
+    [self.chooseMoneySegmentControl removeAllSegments];
+    
+    NSArray *combos = [self.data objectForKey:@"combo"];
+    
+    for (int i=0; i<combos.count; i++) {
+        
+        NSDictionary *dic = [combos objectAtIndex:i];
+        NSString *price = [NSString stringWithFormat:@"¥ %@",[dic objectForKey:@"price"]];
+        
+        [self.chooseMoneySegmentControl insertSegmentWithTitle:price atIndex:i animated:NO];
+    }
+    
+    [self.chooseMoneySegmentControl insertSegmentWithTitle:@"其他" atIndex:combos.count animated:NO];
+
+    self.chooseMoneySegmentControl.selectedSegmentIndex = 0;
+    [self chooseMoney:self.chooseMoneySegmentControl];
 }
 
 - (void)chooseMoney:(UISegmentedControl *)sender
@@ -61,8 +81,11 @@
     }
     else
     {
+        NSArray *combos = [self.data objectForKey:@"combo"];
+        NSDictionary *dic = [combos objectAtIndex:sender.selectedSegmentIndex];
+
         UILabel *label = [[UILabel alloc] initWithFrame:frame];
-        label.text = @"提拉米苏+芝士蛋挞+原味红豆奶茶（小）";
+        label.text = [dic objectForKey:@"name"];
         label.textColor = [UIColor blackColor];
         label.font = [UIFont systemFontOfSize:11.0f];
         self.handleView = label;
