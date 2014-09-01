@@ -115,8 +115,8 @@
         [db executeUpdate:sql,[city_ f_city_id]];
         
         for (MCategory * mCategory in categorys) {
-            NSString *sql = @"INSERT INTO t_category(f_category_id,f_category_icon,f_category_name,f_city_id) VALUES (?,?,?,?)";
-            [db executeUpdate:sql,mCategory.f_category_id,mCategory.f_category_icon,mCategory.f_category_name,[city_ f_city_id]];
+            NSString *sql = @"INSERT INTO t_category(id, f_category_id,f_category_icon,f_category_name,f_city_id) VALUES (?,?,?,?,?)";
+            [db executeUpdate:sql,mCategory.ID,mCategory.f_category_id,mCategory.f_category_icon,mCategory.f_category_name,[city_ f_city_id]];
         }
         
         [db commit];

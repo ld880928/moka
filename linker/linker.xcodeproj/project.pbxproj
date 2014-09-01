@@ -60,6 +60,8 @@
 		3B5C160119550F2C00F91646 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */; };
 		3B5C9DF7197E034B0018F194 /* MOKADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DF6197E034B0018F194 /* MOKADetailViewController.m */; };
 		3B5C9DFD197E2AD20018F194 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */; };
+		3B5E83E019B447FA00EC2AA9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */; };
+		3B765D2919B4544200C901E6 /* ChooseContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B765D2819B4544200C901E6 /* ChooseContactViewController.m */; };
 		3BB4864F19409CC400D3054F /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB4864C19409CC400D3054F /* libbaidumapapi.a */; };
 		3BB4865019409CC400D3054F /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864D19409CC400D3054F /* mapapi.bundle */; };
 		3BB4865119409CC400D3054F /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864E19409CC400D3054F /* readme.txt */; };
@@ -184,6 +186,9 @@
 		3B5C9DF6197E034B0018F194 /* MOKADetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailViewController.m; sourceTree = "<group>"; };
 		3B5C9DFB197E2AD20018F194 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		3B765D2719B4544200C901E6 /* ChooseContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContactViewController.h; sourceTree = "<group>"; };
+		3B765D2819B4544200C901E6 /* ChooseContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContactViewController.m; sourceTree = "<group>"; };
 		3BB4861119409CC400D3054F /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		3BB4861219409CC400D3054F /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		3BB4861319409CC400D3054F /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -288,6 +293,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B5E83E019B447FA00EC2AA9 /* AddressBook.framework in Frameworks */,
 				0217D9B819A1F45D004ECC77 /* libsqlite3.0.dylib in Frameworks */,
 				3B452BF51920FE76008729A9 /* Security.framework in Frameworks */,
 				3B452BF31920FE64008729A9 /* SystemConfiguration.framework in Frameworks */,
@@ -377,6 +383,8 @@
 				3BB4865F1940B9A000D3054F /* RegisterViewController.m */,
 				3BB486611940BBB500D3054F /* ForgotPasswordViewController.h */,
 				3BB486621940BBB500D3054F /* ForgotPasswordViewController.m */,
+				3B765D2719B4544200C901E6 /* ChooseContactViewController.h */,
+				3B765D2819B4544200C901E6 /* ChooseContactViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -431,6 +439,7 @@
 		3B452B2B1920FA63008729A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */,
 				0217D9B719A1F45D004ECC77 /* libsqlite3.0.dylib */,
 				3B452BF41920FE76008729A9 /* Security.framework */,
 				3B452BF21920FE64008729A9 /* SystemConfiguration.framework */,
@@ -813,6 +822,7 @@
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
+				3B765D2919B4544200C901E6 /* ChooseContactViewController.m in Sources */,
 				3B2B4531197F7DB100E13D6B /* RefundProcessCell.m in Sources */,
 				02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */,
 				3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */,

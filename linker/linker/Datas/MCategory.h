@@ -11,6 +11,8 @@
 
 @interface MCategory : NSObject
 
+@property (nonatomic, strong) NSNumber * ID;
+
 @property (nonatomic, strong) NSString * f_category_id;
 @property (nonatomic, strong) NSString * f_category_icon;
 @property (nonatomic, strong) NSString * f_category_name;

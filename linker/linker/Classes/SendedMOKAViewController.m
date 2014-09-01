@@ -55,20 +55,17 @@
     }];
     
     [self.view addSubview:backBtn];
+    
+    [self.recivedMOKACollectionView registerNib:[UINib nibWithNibName:@"RecivedMOKACell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"RecivedMOKACell"];
+    
     self.mokaDatasArray = [NSMutableArray array];
 
+    //__unsafe_unretained SendedMOKAViewController *safe_self = self;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     [manager POST:URL_SUB_SENDEDMOKA parameters:@{@"username": @"13197040979",@"user_id":@"5"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        for (int i=0; i<[responseObject count]; i++) {
-            MMoka *mMoka = [[MMoka alloc] initWithDictionary:[responseObject objectAtIndex:i]];
-            mMoka.f_moka_type = @"send";
-            [self.mokaDatasArray addObject:mMoka];
-        }
-        
-        [self performSelector:@selector(refreshData)];
+        [self performSelector:@selector(refreshData:) withObject:responseObject];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -76,14 +73,27 @@
         
     }];
     
+    //for (int i=0; i<3; i++) {
+    //    [self.mokaDatasArray addObject:@"111"];
+    //}
+    
 }
 
-- (void)refreshData
+- (void)refreshData:(id)data_
 {
+    /*
+    for (int i=0; i<[data_ count]; i++) {
+        MMoka *mMoka = [[MMoka alloc] initWithDictionary:[data_ objectAtIndex:i]];
+        mMoka.f_moka_type = @"send";
+        [self.mokaDatasArray addObject:mMoka];
+        
+    }
+    */
     
-    [self.recivedMOKACollectionView registerNib:[UINib nibWithNibName:@"RecivedMOKACell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"RecivedMOKACell"];
+    self.mokaDatasArray = @[@"1",@"2",@"3"];
+    
     CustomLayout *customLayout = [[CustomLayout alloc] init];
-    customLayout.mokaDatasArray = self.mokaDatasArray;
+    customLayout.cellCount = 3;
     self.recivedMOKACollectionView.collectionViewLayout = customLayout;
     self.recivedMOKACollectionView.layer.masksToBounds = NO;
     

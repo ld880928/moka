@@ -60,7 +60,7 @@
 
     [self.recivedMOKACollectionView registerNib:[UINib nibWithNibName:@"RecivedMOKACell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"RecivedMOKACell"];
     CustomLayout *customLayout = [[CustomLayout alloc] init];
-    customLayout.mokaDatasArray = self.mokaDatasArray;
+    customLayout.cellCount = self.mokaDatasArray.count;
     self.recivedMOKACollectionView.collectionViewLayout = customLayout;
     self.recivedMOKACollectionView.layer.masksToBounds = NO;
     

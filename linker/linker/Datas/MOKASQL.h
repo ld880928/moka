@@ -17,6 +17,6 @@
 #define DB_NAME @"moka.sqlite"
 
 #define TABLE_CREATE_SQL_CITY @"CREATE TABLE IF NOT EXISTS t_city (f_city_id TEXT PRIMARY KEY, f_city_name TEXT)"
-#define TABLE_CREATE_SQL_CATEGORY @"CREATE TABLE IF NOT EXISTS t_category (f_category_id TEXT PRIMARY KEY, f_category_icon TEXT, f_category_name TEXT, f_city_id TEXT)"
+#define TABLE_CREATE_SQL_CATEGORY @"CREATE TABLE IF NOT EXISTS t_category (id INTEGER PRIMARY KEY AUTOINCREMENT ,f_category_id TEXT , f_category_icon TEXT, f_category_name TEXT, f_city_id TEXT)"
 
 #endif

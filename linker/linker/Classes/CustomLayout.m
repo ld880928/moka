@@ -15,6 +15,9 @@
 
 - (void)prepareLayout
 {
+    int a = self.cellCount;
+    
+    
     
 }
 
@@ -22,7 +25,7 @@
 {
     NSMutableArray *theLayoutAttributes = [[NSMutableArray alloc] init];
 
-    for( int i = 0; i < self.mokaDatasArray.count; i++ ){
+    for( int i = 0; i < self.cellCount; i++ ){
         NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
         UICollectionViewLayoutAttributes *theAttributes = [self layoutAttributesForItemAtIndexPath:indexPath];
         [theLayoutAttributes addObject:theAttributes];
@@ -41,7 +44,7 @@
 
 - (CGSize)collectionViewContentSize
 {
-    return CGSizeMake(BORDER_DISTANCE + 190.0f * self.mokaDatasArray.count + DISTANCE * self.mokaDatasArray.count - 1 + BORDER_DISTANCE, 340.0f);
+    return CGSizeMake(BORDER_DISTANCE + 190.0f * self.cellCount + DISTANCE * self.cellCount - 1 + BORDER_DISTANCE, 340.0f);
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds

@@ -14,11 +14,13 @@
 - (instancetype)initWithFMResultSet:(FMResultSet *)rs_
 {
     if (self = [super init]) {
+        self.ID                   = [rs_ objectForColumnName:@"ID"];
         self.f_category_id        = [rs_ objectForColumnName:@"f_category_id"];
         self.f_category_icon      = [rs_ objectForColumnName:@"f_category_icon"];
         self.f_category_name      = [rs_ objectForColumnName:@"f_category_name"];
         self.f_city_id            = [rs_ objectForColumnName:@"f_city_id"];
     }
+    
     return self;
 }
 

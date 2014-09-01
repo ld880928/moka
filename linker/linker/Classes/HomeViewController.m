@@ -219,7 +219,7 @@
     [[BusinessWindow sharedBusinessWindow] moveToTop];
     
     NSString *cityID = self.currentCity.f_city_id;
-    NSString *category = [self.navigationData objectAtIndex:indexPath.row];
+    MCategory *category = [self.navigationData objectAtIndex:indexPath.row];
     
     if ([[BusinessWindow sharedBusinessWindow] refreshMerchant]) {
         [BusinessWindow sharedBusinessWindow].refreshMerchant(cityID,category);

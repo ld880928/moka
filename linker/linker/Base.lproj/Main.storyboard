@@ -1194,11 +1194,40 @@
                         <outlet property="iconImageView" destination="RFg-C2-Rot" id="iwS-FR-FjW"/>
                         <outlet property="merchantName" destination="F0Z-pZ-2Ff" id="IVQ-Uf-Q0x"/>
                         <outlet property="priceLabel" destination="fmW-cb-uxj" id="cNr-C1-YSM"/>
+                        <segue destination="Wcv-VC-VMT" kind="modal" identifier="ChooseContactViewControllerSegue" id="mtM-KO-fMg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VIq-cy-Khk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1347" y="-994"/>
+        </scene>
+        <!--Choose Contact View Controller-->
+        <scene sceneID="7TI-T0-XAP">
+            <objects>
+                <tableViewController id="Wcv-VC-VMT" customClass="ChooseContactViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2hR-29-nr4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TQu-qo-oVm">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TQu-qo-oVm" id="WKv-Kr-tBA">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wcv-VC-VMT" id="szk-yV-ULz"/>
+                            <outlet property="delegate" destination="Wcv-VC-VMT" id="KCu-cl-LC5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0MK-1S-pkj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-779" y="-999"/>
         </scene>
     </scenes>
     <resources>

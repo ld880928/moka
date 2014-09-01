@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomContainerView;
 @property (weak, nonatomic) IBOutlet UIView *topContainerView;
 @property (nonatomic,strong)NSDictionary *data;
+@property (weak, nonatomic) IBOutlet UILabel *labelName;
 
 + (BusinessDetailView *)businessDetailView;
 

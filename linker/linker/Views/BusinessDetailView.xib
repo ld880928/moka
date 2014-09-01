@@ -74,7 +74,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="陈飞" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KTE-Vl-DSw">
-                            <rect key="frame" x="96" y="19" width="34" height="21"/>
+                            <rect key="frame" x="96" y="19" width="136" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <nil key="highlightedColor"/>
@@ -115,6 +115,7 @@
                 <outlet property="bottomContainerView" destination="e48-IW-QDc" id="d0H-70-vcM"/>
                 <outlet property="chooseMoneySegmentControl" destination="UWH-P5-WZf" id="DBd-g2-Q8f"/>
                 <outlet property="handleView" destination="qjC-3L-tV5" id="giq-9t-BwX"/>
+                <outlet property="labelName" destination="KTE-Vl-DSw" id="7Ff-Ae-aOI"/>
                 <outlet property="textViewMessage" destination="tRn-1O-xmY" id="FcA-UM-PjC"/>
                 <outlet property="topContainerView" destination="MDA-fx-cWJ" id="4zK-5B-QBX"/>
             </connections>

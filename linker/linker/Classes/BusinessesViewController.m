@@ -36,7 +36,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
-    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": cityID_,@"category_id":category_.f_category_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": cityID_,@"category_id":@"8"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
  
         for (UIView *v in [self.businessesScrollView subviews]) {
             [v removeFromSuperview];
@@ -44,24 +44,17 @@
         
         self.businessArray = [NSMutableArray array];
         
-        for (int i=0; i<4; i++) {
+        for (int i=0; i<[responseObject count]; i++) {
             
-            NSDictionary *data = @{@"merchant_id": @3,
-                                   @"brand_name": @"肯德基",
-                                   @"brand_log": @"http://linker.demo.evebit.com/media/tastefood.jpg",
-                                   @"merchant_name": @"百胜武汉分公司",
-                                   @"merchant_intro": @"(肯德基) 百胜武汉分公司test",
-                                   @"merchant_backgroundimage": @"http://linker.demo.evebit.com/media/merchant/Koala_1.jpg",
-                                   @"consume_num":@6};
+            NSDictionary *data = [responseObject objectAtIndex:i];
             
             MMerchant *mMerchant = [[MMerchant alloc] initWithDictionary:data];
             
+            NSArray *detailDatas = [data objectForKey:@"merchantdetail"];
             NSMutableArray *details = [NSMutableArray array];
-            for (int j=0; j<4; j++) {
+            for (int j=0; j<detailDatas.count; j++) {
                 
-                NSDictionary *dataDtail = @{@"title": @"(肯德基) 百胜武汉分公司",
-                                            @"merchant_detail": @"(肯德基) 百胜武汉分公司(肯德基) 百胜武汉分公司(肯德基) 百胜武汉分公司",
-                                            @"imageurl": @"http://linker.demo.evebit.com/media/merchant/Penguins_1.jpg"};
+                NSDictionary *dataDtail = [detailDatas objectAtIndex:j];
                 
                 MMerchantDetail *mMerchantDetail = [[MMerchantDetail alloc] initWithDictionary:dataDtail];
                 [details addObject:mMerchantDetail];

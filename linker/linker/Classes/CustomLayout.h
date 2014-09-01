@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CustomLayout : UICollectionViewLayout
-@property (strong,nonatomic)NSMutableArray *mokaDatasArray;
+@property (assign,nonatomic)int cellCount;
 @end
