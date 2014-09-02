@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *merchantName;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageViewBackground;
 
 @end
 
@@ -32,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.imageViewBackground setImageWithURL:self.mMerchant.f_merchant_background_image];
     
     self.containerScorllView.layer.cornerRadius = 10.0f;
     

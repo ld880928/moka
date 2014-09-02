@@ -19,9 +19,11 @@
 
 + (instancetype)MOKADetailViewWithData:(id)data_
 {
+    MMoka *moka = data_;
+    
     MOKADetailView *view = [[[NSBundle mainBundle] loadNibNamed:@"MOKADetailView" owner:self options:nil] lastObject];
     
-    view.backgroundImageView.image = [UIImage imageNamed:data_];
+    [view.backgroundImageView setImageWithURL:moka.f_moka_background_img];
     view.qrCodeButton.layer.cornerRadius = 5.0f;
     view.buttonRefuseProcess.layer.cornerRadius = 2.0f;
     [view.buttonRefuseProcess handleControlEvent:UIControlEventTouchUpInside withBlock:^{

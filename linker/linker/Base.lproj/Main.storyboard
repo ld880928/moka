@@ -1142,6 +1142,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1sw-iO-YJd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sK-IP-JVP">
                                 <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1192,6 +1196,7 @@
                         <outlet property="buttonConfirmPay" destination="PJx-om-4ru" id="a9t-f3-8tT"/>
                         <outlet property="containerScorllView" destination="7sK-IP-JVP" id="mDm-GE-s1m"/>
                         <outlet property="iconImageView" destination="RFg-C2-Rot" id="iwS-FR-FjW"/>
+                        <outlet property="imageViewBackground" destination="1sw-iO-YJd" id="QLF-EA-fB9"/>
                         <outlet property="merchantName" destination="F0Z-pZ-2Ff" id="IVQ-Uf-Q0x"/>
                         <outlet property="priceLabel" destination="fmW-cb-uxj" id="cNr-C1-YSM"/>
                         <segue destination="Wcv-VC-VMT" kind="modal" identifier="ChooseContactViewControllerSegue" id="mtM-KO-fMg"/>
