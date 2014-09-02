@@ -11,4 +11,5 @@
 
 @interface BusinessDetailViewController : UIViewController
 @property(nonatomic,strong)MMerchant *mMerchant;
+@property(nonatomic,strong)MCity *currentCity;
 @end

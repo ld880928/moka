@@ -116,9 +116,9 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     BusinessesViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"BusinessesViewController"];
     
-    businessWindow.refreshMerchant = ^(NSString *cityID_ , MCategory *category_){
+    businessWindow.refreshMerchant = ^(MCity *city , MCategory *category_){
         
-        [viewController refreshDataWithCityID:cityID_ category:category_];
+        [viewController refreshDataWithCityID:city category:category_];
         
     };
     
@@ -218,11 +218,10 @@
 {
     [[BusinessWindow sharedBusinessWindow] moveToTop];
     
-    NSString *cityID = self.currentCity.f_city_id;
     MCategory *category = [self.navigationData objectAtIndex:indexPath.row];
     
     if ([[BusinessWindow sharedBusinessWindow] refreshMerchant]) {
-        [BusinessWindow sharedBusinessWindow].refreshMerchant(cityID,category);
+        [BusinessWindow sharedBusinessWindow].refreshMerchant(self.currentCity,category);
     }
 }
 

@@ -8,10 +8,11 @@
 
 #import "BusinessDetailView.h"
 
-@interface BusinessDetailView()
-@property (weak, nonatomic) IBOutlet UITextView *textViewMessage;
+@interface BusinessDetailView()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *chooseMoneySegmentControl;
 @property (weak, nonatomic) IBOutlet UIView *handleView;
+@property (weak, nonatomic) IBOutlet UIButton *btnStore;
+@property (weak, nonatomic) IBOutlet UIButton *btnBack;
 @end
 
 @implementation BusinessDetailView
@@ -22,7 +23,17 @@
     view_.textViewMessage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     view_.textViewMessage.layer.borderWidth = 1.0f;
     
-    UIView *containerView = [BusinessDetailViewTopContainer businessDetailViewTopContainer];
+    BusinessDetailViewTopContainer *containerView = [BusinessDetailViewTopContainer businessDetailViewTopContainer];
+    
+    [view_.btnBack handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        [containerView backToTableView];
+    }];
+    
+    containerView.mapViewShowOrHideCallBackBlock = ^ (BOOL hide)
+    {
+        view_.btnBack.hidden = hide;
+    };
+    
     containerView.frame = CGRectMake(5.0f, 33.0f, containerView.bounds.size.width, containerView.bounds.size.height);
     [view_.topContainerView addSubview:containerView];
 
@@ -53,6 +64,22 @@
 
     self.chooseMoneySegmentControl.selectedSegmentIndex = 0;
     [self chooseMoney:self.chooseMoneySegmentControl];
+    
+    for (UIView *v in self.topContainerView.subviews) {
+        if ([v isKindOfClass:[BusinessDetailViewTopContainer class]]) {
+            
+            BusinessDetailViewTopContainer *storeView = (BusinessDetailViewTopContainer *)v;
+            storeView.storesArray = [self.data objectForKey:@"store"];
+            [storeView.locationTableView reloadData];
+            
+            NSString *btnTitle = [NSString stringWithFormat:@"   %@有%d家店可消费",self.currentCity.f_city_name,storeView.storesArray.count];
+
+            [self.btnStore setTitle:btnTitle forState:UIControlStateNormal];
+            
+            break;
+
+        }
+    }
 }
 
 - (void)chooseMoney:(UISegmentedControl *)sender
@@ -74,6 +101,8 @@
         
         UITextField *textFiled = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 0, 200.0f, view.bounds.size.height)];
         textFiled.placeholder = @"请输入金额!";
+        textFiled.returnKeyType = UIReturnKeyDone;
+        textFiled.delegate = self;
         [view addSubview:textFiled];
         
         self.handleView = view;
@@ -110,5 +139,18 @@
 {
     self.addContactBlock();
 }
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    self.textViewGetFocusBlock();
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 @end

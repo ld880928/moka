@@ -12,6 +12,11 @@
 @interface BusinessDetailViewTopContainer : UIView
 + (BusinessDetailViewTopContainer *)businessDetailViewTopContainer;
 
+@property(nonatomic,strong)NSArray *storesArray;
 @property(nonatomic,strong)UITableView *locationTableView;
 @property(nonatomic,strong)BMKMapView *locationMapView;
+
+@property(nonatomic,copy)void(^mapViewShowOrHideCallBackBlock)(BOOL hide);
+
+- (void)backToTableView;
 @end

@@ -53,6 +53,13 @@
                             <rect key="frame" x="150" y="13" width="10" height="6"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="A5h-Tf-MYv">
+                            <rect key="frame" x="266" y="2" width="49" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="返回">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -66,6 +73,9 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="1" id="2at-aq-ykG"/>
+                            </connections>
                         </textView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="留言：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b6h-AU-4pF">
                             <rect key="frame" x="20" y="74" width="51" height="21"/>
@@ -113,6 +123,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomContainerView" destination="e48-IW-QDc" id="d0H-70-vcM"/>
+                <outlet property="btnBack" destination="A5h-Tf-MYv" id="Wst-CE-Lc6"/>
+                <outlet property="btnStore" destination="yed-uR-JzD" id="pib-nF-n1s"/>
                 <outlet property="chooseMoneySegmentControl" destination="UWH-P5-WZf" id="DBd-g2-Q8f"/>
                 <outlet property="handleView" destination="qjC-3L-tV5" id="giq-9t-BwX"/>
                 <outlet property="labelName" destination="KTE-Vl-DSw" id="7Ff-Ae-aOI"/>

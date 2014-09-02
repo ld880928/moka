@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *businessesScrollView;
 @property (nonatomic,strong)NSMutableArray *businessArray;
 @property (strong, nonatomic)UILabel *navigationLabel;
+@property (strong,nonatomic)MCity *currentCity;
 @end
 
 @implementation BusinessesViewController
@@ -25,8 +26,9 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (void)refreshDataWithCityID:(NSString *)cityID_ category:(MCategory *)category_
+- (void)refreshDataWithCityID:(MCity *)city category:(MCategory *)category_
 {
+    self.currentCity = city;
     
     self.navigationLabel.text = category_.f_category_name;
     
@@ -36,7 +38,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
-    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": cityID_,@"category_id":@"8"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": city.f_city_id,@"category_id":@"8"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
  
         for (UIView *v in [self.businessesScrollView subviews]) {
             [v removeFromSuperview];
@@ -311,6 +313,7 @@
 {
     BusinessDetailViewController *destinationViewController = segue.destinationViewController;
     destinationViewController.mMerchant = sender;
+    destinationViewController.currentCity = self.currentCity;
 
 }
 

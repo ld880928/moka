@@ -39,6 +39,12 @@
 
     __unsafe_unretained BusinessDetailViewController *safe_self = self;
     
+    self.businessDetailView.textViewGetFocusBlock = ^{
+        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:safe_self action:@selector(hideKeyboard)];
+        [safe_self.view addGestureRecognizer:ges];
+        
+    };
+    
     self.bottomView.layer.shadowOffset = CGSizeMake(10.0f, 10.0f);
     self.bottomView.layer.shadowRadius = 10.0f;
     self.bottomView.layer.shadowOpacity = 1.0f;
@@ -115,7 +121,7 @@
     
     [self.businessDetailView setAddContactBlock:^{
         
-        [self readAllPeoples];
+        [safe_self readAllPeoples];
         
     }];
     
@@ -131,10 +137,11 @@
         
         [SVProgressHUD showSuccessWithStatus:@"加载成功"];
         
-        [self.iconImageView setImageWithURL:self.mMerchant.f_merchant_logo_image];
-        self.merchantName.text = self.mMerchant.f_merchant_logo_name;
+        [safe_self.iconImageView setImageWithURL:self.mMerchant.f_merchant_logo_image];
+        safe_self.merchantName.text = self.mMerchant.f_merchant_logo_name;
         
-        self.businessDetailView.data = responseObject;
+        safe_self.businessDetailView.currentCity = self.currentCity;
+        safe_self.businessDetailView.data = responseObject;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -143,8 +150,28 @@
         NSLog(@"%@",error);
         
     }];
-
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow) name: UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide) name: UIKeyboardDidHideNotification object:nil];
+
+}
+
+- (void)keyboardWillShow
+{
+    self.containerScorllView.contentSize = CGSizeMake(self.containerScorllView.contentSize.width, self.containerScorllView.contentSize.height + 128.0f);
+}
+
+- (void)keyboardWillHide
+{
+    self.containerScorllView.contentSize = CGSizeMake(self.containerScorllView.contentSize.width, self.containerScorllView.contentSize.height - 128.0f);
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -287,6 +314,14 @@
     [self performSegueWithIdentifier:@"ChooseContactViewControllerSegue" sender:contacts];
 }
 
+- (void)hideKeyboard
+{
+    [self.businessDetailView.textViewMessage resignFirstResponder];
+    
+    for (UIGestureRecognizer *ges in [self.view gestureRecognizers]) {
+        [self.view removeGestureRecognizer:ges];
+    }
+}
 
 
 @end
