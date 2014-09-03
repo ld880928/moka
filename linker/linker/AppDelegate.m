@@ -31,6 +31,7 @@
      |UIRemoteNotificationTypeSound
      |UIRemoteNotificationTypeAlert];
     
+    [UMessage setLogEnabled:YES];
     
     // Override point for customization after application launch.
     return YES;
@@ -39,13 +40,14 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     [UMessage registerDeviceToken:deviceToken];
-    
-    NSLog(@"%@",deviceToken);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     [UMessage didReceiveRemoteNotification:userInfo];
+    
+    
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
