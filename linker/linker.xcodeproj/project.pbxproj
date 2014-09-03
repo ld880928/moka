@@ -62,6 +62,8 @@
 		3B5C9DFD197E2AD20018F194 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */; };
 		3B5E83E019B447FA00EC2AA9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */; };
 		3B765D2919B4544200C901E6 /* ChooseContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B765D2819B4544200C901E6 /* ChooseContactViewController.m */; };
+		3B765D3419B7178900C901E6 /* libUMessage_Sdk_1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765D3219B7178900C901E6 /* libUMessage_Sdk_1.1.0.a */; };
+		3B765D3919B71A9B00C901E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765D3519B71A4100C901E6 /* libz.dylib */; };
 		3BB4864F19409CC400D3054F /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB4864C19409CC400D3054F /* libbaidumapapi.a */; };
 		3BB4865019409CC400D3054F /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864D19409CC400D3054F /* mapapi.bundle */; };
 		3BB4865119409CC400D3054F /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3BB4864E19409CC400D3054F /* readme.txt */; };
@@ -189,6 +191,10 @@
 		3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		3B765D2719B4544200C901E6 /* ChooseContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContactViewController.h; sourceTree = "<group>"; };
 		3B765D2819B4544200C901E6 /* ChooseContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContactViewController.m; sourceTree = "<group>"; };
+		3B765D3219B7178900C901E6 /* libUMessage_Sdk_1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.1.0.a; sourceTree = "<group>"; };
+		3B765D3319B7178900C901E6 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
+		3B765D3519B71A4100C901E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		3B765D3719B71A6100C901E6 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		3BB4861119409CC400D3054F /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
 		3BB4861219409CC400D3054F /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
 		3BB4861319409CC400D3054F /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
@@ -293,7 +299,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B765D3919B71A9B00C901E6 /* libz.dylib in Frameworks */,
 				3B5E83E019B447FA00EC2AA9 /* AddressBook.framework in Frameworks */,
+				3B765D3419B7178900C901E6 /* libUMessage_Sdk_1.1.0.a in Frameworks */,
 				0217D9B819A1F45D004ECC77 /* libsqlite3.0.dylib in Frameworks */,
 				3B452BF51920FE76008729A9 /* Security.framework in Frameworks */,
 				3B452BF31920FE64008729A9 /* SystemConfiguration.framework in Frameworks */,
@@ -439,6 +447,8 @@
 		3B452B2B1920FA63008729A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3B765D3719B71A6100C901E6 /* libz.1.2.5.dylib */,
+				3B765D3519B71A4100C901E6 /* libz.dylib */,
 				3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */,
 				0217D9B719A1F45D004ECC77 /* libsqlite3.0.dylib */,
 				3B452BF41920FE76008729A9 /* Security.framework */,
@@ -458,6 +468,7 @@
 		3B452B321920FA63008729A9 /* linker */ = {
 			isa = PBXGroup;
 			children = (
+				3B765D3019B7178900C901E6 /* UM */,
 				02AFB97B19878074005BB260 /* Datas */,
 				3BFB63A91941F4A00087AC36 /* Manager */,
 				3B2640B21935B43000F88024 /* Additions */,
@@ -543,6 +554,23 @@
 				3B5C160019550F2C00F91646 /* ChangePasswordViewController.m */,
 			);
 			name = "个人中心";
+			sourceTree = "<group>";
+		};
+		3B765D3019B7178900C901E6 /* UM */ = {
+			isa = PBXGroup;
+			children = (
+				3B765D3119B7178900C901E6 /* UMessage_Sdk_1.1.0 */,
+			);
+			path = UM;
+			sourceTree = "<group>";
+		};
+		3B765D3119B7178900C901E6 /* UMessage_Sdk_1.1.0 */ = {
+			isa = PBXGroup;
+			children = (
+				3B765D3219B7178900C901E6 /* libUMessage_Sdk_1.1.0.a */,
+				3B765D3319B7178900C901E6 /* UMessage.h */,
+			);
+			path = UMessage_Sdk_1.1.0;
 			sourceTree = "<group>";
 		};
 		3BB4860F19409CC400D3054F /* BaiduMap_IOSSDK_v2.3.0_Lib */ = {
@@ -922,7 +950,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "616292A1-5E9A-4A44-A981-F238FCEB5EAC";
+				PROVISIONING_PROFILE = "4edcd595-fbb1-4f61-ac91-c4ae04cdf0b3";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -958,7 +986,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "616292A1-5E9A-4A44-A981-F238FCEB5EAC";
+				PROVISIONING_PROFILE = "4edcd595-fbb1-4f61-ac91-c4ae04cdf0b3";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -977,13 +1005,13 @@
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
-					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
+					"$(PROJECT_DIR)/linker/UM/UMessage_Sdk_1.1.0",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7A1D673F-1CC3-42A4-9A57-FEAA68338033";
+				PROVISIONING_PROFILE = "4edcd595-fbb1-4f61-ac91-c4ae04cdf0b3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1002,13 +1030,13 @@
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
-					/Users/lidi/Documents/projects/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 					/Users/colin/Documents/ld/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
+					"$(PROJECT_DIR)/linker/UM/UMessage_Sdk_1.1.0",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7A1D673F-1CC3-42A4-9A57-FEAA68338033";
+				PROVISIONING_PROFILE = "4edcd595-fbb1-4f61-ac91-c4ae04cdf0b3";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "UMessage.h"
 
 @implementation AppDelegate
 
@@ -20,13 +21,33 @@
         NSLog(@"manager start failed!");
     }
     
+    //set AppKey and AppSecret
+    [UMessage startWithAppkey:@"5406df0afd98c589f30012ba" launchOptions:launchOptions];
     
+    //register remoteNotification types
+    
+    //register remoteNotification types (iOS 8.0以下)
+    [UMessage registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge
+     |UIRemoteNotificationTypeSound
+     |UIRemoteNotificationTypeAlert];
     
     
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [UMessage registerDeviceToken:deviceToken];
+    
+    NSLog(@"%@",deviceToken);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    [UMessage didReceiveRemoteNotification:userInfo];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
