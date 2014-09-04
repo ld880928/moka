@@ -53,6 +53,11 @@
             MMerchant *mMerchant = [[MMerchant alloc] initWithDictionary:data];
             
             NSArray *detailDatas = [data objectForKey:@"merchantdetail"];
+            
+            if ([detailDatas isEqual:[NSNull null]]) {
+                detailDatas = nil;
+            }
+            
             NSMutableArray *details = [NSMutableArray array];
             for (int j=0; j<detailDatas.count; j++) {
                 

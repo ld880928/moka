@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "UMessage.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUserName;
@@ -70,9 +71,37 @@
         int code = [[responseObject objectForKey:@"status"] intValue];
         
         if (code == 0) { //登录成功
+            
+            NSString *currentUserName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
+            
+            if (currentUserName && currentUserName.length) {
+                
+                [UMessage removeAlias:currentUserName type:kUMessageAliasTypeWeiXin response:^(id responseObject, NSError *error) {
+                    
+                    NSLog(@"remove %@ %@",currentUserName,responseObject);
+
+                    [UMessage addAlias:userName type:kUMessageAliasTypeWeiXin response:^(id responseObject, NSError *error) {
+                        
+                        NSLog(@"add %@ %@",userName,responseObject);
+                        
+                    }];
+                    
+                }];
+            }
+            else
+            {
+                [UMessage addAlias:userName type:kUMessageAliasTypeWeiXin response:^(id responseObject, NSError *error) {
+                    
+                    NSLog(@"add %@ %@",userName,responseObject);
+                    
+                }];
+            }
+            
             [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
             [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
             [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
+            
+
             
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];
             
