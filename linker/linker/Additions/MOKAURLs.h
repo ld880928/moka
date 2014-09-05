@@ -43,4 +43,6 @@
 
 #define URL_SUB_SENDEDMOKA [URL_BASE stringByAppendingString:@"apisendcardlist"]
 
+#define URL_SUB_CREATEORDER [URL_BASE stringByAppendingString:@"apicreateorder"]
+
 #endif

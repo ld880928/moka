@@ -46,6 +46,7 @@
 		3B3348D519B8592E0096F23D /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3348C419B8592E0096F23D /* SBJsonWriter.m */; };
 		3B3348D619B8592E0096F23D /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3348C519B8592E0096F23D /* libcrypto.a */; };
 		3B3348D719B8592E0096F23D /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B3348C619B8592E0096F23D /* libssl.a */; };
+		3B3348DA19B98FE40096F23D /* PaySucessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B3348D919B98FE40096F23D /* PaySucessViewController.m */; };
 		3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399DFC192FADE100A96C18 /* BusinessDetailView.m */; };
 		3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */; };
 		3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399E01192FAE3800A96C18 /* BusinessWindow.m */; };
@@ -188,6 +189,8 @@
 		3B3348C619B8592E0096F23D /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		3B3348C819B8592E0096F23D /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
 		3B3348C919B8592E0096F23D /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		3B3348D819B98FE40096F23D /* PaySucessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaySucessViewController.h; sourceTree = "<group>"; };
+		3B3348D919B98FE40096F23D /* PaySucessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaySucessViewController.m; sourceTree = "<group>"; };
 		3B399DFB192FADE100A96C18 /* BusinessDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailView.h; sourceTree = "<group>"; };
 		3B399DFC192FADE100A96C18 /* BusinessDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessDetailView.m; sourceTree = "<group>"; };
 		3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessDetailView.xib; sourceTree = "<group>"; };
@@ -426,6 +429,8 @@
 				3BDC51ED1927895700AC355F /* BusinessesViewController.m */,
 				3B149C54192E2EB600271741 /* BusinessDetailViewController.h */,
 				3B149C55192E2EB600271741 /* BusinessDetailViewController.m */,
+				3B3348D819B98FE40096F23D /* PaySucessViewController.h */,
+				3B3348D919B98FE40096F23D /* PaySucessViewController.m */,
 				3BC7D85019321A0800AD5FB6 /* ChooseCityViewController.h */,
 				3BC7D85119321A0800AD5FB6 /* ChooseCityViewController.mm */,
 				3BB4865B1940B80200D3054F /* LoginViewController.h */,
@@ -960,6 +965,7 @@
 				3B3348CF19B8592E0096F23D /* AlixPayResult.m in Sources */,
 				3B765D2919B4544200C901E6 /* ChooseContactViewController.m in Sources */,
 				3B2B4531197F7DB100E13D6B /* RefundProcessCell.m in Sources */,
+				3B3348DA19B98FE40096F23D /* PaySucessViewController.m in Sources */,
 				02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */,
 				3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */,
 				3BB4865D1940B80200D3054F /* LoginViewController.m in Sources */,

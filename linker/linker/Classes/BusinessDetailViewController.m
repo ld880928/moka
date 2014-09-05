@@ -11,6 +11,15 @@
 #import "UIView+Topradius.h"
 #import <AddressBook/AddressBook.h>
 #import "ChooseContactViewController.h"
+#import "PaySucessViewController.h"
+
+#import "AlixLibService.h"
+#import "PartnerConfig.h"
+#import "DataSigner.h"
+#import "AlixPayResult.h"
+#import "DataVerifier.h"
+#import "AlixPayOrder.h"
+#import "PartnerConfig.h"
 
 #define DETAIL_HEIGHT 280.0f
 
@@ -61,12 +70,66 @@
                               borderWidth:1.0f
                              cornerRadius:5.0f];
 
-    //取消
+    //支付
     [self.buttonConfirmPay handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         
+        [self performSegueWithIdentifier:@"PaySucessViewControllerSegue" sender:nil];
+        
+        /*
+        NSDictionary *para = @{@"user_id": @5,@"merchant_id":@3,@"price":@.01,@"receiver_name":@"lidi",@"receiver_phone":@"111111",@"message":@"Happy Birthday!"};
+        
+        //生成订单
+        //验证用户名密码，成功后退出登录界面
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+        
+        [SVProgressHUD showWithStatus:@"正在生成订单" maskType:SVProgressHUDMaskTypeGradient];
+        
+        [manager POST:URL_SUB_CREATEORDER parameters:para success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            int resCode = [[responseObject objectForKey:@"status"] intValue];
+            
+            if (!resCode) {
+                
+                [SVProgressHUD showSuccessWithStatus:@"生成订单成功"];
+                
+                NSString *orderID = [responseObject objectForKey:@"order_id"];
+                
+                 *点击获取prodcut实例并初始化订单信息
+                AlixPayOrder *order = [[AlixPayOrder alloc] init];
+                order.partner = PartnerID;
+                order.seller = SellerID;
+                
+                order.tradeNO = orderID;
+                order.productName = @"商品标题测试"; //商品标题
+                order.productDescription = @"商品描述测试"; //商品描述
+                order.amount = [NSString stringWithFormat:@"%.2f",.01f]; //商品价格
+                order.notifyURL =  Notif_URL; //回调URL
+                
+                NSString *orderInfo = [order description];
+                NSString *signedStr = [self doRsa:orderInfo];
+
+                //NSLog(@"%@",signedStr);
+                
+                NSString *orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                                         orderInfo, signedStr, @"RSA"];
+                
+                [AlixLibService payOrder:orderString AndScheme:APPScheme seletor:@selector(paymentResult:) target:self];
+            }
+            else
+            {
+                [SVProgressHUD showErrorWithStatus:@"生成订单失败"];
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            [SVProgressHUD showErrorWithStatus:@"生成订单失败"];
+        }];
+        */
     }];
     
-    //确认支付
+    //注册消息，接受支付完成的订单
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(paySuccess:) name:kPaySuccessNotification object:nil];
+    
     [self.buttonCancle handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         [self dismissViewControllerAnimated:YES completion:^{
             
@@ -174,23 +237,10 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardDidHideNotification object:nil];
-
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    ChooseContactViewController *destinationViewController = segue.destinationViewController;
-    destinationViewController.contacts = sender;
-    destinationViewController.chooseSuccessBlock = ^(NSDictionary *contact){
-        
-        self.businessDetailView.labelName.text = [contact objectForKey:@"name"];
-        
-    };
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kPaySuccessNotification object:nil];
 }
 
 -(void)readAllPeoples
-
 {
     
     //取得本地通信录名柄
@@ -326,5 +376,85 @@
     }
 }
 
+#define mark Alipay
+- (NSString*)doRsa:(NSString*)orderInfo
+{
+    id<DataSigner> signer;
+    signer = CreateRSADataSigner(PartnerPrivKey);
+    NSString *signedString = [signer signString:orderInfo];
+    return signedString;
+}
+
+- (void)paymentResultDelegate:(NSString *)result
+{
+    NSLog(@"%@",result);
+}
+
+//wap回调函数
+-(void)paymentResult:(NSString *)resultd
+{
+    //结果处理
+#if ! __has_feature(objc_arc)
+    AlixPayResult* result = [[[AlixPayResult alloc] initWithString:resultd] autorelease];
+#else
+    AlixPayResult* result = [[AlixPayResult alloc] initWithString:resultd];
+#endif
+	if (result)
+    {
+		
+		if (result.statusCode == 9000)
+        {
+			/*
+			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
+			 */
+            
+            //交易成功
+            NSString* key = AlipayPubKey;//签约帐户后获取到的支付宝公钥
+			id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(key);
+            
+			if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                //验证签名成功，交易结果无篡改
+			}
+        }
+        else
+        {
+            //交易失败
+        }
+    }
+    else
+    {
+        //失败
+    }
+    
+}
+
+- (void)paySuccess:(NSNotification *)notif
+{
+    NSLog(@"---------------    %@",notif.object);
+    
+    [self performSegueWithIdentifier:@"PaySucessViewControllerSegue" sender:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ChooseContactViewControllerSegue"]) {
+        ChooseContactViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.contacts = sender;
+        destinationViewController.chooseSuccessBlock = ^(NSDictionary *contact){
+            
+            self.businessDetailView.labelName.text = [contact objectForKey:@"name"];
+            
+        };
+    }
+    
+    if ([segue.identifier isEqualToString:@"PaySucessViewControllerSegue"]) {
+        PaySucessViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.currentCity = self.currentCity;
+        destinationViewController.mMerchant = self.mMerchant;
+    }
+    
+}
 
 @end
