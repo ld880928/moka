@@ -73,9 +73,9 @@
     //支付
     [self.buttonConfirmPay handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         
-        [self performSegueWithIdentifier:@"PaySucessViewControllerSegue" sender:nil];
+        //[self performSegueWithIdentifier:@"PaySucessViewControllerSegue" sender:nil];
         
-        /*
+        
         NSDictionary *para = @{@"user_id": @5,@"merchant_id":@3,@"price":@.01,@"receiver_name":@"lidi",@"receiver_phone":@"111111",@"message":@"Happy Birthday!"};
         
         //生成订单
@@ -95,7 +95,7 @@
                 
                 NSString *orderID = [responseObject objectForKey:@"order_id"];
                 
-                 *点击获取prodcut实例并初始化订单信息
+                 //点击获取prodcut实例并初始化订单信息
                 AlixPayOrder *order = [[AlixPayOrder alloc] init];
                 order.partner = PartnerID;
                 order.seller = SellerID;
@@ -124,7 +124,9 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             [SVProgressHUD showErrorWithStatus:@"生成订单失败"];
         }];
-        */
+        
+        
+        
     }];
     
     //注册消息，接受支付完成的订单
