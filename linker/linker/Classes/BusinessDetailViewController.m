@@ -445,7 +445,6 @@
         ChooseContactViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.contacts = sender;
         destinationViewController.chooseSuccessBlock = ^(NSDictionary *contact){
-            
             self.businessDetailView.labelName.text = [contact objectForKey:@"name"];
             
         };
