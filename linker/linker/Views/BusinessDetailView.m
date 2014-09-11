@@ -60,6 +60,13 @@
         [self.chooseMoneySegmentControl insertSegmentWithTitle:price atIndex:i animated:NO];
     }
     
+    if (combos && combos.count) {
+        self.chooseMoneySegmentControl.selectedSegmentIndex = 0;
+        if (self.priceChooseCallBackBlock) {
+            self.priceChooseCallBackBlock([[combos objectAtIndex:0] objectForKey:@"price"]);
+        }
+    }
+    
     [self.chooseMoneySegmentControl insertSegmentWithTitle:@"其他" atIndex:combos.count animated:NO];
 
     self.chooseMoneySegmentControl.selectedSegmentIndex = 0;
@@ -107,6 +114,10 @@
         
         self.handleView = view;
         [self addSubview:self.handleView];
+        
+        if (self.priceChooseCallBackBlock) {
+            self.priceChooseCallBackBlock(@0);
+        }
     }
     else
     {
@@ -119,6 +130,10 @@
         label.font = [UIFont systemFontOfSize:11.0f];
         self.handleView = label;
         [self addSubview:self.handleView];
+        
+        if (self.priceChooseCallBackBlock) {
+            self.priceChooseCallBackBlock([dic objectForKey:@"price"]);
+        }
         
     }
 }
@@ -149,6 +164,28 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
+    return YES;
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (self.priceChooseCallBackBlock) {
+        
+        NSString *priceString = textField.text;
+        if (range.length) {
+            priceString = [priceString substringToIndex:range.location];
+            if (!range.location) {
+                priceString = @"0";
+            }
+        }
+        else
+        {
+            priceString = [priceString stringByAppendingString:string];
+        }
+        
+        self.priceChooseCallBackBlock(priceString);
+    }
+    
     return YES;
 }
 

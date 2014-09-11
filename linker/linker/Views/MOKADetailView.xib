@@ -155,7 +155,14 @@
             <connections>
                 <outlet property="backgroundImageView" destination="Mq0-2U-me4" id="NOq-rM-lTe"/>
                 <outlet property="buttonRefuseProcess" destination="UB6-77-nhH" id="7fp-Kp-9yu"/>
+                <outlet property="imageViewIcon" destination="f1Q-3K-TmB" id="wD9-72-NTM"/>
                 <outlet property="imageViewStatus" destination="zyV-if-Exi" id="qm2-SL-2HS"/>
+                <outlet property="labelComboName" destination="FHr-wY-aCD" id="Xy2-r3-rA6"/>
+                <outlet property="labelMechantName" destination="9zM-JS-ley" id="ubU-jz-SZ7"/>
+                <outlet property="labelPlace" destination="lDS-8v-hQu" id="8uc-gv-6nN"/>
+                <outlet property="labelPrice" destination="nwQ-12-F8X" id="L5L-el-IIx"/>
+                <outlet property="labelSenderName" destination="xCp-kK-ar2" id="b5s-8T-Gda"/>
+                <outlet property="labelValidTime" destination="Ddi-40-uIw" id="THe-lB-Sf0"/>
                 <outlet property="qrCodeButton" destination="3ke-Kk-Fbe" id="4qK-yf-AhG"/>
             </connections>
         </view>

@@ -54,6 +54,11 @@
             return;
         }
         
+        if (!self.textFieldPassword.text || self.textFieldPassword.text.length < 6) {
+            [SVProgressHUD showErrorWithStatus:@"密码长度必须大于6"];
+            return;
+        }
+        
         NSString *userName = self.textFieldUsername.text;
         NSString *password = self.textFieldPassword.text;
         

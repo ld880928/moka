@@ -55,17 +55,48 @@
 
     [self.view addSubview:backBtn];
     
-    // Do any additional setup after loading the view.
-    self.mokaDatasArray = [NSMutableArray arrayWithArray:@[@"Image_1",@"Image_2",@"Image_3",@"Image_4"]];
-
     [self.recivedMOKACollectionView registerNib:[UINib nibWithNibName:@"RecivedMOKACell" bundle:[NSBundle mainBundle]] forCellWithReuseIdentifier:@"RecivedMOKACell"];
+    
+    self.mokaDatasArray = [NSMutableArray array];
+    
     CustomLayout *customLayout = [[CustomLayout alloc] init];
-    customLayout.cellCount = self.mokaDatasArray.count;
+    //customLayout.cellCount = 3;
     self.recivedMOKACollectionView.collectionViewLayout = customLayout;
+    
+    //__unsafe_unretained SendedMOKAViewController *safe_self = self;
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    NSString *userName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
+    NSString *userID = [[AccountAndLocationManager sharedAccountAndLocationManager] userID];
+    
+    [manager POST:URL_SUB_SENDEDMOKA parameters:@{@"username": @"13197040979",@"user_id":@"5"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self performSelector:@selector(refreshData:) withObject:responseObject];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+    
+}
+
+- (void)refreshData:(id)data_
+{
+    for (int i=0; i<[data_ count]; i++) {
+        MMoka *mMoka = [[MMoka alloc] initWithDictionary:[data_ objectAtIndex:i]];
+        mMoka.f_moka_type = @"send";
+        [self.mokaDatasArray addObject:mMoka];
+        
+    }
+    
+    [(CustomLayout *)self.recivedMOKACollectionView.collectionViewLayout setCellCount:self.mokaDatasArray.count];
+    
     self.recivedMOKACollectionView.layer.masksToBounds = NO;
     
     [self.recivedMOKACollectionView reloadData];
-
+    
     [self.recivedMOKACollectionView performBatchUpdates:^{
         
     } completion:^(BOOL finished) {
@@ -75,9 +106,10 @@
     self.iconsScrollView.delegate = self;
     for (int i=0; i < self.mokaDatasArray.count; i++) {
         
-        UIImage *image = [UIImage imageNamed:@"shop_icon_1"];
+        MMoka *moka = [self.mokaDatasArray objectAtIndex:i];
+        
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
-        imageView.image = image;
+        [imageView setImageWithURL:moka.f_moka_icon];
         imageView.center = CGPointMake(320.0f * i + 320.0f / 2, 45.0f / 2 + 20);
         
         imageView.layer.shadowOffset = CGSizeMake(5.0, 5.0);
@@ -88,7 +120,7 @@
         [self.iconsScrollView addSubview:imageView];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100.0f, 21.0f)];
-        label.text = @"仟吉西饼";
+        label.text = moka.f_moka_merchan_name;
         label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [UIFont systemFontOfSize:14.0f];

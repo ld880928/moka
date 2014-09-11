@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBackground;
 
+@property (strong,nonatomic)id selectedPrice;
 @end
 
 @implementation BusinessDetailViewController
@@ -47,9 +48,15 @@
     
     self.containerScorllView.layer.cornerRadius = 10.0f;
     
-    self.businessDetailView = [BusinessDetailView businessDetailView];
-
     __unsafe_unretained BusinessDetailViewController *safe_self = self;
+    
+    self.businessDetailView = [BusinessDetailView businessDetailView];
+    self.businessDetailView.priceChooseCallBackBlock = ^(id price){
+        
+        safe_self.selectedPrice = price;
+        safe_self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",safe_self.selectedPrice];
+        
+    };
     
     self.businessDetailView.textViewGetFocusBlock = ^{
         UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:safe_self action:@selector(hideKeyboard)];
@@ -73,10 +80,71 @@
     //支付
     [self.buttonConfirmPay handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         
-        //[self performSegueWithIdentifier:@"PaySucessViewControllerSegue" sender:nil];
+        NSString *userID = [[AccountAndLocationManager sharedAccountAndLocationManager] userID];
+        NSString *merchantID = self.mMerchant.f_merchant_id;
+        
+        NSNumber *price = @.01;
+
+        //检查信息是否正确，完全
+        if (self.selectedPrice) {
+            if ([self.selectedPrice isKindOfClass:[NSNumber class]]) {
+                price = self.selectedPrice;
+                
+                if (price.doubleValue == 0) {
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择金额" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                    return;
+                }
+                
+            }
+            else if([self.selectedPrice isKindOfClass:[NSString class]])
+            {
+                if ([self.selectedPrice length]) {
+                    
+                    if ([self isPureInt:self.selectedPrice] || [self isPureFloat:self.selectedPrice]) {
+                        price = [NSNumber numberWithDouble:[self.selectedPrice doubleValue]];
+                        if (price.doubleValue == 0) {
+                            
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择金额" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                            [alert show];
+                            
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入有效的金额" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                        [alert show];
+                        
+                        return;
+                    }
+                }
+                else
+                {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择金额" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alert show];
+                    
+                    return;
+                }
+            }
+        }
+        else
+        {
+            //未选择金额
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择金额" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alert show];
+            
+            return;
+        }
         
         
-        NSDictionary *para = @{@"user_id": @5,@"merchant_id":@3,@"price":@.01,@"receiver_name":@"lidi",@"receiver_phone":@"111111",@"message":@"Happy Birthday!"};
+        NSString *receiverName = @"lidi";
+        NSString *receiverPhone = @"111111";
+        NSString *message = @"Happy Birthday!";
+        
+        NSDictionary *para = @{@"user_id": userID,@"merchant_id":merchantID,@"price":price,@"receiver_name":receiverName,@"receiver_phone":receiverPhone,@"message":message};
         
         //生成订单
         //验证用户名密码，成功后退出登录界面
@@ -456,6 +524,18 @@
         destinationViewController.mMerchant = self.mMerchant;
     }
     
+}
+
+- (BOOL)isPureInt:(NSString *)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return [scan scanInt:&val] && [scan isAtEnd];
+}
+
+- (BOOL)isPureFloat:(NSString *)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    float val;
+    return [scan scanFloat:&val] && [scan isAtEnd];
 }
 
 @end

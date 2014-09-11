@@ -150,7 +150,7 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
-    [manager POST:URL_SUB_GETCATEGORY parameters:city_.f_city_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:URL_SUB_GETCATEGORY parameters:@{@"city_id": city_.f_city_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSMutableArray *categorys = [NSMutableArray array];
         for (int i=0; i<[responseObject count]; i++) {
@@ -194,6 +194,10 @@
         lineView.backgroundColor = [UIColor whiteColor];
         lineView.alpha = .2f;
         [cell.contentView addSubview:lineView];
+    }
+    
+    for (UIView *v in cell.contentView.subviews) {
+        [v removeFromSuperview];
     }
     
     MCategory *category = [self.navigationData objectAtIndex:indexPath.row];

@@ -83,14 +83,17 @@
 
 - (id)getCategorysByCity:(id)city_
 {
+    
+    MCity *mCity = city_;
+    
     NSMutableArray *categorys = [NSMutableArray array];
     
     FMDatabase *db = [FMDatabase databaseWithPath:[self.dataBasePath stringByAppendingPathComponent:DB_NAME]];
     if ([db open]) {
         [db beginTransaction];
         
-        NSString *sql = @"SELECT * FROM t_category";
-        FMResultSet *rs = [db executeQuery:sql];
+        NSString *sql = @"SELECT * FROM t_category WHERE f_city_id=?";
+        FMResultSet *rs = [db executeQuery:sql,mCity.f_city_id];
         while ([rs next]) {
             MCategory *category = [[MCategory alloc] initWithFMResultSet:rs];
             [categorys addObject:category];

@@ -13,6 +13,7 @@
 #define MOKA_USERDEFAULTS [NSUserDefaults standardUserDefaults]
 #define MOKA_KEY_USERNAME @"username"
 #define MOKA_KEY_PASSWORD @"password"
+#define MOKA_KEY_USERID   @"userid"
 
 #define MOKA_KEY_CITY_CURRENT_SELECTED @"city_current_selected"
 
@@ -70,6 +71,16 @@
 - (NSString *)userName
 {
     return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_USERNAME];
+}
+
+- (NSString *)userID
+{
+    return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_USERID];
+}
+
+- (void)saveUserID:(NSString *)userID_
+{
+    [MOKA_USERDEFAULTS setObject:userID_ forKey:MOKA_KEY_USERID];
 }
 
 - (void)saveUserName:(NSString *)userName_

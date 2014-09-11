@@ -68,7 +68,11 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
-    [manager POST:URL_SUB_SENDEDMOKA parameters:@{@"username": @"13197040979",@"user_id":@"5"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    NSString *userName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
+    NSString *userID = [[AccountAndLocationManager sharedAccountAndLocationManager] userID];
+    
+    [manager POST:URL_SUB_SENDEDMOKA parameters:@{@"username": userName,@"user_id":userID} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self performSelector:@selector(refreshData:) withObject:responseObject];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -76,10 +80,6 @@
         NSLog(@"%@",error);
         
     }];
-    
-    //for (int i=0; i<3; i++) {
-    //    [self.mokaDatasArray addObject:@"111"];
-    //}
     
 }
 

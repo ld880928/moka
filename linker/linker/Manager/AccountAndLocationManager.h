@@ -22,6 +22,9 @@
 
 - (NSString *)userName;
 - (NSString *)password;
+- (NSString *)userID;
+
 - (void)saveUserName:(NSString *)userName_;
 - (void)savePassword:(NSString *)password_;
+- (void)saveUserID:(NSString *)userID_;
 @end

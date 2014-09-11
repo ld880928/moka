@@ -23,6 +23,7 @@
 
 @property(nonatomic,copy)void(^showShopTableViewBlock)();
 @property(nonatomic,copy)void(^hideShopTableViewBlock)();
+@property(nonatomic,copy)void(^priceChooseCallBackBlock)(id price);
 @property(nonatomic,copy)void(^addContactBlock)();
 
 @property(nonatomic,copy)void(^textViewGetFocusBlock)();
