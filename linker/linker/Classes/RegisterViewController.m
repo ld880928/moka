@@ -7,6 +7,8 @@
 //
 
 #import "RegisterViewController.h"
+#import "LoginViewController.h"
+#import "UMessage.h"
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
@@ -73,12 +75,10 @@
             int code = [[responseObject objectForKey:@"status"] intValue];
             
             if (code == 0) { //登录成功
-                [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
-                [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
-                
                 [SVProgressHUD showSuccessWithStatus:@"注册成功"];
-                [self.navigationController popToRootViewControllerAnimated:YES];
 
+                [self login:userName password:password];
+                
             }
             else
             {
@@ -92,6 +92,74 @@
             NSLog(@"%@",error);
             
         }];
+        
+    }];
+    
+}
+
+- (void)login:(NSString *)userName password:(NSString *)password
+{
+    [SVProgressHUD showWithStatus:@"正在登录" maskType:SVProgressHUDMaskTypeGradient];
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    [manager POST:URL_SUB_LOGIN parameters:@{@"username": userName,@"password":password} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        int code = [[responseObject objectForKey:@"status"] intValue];
+        
+        if (code == 0) { //登录成功
+            
+            NSString *currentUserName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
+            
+            if (currentUserName && currentUserName.length) {
+                
+                [UMessage removeAlias:currentUserName type:kUMessageAliasTypeWeiXin response:^(id responseObject, NSError *error) {
+                    
+                    NSLog(@"remove %@ %@",currentUserName,responseObject);
+                    
+                    [UMessage addAlias:userName type:kUMessageAliasTypeWeiXin response:^(id responseObject, NSError *error) {
+                        
+                        NSLog(@"add %@ %@",userName,responseObject);
+                        
+                    }];
+                    
+                }];
+            }
+            else
+            {
+                [UMessage addAlias:userName type:kUMessageAliasTypeWeiXin response:^(id responseObject, NSError *error) {
+                    
+                    NSLog(@"add %@ %@",userName,responseObject);
+                    
+                }];
+            }
+            
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserID:[[responseObject objectForKey:@"info"] objectForKey:@"uid"]];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserKey:[[responseObject objectForKey:@"info"] objectForKey:@"key"]];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveLoginTime:[[responseObject objectForKey:@"info"] objectForKey:@"logintime"]];
+            [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
+            
+            [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+            
+            LoginViewController *controller = [self.navigationController.viewControllers objectAtIndex:0];
+            if (controller.loginSuccessBlock) {
+                controller.loginSuccessBlock();
+            }
+            
+        }
+        else
+        {
+            [SVProgressHUD showErrorWithStatus:[responseObject objectForKey:@"error"]];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [SVProgressHUD showErrorWithStatus:@"登录失败"];
+        
+        NSLog(@"%@",error);
         
     }];
     

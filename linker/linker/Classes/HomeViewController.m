@@ -69,11 +69,11 @@
     
     
     self.locationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0f];
+    self.locationBtn.titleLabel.font = [UIFont boldSystemFontOfSize:22.0f];
     [self.locationBtn setImage:[UIImage imageNamed:@"location"] forState:UIControlStateNormal];
     
     [self.locationBtn setTitle:self.currentCity.f_city_name forState:UIControlStateNormal];
-    self.locationBtn.frame = CGRectMake(0, 0, 60, 44);
+    self.locationBtn.frame = CGRectMake(0, 0, 60.0f, 100.0f);
     
     [self.locationBtn handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         
@@ -190,15 +190,17 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cell_id];
         
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 45.0f, 290.0f, 1)];
-        lineView.backgroundColor = [UIColor whiteColor];
-        lineView.alpha = .2f;
-        [cell.contentView addSubview:lineView];
+
     }
     
     for (UIView *v in cell.contentView.subviews) {
         [v removeFromSuperview];
     }
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15.0f, 45.0f, 290.0f, 1)];
+    lineView.backgroundColor = [UIColor whiteColor];
+    lineView.alpha = .2f;
+    [cell.contentView addSubview:lineView];
     
     MCategory *category = [self.navigationData objectAtIndex:indexPath.row];
     

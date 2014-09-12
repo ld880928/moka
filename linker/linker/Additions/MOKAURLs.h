@@ -33,6 +33,8 @@
  */
 #define URL_SUB_LOGIN [URL_BASE stringByAppendingString:@"apilogin"]
 
+#define URL_SUB_CHANGEPASSWORD [URL_BASE stringByAppendingString:@"apinewsetpwd"]
+
 /*!
  *  获取商家列表
  */
@@ -40,6 +42,8 @@
 
 
 #define URL_SUB_GETSUPRISE [URL_BASE stringByAppendingString:@"getsurprise"]
+
+#define URL_SUB_RECIVEDMOKA [URL_BASE stringByAppendingString:@"apigetcardlist"]
 
 #define URL_SUB_SENDEDMOKA [URL_BASE stringByAppendingString:@"apisendcardlist"]
 

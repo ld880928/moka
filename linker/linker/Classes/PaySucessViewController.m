@@ -31,6 +31,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.imageViewBackground setImageWithURL:self.mMerchant.f_merchant_background_image];
+    [self.iconImageView setImageWithURL:self.mMerchant.f_merchant_logo_image];
+    self.merchantName.text = self.mMerchant.f_merchant_name;
+    self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",self.price];
 
 }
 
@@ -39,6 +42,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)cancle:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         

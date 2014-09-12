@@ -42,11 +42,12 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
-    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": city.f_city_id,@"category_id":@"8"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": city.f_city_id,@"category_id":category_.f_category_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
  
         for (UIView *v in [self.businessesScrollView subviews]) {
             [v removeFromSuperview];
         }
+        self.businessesScrollView.contentSize = CGSizeZero;
         
         self.businessArray = [NSMutableArray array];
         

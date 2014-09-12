@@ -10,10 +10,12 @@
 #import <CoreLocation/CLLocationManager.h>
 #import "Reachability.h"
 
-#define MOKA_USERDEFAULTS [NSUserDefaults standardUserDefaults]
-#define MOKA_KEY_USERNAME @"username"
-#define MOKA_KEY_PASSWORD @"password"
-#define MOKA_KEY_USERID   @"userid"
+#define MOKA_USERDEFAULTS  [NSUserDefaults standardUserDefaults]
+#define MOKA_KEY_USERNAME  @"username"
+#define MOKA_KEY_PASSWORD  @"password"
+#define MOKA_KEY_USERID    @"userid"
+#define MOKA_KEY_USERKEY   @"userkey"
+#define MOKA_KEY_LOGINTIME @"logintime"
 
 #define MOKA_KEY_CITY_CURRENT_SELECTED @"city_current_selected"
 
@@ -78,6 +80,16 @@
     return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_USERID];
 }
 
+- (NSString *)userKey
+{
+    return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_USERKEY];
+}
+
+- (NSString *)userLoginTime
+{
+    return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_LOGINTIME];
+}
+
 - (void)saveUserID:(NSString *)userID_
 {
     [MOKA_USERDEFAULTS setObject:userID_ forKey:MOKA_KEY_USERID];
@@ -91,5 +103,15 @@
 - (void)savePassword:(NSString *)password_
 {
     [MOKA_USERDEFAULTS setObject:password_ forKey:MOKA_KEY_PASSWORD];
+}
+
+- (void)saveUserKey:(NSString *)userKey_
+{
+    [MOKA_USERDEFAULTS setObject:userKey_ forKey:MOKA_KEY_USERKEY];
+}
+
+- (void)saveLoginTime:(NSString *)loginTime_
+{
+    [MOKA_USERDEFAULTS setObject:loginTime_ forKey:MOKA_KEY_LOGINTIME];
 }
 @end

@@ -7,12 +7,14 @@
 //
 
 #import "BusinessDetailView.h"
+#define TEXT_MAXLENGTH 170
 
 @interface BusinessDetailView()<UITextFieldDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *chooseMoneySegmentControl;
 @property (weak, nonatomic) IBOutlet UIView *handleView;
 @property (weak, nonatomic) IBOutlet UIButton *btnStore;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (weak, nonatomic) IBOutlet UILabel *labelInputCount;
 @end
 
 @implementation BusinessDetailView
@@ -42,6 +44,7 @@
 
 - (void)awakeFromNib
 {
+    self.labelInputCount.text = [NSString stringWithFormat:@"%d / %d",0,TEXT_MAXLENGTH];
     [self.chooseMoneySegmentControl addTarget:self action:@selector(chooseMoney:) forControlEvents:UIControlEventValueChanged];
 }
 
@@ -165,6 +168,26 @@
 {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    NSString *new = [textView.text stringByReplacingCharactersInRange:range withString:text];
+    NSInteger res = TEXT_MAXLENGTH - [new length];
+    if(res >= 0){
+        
+        self.labelInputCount.text = [NSString stringWithFormat:@"%d / %d",[new length],TEXT_MAXLENGTH];
+        
+        return YES;
+    }
+    else{
+        NSRange rg = {0,[text length]+res};
+        if (rg.length>0) {
+            NSString *s = [text substringWithRange:rg];
+            [textView setText:[textView.text stringByReplacingCharactersInRange:range withString:s]];
+        }
+        return NO;
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

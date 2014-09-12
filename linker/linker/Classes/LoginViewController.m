@@ -100,6 +100,8 @@
             [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserID:[[responseObject objectForKey:@"info"] objectForKey:@"uid"]];
             [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserName:userName];
             [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:password];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserKey:[[responseObject objectForKey:@"info"] objectForKey:@"key"]];
+            [[AccountAndLocationManager sharedAccountAndLocationManager] saveLoginTime:[[responseObject objectForKey:@"info"] objectForKey:@"logintime"]];
             [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = YES;
             
             [SVProgressHUD showSuccessWithStatus:@"登录成功"];

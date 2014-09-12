@@ -23,8 +23,12 @@
 - (NSString *)userName;
 - (NSString *)password;
 - (NSString *)userID;
+- (NSString *)userKey;
+- (NSString *)userLoginTime;
 
 - (void)saveUserName:(NSString *)userName_;
 - (void)savePassword:(NSString *)password_;
 - (void)saveUserID:(NSString *)userID_;
+- (void)saveUserKey:(NSString *)userKey_;
+- (void)saveLoginTime:(NSString *)loginTime_;
 @end

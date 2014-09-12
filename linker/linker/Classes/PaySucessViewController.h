@@ -11,4 +11,5 @@
 @interface PaySucessViewController : UIViewController
 @property(nonatomic,strong)MMerchant *mMerchant;
 @property(nonatomic,strong)MCity *currentCity;
+@property(nonatomic,assign)id price;
 @end
