@@ -30,7 +30,15 @@
 {
     MMoka *moka = data_;
     
-    MOKADetailView *view = [[[NSBundle mainBundle] loadNibNamed:@"MOKADetailView" owner:self options:nil] lastObject];
+    MOKADetailView *view;
+    
+    if (is__3__5__Screen) {
+        view = [[[NSBundle mainBundle] loadNibNamed:@"MOKADetailView_35" owner:self options:nil] lastObject];
+    }
+    else
+    {
+        view = [[[NSBundle mainBundle] loadNibNamed:@"MOKADetailView" owner:self options:nil] lastObject];
+    }
     
     [view.backgroundImageView setImageWithURL:moka.f_moka_background_img];
     [view.imageViewIcon setImageWithURL:moka.f_moka_icon];

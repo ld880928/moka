@@ -11,6 +11,9 @@
 		021DB885196041CA0061D297 /* PersonalCenterContainerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB884196041CA0061D297 /* PersonalCenterContainerWindow.m */; };
 		021DB88819604A5C0061D297 /* CallWindowBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88719604A5C0061D297 /* CallWindowBackViewController.m */; };
 		021DB88B196058730061D297 /* LightStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 021DB88A196058730061D297 /* LightStateBarNavigationController.m */; };
+		024335F819C441DB00B3E056 /* BusinessView_35.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024335F719C441DB00B3E056 /* BusinessView_35.xib */; };
+		024335FA19C44ED600B3E056 /* BusinessViewDetailView_35.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024335F919C44ED600B3E056 /* BusinessViewDetailView_35.xib */; };
+		024335FC19C4606B00B3E056 /* MOKADetailView_35.xib in Resources */ = {isa = PBXBuildFile; fileRef = 024335FB19C4606B00B3E056 /* MOKADetailView_35.xib */; };
 		02793BA3197D6D0200B2AC39 /* RecivedMOKACell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */; };
 		02793BA5197D6D1C00B2AC39 /* RecivedMOKACell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */; };
 		02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA7197D6E9000B2AC39 /* CustomLayout.m */; };
@@ -120,6 +123,9 @@
 		021DB88719604A5C0061D297 /* CallWindowBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallWindowBackViewController.m; sourceTree = "<group>"; };
 		021DB889196058730061D297 /* LightStateBarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightStateBarNavigationController.h; sourceTree = "<group>"; };
 		021DB88A196058730061D297 /* LightStateBarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LightStateBarNavigationController.m; sourceTree = "<group>"; };
+		024335F719C441DB00B3E056 /* BusinessView_35.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessView_35.xib; sourceTree = "<group>"; };
+		024335F919C44ED600B3E056 /* BusinessViewDetailView_35.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessViewDetailView_35.xib; sourceTree = "<group>"; };
+		024335FB19C4606B00B3E056 /* MOKADetailView_35.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MOKADetailView_35.xib; sourceTree = "<group>"; };
 		02793BA1197D6D0200B2AC39 /* RecivedMOKACell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecivedMOKACell.h; sourceTree = "<group>"; };
 		02793BA2197D6D0200B2AC39 /* RecivedMOKACell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecivedMOKACell.m; sourceTree = "<group>"; };
 		02793BA4197D6D1C00B2AC39 /* RecivedMOKACell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecivedMOKACell.xib; sourceTree = "<group>"; };
@@ -513,9 +519,11 @@
 				3BC7D8571932310500AD5FB6 /* BusinessView.h */,
 				3BC7D8581932310500AD5FB6 /* BusinessView.m */,
 				3BC7D855193230F500AD5FB6 /* BusinessView.xib */,
+				024335F719C441DB00B3E056 /* BusinessView_35.xib */,
 				3BB6638019376E4F0093C33F /* BusinessViewDetailView.h */,
 				3BB6638119376E4F0093C33F /* BusinessViewDetailView.m */,
 				3BB6637B19376E050093C33F /* BusinessViewDetailView.xib */,
+				024335F919C44ED600B3E056 /* BusinessViewDetailView_35.xib */,
 				6E05481819382B04002F021D /* BusinessDetailViewTopContainer.h */,
 				6E05481919382B04002F021D /* BusinessDetailViewTopContainer.m */,
 				6E05481619382AEC002F021D /* BusinessDetailViewTopContainer.xib */,
@@ -525,6 +533,7 @@
 				3B119C8919570A6300077226 /* MOKADetailView.h */,
 				3B119C8A19570A6300077226 /* MOKADetailView.m */,
 				3B119C8719570A4A00077226 /* MOKADetailView.xib */,
+				024335FB19C4606B00B3E056 /* MOKADetailView_35.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -861,8 +870,10 @@
 			files = (
 				3BB6637C19376E050093C33F /* BusinessViewDetailView.xib in Resources */,
 				3BB4865019409CC400D3054F /* mapapi.bundle in Resources */,
+				024335F819C441DB00B3E056 /* BusinessView_35.xib in Resources */,
 				6E05481719382AEC002F021D /* BusinessDetailViewTopContainer.xib in Resources */,
 				3B452B451920FA63008729A9 /* Images.xcassets in Resources */,
+				024335FC19C4606B00B3E056 /* MOKADetailView_35.xib in Resources */,
 				02793BA5197D6D1C00B2AC39 /* RecivedMOKACell.xib in Resources */,
 				3BB4865119409CC400D3054F /* readme.txt in Resources */,
 				3B119C8819570A4A00077226 /* MOKADetailView.xib in Resources */,
@@ -873,6 +884,7 @@
 				3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */,
 				3B452B371920FA63008729A9 /* InfoPlist.strings in Resources */,
 				3B452B401920FA63008729A9 /* Main.storyboard in Resources */,
+				024335FA19C44ED600B3E056 /* BusinessViewDetailView_35.xib in Resources */,
 				3BC7D856193230F500AD5FB6 /* BusinessView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

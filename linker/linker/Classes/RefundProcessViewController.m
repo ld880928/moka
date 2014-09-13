@@ -8,6 +8,7 @@
 
 #import "RefundProcessViewController.h"
 #import "BusinessWindow.h"
+#import "RefundProcessCell.h"
 
 @interface RefundProcessViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *infoTableView;
@@ -65,7 +66,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cell_id = @"RefundProcessCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+    RefundProcessCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
+    
+    NSDictionary *item = [self.refunderData objectAtIndex:indexPath.row];
+    
+    cell.labelTime.text = [item objectForKey:@"datetime"];
+    cell.labelStatus.text = [item objectForKey:@"order_status"];
+    cell.labelID.text = [item objectForKey:@"order_number"];
+    cell.labelPrice.text = [item objectForKey:@"total_price"];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

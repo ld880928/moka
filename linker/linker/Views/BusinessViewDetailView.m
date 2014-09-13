@@ -20,14 +20,23 @@
 
 - (CGFloat)getBottom_y
 {
-    return 568.0f;
+    return KCurrentHeight;
 }
 
 + (BusinessViewDetailView *)businessViewDetailViewWithData:(id)data_
 {
     NSArray *datas = data_;
     
-    BusinessViewDetailView *view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessViewDetailView" owner:self options:nil] lastObject];
+    BusinessViewDetailView *view_;
+    
+    if (is__3__5__Screen) {
+        view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessViewDetailView_35" owner:self options:nil] lastObject];
+    }
+    else
+    {
+        view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessViewDetailView" owner:self options:nil] lastObject];
+    }
+    
     view_.frame = CGRectMake(0, [view_ getBottom_y], view_.bounds.size.width, view_.bounds.size.height);
     
     for (int i=0; i<datas.count; i++) {
@@ -56,6 +65,12 @@
         UIImageView *imageView_ = [[UIImageView alloc] initWithFrame:CGRectMake(20.0f, 125.0f, 280.0f, 160.0f)];
         [imageView_ setImageWithURL:detail.f_merchant_detail_image];
         [detailContainer addSubview:imageView_];
+        
+        if (is__3__5__Screen) {
+            titlelabel.frame = CGRectMake(20.0f, 0, 280.0f, 30.0f);
+            descriptionLabel.frame = CGRectMake(20.0f, 35.0f, 280.0f, 30.0f);
+            imageView_.frame = CGRectMake(20.0f, 70.0f, 280.0f, 160.0f);
+        }
         
         [view_.detailScrollView addSubview:detailContainer];
     }

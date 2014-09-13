@@ -14,9 +14,7 @@
 @implementation CustomLayout
 
 - (void)prepareLayout
-{
-    int a = self.cellCount;
-    
+{    
     
     
 }
@@ -36,15 +34,18 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    CGFloat height = is__3__5__Screen?220.0f:340.0f;
+    
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    attributes.frame = CGRectMake(BORDER_DISTANCE + 190.0f * indexPath.item + DISTANCE * indexPath.item,0,190.0f , 340.0f);
+    attributes.frame = CGRectMake(BORDER_DISTANCE + 190.0f * indexPath.item + DISTANCE * indexPath.item,0,190.0f , height);
     return attributes;
     
 }
 
 - (CGSize)collectionViewContentSize
 {
-    return CGSizeMake(BORDER_DISTANCE + 190.0f * self.cellCount + DISTANCE * self.cellCount - 1 + BORDER_DISTANCE, 340.0f);
+    CGFloat height = is__3__5__Screen?252.0f:340.0f;
+    return CGSizeMake(BORDER_DISTANCE + 190.0f * self.cellCount + DISTANCE * self.cellCount - 1 + BORDER_DISTANCE, height);
 }
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds

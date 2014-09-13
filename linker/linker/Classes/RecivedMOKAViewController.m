@@ -70,7 +70,7 @@
     
     NSString *userName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
     NSString *userID = [[AccountAndLocationManager sharedAccountAndLocationManager] userID];
-    
+
     [manager POST:URL_SUB_RECIVEDMOKA parameters:@{@"username": userName,@"user_id":userID} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self performSelector:@selector(refreshData:) withObject:responseObject];
         

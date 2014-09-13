@@ -25,7 +25,17 @@
 {
     MMerchant *mMerchant = datas_;
     
-    BusinessView *view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessView" owner:self options:nil] lastObject];
+    BusinessView *view_;
+    
+    if (is__3__5__Screen) {
+        view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessView_35" owner:self options:nil] lastObject];
+    }
+    else
+    {
+        view_ = [[[NSBundle mainBundle] loadNibNamed:@"BusinessView" owner:self options:nil] lastObject];
+    }
+    
+    
     view_.businessViewState = BusinessViewState_DetailHide;
     view_.labelName.text = mMerchant.f_merchant_name;
     view_.labelTitle.text = mMerchant.f_merchant_description;
@@ -59,10 +69,12 @@
         CGFloat distance = self.bounds.size.height - self.bottomContainerView.bounds.size.height;
         CGFloat percent = self.bottomContainerView.frame.origin.y / distance;
         percent = percent > 1 ? 1.0f : percent;
-        self.positionYChangedCallBackBlock(percent);
+        if (self.positionYChangedCallBackBlock) {
+            self.positionYChangedCallBackBlock(percent);
+        }
         
         
-        CGFloat top = 568.0f - self.detailView.bounds.size.height;
+        CGFloat top = KCurrentHeight - self.detailView.bounds.size.height;
         
         self.detailView.frame = CGRectMake(self.detailView.frame.origin.x,
                                            top + self.detailView.bounds.size.height * percent,

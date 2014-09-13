@@ -23,4 +23,8 @@
 
 #import "SVProgressHUD.h"
 
+
+#define KCurrentHeight [UIScreen mainScreen].bounds.size.height
+#define is__3__5__Screen (KCurrentHeight == 480.0f)
+
 #endif

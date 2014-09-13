@@ -39,13 +39,13 @@
 {
     if([keyPath isEqualToString:@"frame"])
     {
-        CGFloat percent = .9f + 0.1 * self.frame.origin.y / ([UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM);
+        CGFloat percent = .9f + 0.1 * self.frame.origin.y / (KCurrentHeight - DISTANCE_BOTTOM);
         percent = self.frame.origin.y > self.frame.size.height - DISTANCE_BOTTOM ? 1.0f : percent;
         if (self.positionYChangedCallBackBlock) {
             self.positionYChangedCallBackBlock(percent);
         }
         
-        CGFloat alpha = self.frame.origin.y / ([UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM);
+        CGFloat alpha = self.frame.origin.y / (KCurrentHeight - DISTANCE_BOTTOM);
         self.maskWindow.alpha = (1 - alpha)/ 1.1;
         
     }
@@ -75,7 +75,7 @@
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         sharedBusinessWindowInstance = [[self alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        sharedBusinessWindowInstance.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height ,sharedBusinessWindowInstance.bounds.size.width, sharedBusinessWindowInstance.bounds.size.height);
+        sharedBusinessWindowInstance.frame = CGRectMake(0, KCurrentHeight ,sharedBusinessWindowInstance.bounds.size.width, sharedBusinessWindowInstance.bounds.size.height);
         sharedBusinessWindowInstance.layer.shadowOffset = CGSizeMake(10.0f, 10.0f);
         sharedBusinessWindowInstance.layer.shadowRadius = 10.0f;
         sharedBusinessWindowInstance.layer.shadowOpacity = 1.0f;
@@ -140,7 +140,7 @@
 {
     POPSpringAnimation *animationToBottom = [POPSpringAnimation animationWithPropertyNamed:kPOPViewFrame];
     animationToBottom.toValue = [NSValue valueWithCGRect:CGRectMake(self.frame.origin.x,
-                                                                    [UIScreen mainScreen].bounds.size.height - DISTANCE_BOTTOM,
+                                                                    KCurrentHeight - DISTANCE_BOTTOM,
                                                                     self.bounds.size.width,
                                                                     self.bounds.size.height)];
     
@@ -160,8 +160,8 @@
 
 - (void)hideToShow
 {
-    self.frame = CGRectMake(0, 568.0f, self.maskWindow.bounds.size.width, self.maskWindow.bounds.size.height);
-    self.maskWindow.frame = CGRectMake(0, 568.0f, self.maskWindow.bounds.size.width, self.maskWindow.bounds.size.height);
+    self.frame = CGRectMake(0, KCurrentHeight, self.maskWindow.bounds.size.width, self.maskWindow.bounds.size.height);
+    self.maskWindow.frame = CGRectMake(0, KCurrentHeight, self.maskWindow.bounds.size.width, self.maskWindow.bounds.size.height);
     self.maskWindow.hidden = NO;
     [self.maskWindow makeKeyAndVisible];
     self.hidden = NO;

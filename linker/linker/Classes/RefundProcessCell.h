@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface RefundProcessCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *labelTime;
+@property (weak, nonatomic) IBOutlet UILabel *labelStatus;
+@property (weak, nonatomic) IBOutlet UILabel *labelID;
+@property (weak, nonatomic) IBOutlet UILabel *labelPrice;
 
 @end
