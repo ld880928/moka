@@ -10,7 +10,7 @@
 #import "LoginViewController.h"
 #import "UMessage.h"
 
-@interface RegisterViewController ()
+@interface RegisterViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *buttonRegister;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUsername;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
@@ -25,13 +25,10 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (void)viewDidLoad

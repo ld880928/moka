@@ -349,7 +349,6 @@
         
         //取得本地所有联系人记录
         
-        
         if (tmpAddressBook==nil) {
             return ;
         };
@@ -366,14 +365,15 @@
             
             NSString* tmpFirstName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonFirstNameProperty);
             
-            NSLog(@"First name:%@", tmpFirstName);
+            //NSLog(@"First name:%@", tmpFirstName);
             
             //获取的联系人单一属性:Last name
             
             NSString* tmpLastName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonLastNameProperty);
             
-            NSLog(@"Last name:%@", tmpLastName);
+            //NSLog(@"Last name:%@", tmpLastName);
             
+            /*
             //获取的联系人单一属性:Nickname
             
             NSString* tmpNickname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNicknameProperty);
@@ -426,7 +426,7 @@
             NSString* tmpNote = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNoteProperty);
             
             NSLog(@"Note:%@", tmpNote);
-            
+            */
             //获取的联系人单一属性:Generic phone number
             
             ABMultiValueRef tmpPhones = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonPhoneProperty);
@@ -439,7 +439,7 @@
                 
                 NSString* tmpPhoneIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpPhones, j);
                 
-                NSLog(@"tmpPhoneIndex%d:%@", j, tmpPhoneIndex);
+                //NSLog(@"tmpPhoneIndex%d:%@", j, tmpPhoneIndex);
                 
                 phone = tmpPhoneIndex;
                 

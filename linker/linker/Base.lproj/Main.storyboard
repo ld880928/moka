@@ -88,12 +88,18 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVE-g9-bP3">
                                 <rect key="frame" x="59" y="72" width="224" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TLH-7r-ufA" id="lKP-o6-jOL"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DDp-QR-vt8">
                                 <rect key="frame" x="59" y="120" width="224" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TLH-7r-ufA" id="gnA-AL-q0J"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ee5-Tu-1P1">
                                 <rect key="frame" x="69" y="215" width="182" height="55"/>
@@ -279,12 +285,18 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EAc-WB-aIn">
                                 <rect key="frame" x="59" y="64" width="224" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r5y-Rd-Pj7" id="jlk-7c-0dN"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6vt-Lw-16b">
                                 <rect key="frame" x="59" y="112" width="224" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r5y-Rd-Pj7" id="xIf-gg-ATb"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f6U-LC-YtN">
                                 <rect key="frame" x="69" y="236" width="182" height="55"/>
@@ -314,7 +326,10 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="再次输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q54-mn-QF7">
                                 <rect key="frame" x="59" y="163" width="224" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r5y-Rd-Pj7" id="Gci-Q3-fT5"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mrt-lw-UU1">
                                 <rect key="frame" x="10" y="205" width="300" height="1"/>
@@ -798,12 +813,18 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入新密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ttn-w6-ymI">
                                         <rect key="frame" x="69" y="57" width="224" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="zLj-Nd-0i7" id="LmG-qT-VzW"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入您的旧密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LJs-16-RHG">
                                         <rect key="frame" x="69" y="18" width="224" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="zLj-Nd-0i7" id="oal-vX-9kh"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-cf-8lF">
                                         <rect key="frame" x="69" y="185" width="182" height="55"/>
@@ -833,7 +854,10 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="再次输入新密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uKS-FD-ETk">
                                         <rect key="frame" x="69" y="102" width="224" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="zLj-Nd-0i7" id="asv-w5-eoT"/>
+                                        </connections>
                                     </textField>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Db6-be-iLJ">
                                         <rect key="frame" x="10" y="140" width="300" height="1"/>
@@ -1050,17 +1074,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ecj-h0-6lx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ecj-h0-6lx">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="NDg-HQ-9bm"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="436" id="kQr-KU-FE8"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="vXZ-lx-hvc" id="D8G-EK-f85"/>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="lhO-P1-MP8"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTJ-9b-Tkp">
-                                <rect key="frame" x="250" y="0.0" width="70" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTJ-9b-Tkp">
+                                <rect key="frame" x="250" y="0.0" width="70" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="4Ub-Hh-zWo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="取消">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1071,8 +1102,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nTJ-9b-Tkp" secondAttribute="trailing" id="2QY-1C-9Ei"/>
+                            <constraint firstItem="nTJ-9b-Tkp" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="Aid-Wg-gLs"/>
+                            <constraint firstItem="ecj-h0-6lx" firstAttribute="top" secondItem="nTJ-9b-Tkp" secondAttribute="bottom" constant="9" id="KXP-kV-J7t"/>
+                            <constraint firstItem="ecj-h0-6lx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="VRe-17-Dyg"/>
+                            <constraint firstItem="xBt-q3-lvG" firstAttribute="top" secondItem="ecj-h0-6lx" secondAttribute="bottom" id="i5R-sN-iyp"/>
+                            <constraint firstAttribute="trailing" secondItem="ecj-h0-6lx" secondAttribute="trailing" id="ta0-Aj-nkl"/>
+                            <constraint firstItem="nTJ-9b-Tkp" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="250" id="umd-dA-Y9x"/>
+                        </constraints>
                     </view>
-                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="locationsTableView" destination="ecj-h0-6lx" id="JJ1-rE-UTF"/>
                     </connections>

@@ -11,7 +11,7 @@
 
 @interface RefundProcessViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *infoTableView;
-
+@property (nonatomic,strong)NSArray *refunderData;
 @end
 
 @implementation RefundProcessViewController
@@ -28,15 +28,6 @@
     return UIStatusBarStyleLightContent;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -45,11 +36,30 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
     
     // Do any additional setup after loading the view.
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+    
+    NSString *userName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
+    
+    NSLog(@"%@",URL_SUB_REFUNDERLIST);
+    
+    [manager POST:URL_SUB_REFUNDERLIST parameters:@{@"username": userName} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        self.refunderData = responseObject;
+        [self.infoTableView reloadData];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return self.refunderData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

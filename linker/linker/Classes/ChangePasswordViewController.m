@@ -9,7 +9,7 @@
 #import "ChangePasswordViewController.h"
 #import "BusinessWindow.h"
 
-@interface ChangePasswordViewController ()
+@interface ChangePasswordViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *buttonConfirm;
 @property (weak, nonatomic) IBOutlet UITextField *textFiledOldPassword;
 @property (weak, nonatomic) IBOutlet UITextField *textFiledNewPassword;
@@ -26,6 +26,12 @@
     [self.textFiledNewPasswordConfirm resignFirstResponder];
     [self.navigationController popViewControllerAnimated:YES];
     [[BusinessWindow sharedBusinessWindow] hideToShow];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle
@@ -104,7 +110,7 @@
             
             if (code == 0) { //成功
                 
-                NSString *currentUserName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
+                //NSString *currentUserName = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
                 /*
                 if (currentUserName && currentUserName.length) {
                     
@@ -129,13 +135,15 @@
                     }];
                 }
                 */
-                [[AccountAndLocationManager sharedAccountAndLocationManager] saveUserID:[[responseObject objectForKey:@"info"] objectForKey:@"uid"]];
+                //[[AccountAndLocationManager sharedAccountAndLocationManager] saveUserID:[[responseObject objectForKey:@"info"] objectForKey:@"uid"]];
                 [[AccountAndLocationManager sharedAccountAndLocationManager] savePassword:@""];
-                [AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = NO;
+                //[AccountAndLocationManager sharedAccountAndLocationManager].loginSuccess = NO;
                 
                 [SVProgressHUD showSuccessWithStatus:@"修改成功"];
                 
-                
+                //[self.navigationController popViewControllerAnimated:YES];
+                //[[BusinessWindow sharedBusinessWindow] hideToShow];
+
             }
             else
             {

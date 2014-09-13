@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "UMessage.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textFieldUserName;
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
 @property (weak, nonatomic) IBOutlet UIButton *buttonLogin;
@@ -40,6 +40,13 @@
     self.textFieldUserName.text = [[AccountAndLocationManager sharedAccountAndLocationManager] userName];
     self.textFieldPassword.text = [[AccountAndLocationManager sharedAccountAndLocationManager] password];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 - (IBAction)cancle:(id)sender {
     
