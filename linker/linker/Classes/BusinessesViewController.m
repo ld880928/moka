@@ -141,15 +141,22 @@
         
         self.businessesScrollView.contentSize = CGSizeMake(self.view.bounds.size.width * self.businessArray.count, self.businessesScrollView.bounds.size.height);
         
-        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
         
-        id a = responseObject;
-        
+        if (!responseObject || ![responseObject count]) {
+            [[BusinessWindow sharedBusinessWindow] performSelector:@selector(moveToBottom) withObject:self afterDelay:1.0f];
+            [SVProgressHUD showErrorWithStatus:@"未找到对应商家"];
+
+        }
+        else
+        {
+            [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+
+        }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         [SVProgressHUD showErrorWithStatus:@"网络异常"];
-
+        [[BusinessWindow sharedBusinessWindow] performSelector:@selector(moveToBottom) withObject:self afterDelay:1.0f];
         NSLog(@"%@",error);
         
     }];
