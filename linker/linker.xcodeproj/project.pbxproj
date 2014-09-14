@@ -19,6 +19,8 @@
 		02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 02793BA7197D6E9000B2AC39 /* CustomLayout.m */; };
 		02AFB9A71987DA07005BB260 /* MCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9A61987DA07005BB260 /* MCategory.m */; };
 		02AFB9AA1987DA08005BB260 /* MCity.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFB9A91987DA08005BB260 /* MCity.m */; };
+		02AFC78F19C55DE300BDCDDC /* ChooseContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC78E19C55DE300BDCDDC /* ChooseContactViewController.m */; };
+		02AFC79219C562E200BDCDDC /* ChooseContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC79119C562E200BDCDDC /* ChooseContactCell.m */; };
 		02B5DBEF19B2EA3400E79109 /* MMoka.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B5DBEE19B2EA3400E79109 /* MMoka.m */; };
 		02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F62A67199F88B7006FD8A9 /* DataBaseManager.m */; };
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
@@ -78,7 +80,6 @@
 		3B5C9DF7197E034B0018F194 /* MOKADetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DF6197E034B0018F194 /* MOKADetailViewController.m */; };
 		3B5C9DFD197E2AD20018F194 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */; };
 		3B5E83E019B447FA00EC2AA9 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */; };
-		3B765D2919B4544200C901E6 /* ChooseContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B765D2819B4544200C901E6 /* ChooseContactViewController.m */; };
 		3B765D3419B7178900C901E6 /* libUMessage_Sdk_1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765D3219B7178900C901E6 /* libUMessage_Sdk_1.1.0.a */; };
 		3B765D3919B71A9B00C901E6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B765D3519B71A4100C901E6 /* libz.dylib */; };
 		3BB4864F19409CC400D3054F /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB4864C19409CC400D3054F /* libbaidumapapi.a */; };
@@ -135,6 +136,10 @@
 		02AFB9A61987DA07005BB260 /* MCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCategory.m; sourceTree = "<group>"; };
 		02AFB9A81987DA08005BB260 /* MCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCity.h; sourceTree = "<group>"; };
 		02AFB9A91987DA08005BB260 /* MCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCity.m; sourceTree = "<group>"; };
+		02AFC78D19C55DE300BDCDDC /* ChooseContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContactViewController.h; sourceTree = "<group>"; };
+		02AFC78E19C55DE300BDCDDC /* ChooseContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContactViewController.m; sourceTree = "<group>"; };
+		02AFC79019C562E200BDCDDC /* ChooseContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContactCell.h; sourceTree = "<group>"; };
+		02AFC79119C562E200BDCDDC /* ChooseContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContactCell.m; sourceTree = "<group>"; };
 		02B5DBED19B2EA3400E79109 /* MMoka.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMoka.h; sourceTree = "<group>"; };
 		02B5DBEE19B2EA3400E79109 /* MMoka.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMoka.m; sourceTree = "<group>"; };
 		02B98FB9198640480034722A /* MOKAURLs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MOKAURLs.h; sourceTree = "<group>"; };
@@ -237,8 +242,6 @@
 		3B5C9DFB197E2AD20018F194 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		3B5E83DF19B447FA00EC2AA9 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		3B765D2719B4544200C901E6 /* ChooseContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseContactViewController.h; sourceTree = "<group>"; };
-		3B765D2819B4544200C901E6 /* ChooseContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseContactViewController.m; sourceTree = "<group>"; };
 		3B765D3219B7178900C901E6 /* libUMessage_Sdk_1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.1.0.a; sourceTree = "<group>"; };
 		3B765D3319B7178900C901E6 /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
 		3B765D3519B71A4100C901E6 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -445,8 +448,10 @@
 				3BB4865F1940B9A000D3054F /* RegisterViewController.m */,
 				3BB486611940BBB500D3054F /* ForgotPasswordViewController.h */,
 				3BB486621940BBB500D3054F /* ForgotPasswordViewController.m */,
-				3B765D2719B4544200C901E6 /* ChooseContactViewController.h */,
-				3B765D2819B4544200C901E6 /* ChooseContactViewController.m */,
+				02AFC78D19C55DE300BDCDDC /* ChooseContactViewController.h */,
+				02AFC78E19C55DE300BDCDDC /* ChooseContactViewController.m */,
+				02AFC79019C562E200BDCDDC /* ChooseContactCell.h */,
+				02AFC79119C562E200BDCDDC /* ChooseContactCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -956,6 +961,7 @@
 				3B5C15F819550EC300F91646 /* RecivedMOKAViewController.m in Sources */,
 				3B3348D319B8592E0096F23D /* SBJsonBase.m in Sources */,
 				3BDC51EE1927895700AC355F /* BusinessesViewController.m in Sources */,
+				02AFC78F19C55DE300BDCDDC /* ChooseContactViewController.m in Sources */,
 				3BB486571940A79300D3054F /* UIImage+UIColor.m in Sources */,
 				3B3348D019B8592E0096F23D /* NSObject+SBJSON.m in Sources */,
 				6E05481A19382B04002F021D /* BusinessDetailViewTopContainer.m in Sources */,
@@ -963,6 +969,7 @@
 				3BC7D85219321A0800AD5FB6 /* ChooseCityViewController.mm in Sources */,
 				02793BA8197D6E9000B2AC39 /* CustomLayout.m in Sources */,
 				02AFB9A71987DA07005BB260 /* MCategory.m in Sources */,
+				02AFC79219C562E200BDCDDC /* ChooseContactCell.m in Sources */,
 				3B5C9DF7197E034B0018F194 /* MOKADetailViewController.m in Sources */,
 				3B452B3D1920FA63008729A9 /* AppDelegate.m in Sources */,
 				3B5C15FE19550F0F00F91646 /* RefundProcessViewController.m in Sources */,
@@ -975,7 +982,6 @@
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
 				3B3348CF19B8592E0096F23D /* AlixPayResult.m in Sources */,
-				3B765D2919B4544200C901E6 /* ChooseContactViewController.m in Sources */,
 				3B2B4531197F7DB100E13D6B /* RefundProcessCell.m in Sources */,
 				3B3348DA19B98FE40096F23D /* PaySucessViewController.m in Sources */,
 				02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */,
