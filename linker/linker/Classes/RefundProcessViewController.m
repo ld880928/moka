@@ -37,7 +37,8 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background_home"]];
     
     // Do any additional setup after loading the view.
-    
+    [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient inView:self.view];
+
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
@@ -49,12 +50,14 @@
         
         self.refunderData = responseObject;
         [self.infoTableView reloadData];
-        
+        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         NSLog(@"%@",error);
-        
+        [SVProgressHUD showErrorWithStatus:@"网络异常"];
+
     }];
 }
 

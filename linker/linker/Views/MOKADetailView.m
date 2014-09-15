@@ -46,8 +46,8 @@
     view.labelPrice.text = [NSString stringWithFormat:@"¥ %@",moka.f_moka_price];
     view.labelSenderName.text = moka.f_moka_sender;
     view.labelPlace.text = moka.f_moka_place;
-    view.labelValidTime.text = @"";//moka.f_moka_validtime;
-    view.labelComboName.text = @"";//moka.f_moka_combo_name;
+    view.labelValidTime.text = [moka.f_moka_validtime isEqual:[NSNull null]] ? @"" : moka.f_moka_validtime;
+    view.labelComboName.text = [moka.f_moka_combo_name isEqual:[NSNull null]] ? @"" : moka.f_moka_combo_name;
     
     
     view.qrCodeButton.layer.cornerRadius = 5.0f;

@@ -48,6 +48,8 @@ typedef NSUInteger SVProgressHUDMaskType;
 + (void)showWithStatus:(NSString*)status;
 + (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;
 
++ (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType inView:(UIView *)view_;
+
 + (void)showProgress:(float)progress;
 + (void)showProgress:(float)progress status:(NSString*)status;
 + (void)showProgress:(float)progress status:(NSString*)status maskType:(SVProgressHUDMaskType)maskType;

@@ -51,6 +51,11 @@ CGFloat SVProgressHUDRingThickness = 6;
 @property (nonatomic, assign) UIOffset offsetFromCenter;
 
 - (void)showProgress:(float)progress
+              status:(NSString *)string
+            maskType:(SVProgressHUDMaskType)hudMaskType
+              inView:(UIView *)view_;
+
+- (void)showProgress:(float)progress
               status:(NSString*)string
             maskType:(SVProgressHUDMaskType)hudMaskType;
 
@@ -124,6 +129,11 @@ CGFloat SVProgressHUDRingThickness = 6;
 
 + (void)showWithStatus:(NSString*)status maskType:(SVProgressHUDMaskType)maskType {
     [[self sharedView] showProgress:-1 status:status maskType:maskType];
+}
+
++ (void)showWithStatus:(NSString *)status maskType:(SVProgressHUDMaskType)maskType inView:(UIView *)view_
+{
+    [[self sharedView] showProgress:-1 status:status maskType:maskType inView:view_];
 }
 
 + (void)showProgress:(float)progress {
@@ -441,6 +451,93 @@ CGFloat SVProgressHUDRingThickness = 6;
 }
 
 #pragma mark - Master show/dismiss methods
+
+- (void)showProgress:(float)progress status:(NSString *)string maskType:(SVProgressHUDMaskType)hudMaskType inView:(UIView *)view_
+{
+    
+    
+    //@colin modify
+    ////////////////////////////////////////////////////
+    [view_ addSubview:self.overlayView];
+    //////////////////////////////////////////////////////
+    
+    if(!self.superview)
+        [self.overlayView addSubview:self];
+    
+    self.fadeOutTimer = nil;
+    self.imageView.hidden = YES;
+    self.maskType = hudMaskType;
+    self.progress = progress;
+    
+    self.stringLabel.text = string;
+    [self updatePosition];
+    
+    if(progress >= 0) {
+        self.imageView.image = nil;
+        self.imageView.hidden = NO;
+        [self.spinnerView stopAnimating];
+        self.ringLayer.strokeEnd = progress;
+        
+        if(progress == 0)
+            self.activityCount++;
+    }
+    else {
+        self.activityCount++;
+        [self cancelRingLayerAnimation];
+        [self.spinnerView startAnimating];
+    }
+    
+    if(self.maskType != SVProgressHUDMaskTypeNone) {
+        self.overlayView.userInteractionEnabled = YES;
+        self.accessibilityLabel = string;
+        self.isAccessibilityElement = YES;
+    }
+    else {
+        self.overlayView.userInteractionEnabled = NO;
+        self.hudView.accessibilityLabel = string;
+        self.hudView.isAccessibilityElement = YES;
+    }
+    
+    [self.overlayView setHidden:NO];
+    [self positionHUD:nil];
+    
+    if(self.alpha != 1) {
+        NSDictionary *userInfo = [self notificationUserInfo];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDWillAppearNotification
+                                                            object:nil
+                                                          userInfo:userInfo];
+        
+        [self registerNotifications];
+        self.hudView.transform = CGAffineTransformScale(self.hudView.transform, 1.3, 1.3);
+        
+        if(self.isClear) {
+            self.alpha = 1;
+            self.hudView.alpha = 0;
+        }
+        
+        [UIView animateWithDuration:0.15
+                              delay:0
+                            options:UIViewAnimationOptionAllowUserInteraction | UIViewAnimationCurveEaseOut | UIViewAnimationOptionBeginFromCurrentState
+                         animations:^{
+                             self.hudView.transform = CGAffineTransformScale(self.hudView.transform, 1/1.3, 1/1.3);
+                             
+                             if(self.isClear) // handle iOS 7 UIToolbar not answer well to hierarchy opacity change
+                                 self.hudView.alpha = 1;
+                             else
+                                 self.alpha = 1;
+                         }
+                         completion:^(BOOL finished){
+                             [[NSNotificationCenter defaultCenter] postNotificationName:SVProgressHUDDidAppearNotification
+                                                                                 object:nil
+                                                                               userInfo:userInfo];
+                             UIAccessibilityPostNotification(UIAccessibilityScreenChangedNotification, nil);
+                             UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification, string);
+                         }];
+        
+        [self setNeedsDisplay];
+    }
+
+}
 
 - (void)showProgress:(float)progress status:(NSString*)string maskType:(SVProgressHUDMaskType)hudMaskType {
     

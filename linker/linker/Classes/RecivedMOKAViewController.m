@@ -65,6 +65,8 @@
     
     //__unsafe_unretained SendedMOKAViewController *safe_self = self;
     
+    [SVProgressHUD showWithStatus:@"正在加载..." maskType:SVProgressHUDMaskTypeGradient inView:self.view];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
@@ -74,8 +76,13 @@
     [manager POST:URL_SUB_RECIVEDMOKA parameters:@{@"username": userName,@"user_id":userID} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self performSelector:@selector(refreshData:) withObject:responseObject];
         
+        [SVProgressHUD showSuccessWithStatus:@"加载成功"];
+
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
+        [SVProgressHUD showErrorWithStatus:@"网络异常"];
+
         NSLog(@"%@",error);
         
     }];
