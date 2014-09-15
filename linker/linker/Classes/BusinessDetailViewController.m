@@ -11,6 +11,7 @@
 #import "UIView+Topradius.h"
 #import "ChooseContactViewController.h"
 #import "PaySucessViewController.h"
+#import <AddressBook/AddressBook.h>
 
 #import "AlixLibService.h"
 #import "PartnerConfig.h"
@@ -227,7 +228,6 @@
     
     [self.businessDetailView setShowShopTableViewBlock:^{
         
-        
         [UIView animateWithDuration:.5f animations:^{
             
             safe_self.businessDetailView.topContainerView.frame = CGRectMake(safe_self.businessDetailView.topContainerView.frame.origin.x,
@@ -275,9 +275,14 @@
     }];
     
     [self.businessDetailView setAddContactBlock:^{
-        
-        [safe_self performSegueWithIdentifier:@"ChooseContactViewControllerSegue" sender:nil];
-        
+        ABAddressBookRef tmpAddressBook=ABAddressBookCreateWithOptions(NULL, NULL);
+        ABAddressBookRequestAccessWithCompletion(tmpAddressBook, ^(bool greanted, CFErrorRef error){
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [safe_self performSegueWithIdentifier:@"ChooseContactViewControllerSegue" sender:nil];
+            });
+            
+        });
     }];
     
     [self.containerScorllView addSubview:self.businessDetailView];
@@ -366,6 +371,9 @@
 		
 		if (result.statusCode == 9000)
         {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPaySuccessNotification object:result];
+            
 			/*
 			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
 			 */

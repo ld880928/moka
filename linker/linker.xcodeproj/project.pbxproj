@@ -1084,7 +1084,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "71e08a1e-71f8-4dba-915e-65a91b94754b";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1120,7 +1120,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "71e08a1e-71f8-4dba-915e-65a91b94754b";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1146,7 +1146,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71e08a1e-71f8-4dba-915e-65a91b94754b";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1172,7 +1172,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "71e08a1e-71f8-4dba-915e-65a91b94754b";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

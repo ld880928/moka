@@ -100,7 +100,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Uc-BP-8Sq">
-                            <rect key="frame" x="287" y="18" width="18" height="22"/>
+                            <rect key="frame" x="259" y="9" width="48" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="addcontact"/>
                             <connections>

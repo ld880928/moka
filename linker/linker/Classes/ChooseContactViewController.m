@@ -67,150 +67,178 @@
 -(void)readAllPeoples
 {
     [SVProgressHUD showWithStatus:@"加载联系人"];
-    //取得本地通信录名柄
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
         ABAddressBookRef tmpAddressBook=ABAddressBookCreateWithOptions(NULL, NULL);
         
-        dispatch_semaphore_t sema=dispatch_semaphore_create(0);
-        
         ABAddressBookRequestAccessWithCompletion(tmpAddressBook, ^(bool greanted, CFErrorRef error){
-            dispatch_semaphore_signal(sema);
-        });
-        
-        dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-        
-        //取得本地所有联系人记录
-        
-        if (tmpAddressBook==nil) {
-            return ;
-        };
-        
-        NSArray* tmpPeoples = (__bridge NSArray*)ABAddressBookCopyArrayOfAllPeople(tmpAddressBook);
-        
-        NSMutableArray *contacts = [NSMutableArray array];
-        
-        for(id tmpPerson in tmpPeoples)
             
-        {
+            //取得本地所有联系人记录
             
-            //获取的联系人单一属性:First name
+            if (tmpAddressBook==nil) {
+                return ;
+            };
             
-            NSString* tmpFirstName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonFirstNameProperty);
+            NSArray* tmpPeoples = (__bridge NSArray*)ABAddressBookCopyArrayOfAllPeople(tmpAddressBook);
             
-            if (!tmpFirstName || [tmpFirstName isEqual:[NSNull null]]) {
-                tmpFirstName = @"";
-            }
+            NSMutableArray *contacts = [NSMutableArray array];
             
-            //NSLog(@"First name:%@", tmpFirstName);
-            
-            //获取的联系人单一属性:Last name
-            
-            NSString* tmpLastName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonLastNameProperty);
-            
-            if (!tmpLastName || [tmpLastName isEqual:[NSNull null]]) {
-                tmpLastName = @"";
-            }
-            
-            //NSLog(@"Last name:%@", tmpLastName);
-            
-            /*
-             //获取的联系人单一属性:Nickname
-             
-             NSString* tmpNickname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNicknameProperty);
-             
-             NSLog(@"Nickname:%@", tmpNickname);
-             
-             //获取的联系人单一属性:Company name
-             
-             NSString* tmpCompanyname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonOrganizationProperty);
-             
-             NSLog(@"Company name:%@", tmpCompanyname);
-             
-             //获取的联系人单一属性:Job Title
-             
-             NSString* tmpJobTitle= (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonJobTitleProperty);
-             
-             NSLog(@"Job Title:%@", tmpJobTitle);
-             
-             
-             //获取的联系人单一属性:Department name
-             
-             NSString* tmpDepartmentName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonDepartmentProperty);
-             
-             NSLog(@"Department name:%@", tmpDepartmentName);
-             
-             //获取的联系人单一属性:Email(s)
-             
-             ABMultiValueRef tmpEmails = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonEmailProperty);
-             
-             for(NSInteger j = 0; ABMultiValueGetCount(tmpEmails); j++)
-             
-             {
-             
-             NSString* tmpEmailIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpEmails, j);
-             
-             NSLog(@"Emails%d:%@", j, tmpEmailIndex);
-             
-             }
-             
-             CFRelease(tmpEmails);
-             
-             //获取的联系人单一属性:Birthday
-             
-             NSDate* tmpBirthday = (__bridge NSDate*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonBirthdayProperty);
-             
-             NSLog(@"Birthday:%@", tmpBirthday);
-             
-             //获取的联系人单一属性:Note
-             
-             NSString* tmpNote = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNoteProperty);
-             
-             NSLog(@"Note:%@", tmpNote);
-             */
-            //获取的联系人单一属性:Generic phone number
-            
-            ABMultiValueRef tmpPhones = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonPhoneProperty);
-            
-            NSString *phone = @"";
-            
-            for(NSInteger j = 0; j < ABMultiValueGetCount(tmpPhones); j++)
+            for(id tmpPerson in tmpPeoples)
                 
             {
                 
-                NSString* tmpPhoneIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpPhones, j);
+                //获取的联系人单一属性:First name
                 
-                //NSLog(@"tmpPhoneIndex%d:%@", j, tmpPhoneIndex);
+                NSString* tmpFirstName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonFirstNameProperty);
                 
-                phone = tmpPhoneIndex;
-                
-                if (!phone || [phone isEqual:[NSNull null]]) {
-                    phone = @"";
+                if (!tmpFirstName || [tmpFirstName isEqual:[NSNull null]]) {
+                    tmpFirstName = @"";
                 }
+                
+                //NSLog(@"First name:%@", tmpFirstName);
+                
+                //获取的联系人单一属性:Last name
+                
+                NSString* tmpLastName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonLastNameProperty);
+                
+                if (!tmpLastName || [tmpLastName isEqual:[NSNull null]]) {
+                    tmpLastName = @"";
+                }
+                
+                //NSLog(@"Last name:%@", tmpLastName);
+                
+                /*
+                 //获取的联系人单一属性:Nickname
+                 
+                 NSString* tmpNickname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNicknameProperty);
+                 
+                 NSLog(@"Nickname:%@", tmpNickname);
+                 
+                 //获取的联系人单一属性:Company name
+                 
+                 NSString* tmpCompanyname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonOrganizationProperty);
+                 
+                 NSLog(@"Company name:%@", tmpCompanyname);
+                 
+                 //获取的联系人单一属性:Job Title
+                 
+                 NSString* tmpJobTitle= (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonJobTitleProperty);
+                 
+                 NSLog(@"Job Title:%@", tmpJobTitle);
+                 
+                 
+                 //获取的联系人单一属性:Department name
+                 
+                 NSString* tmpDepartmentName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonDepartmentProperty);
+                 
+                 NSLog(@"Department name:%@", tmpDepartmentName);
+                 
+                 //获取的联系人单一属性:Email(s)
+                 
+                 ABMultiValueRef tmpEmails = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonEmailProperty);
+                 
+                 for(NSInteger j = 0; ABMultiValueGetCount(tmpEmails); j++)
+                 
+                 {
+                 
+                 NSString* tmpEmailIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpEmails, j);
+                 
+                 NSLog(@"Emails%d:%@", j, tmpEmailIndex);
+                 
+                 }
+                 
+                 CFRelease(tmpEmails);
+                 
+                 //获取的联系人单一属性:Birthday
+                 
+                 NSDate* tmpBirthday = (__bridge NSDate*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonBirthdayProperty);
+                 
+                 NSLog(@"Birthday:%@", tmpBirthday);
+                 
+                 //获取的联系人单一属性:Note
+                 
+                 NSString* tmpNote = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNoteProperty);
+                 
+                 NSLog(@"Note:%@", tmpNote);
+                 */
+                //获取的联系人单一属性:Generic phone number
+                
+                ABMultiValueRef tmpPhones = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonPhoneProperty);
+                
+                NSString *phone = @"";
+                
+                for(NSInteger j = 0; j < ABMultiValueGetCount(tmpPhones); j++)
+                    
+                {
+                    
+                    NSString* tmpPhoneIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpPhones, j);
+                    
+                    //NSLog(@"tmpPhoneIndex%d:%@", j, tmpPhoneIndex);
+                    
+                    phone = tmpPhoneIndex;
+                    
+                    if (!phone || [phone isEqual:[NSNull null]]) {
+                        phone = @"";
+                    }
+                    
+                }
+                
+                //处理电话号码
+                if (phone.length >10) {
+                    
+                    //去掉特殊字符
+                    NSMutableString *temp = [[NSMutableString alloc] initWithString:@""];
+                    for (int i=0; i<phone.length; i++) {
+                        NSString *char_ = [phone substringWithRange:NSMakeRange(i, 1)];
+                        
+                        if ([char_ isEqualToString:@"+"] || [char_ isEqualToString:@"-" ] || [char_ isEqualToString:@" "]) {
+                            continue;
+                        }
+                        else
+                        {
+                            [temp appendString:char_];
+                        }
+                        
+                    }
+                    
+                    phone = temp;
+                    
+                    //去掉 86
+                    if ([[phone substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"86"]) {
+                        phone = [phone substringFromIndex:2];
+                    }
+                    
+                    if (![[phone substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"]) {
+                        continue;
+                    }
+                    
+                }
+                else
+                {
+                    continue;
+                }
+                
+                
+                /////////////////
+                
+                [contacts addObject:@{@"name": [NSString stringWithFormat:@"%@%@",tmpFirstName,tmpLastName],@"phone":phone}];
+                
+                CFRelease(tmpPhones);
                 
             }
             
-            [contacts addObject:@{@"name": [NSString stringWithFormat:@"%@%@",tmpFirstName,tmpLastName],@"phone":phone}];
+            self.contacts = contacts;
             
-            CFRelease(tmpPhones);
+            //释放内存
             
-        }
-        
-        self.contacts = contacts;
-
-        //释放内存
-        
-        CFRelease(tmpAddressBook);
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
+            CFRelease(tmpAddressBook);
             
-            [SVProgressHUD dismiss];
-            [self.contactTableView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [SVProgressHUD dismiss];
+                [self.contactTableView reloadData];
+            });
+            
         });
-        
-    });
-    
 }
 /*
 #pragma mark - Navigation

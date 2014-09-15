@@ -93,26 +93,29 @@
     //结果处理
     AlixPayResult* result = [self handleOpenURL:url];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kPaySuccessNotification object:result];
 
 	if (result)
     {
 		
 		if (result.statusCode == 9000)
         {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kPaySuccessNotification object:result];
+            
 			/*
 			 *用公钥验证签名 严格验证请使用result.resultString与result.signString验签
 			 */
             
             //交易成功
-            //            NSString* key = @"签约帐户后获取到的支付宝公钥";
-            //			id<DataVerifier> verifier;
-            //            verifier = CreateRSADataVerifier(key);
-            //
-            //			if ([verifier verifyString:result.resultString withSign:result.signString])
-            //            {
-            //                //验证签名成功，交易结果无篡改
-            //			}
+            
+            id<DataVerifier> verifier;
+            verifier = CreateRSADataVerifier(AlipayPubKey);
+            
+            if ([verifier verifyString:result.resultString withSign:result.signString])
+            {
+                //验证签名成功，交易结果无篡改
+
+            }
             
         }
         else
