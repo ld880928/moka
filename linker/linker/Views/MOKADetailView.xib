@@ -14,9 +14,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="shop_icon_1" translatesAutoresizingMaskIntoConstraints="NO" id="f1Q-3K-TmB">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shop_icon_1" translatesAutoresizingMaskIntoConstraints="NO" id="f1Q-3K-TmB">
                     <rect key="frame" x="10" y="19" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="RZo-9T-IIC"/>
+                        <constraint firstAttribute="width" constant="40" id="lCQ-03-ZY6"/>
+                    </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="仟吉西饼" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zM-JS-ley">
                     <rect key="frame" x="65" y="28" width="114" height="21"/>
@@ -112,7 +116,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                 </view>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy6-yb-cKO">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cy6-yb-cKO">
                     <rect key="frame" x="278" y="529" width="22" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -125,7 +129,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5J-Oz-dXP">
-                    <rect key="frame" x="20" y="527" width="25" height="25"/>
+                    <rect key="frame" x="10" y="523" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" image="front">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,6 +154,10 @@
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="f1Q-3K-TmB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="1HD-9Y-dFE"/>
+                <constraint firstItem="f1Q-3K-TmB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Z4b-qq-jhX"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>

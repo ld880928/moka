@@ -55,6 +55,7 @@
 		3B399DFE192FADE100A96C18 /* BusinessDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399DFC192FADE100A96C18 /* BusinessDetailView.m */; };
 		3B399DFF192FADE100A96C18 /* BusinessDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */; };
 		3B399E02192FAE3800A96C18 /* BusinessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B399E01192FAE3800A96C18 /* BusinessWindow.m */; };
+		3B44E3E619C8276600076DBE /* MOKADetailMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B44E3E519C8276600076DBE /* MOKADetailMessageCell.m */; };
 		3B452B2D1920FA63008729A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B2C1920FA63008729A9 /* Foundation.framework */; };
 		3B452B2F1920FA63008729A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B2E1920FA63008729A9 /* CoreGraphics.framework */; };
 		3B452B311920FA63008729A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B452B301920FA63008729A9 /* UIKit.framework */; };
@@ -207,6 +208,8 @@
 		3B399DFD192FADE100A96C18 /* BusinessDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessDetailView.xib; sourceTree = "<group>"; };
 		3B399E00192FAE3800A96C18 /* BusinessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessWindow.h; sourceTree = "<group>"; };
 		3B399E01192FAE3800A96C18 /* BusinessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessWindow.m; sourceTree = "<group>"; };
+		3B44E3E419C8276600076DBE /* MOKADetailMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKADetailMessageCell.h; sourceTree = "<group>"; };
+		3B44E3E519C8276600076DBE /* MOKADetailMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOKADetailMessageCell.m; sourceTree = "<group>"; };
 		3B452B291920FA63008729A9 /* linker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = linker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B452B2C1920FA63008729A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B452B2E1920FA63008729A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -666,6 +669,8 @@
 				3B5C15FA19550EE400F91646 /* SendedMOKAViewController.m */,
 				3B119C8C1957256C00077226 /* MOKADetailMessageViewController.h */,
 				3B119C8D1957256C00077226 /* MOKADetailMessageViewController.m */,
+				3B44E3E419C8276600076DBE /* MOKADetailMessageCell.h */,
+				3B44E3E519C8276600076DBE /* MOKADetailMessageCell.m */,
 				3B5C15FC19550F0F00F91646 /* RefundProcessViewController.h */,
 				3B5C15FD19550F0F00F91646 /* RefundProcessViewController.m */,
 				3B2B452F197F7DB100E13D6B /* RefundProcessCell.h */,
@@ -979,6 +984,7 @@
 				3B3348D119B8592E0096F23D /* NSString+SBJSON.m in Sources */,
 				3B3348CE19B8592E0096F23D /* AlixPayOrder.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
+				3B44E3E619C8276600076DBE /* MOKADetailMessageCell.m in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
 				3B3348CF19B8592E0096F23D /* AlixPayResult.m in Sources */,
@@ -1084,7 +1090,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1120,7 +1126,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1146,7 +1152,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1172,7 +1178,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
+				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

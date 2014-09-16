@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface MOKADetailMessageViewController : UIViewController
-
+@property (nonatomic,strong)MMoka *moka;
 @end

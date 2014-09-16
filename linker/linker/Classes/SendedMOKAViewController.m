@@ -205,10 +205,7 @@
         MOKADetailViewController *controller = segue.destinationViewController;
         
         NSIndexPath *indexPath = sender;
-        if (indexPath.item == 0) {
-            controller.status = @"mokastatus_2";
-        }
-        else
+
         controller.isMime = YES;
         
         controller.data = [self.mokaDatasArray objectAtIndex:indexPath.item];

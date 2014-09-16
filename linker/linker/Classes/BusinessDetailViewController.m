@@ -55,6 +55,12 @@
     self.businessDetailView.priceChooseCallBackBlock = ^(id price){
         
         safe_self.selectedPrice = price;
+        
+        if ([price isKindOfClass:[NSDictionary class]]) {
+            safe_self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",[safe_self.selectedPrice objectForKey:@"price"]];
+
+        }
+        else
         safe_self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",safe_self.selectedPrice];
         
     };
@@ -86,9 +92,15 @@
         
         NSNumber *price = @.01;
 
+        NSString *combo_id = @"-1";
         //检查信息是否正确，完全
         if (self.selectedPrice) {
-            if ([self.selectedPrice isKindOfClass:[NSNumber class]]) {
+            if ([self.selectedPrice isKindOfClass:[NSDictionary class]]) {
+                
+                combo_id = [self.selectedPrice objectForKey:@"combo_id"];
+                price = [NSNumber numberWithDouble:[[self.selectedPrice objectForKey:@"price"] doubleValue]];
+            }
+            else if ([self.selectedPrice isKindOfClass:[NSNumber class]]) {
                 price = self.selectedPrice;
                 
                 if (price.doubleValue == 0) {
@@ -164,7 +176,7 @@
         NSString *receiverPhone = [self.selectedContact objectForKey:@"phone"];;
         NSString *message = self.businessDetailView.textViewMessage.text;
         
-        NSDictionary *para = @{@"user_id": userID,@"merchant_id":merchantID,@"price":price,@"receiver_name":receiverName,@"receiver_phone":receiverPhone,@"message":message};
+        NSDictionary *para = @{@"user_id": userID,@"merchant_id":merchantID,@"price":price,@"combo_id": combo_id ,@"receiver_name":receiverName,@"receiver_phone":receiverPhone,@"message":message};
         
         //生成订单
         //验证用户名密码，成功后退出登录界面
@@ -189,9 +201,9 @@
                 order.seller = SellerID;
                 
                 order.tradeNO = orderID;
-                order.productName = @"商品标题测试"; //商品标题
+                order.productName = @"摩卡"; //商品标题
                 order.productDescription = @"商品描述测试"; //商品描述
-                order.amount = [NSString stringWithFormat:@"%.2f",.01f]; //商品价格
+                order.amount = [NSString stringWithFormat:@"%@",price]; //商品价格
                 order.notifyURL =  Notif_URL; //回调URL
                 
                 NSString *orderInfo = [order description];

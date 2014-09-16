@@ -8,6 +8,7 @@
 
 #import "MOKADetailViewController.h"
 #import "MOKADetailView.h"
+#import "MOKADetailMessageViewController.h"
 
 @interface MOKADetailViewController ()
 
@@ -40,10 +41,6 @@
         detailView.buttonRefuseProcess.hidden = NO;
     }
     
-    if (self.status) {
-        detailView.imageViewStatus.hidden = NO;
-        detailView.imageViewStatus.image = [UIImage imageNamed:self.status];
-    }
     
     [detailView setBackBlock:^{
         [self dismissViewControllerAnimated:YES completion:^{
@@ -51,8 +48,8 @@
         }];
     }];
     
-    [detailView setGotoDetailBlock:^{
-        [self performSegueWithIdentifier:@"MOKADetailMessageViewControllerSegue" sender:nil];
+    [detailView setGotoDetailBlock:^(MMoka *moka){
+        [self performSegueWithIdentifier:@"MOKADetailMessageViewControllerSegue" sender:moka];
     }];
     
     detailView.frame = self.view.frame;
@@ -65,15 +62,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    MOKADetailMessageViewController *controller = segue.destinationViewController;
+    controller.moka = sender;
 }
-*/
 
 @end

@@ -29,7 +29,7 @@
 @property (nonatomic,strong)NSString *f_moka_background_img; //background_img
 @property (nonatomic,strong)NSString *f_moka_message;      //message
 @property (nonatomic,strong)NSNumber *f_moka_can_consume_num; //can_consume_num
-
+@property (nonatomic,strong)NSString *f_moka_order_number;   //increment_id
 /* 
  "combo": {
  "combo_id": null,
@@ -48,7 +48,7 @@
  }
  }
  */
-@property (nonatomic,strong)NSArray *f_moka_can_consume_store; //can_consume_store
+@property (nonatomic,strong)NSDictionary *f_moka_can_consume_store; //can_consume_store
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic_;
 

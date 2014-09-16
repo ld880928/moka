@@ -16,7 +16,7 @@
         self.f_moka_order_id = [dic_ objectForKey:@"order_id"];
         self.f_moka_increment_id = [dic_ objectForKey:@"increment_id"];
         self.f_moka_status = [dic_ objectForKey:@"status"];
-        self.f_moka_merchan_name = [dic_ objectForKey:@"merchan_name"];
+        self.f_moka_merchan_name = [dic_ objectForKey:@"merchant_name"];
         self.f_moka_icon = [dic_ objectForKey:@"icon"];
         self.f_moka_store_name = [dic_ objectForKey:@"store_name"];
         self.f_moka_price = [dic_ objectForKey:@"price"];
@@ -26,6 +26,7 @@
         self.f_moka_background_img = [dic_ objectForKey:@"background_img"];
         self.f_moka_message = [dic_ objectForKey:@"message"];
         self.f_moka_can_consume_num = [dic_ objectForKey:@"can_consume_num"];
+        self.f_moka_order_number = [dic_ objectForKey:@"increment_id"];
         
         NSDictionary *combo = [dic_ objectForKey:@"combo"];
         self.f_moka_combo_id = [combo objectForKey:@"combo_id"];

@@ -66,7 +66,7 @@
     if (combos && combos.count) {
         self.chooseMoneySegmentControl.selectedSegmentIndex = 0;
         if (self.priceChooseCallBackBlock) {
-            self.priceChooseCallBackBlock([[combos objectAtIndex:0] objectForKey:@"price"]);
+            self.priceChooseCallBackBlock([combos objectAtIndex:0]);
         }
     }
     
@@ -135,7 +135,7 @@
         [self addSubview:self.handleView];
         
         if (self.priceChooseCallBackBlock) {
-            self.priceChooseCallBackBlock([dic objectForKey:@"price"]);
+            self.priceChooseCallBackBlock(dic);
         }
         
     }

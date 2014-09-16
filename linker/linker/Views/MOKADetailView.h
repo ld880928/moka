@@ -10,7 +10,7 @@
 
 @interface MOKADetailView : UIView
 
-@property(nonatomic,copy)void(^gotoDetailBlock)();
+@property(nonatomic,copy)void(^gotoDetailBlock)(MMoka *moka_);
 @property(nonatomic,copy)void(^backBlock)();
 @property (weak, nonatomic) IBOutlet UIButton *buttonRefuseProcess;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewStatus;

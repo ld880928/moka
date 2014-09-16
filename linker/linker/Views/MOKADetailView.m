@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *labelComboName;
 
+@property (strong,nonatomic)MMoka *moka;
+
 @end
 
 @implementation MOKADetailView
@@ -40,6 +42,7 @@
         view = [[[NSBundle mainBundle] loadNibNamed:@"MOKADetailView" owner:self options:nil] lastObject];
     }
     
+    view.moka = moka;
     [view.backgroundImageView setImageWithURL:moka.f_moka_background_img];
     [view.imageViewIcon setImageWithURL:moka.f_moka_icon];
     view.labelMechantName.text = moka.f_moka_merchan_name;
@@ -49,7 +52,7 @@
     view.labelValidTime.text = [moka.f_moka_validtime isEqual:[NSNull null]] ? @"" : moka.f_moka_validtime;
     view.labelComboName.text = [moka.f_moka_combo_name isEqual:[NSNull null]] ? @"" : moka.f_moka_combo_name;
     
-    
+    [view.qrCodeButton setTitle:moka.f_moka_order_number forState:UIControlStateNormal];
     view.qrCodeButton.layer.cornerRadius = 5.0f;
     view.buttonRefuseProcess.layer.cornerRadius = 2.0f;
     [view.buttonRefuseProcess handleControlEvent:UIControlEventTouchUpInside withBlock:^{
@@ -58,13 +61,29 @@
         [alertView show];
         
     }];
+    
+    if([moka.f_moka_status isEqualToString:@"refunded"])
+    {
+        view.imageViewStatus.image = [UIImage imageNamed:@"mokastatus_2"];
+    }
+    else if ([moka.f_moka_status isEqualToString:@"used"])
+    {
+        view.imageViewStatus.image = [UIImage imageNamed:@"mokastatus_1"];
+
+    }
+    else if ([moka.f_moka_status isEqualToString:@"timeout_refunding"])
+    {
+        view.imageViewStatus.image = [UIImage imageNamed:@"mokastatus_3"];
+
+    }
+    
     return view;
 }
 
 - (IBAction)gotoDetail:(id)sender
 {
     if (self.gotoDetailBlock) {
-        self.gotoDetailBlock();
+        self.gotoDetailBlock(self.moka);
     }
 }
 
