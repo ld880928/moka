@@ -73,10 +73,36 @@
     
     NSDictionary *item = [self.refunderData objectAtIndex:indexPath.row];
     
-    cell.labelTime.text = [item objectForKey:@"datetime"];
-    cell.labelStatus.text = [item objectForKey:@"order_status"];
     cell.labelID.text = [item objectForKey:@"order_number"];
     cell.labelPrice.text = [item objectForKey:@"total_price"];
+    
+    NSString *time = [item objectForKey:@"datetime"];
+    if (!time || [time isEqual:[NSNull null]] || time.length < 10) {
+        cell.labelTime.text = @"";
+    }
+    else
+    {
+        cell.labelTime.text = [NSString stringWithFormat:@"您在 %@ 有一笔退款",[time substringToIndex:10]];
+    }
+    
+    NSString *status = [item objectForKey:@"order_status"];
+    
+    if (!status || [status isEqual:[NSNull null]] || !status.length) {
+        cell.labelStatus.text = @"";
+    }
+    else if([status isEqualToString:@"refunded"]){
+        cell.labelStatus.text = @"已退款";
+
+    }else if ([status isEqualToString:@"request_refunding"]){
+        cell.labelStatus.text = @"申请退款";
+
+    }else if ([status isEqualToString:@"timeout_refunding"]){
+        cell.labelStatus.text = @"超时退款";
+
+    }else
+    {
+        cell.labelStatus.text = @"";
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

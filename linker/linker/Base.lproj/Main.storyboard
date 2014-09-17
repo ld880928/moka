@@ -1562,29 +1562,10 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="KIS-6N-Nx1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auK-7O-glb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="480" id="6cn-HY-9t6"/>
-                                    <constraint firstAttribute="width" constant="320" id="9Gj-Fj-xNU"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="delegate" destination="ksc-nw-SEK" id="HXv-g4-fxp"/>
-                                </connections>
-                            </scrollView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="auK-7O-glb" firstAttribute="top" secondItem="KIS-6N-Nx1" secondAttribute="top" id="7i4-Fc-V0i"/>
-                            <constraint firstAttribute="trailing" secondItem="auK-7O-glb" secondAttribute="trailing" id="875-HQ-cdh"/>
-                            <constraint firstItem="auK-7O-glb" firstAttribute="leading" secondItem="KIS-6N-Nx1" secondAttribute="leading" id="c8n-cq-ZjI"/>
-                            <constraint firstItem="zTq-4H-jJe" firstAttribute="top" secondItem="auK-7O-glb" secondAttribute="bottom" id="z2s-g7-w2U"/>
-                        </constraints>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
                     <connections>
-                        <outlet property="businessesScrollView" destination="auK-7O-glb" id="UMK-aP-wXe"/>
                         <segue destination="m9f-Mp-dr9" kind="modal" identifier="BusinessDetail" modalTransitionStyle="flipHorizontal" id="ocT-t8-R1l"/>
                     </connections>
                 </viewController>
@@ -1832,7 +1813,7 @@
                                 <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPq-2b-35G">
-                                        <rect key="frame" x="95" y="164" width="130" height="30"/>
+                                        <rect key="frame" x="95" y="164" width="130" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="返回">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1870,6 +1851,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="btnCancle" destination="qPq-2b-35G" id="LU7-PF-Rwg"/>
                         <outlet property="iconImageView" destination="0rc-HE-ilx" id="c59-Fo-bLB"/>
                         <outlet property="imageViewBackground" destination="O6s-Fh-BB2" id="ruw-dt-I88"/>
                         <outlet property="merchantName" destination="Fwk-ly-dDj" id="cEo-XM-Vza"/>
@@ -1903,7 +1885,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Pfe-5a-c4Y"/>
         <segue reference="NXo-VZ-7yB"/>
+        <segue reference="wwt-lV-h6V"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *merchantName;
 @property (weak, nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewBackground;
+@property (weak, nonatomic) IBOutlet UIButton *btnCancle;
 @end
 
 @implementation PaySucessViewController
@@ -33,8 +34,14 @@
     [self.imageViewBackground setImageWithURL:self.mMerchant.f_merchant_background_image];
     [self.iconImageView setImageWithURL:self.mMerchant.f_merchant_logo_image];
     self.merchantName.text = self.mMerchant.f_merchant_name;
-    self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",self.price];
-
+    
+    if ([self.price isKindOfClass:[NSDictionary class]]) {
+        self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",[self.price objectForKey:@"price"]];
+        
+    }
+    else
+        self.priceLabel.text = [NSString stringWithFormat:@"¥ %@",self.price];
+    
 }
 
 - (void)didReceiveMemoryWarning

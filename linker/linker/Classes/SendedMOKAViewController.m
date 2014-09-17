@@ -170,12 +170,6 @@
 
     MOKADetailView *detailView = [MOKADetailView MOKADetailViewWithData:[self.mokaDatasArray objectAtIndex:indexPath.item]];
     
-    
-    if (indexPath.item == 0) {
-        detailView.imageViewStatus.hidden = NO;
-        detailView.imageViewStatus.image = [UIImage imageNamed:@"mokastatus_2"];
-    }
-    
     detailView.transform = CGAffineTransformMakeScale(190.0f / 320.0f, 340.0f / 568.0f);
     detailView.center = CGPointMake(cell.contentView.bounds.size.width / 2, cell.contentView.bounds.size.height / 2);
     cell.viewContent = detailView;
@@ -203,11 +197,7 @@
 {
     if ([segue.identifier isEqualToString:@"MOKADetailViewControllerSegue"]) {
         MOKADetailViewController *controller = segue.destinationViewController;
-        
         NSIndexPath *indexPath = sender;
-
-        controller.isMime = YES;
-        
         controller.data = [self.mokaDatasArray objectAtIndex:indexPath.item];
     }
     

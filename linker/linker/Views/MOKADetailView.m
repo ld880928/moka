@@ -57,8 +57,9 @@
     view.buttonRefuseProcess.layer.cornerRadius = 2.0f;
     [view.buttonRefuseProcess handleControlEvent:UIControlEventTouchUpInside withBlock:^{
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"申请退款" message:@"您是否真的要将此张摩卡作退款处理？一旦确定，你的朋友将无法收到他。" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
-        [alertView show];
+        if (view.refundBlock) {
+            view.refundBlock();
+        }
         
     }];
     
@@ -75,6 +76,15 @@
     {
         view.imageViewStatus.image = [UIImage imageNamed:@"mokastatus_3"];
 
+    }
+    
+    if ([moka.f_moka_type isEqualToString:@"send"] && [moka.f_moka_status isEqualToString:@"active"])
+    {
+        view.buttonRefuseProcess.hidden = NO;
+    }
+    else
+    {
+        view.buttonRefuseProcess.hidden = YES;
     }
     
     return view;

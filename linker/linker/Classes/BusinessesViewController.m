@@ -17,7 +17,7 @@
 #import "PersonalCenterContainerWindow.h"
 
 @interface BusinessesViewController ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
-@property (weak, nonatomic) IBOutlet UIScrollView *businessesScrollView;
+@property (strong, nonatomic)UIScrollView *businessesScrollView;
 @property (nonatomic,strong)NSMutableArray *businessArray;
 @property (strong, nonatomic)UILabel *navigationLabel;
 @property (strong,nonatomic)MCity *currentCity;
@@ -43,7 +43,20 @@
     manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
     
     [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": city.f_city_id,@"category_id":category_.f_category_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
- 
+        
+        self.businessesScrollView = [[UIScrollView alloc] init];
+        
+        if (is__3__5__Screen) {
+            self.businessesScrollView.frame = CGRectMake(0, 0, 320.0f, 480.0f);
+        }
+        else
+        {
+            self.businessesScrollView.frame = CGRectMake(0, 0, 320.0f, 568.0f);
+        }
+        
+        [self.view insertSubview:self.businessesScrollView belowSubview:self.navigationLabel];
+        
+        //colin
         for (UIView *v in [self.businessesScrollView subviews]) {
             [v removeFromSuperview];
         }
@@ -83,8 +96,10 @@
             
             BusinessView *view_ = [BusinessView businessViewWithDatas:mMerchant];
             
-            view_.frame = CGRectMake(self.view.bounds.size.width * i, 0, self.businessesScrollView.bounds.size.width, self.businessesScrollView.bounds.size.height);
+            view_.frame = CGRectMake(self.view.bounds.size.width * i, 0, self.businessesScrollView.frame.size.width, self.businessesScrollView.frame.size.height);
             view_.userInteractionEnabled = YES;
+            
+            NSLog(@"HHHH---   %f , BBBBB---%f",view_.frame.size.height,self.businessesScrollView.bounds.size.height);
             
             [self.businessesScrollView addSubview:view_];
             
@@ -145,12 +160,12 @@
         if (!responseObject || ![responseObject count]) {
             [[BusinessWindow sharedBusinessWindow] performSelector:@selector(moveToBottom) withObject:self afterDelay:1.0f];
             [SVProgressHUD showErrorWithStatus:@"未找到对应商家"];
-
+            
         }
         else
         {
             [SVProgressHUD showSuccessWithStatus:@"加载成功"];
-
+            
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -235,7 +250,7 @@
                     }
                     else
                     {
-                       //向下拖动详细view
+                        //向下拖动详细view
                         businessView_y = businessView_y + distance_y;
                         businessView_y = businessView_y < 0 ? 0 : businessView_y;
                         businessView_y = businessWindow_y > [businessView getBottom_y] ? [businessView getBottom_y] : businessView_y;
@@ -300,7 +315,7 @@
                         //详细信息显示到上面
                         [businessView moveToTop];
                     }
-
+                    
                 }
                 else
                 {
@@ -352,7 +367,7 @@
     BusinessDetailViewController *destinationViewController = segue.destinationViewController;
     destinationViewController.mMerchant = sender;
     destinationViewController.currentCity = self.currentCity;
-
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView

@@ -1090,7 +1090,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
+				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1126,7 +1126,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
+				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1152,7 +1152,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
+				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1166,6 +1166,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: CHENG NAN (222UUNEN4P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHENG NAN (222UUNEN4P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
@@ -1178,7 +1179,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "237c84b4-014c-43b9-8c83-cb1f4d0203fc";
+				PROVISIONING_PROFILE = "4522731f-1f99-4736-b9c5-8aa3433cfee1";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};

@@ -10,12 +10,13 @@
 #import <CoreLocation/CLLocationManager.h>
 #import "Reachability.h"
 
-#define MOKA_USERDEFAULTS  [NSUserDefaults standardUserDefaults]
-#define MOKA_KEY_USERNAME  @"username"
-#define MOKA_KEY_PASSWORD  @"password"
-#define MOKA_KEY_USERID    @"userid"
-#define MOKA_KEY_USERKEY   @"userkey"
-#define MOKA_KEY_LOGINTIME @"logintime"
+#define MOKA_USERDEFAULTS       [NSUserDefaults standardUserDefaults]
+#define MOKA_KEY_USERNAME       @"username"
+#define MOKA_KEY_PASSWORD       @"password"
+#define MOKA_KEY_USERID         @"userid"
+#define MOKA_KEY_USERKEY        @"userkey"
+#define MOKA_KEY_LOGINTIME      @"logintime"
+#define MOKA_KEY_LOGINSUCCESS   @"loginsuccess"
 
 #define MOKA_KEY_CITY_CURRENT_SELECTED @"city_current_selected"
 
@@ -88,6 +89,16 @@
 - (NSString *)userLoginTime
 {
     return [MOKA_USERDEFAULTS objectForKey:MOKA_KEY_LOGINTIME];
+}
+
+- (BOOL)loginSuccess
+{
+    return [[MOKA_USERDEFAULTS objectForKey:MOKA_KEY_LOGINSUCCESS] boolValue];
+}
+
+- (void)setLoginSuccess:(BOOL)loginSuccess
+{
+    [MOKA_USERDEFAULTS setObject:[NSNumber numberWithBool:loginSuccess] forKey:MOKA_KEY_LOGINSUCCESS];
 }
 
 - (void)saveUserID:(NSString *)userID_

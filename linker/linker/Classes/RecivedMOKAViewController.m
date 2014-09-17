@@ -93,7 +93,7 @@
 {
     for (int i=0; i<[data_ count]; i++) {
         MMoka *mMoka = [[MMoka alloc] initWithDictionary:[data_ objectAtIndex:i]];
-        mMoka.f_moka_type = @"send";
+        mMoka.f_moka_type = @"recived";
         [self.mokaDatasArray addObject:mMoka];
         
     }

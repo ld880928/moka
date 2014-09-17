@@ -10,7 +10,7 @@
 #import "MOKADetailView.h"
 #import "MOKADetailMessageViewController.h"
 
-@interface MOKADetailViewController ()
+@interface MOKADetailViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -37,11 +37,6 @@
     // Do any additional setup after loading the view.
     MOKADetailView *detailView = [MOKADetailView MOKADetailViewWithData:self.data];
     
-    if (self.isMime) {
-        detailView.buttonRefuseProcess.hidden = NO;
-    }
-    
-    
     [detailView setBackBlock:^{
         [self dismissViewControllerAnimated:YES completion:^{
             
@@ -52,14 +47,53 @@
         [self performSegueWithIdentifier:@"MOKADetailMessageViewControllerSegue" sender:moka];
     }];
     
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"申请退款" message:@"您是否真的要将此张摩卡作退款处理？一旦确定，你的朋友将无法收到他。" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"取消", nil];
+    
+    [detailView setRefundBlock:^{
+        
+        [alertView show];
+        
+    }];
+    
     detailView.frame = self.view.frame;
     self.view = detailView;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (buttonIndex == 0) {
+        
+        [SVProgressHUD showWithStatus:@"正在申请退款..." maskType:SVProgressHUDMaskTypeGradient inView:self.view];
+
+        //退款
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject: @"text/html"];
+        
+        NSString *orderID = [(MMoka *)self.data f_moka_order_id];
+        
+        [manager POST:URL_SUB_REFUNDREQUEST parameters:@{@"order_id": orderID,@"comment":@"申请退款"} success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            int code = [[responseObject objectForKey:@"status"] intValue];
+            if (code == 0) {
+                [SVProgressHUD showSuccessWithStatus:@"申请成功"];
+            }
+            else
+            {
+                NSString *errorInfo = [responseObject objectForKey:@"info"];
+                [SVProgressHUD showErrorWithStatus:errorInfo];
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            [SVProgressHUD showErrorWithStatus:@"网络异常"];
+
+            
+        }];
+        
+        
+        
+        NSLog(@"222");
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

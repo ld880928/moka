@@ -12,6 +12,7 @@
 
 @property(nonatomic,copy)void(^gotoDetailBlock)(MMoka *moka_);
 @property(nonatomic,copy)void(^backBlock)();
+@property(nonatomic,copy)void(^refundBlock)();
 @property (weak, nonatomic) IBOutlet UIButton *buttonRefuseProcess;
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewStatus;
 + (instancetype)MOKADetailViewWithData:(id)data_;

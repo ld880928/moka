@@ -10,5 +10,4 @@
 
 @interface MOKADetailViewController : UIViewController
 @property(nonatomic,strong)id data;
-@property(nonatomic,assign)BOOL isMime;
 @end
