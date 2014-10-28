@@ -40,6 +40,8 @@
     view_.labelName.text = mMerchant.f_merchant_name;
     view_.labelTitle.text = mMerchant.f_merchant_description;
     
+    view_.backgroundImageView.backgroundColor = [UIColor grayColor];
+    
     [view_.backgroundImageView setImageWithURL:mMerchant.f_merchant_background_image
                                      completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
                                          view_.backgroundMaskImageView.image = [view_.backgroundImageView.image applyBlurWithRadius:20.0f tintColor:[UIColor clearColor] saturationDeltaFactor:.5f maskImage:nil];

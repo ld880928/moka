@@ -44,7 +44,12 @@
     
     [manager POST:URL_SUB_GETMERCHANT parameters:@{@"city_id": city.f_city_id,@"category_id":category_.f_category_id} success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
+        //colin
+        [self.businessesScrollView removeFromSuperview];
+        self.businessesScrollView = nil;
+        
         self.businessesScrollView = [[UIScrollView alloc] init];
+        self.businessesScrollView.pagingEnabled = YES;
         
         if (is__3__5__Screen) {
             self.businessesScrollView.frame = CGRectMake(0, 0, 320.0f, 480.0f);
@@ -56,10 +61,13 @@
         
         [self.view insertSubview:self.businessesScrollView belowSubview:self.navigationLabel];
         
+        /*
         //colin
         for (UIView *v in [self.businessesScrollView subviews]) {
             [v removeFromSuperview];
         }
+         */
+        
         self.businessesScrollView.contentSize = CGSizeZero;
         
         self.businessArray = [NSMutableArray array];
