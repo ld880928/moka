@@ -1645,6 +1645,7 @@
                                     <barButtonItem width="56" style="plain" systemItem="fixedSpace" id="TJm-3f-0H6"/>
                                     <barButtonItem enabled="NO" title="选择联系人" id="BZr-zj-Jjr"/>
                                 </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fV3-gK-xqt">
                                 <rect key="frame" x="0.0" y="44" width="320" height="524"/>

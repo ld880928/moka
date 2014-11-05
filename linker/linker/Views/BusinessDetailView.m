@@ -111,8 +111,9 @@
         
         UITextField *textFiled = [[UITextField alloc] initWithFrame:CGRectMake(20.0f, 0, 200.0f, view.bounds.size.height)];
         textFiled.placeholder = @"请输入金额!";
-        textFiled.returnKeyType = UIReturnKeyDone;
         textFiled.delegate = self;
+        textFiled.keyboardType = UIKeyboardTypeDecimalPad;
+        
         [view addSubview:textFiled];
         
         self.handleView = view;
@@ -158,12 +159,6 @@
     self.addContactBlock();
 }
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    self.textViewGetFocusBlock();
-    return YES;
-}
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -172,6 +167,11 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
     NSString *new = [textView.text stringByReplacingCharactersInRange:range withString:text];
     NSInteger res = TEXT_MAXLENGTH - [new length];
     if(res >= 0){

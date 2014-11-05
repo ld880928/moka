@@ -26,6 +26,4 @@
 @property(nonatomic,copy)void(^priceChooseCallBackBlock)(id price);
 @property(nonatomic,copy)void(^addContactBlock)();
 
-@property(nonatomic,copy)void(^textViewGetFocusBlock)();
-
 @end

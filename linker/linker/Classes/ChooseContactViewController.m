@@ -8,10 +8,13 @@
 
 #import "ChooseContactViewController.h"
 #import <AddressBook/AddressBook.h>
+#import "pinyin.h"
 #import "ChooseContactCell.h"
 
 @interface ChooseContactViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property(nonatomic,strong)NSMutableArray *contacts;
+@property(nonatomic,strong)NSMutableArray *sections;
+@property(nonatomic,strong)NSMutableDictionary *contacts;
+@property(nonatomic,strong)NSArray *totalSections;
 @property (weak, nonatomic) IBOutlet UITableView *contactTableView;
 @end
 
@@ -20,6 +23,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.sections = [NSMutableArray array];
+    self.contacts = [NSMutableDictionary dictionary];
+    self.totalSections = @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"I",@"J",@"K",@"L",@"M",@"N",@"O",@"P",@"Q",@"R",@"S",@"T",@"U",@"V",@"W",@"X",@"Y",@"Z",@"#"];
+    
     // Do any additional setup after loading the view.
     [self readAllPeoples];
 }
@@ -36,16 +44,47 @@
     return 44.0f;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.sections.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.contacts.count;
+    
+    NSString *sectionKey = [self.sections objectAtIndex:section];
+    
+    return [[self.contacts objectForKey:sectionKey] count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.sections objectAtIndex:section];
+}
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return self.totalSections;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
+{
+    
+    NSInteger index_ = [self computeIndex:index];
+    return index_;
+    
+}
+
+ 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.chooseSuccessBlock) {
-        self.chooseSuccessBlock([self.contacts objectAtIndex:indexPath.row]);
+        
+        id person = [[self.contacts objectForKey:[self.sections objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+        
+        self.chooseSuccessBlock(person);
     }
     
     [self dismissViewControllerAnimated:YES completion:^{
@@ -58,188 +97,206 @@
     static NSString *cell_id = @"ChooseContactCell";
     ChooseContactCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id forIndexPath:indexPath];
     
-    cell.labelName.text = [[self.contacts objectAtIndex:indexPath.row] objectForKey:@"name"];
-    cell.labelPhone.text = [[self.contacts objectAtIndex:indexPath.row] objectForKey:@"phone"];
+    id person = [[self.contacts objectForKey:[self.sections objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
+    
+    cell.labelName.text = [person objectForKey:@"name"];
+    cell.labelPhone.text = [person objectForKey:@"phone"];
 
     return cell;
 }
 
--(void)readAllPeoples
+- (void)readAllPeoples
 {
+    
     [SVProgressHUD showWithStatus:@"加载联系人"];
     
-        ABAddressBookRef tmpAddressBook=ABAddressBookCreateWithOptions(NULL, NULL);
+    ABAddressBookRef tmpAddressBook=ABAddressBookCreateWithOptions(NULL, NULL);
+    
+    ABAddressBookRequestAccessWithCompletion(tmpAddressBook, ^(bool greanted, CFErrorRef error){
         
-        ABAddressBookRequestAccessWithCompletion(tmpAddressBook, ^(bool greanted, CFErrorRef error){
+        //取得本地所有联系人记录
+        
+        if (tmpAddressBook==nil) {
+            return ;
+        };
+        
+        
+        CFArrayRef results = ABAddressBookCopyArrayOfAllPeople(tmpAddressBook);
+        
+        CFMutableArrayRef mresults=CFArrayCreateMutableCopy(kCFAllocatorDefault,
+                                                            CFArrayGetCount(results),
+                                                            results);
+        //将结果按照拼音排序，将结果放入mresults数组中
+        CFArraySortValues(mresults,
+                          CFRangeMake(0, CFArrayGetCount(results)),
+                          (CFComparatorFunction) ABPersonComparePeopleByName,
+                          (void*) ABPersonGetSortOrdering());
+        
+        
+        for (id person in (__bridge NSMutableArray *) mresults) {
             
-            //取得本地所有联系人记录
+            NSString* tmpFirstName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(person), kABPersonFirstNameProperty);
             
-            if (tmpAddressBook==nil) {
-                return ;
-            };
+            if (!tmpFirstName || [tmpFirstName isEqual:[NSNull null]]) {
+                tmpFirstName = @"";
+            }
             
-            NSArray* tmpPeoples = (__bridge NSArray*)ABAddressBookCopyArrayOfAllPeople(tmpAddressBook);
             
-            NSMutableArray *contacts = [NSMutableArray array];
+            NSString* tmpLastName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(person), kABPersonLastNameProperty);
             
-            for(id tmpPerson in tmpPeoples)
+            if (!tmpLastName || [tmpLastName isEqual:[NSNull null]]) {
+                tmpLastName = @"";
+            }
+            
+            NSString *personname = [NSString stringWithFormat:@"%@%@",tmpFirstName,tmpLastName];
+            
+            if (tmpFirstName.length && tmpLastName.length) {
+                personname = [NSString stringWithFormat:@"%@%@",tmpLastName,tmpFirstName];
+            }
+            
+            if (!personname.length) {
+                continue;
+            }
+            
+            
+            ABMultiValueRef tmpPhones = ABRecordCopyValue((__bridge ABRecordRef)(person), kABPersonPhoneProperty);
+            
+            NSString *phone = @"";
+            
+            for(NSInteger j = 0; j < ABMultiValueGetCount(tmpPhones); j++)
                 
             {
                 
-                //获取的联系人单一属性:First name
+                NSString* tmpPhoneIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpPhones, j);
                 
-                NSString* tmpFirstName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonFirstNameProperty);
+                //NSLog(@"tmpPhoneIndex%d:%@", j, tmpPhoneIndex);
                 
-                if (!tmpFirstName || [tmpFirstName isEqual:[NSNull null]]) {
-                    tmpFirstName = @"";
+                phone = tmpPhoneIndex;
+                
+                if (!phone || [phone isEqual:[NSNull null]]) {
+                    phone = @"";
                 }
-                
-                //NSLog(@"First name:%@", tmpFirstName);
-                
-                //获取的联系人单一属性:Last name
-                
-                NSString* tmpLastName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonLastNameProperty);
-                
-                if (!tmpLastName || [tmpLastName isEqual:[NSNull null]]) {
-                    tmpLastName = @"";
-                }
-                
-                //NSLog(@"Last name:%@", tmpLastName);
-                
-                /*
-                 //获取的联系人单一属性:Nickname
-                 
-                 NSString* tmpNickname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNicknameProperty);
-                 
-                 NSLog(@"Nickname:%@", tmpNickname);
-                 
-                 //获取的联系人单一属性:Company name
-                 
-                 NSString* tmpCompanyname = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonOrganizationProperty);
-                 
-                 NSLog(@"Company name:%@", tmpCompanyname);
-                 
-                 //获取的联系人单一属性:Job Title
-                 
-                 NSString* tmpJobTitle= (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonJobTitleProperty);
-                 
-                 NSLog(@"Job Title:%@", tmpJobTitle);
-                 
-                 
-                 //获取的联系人单一属性:Department name
-                 
-                 NSString* tmpDepartmentName = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonDepartmentProperty);
-                 
-                 NSLog(@"Department name:%@", tmpDepartmentName);
-                 
-                 //获取的联系人单一属性:Email(s)
-                 
-                 ABMultiValueRef tmpEmails = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonEmailProperty);
-                 
-                 for(NSInteger j = 0; ABMultiValueGetCount(tmpEmails); j++)
-                 
-                 {
-                 
-                 NSString* tmpEmailIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpEmails, j);
-                 
-                 NSLog(@"Emails%d:%@", j, tmpEmailIndex);
-                 
-                 }
-                 
-                 CFRelease(tmpEmails);
-                 
-                 //获取的联系人单一属性:Birthday
-                 
-                 NSDate* tmpBirthday = (__bridge NSDate*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonBirthdayProperty);
-                 
-                 NSLog(@"Birthday:%@", tmpBirthday);
-                 
-                 //获取的联系人单一属性:Note
-                 
-                 NSString* tmpNote = (__bridge NSString*)ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonNoteProperty);
-                 
-                 NSLog(@"Note:%@", tmpNote);
-                 */
-                //获取的联系人单一属性:Generic phone number
-                
-                ABMultiValueRef tmpPhones = ABRecordCopyValue((__bridge ABRecordRef)(tmpPerson), kABPersonPhoneProperty);
-                
-                NSString *phone = @"";
-                
-                for(NSInteger j = 0; j < ABMultiValueGetCount(tmpPhones); j++)
-                    
-                {
-                    
-                    NSString* tmpPhoneIndex = (__bridge NSString*)ABMultiValueCopyValueAtIndex(tmpPhones, j);
-                    
-                    //NSLog(@"tmpPhoneIndex%d:%@", j, tmpPhoneIndex);
-                    
-                    phone = tmpPhoneIndex;
-                    
-                    if (!phone || [phone isEqual:[NSNull null]]) {
-                        phone = @"";
-                    }
-                    
-                }
-                
-                //处理电话号码
-                if (phone.length >10) {
-                    
-                    //去掉特殊字符
-                    NSMutableString *temp = [[NSMutableString alloc] initWithString:@""];
-                    for (int i=0; i<phone.length; i++) {
-                        NSString *char_ = [phone substringWithRange:NSMakeRange(i, 1)];
-                        
-                        if ([char_ isEqualToString:@"+"] || [char_ isEqualToString:@"-" ] || [char_ isEqualToString:@" "]) {
-                            continue;
-                        }
-                        else
-                        {
-                            [temp appendString:char_];
-                        }
-                        
-                    }
-                    
-                    phone = temp;
-                    
-                    //去掉 86
-                    if ([[phone substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"86"]) {
-                        phone = [phone substringFromIndex:2];
-                    }
-                    
-                    if (![[phone substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"]) {
-                        continue;
-                    }
-                    
-                }
-                else
-                {
-                    continue;
-                }
-                
-                
-                /////////////////
-                
-                [contacts addObject:@{@"name": [NSString stringWithFormat:@"%@%@",tmpFirstName,tmpLastName],@"phone":phone}];
-                
-                CFRelease(tmpPhones);
                 
             }
             
-            self.contacts = contacts;
-            
-            //释放内存
-            
-            CFRelease(tmpAddressBook);
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
+            //处理电话号码
+            if (phone.length >10) {
                 
-                [SVProgressHUD dismiss];
-                [self.contactTableView reloadData];
-            });
+                //去掉特殊字符
+                NSMutableString *temp = [[NSMutableString alloc] initWithString:@""];
+                for (int i=0; i<phone.length; i++) {
+                    NSString *char_ = [phone substringWithRange:NSMakeRange(i, 1)];
+                    
+                    if ([char_ isEqualToString:@"+"] || [char_ isEqualToString:@"-" ] || [char_ isEqualToString:@" "]) {
+                        continue;
+                    }
+                    else
+                    {
+                        [temp appendString:char_];
+                    }
+                    
+                }
+                
+                phone = temp;
+                
+                //去掉 86
+                if ([[phone substringWithRange:NSMakeRange(0, 2)] isEqualToString:@"86"]) {
+                    phone = [phone substringFromIndex:2];
+                }
+                
+                if (![[phone substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"1"]) {
+                    continue;
+                }
+                
+            }
+            else
+            {
+                continue;
+            }
             
+            
+            char first = pinyinFirstLetter([personname characterAtIndex:0]);
+            NSString *sectionName;
+            if ((first>='a'&&first<='z')||(first>='A'&&first<='Z')) {
+                if([self searchResult:personname searchText:@"曾"])
+                    sectionName = @"Z";
+                else if([self searchResult:personname searchText:@"解"])
+                    sectionName = @"X";
+                else if([self searchResult:personname searchText:@"仇"])
+                    sectionName = @"Q";
+                else if([self searchResult:personname searchText:@"朴"])
+                    sectionName = @"P";
+                else if([self searchResult:personname searchText:@"查"])
+                    sectionName = @"Z";
+                else if([self searchResult:personname searchText:@"能"])
+                    sectionName = @"N";
+                else if([self searchResult:personname searchText:@"乐"])
+                    sectionName = @"Y";
+                else if([self searchResult:personname searchText:@"单"])
+                    sectionName = @"S";
+                else
+                    sectionName = [[NSString stringWithFormat:@"%c",pinyinFirstLetter([personname characterAtIndex:0])] uppercaseString];
+            }
+            else {
+                sectionName=[[NSString stringWithFormat:@"%c",'#'] uppercaseString];
+            }
+            
+            if (![self.sections containsObject:sectionName]) {
+                [self.sections addObject:sectionName];
+            }
+            
+            NSMutableArray *contacts_ = [self.contacts objectForKey:sectionName];
+            if (!contacts_) {
+                contacts_ = [NSMutableArray array];
+            }
+            
+            [contacts_ addObject:@{@"name": personname,@"phone":phone}];
+            
+            
+            [self.contacts setValue:contacts_ forKey:sectionName];
+            
+            //NSLog(@"---    %@   -- %@",personname,sectionName);
+            
+        }
+        
+        //释放内存
+        
+        CFRelease(tmpAddressBook);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [SVProgressHUD dismiss];
+            [self.contactTableView reloadData];
         });
+        
+    });
 }
+
+- (BOOL)searchResult:(NSString *)contactName searchText:(NSString *)searchT{
+    NSComparisonResult result = [contactName compare:searchT options:NSCaseInsensitiveSearch
+                                               range:NSMakeRange(0, searchT.length)];
+    if (result == NSOrderedSame)
+        return YES;
+    else
+        return NO;
+}
+
+- (NSInteger)computeIndex:(NSInteger)index
+{
+    
+    for (int i=index; i<self.totalSections.count; i++) {
+        
+        NSString *title = [self.totalSections objectAtIndex:i];
+        
+        if ([self.sections containsObject:title]) {
+            return [self.sections indexOfObject:title];
+        }
+        
+    }
+    
+    return self.sections.count - 1;
+}
+
 /*
 #pragma mark - Navigation
 

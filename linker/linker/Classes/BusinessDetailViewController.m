@@ -65,12 +65,6 @@
         
     };
     
-    self.businessDetailView.textViewGetFocusBlock = ^{
-        UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:safe_self action:@selector(hideKeyboard)];
-        [safe_self.view addGestureRecognizer:ges];
-        
-    };
-    
     self.bottomView.layer.shadowOffset = CGSizeMake(10.0f, 10.0f);
     self.bottomView.layer.shadowRadius = 10.0f;
     self.bottomView.layer.shadowOpacity = 1.0f;
@@ -324,19 +318,27 @@
     }];
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow) name: UIKeyboardDidShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide) name: UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillShow:) name: UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector (keyboardWillHide:) name: UIKeyboardDidHideNotification object:nil];
 
 }
 
-- (void)keyboardWillShow
+- (void)keyboardWillShow:(NSNotification *)notif
 {
     self.containerScorllView.contentSize = CGSizeMake(self.containerScorllView.contentSize.width, self.containerScorllView.contentSize.height + 128.0f);
+    
+    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.view addGestureRecognizer:ges];
 }
 
-- (void)keyboardWillHide
+- (void)keyboardWillHide:(NSNotification *)notif
 {
     self.containerScorllView.contentSize = CGSizeMake(self.containerScorllView.contentSize.width, self.containerScorllView.contentSize.height - 128.0f);
+    
+    for (UIGestureRecognizer *ges in self.view.gestureRecognizers) {
+        [self.view removeGestureRecognizer:ges];
+    }
+
 }
 
 - (void)dealloc
@@ -348,7 +350,9 @@
 
 - (void)hideKeyboard
 {
-    [self.businessDetailView.textViewMessage resignFirstResponder];
+    [[UIApplication sharedApplication].keyWindow endEditing:YES];
+    
+    //[self.businessDetailView.textViewMessage resignFirstResponder];
     
     for (UIGestureRecognizer *ges in [self.view gestureRecognizers]) {
         [self.view removeGestureRecognizer:ges];

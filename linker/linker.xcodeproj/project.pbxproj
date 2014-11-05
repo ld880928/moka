@@ -23,6 +23,7 @@
 		02AFC79219C562E200BDCDDC /* ChooseContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02AFC79119C562E200BDCDDC /* ChooseContactCell.m */; };
 		02B5DBEF19B2EA3400E79109 /* MMoka.m in Sources */ = {isa = PBXBuildFile; fileRef = 02B5DBEE19B2EA3400E79109 /* MMoka.m */; };
 		02F62A68199F88B7006FD8A9 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 02F62A67199F88B7006FD8A9 /* DataBaseManager.m */; };
+		02FD4D971A09EFD5006D8EDF /* pinyin.c in Sources */ = {isa = PBXBuildFile; fileRef = 02FD4D951A09EFD5006D8EDF /* pinyin.c */; };
 		039DFE8D97A54617A1C7EBF4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8330954EF015441DA5DB3E8F /* libPods.a */; };
 		3B085772197CE36E000AAEE8 /* BlackStateBarNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */; };
 		3B085776197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B085774197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.m */; };
@@ -148,6 +149,8 @@
 		02F62A67199F88B7006FD8A9 /* DataBaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
 		02F62A6A199F8A29006FD8A9 /* Models.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Models.h; sourceTree = "<group>"; };
 		02F62A6B199F8A4B006FD8A9 /* MOKASQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOKASQL.h; sourceTree = "<group>"; };
+		02FD4D951A09EFD5006D8EDF /* pinyin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pinyin.c; sourceTree = "<group>"; };
+		02FD4D961A09EFD5006D8EDF /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		3B085770197CE36E000AAEE8 /* BlackStateBarNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlackStateBarNavigationController.h; sourceTree = "<group>"; };
 		3B085771197CE36E000AAEE8 /* BlackStateBarNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlackStateBarNavigationController.m; sourceTree = "<group>"; };
 		3B085773197D1DDF000AAEE8 /* BusinessDetailViewTopContainerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessDetailViewTopContainerCell.h; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 		3B2640B21935B43000F88024 /* Additions */ = {
 			isa = PBXGroup;
 			children = (
+				02FD4D951A09EFD5006D8EDF /* pinyin.c */,
+				02FD4D961A09EFD5006D8EDF /* pinyin.h */,
 				3B5C9DFB197E2AD20018F194 /* UIImage+ImageEffects.h */,
 				3B5C9DFC197E2AD20018F194 /* UIImage+ImageEffects.m */,
 				3BB6637D19376E3B0093C33F /* EmptySegue.h */,
@@ -985,6 +990,7 @@
 				3B3348CE19B8592E0096F23D /* AlixPayOrder.m in Sources */,
 				3B149C56192E2EB600271741 /* BusinessDetailViewController.m in Sources */,
 				3B44E3E619C8276600076DBE /* MOKADetailMessageCell.m in Sources */,
+				02FD4D971A09EFD5006D8EDF /* pinyin.c in Sources */,
 				3BB486601940B9A000D3054F /* RegisterViewController.m in Sources */,
 				3B29EC0019420B97006054A1 /* Reachability.m in Sources */,
 				3B3348CF19B8592E0096F23D /* AlixPayResult.m in Sources */,
@@ -1069,8 +1075,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1090,7 +1096,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "e67355f2-5689-41b7-8c40-effd9b79d965";
+				PROVISIONING_PROFILE = "b27d0731-3fc8-4353-a09a-e7e18d90dfa1";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1126,7 +1132,7 @@
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Libs/BaiduMap_iOSSDK_v2.2.1_Lib/libs/Release-iphoneos";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PROVISIONING_PROFILE = "e67355f2-5689-41b7-8c40-effd9b79d965";
+				PROVISIONING_PROFILE = "b27d0731-3fc8-4353-a09a-e7e18d90dfa1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1139,8 +1145,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: CHENG NAN (R79JFQ5VKW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "linker/linker-Prefix.pch";
 				INFOPLIST_FILE = "linker/linker-Info.plist";
@@ -1149,10 +1155,10 @@
 					/Users/lidi/Documents/colin/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 					"$(PROJECT_DIR)/linker/Alipay/alipay",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e67355f2-5689-41b7-8c40-effd9b79d965";
+				PROVISIONING_PROFILE = "b27d0731-3fc8-4353-a09a-e7e18d90dfa1";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1175,10 +1181,10 @@
 					/Users/lidi/Documents/colin/moka/linker/linker/Libs/BaiduMap_IOSSDK_v2.3.0_Lib,
 					"$(PROJECT_DIR)/linker/Alipay/alipay",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e67355f2-5689-41b7-8c40-effd9b79d965";
+				PROVISIONING_PROFILE = "b27d0731-3fc8-4353-a09a-e7e18d90dfa1";
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
