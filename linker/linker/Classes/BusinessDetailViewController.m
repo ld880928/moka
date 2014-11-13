@@ -13,6 +13,11 @@
 #import "PaySucessViewController.h"
 #import <AddressBook/AddressBook.h>
 
+#import "LoginViewController.h"
+#import "LightStateBarNavigationController.h"
+#import "PersonalCenterContainerWindow.h"
+#import "BusinessWindow.h"
+
 #import "AlixLibService.h"
 #import "PartnerConfig.h"
 #import "DataSigner.h"
@@ -80,6 +85,26 @@
 
     //支付
     [self.buttonConfirmPay handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+        
+        if (![[AccountAndLocationManager sharedAccountAndLocationManager] loginSuccess])
+        {
+            //弹出登录界面
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            LoginViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+            LightStateBarNavigationController *navController = [[LightStateBarNavigationController alloc] initWithRootViewController:viewController];
+            PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:navController];
+            viewController.loginSuccessBlock = ^{
+                [containerWindow disAppear];
+                [[BusinessWindow sharedBusinessWindow] moveToTop];
+                
+            };
+            [containerWindow showWithStautsBar:YES];
+            
+            [[BusinessWindow sharedBusinessWindow] moveToBottom];
+            
+            return;
+        }
+        
         
         NSString *userID = [[AccountAndLocationManager sharedAccountAndLocationManager] userID];
         NSString *merchantID = self.mMerchant.f_merchant_id;

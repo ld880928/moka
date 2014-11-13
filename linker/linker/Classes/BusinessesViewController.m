@@ -12,10 +12,6 @@
 #import "BusinessDetailViewController.h"
 #import "Models.h"
 
-#import "LoginViewController.h"
-#import "LightStateBarNavigationController.h"
-#import "PersonalCenterContainerWindow.h"
-
 @interface BusinessesViewController ()<UIGestureRecognizerDelegate,UIScrollViewDelegate>
 @property (strong, nonatomic)UIScrollView *businessesScrollView;
 @property (nonatomic,strong)NSMutableArray *businessArray;
@@ -117,27 +113,8 @@
             
             [view_ setGotoDetailBlock:^{
                 
-                if ([[AccountAndLocationManager sharedAccountAndLocationManager] loginSuccess])
-                {
-                    [self performSegueWithIdentifier:@"BusinessDetail" sender:mMerchant];
-                }
-                else
-                {
-                    //弹出登录界面
-                    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                    LoginViewController *viewController = [storyBoard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-                    LightStateBarNavigationController *navController = [[LightStateBarNavigationController alloc] initWithRootViewController:viewController];
-                    PersonalCenterContainerWindow *containerWindow = [[PersonalCenterContainerWindow alloc] initWithRootViewController:navController];
-                    viewController.loginSuccessBlock = ^{
-                        [containerWindow disAppear];
-                        [[BusinessWindow sharedBusinessWindow] moveToTop];
-                        
-                    };
-                    [containerWindow showWithStautsBar:YES];
-                    
-                    [[BusinessWindow sharedBusinessWindow] moveToBottom];
-                    
-                }
+                [self performSegueWithIdentifier:@"BusinessDetail" sender:mMerchant];
+
             }];
             
             __unsafe_unretained BusinessView *safeView_ = view_;
